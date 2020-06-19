@@ -5,14 +5,15 @@
 ------------------------------
 
 -- USERS --
-CREATE TABLE "users"
+CREATE TABLE "user"
 (
-    "id" serial PRIMARY KEY NOT NULL,
-    "name" varchar NOT NULL,
-    "title" varchar NOT NULL,
+    "id" serial PRIMARY KEY,
+    "name" varchar,
+    "title" varchar,
     "password" varchar NOT NULL,
-    "username" varchar (255) UNIQUE NOT NULL, -- username IS email
-    "phone" varchar (255) NOT NULL,
+    "username" varchar (255) UNIQUE NOT NULL,
+    -- username IS email
+    "phone" varchar (255),
     "access_level" varchar (255) DEFAULT 0
 );
 
@@ -211,13 +212,13 @@ CREATE TABLE "sponsorships"
 ------------------------------
 
 -- USERS --
-INSERT INTO users
+INSERT INTO "user"
     (name, title, password, username, phone, access_level)
 VALUES
-    ('Heather B.', 'FizzBuzz Rep', 'Heather', 'fizzbuzz@gmail.com', '612-500-5030', 0),
-    ('Alan H.', 'Henderson Business Solutions', 'Alan', 'grillydough@gmail.com', '612-505-5050', 1),
-    ('Tan N.', 'Research Co.', 'Tan', 'lamportkn@gmail.com', '612-500-5001', 2),
-    ('Shaokee M.', 'Sponsorship Hub', 'Shaokee', 'sshub@gmail.com', '612-505-5003', 3);
+    ('Heather B.', 'FizzBuzz Rep', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '612-500-5030', 0),
+    ('Alan H.', 'Henderson Business Solutions', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-505-5050', 1),
+    ('Tan N.', 'Research Co.', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-500-5001', 2),
+    ('Shaokee M.', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3);
 
 -- EVENTS --
 INSERT INTO events
