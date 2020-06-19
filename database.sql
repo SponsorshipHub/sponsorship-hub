@@ -11,7 +11,7 @@ CREATE TABLE "users"
     "name" varchar NOT NULL,
     "title" varchar NOT NULL,
     "password" varchar NOT NULL,
-    "email" varchar (255) NOT NULL,
+    "username" varchar (255) UNIQUE NOT NULL, -- username IS email
     "phone" varchar (255) NOT NULL,
     "access_level" varchar (255) DEFAULT 0
 );
@@ -212,7 +212,7 @@ CREATE TABLE "sponsorships"
 
 -- USERS --
 INSERT INTO users
-    (name, title, password, email, phone, access_level)
+    (name, title, password, username, phone, access_level)
 VALUES
     ('Heather B.', 'FizzBuzz Rep', 'Heather', 'fizzbuzz@gmail.com', '612-500-5030', 0),
     ('Alan H.', 'Henderson Business Solutions', 'Alan', 'grillydough@gmail.com', '612-505-5050', 1),
