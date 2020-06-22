@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {withStyles} from '@material-ui/core/styles';
-import {Grid, Typography, TextField, Box, Button} from '@material-ui/core';
-
-const styles = () => {
-    return({
-    })
-}
+//MATERIAL UI
+import { withStyles } from '@material-ui/core/styles';
+import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
+// PropTypes allows us to import style.jsx for use
+import PropTypes from 'prop-types';
+import styles from '../Style/Style';
 
 class LandingPage extends Component {
     render(){
@@ -16,5 +15,8 @@ class LandingPage extends Component {
         )//end return
     };//end render
 };//end LandingPage
+
+// PropTypes allows us to import style.jsx for use
+LandingPage.propTypes = { classes: PropTypes.object.isRequired };
 
 export default connect()(withStyles(styles)(LandingPage));
