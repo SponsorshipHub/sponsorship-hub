@@ -25,7 +25,7 @@ class Event extends Component {
         return (
             <Box>
                 <Box m={2}>
-                    <Button variant="outlined">Back to Results</Button>
+                    <Button onClick={()=>this.props.history.push('/results')} variant="outlined">Back to Results</Button>
                 </Box>
                 <Grid container justify="center">
                     <Grid item md={10}>
