@@ -13,6 +13,10 @@ const styles = {
         padding: '20px'
     },
     btn_def: {
+        background: 'grey'
+    },
+    eventDemo: {
+        alignContent: 'center',
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient
         color: 'white', // Button's text color
             // transition: 'all 0.3s', // Optional Hover Effect
