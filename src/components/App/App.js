@@ -14,6 +14,7 @@ import CreateDemo from '../Create/CreateDemo';
 
 //style for app
 import './App.css';
+import Event from '../Event/Event';
 
 class App extends Component {
   componentDidMount () {
@@ -41,6 +42,10 @@ class App extends Component {
             <ProtectedRoute
               path="/home"
               component={LandingPage}
+            />
+            <ProtectedRoute
+              path="/event"
+              component={Event} 
             />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
             {/* This works the same as the other protected route, except that if the user is logged in,
