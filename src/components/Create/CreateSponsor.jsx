@@ -48,11 +48,11 @@ class CreateSponsor extends Component {
                     <Box mx={10} spacing={3}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>
-                                <Button fullWidth variant="outlined">Back</Button>
+                                <Button fullWidth className={classes.btn_def} variant="outlined">Back</Button>
                             </Grid>
                             <Grid item md={3}></Grid>
                             <Grid item md={3} sm={6}>
-                                <Button fullWidth variant="outlined">Next</Button>
+                                <Button fullWidth className={classes.btn_def} variant="outlined">Next</Button>
                             </Grid>
                         </Grid>
 

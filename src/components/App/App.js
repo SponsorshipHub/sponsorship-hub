@@ -9,6 +9,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import ResultPage from '../LandingPage/ResultPage';
 import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
+import CreateDemo from '../Create/CreateDemo';
 
 
 //style for app
@@ -36,6 +37,7 @@ class App extends Component {
             <ProtectedRoute exact path="/home" component={LandingPage}/>
             <ProtectedRoute exact path="/results" component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor" component={CreateSponsor}/>
+            <ProtectedRoute exact path="/create-demo" component={CreateDemo} />
             <ProtectedRoute
               path="/home"
               component={LandingPage}
