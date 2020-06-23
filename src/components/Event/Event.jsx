@@ -18,6 +18,7 @@ import Venue from './Venue';
 
 
 class Event extends Component {
+
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
