@@ -14,23 +14,32 @@ class ResultPage extends Component {
         return (
             <Box>
                 {/* outer grid that wraps all the other grids */}
-                <Grid container spacing={2} item md={12}>
+                <Box>
                     {/* section that holds the main header */}
                     <Grid className={classes.landHead} item md={12}>
                         <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
                     </Grid>
                     {/* section that holds the advanced search filters */}
-                    <Grid container item md={12} className={classes.box_grey}>
-                        <Grid item md={12}><Typography className={classes.landSearchTitle}>Results View</Typography></Grid>
-                        <Grid item md={6}><TextField label="Location"/></Grid>
-                        <Grid item md={6}><TextField label="Month" /></Grid>
-                        <Grid item md={6}><TextField label="Type" /></Grid>
-                        <Grid item md={6}><TextField label="Attendance" /></Grid>
-                        <Grid item md={6}><TextField label="Sponsorship Cost" /></Grid>
-                        <Grid item md={6}><TextField label="Household Income" /></Grid>
-                        <Grid item md={6}><Button variant="outlined">Filter</Button></Grid>
-                    </Grid>
-                </Grid>
+                    <Box className={classes.box_grey}>
+                        {/* first 3 inputs */}
+                        <Grid container justify="center" spacing={2}>
+                            <Grid item md={12}><Typography className={classes.landSearchTitle}>Results View</Typography></Grid>
+                            <Grid item xs={12} md={3}><TextField fullWidth={true} label="Location" /></Grid>
+                            <Grid item xs={12} md={3}><TextField fullWidth={true} label="Month" /></Grid>
+                            <Grid item xs={12} md={3}><TextField fullWidth={true} label="Type" /></Grid>
+                            <Grid/>
+                            {/* second batch of inputs */}
+                            <Grid container justify="center" spacing={2}>
+                                <Grid item xs={12} md={3}><TextField fullWidth={true} label="Attendance" /></Grid>
+                                <Grid item xs={12} md={3}><TextField fullWidth={true} label="Sponsorship Cost" /></Grid>
+                                <Grid item xs={12} md={3}><TextField fullWidth={true} label="Household Income" /></Grid>
+                            </Grid>
+                            <Grid container justify="center">
+                            <Grid item xs={12} md={1}><Button variant="outlined">Filter</Button></Grid>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                </Box>
             </Box>
         )//end return
     };//end render
