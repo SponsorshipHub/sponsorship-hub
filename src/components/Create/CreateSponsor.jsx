@@ -10,6 +10,10 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class CreateSponsor extends Component {
+
+    state = {
+        
+    }
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
