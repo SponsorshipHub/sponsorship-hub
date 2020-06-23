@@ -5,12 +5,24 @@ const styles = {
     landHeadText: {
         fontSize: '80px',
         textAlign: 'center',
-        padding: '50px'
+        padding: '3%'
     },
     landSearchTitle: {
         textAlign: 'center',
         fontSize: '25px',
-        padding: '20px'
+        padding: '2%'
+    },
+    landMargin: {
+        marginLeft: '2%',
+        marginRight: '2%',
+        paddingBottom: '2%'
+    },
+    formControl: {
+        minWidth: '15%',
+        marginLeft: '1%'
+    },
+    searchBtn: {
+        marginLeft: '20%'
     },
     btn_def: {
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient

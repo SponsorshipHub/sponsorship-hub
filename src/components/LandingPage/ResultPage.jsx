@@ -20,7 +20,7 @@ class ResultPage extends Component {
                         <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
                     </Grid>
                     {/* section that holds the advanced search filters */}
-                    <Grid container item md={12}>
+                    <Grid container item md={12} className={classes.box_grey}>
                         <Grid item md={12}><Typography className={classes.landSearchTitle}>Results View</Typography></Grid>
                         <Grid item md={6}><TextField label="Location"/></Grid>
                         <Grid item md={6}><TextField label="Month" /></Grid>

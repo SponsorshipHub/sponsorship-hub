@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Paper, CardMedia, Card, CardContent } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Paper, CardMedia, Card, CardContent, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class LandingPage extends Component {
 
-    componentDidMount(){
+    state = {
+        month: '',
+        open: false
+    };//end state
+
+    componentDidMount() {
         console.log('Landing Page has been MOUNTED');
     };//end componentDidMount
 
@@ -19,49 +24,92 @@ class LandingPage extends Component {
         this.props.history.push('/results');
     };//end handleSearch
 
+    handleOpen = () => {
+        this.setState({
+            open: true
+        })
+    };//end handleOpen
+
+    handleClose = () => {
+        this.setState({
+            open: false
+        })
+    };// handleClose
+
+    handleChange = (event) => {
+        this.setState({
+            month: event.target.value
+        })
+    };//end handleChange
+
     render() {
         const { classes } = this.props;
         return (
             <Box>
                 {/* outer grid for landing page */}
-                <Grid container spacing={2} item md={12}>
+                <Grid spacing={2}>
                     {/* top section that holds media image */}
                     {/* <CardMedia image="" title="" height="500px" width="500px"> */}
-                    <Grid className={classes.landHead} item md={12}>
+                    <Box className={classes.landHead}>
                         <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                    </Grid>
+                    </Box>
                     {/* section to hold search inputs */}
-                    <Grid container item md={12} spacing={3}>
-                        <Grid item md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
-                        <Grid item md={4}><TextField label="Location" /></Grid>
-                        <Grid item md={4}><TextField label="Month" /></Grid>
-                        <Grid item md={4}><Button variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
-                    </Grid>
+                    <Box className={classes.box_grey}>
+                        <Box className={classes.landMargin}>
+                            <Grid container item md={12} spacing={2}>
+                                <Grid item md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
+                                <Grid item md={2}></Grid>
+                                <Grid item md={4}><TextField fullWidth={true} label="Location" /></Grid>
+                                {/* begin month selector */}
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel style={{marginLeft: '10%'}} >Select Month</InputLabel>
+                                    <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.month} onChange={(event) => this.handleChange(event)}>
+                                        <MenuItem value={1}><em>January</em></MenuItem>
+                                        <MenuItem value={2}><em>February</em></MenuItem>
+                                        <MenuItem value={3}><em>March</em></MenuItem>
+                                        <MenuItem value={4}><em>April</em></MenuItem>
+                                        <MenuItem value={5}><em>May</em></MenuItem>
+                                        <MenuItem value={6}><em>June</em></MenuItem>
+                                        <MenuItem value={7}><em>July</em></MenuItem>
+                                        <MenuItem value={8}><em>August</em></MenuItem>
+                                        <MenuItem value={9}><em>September</em></MenuItem>
+                                        <MenuItem value={10}><em>October</em></MenuItem>
+                                        <MenuItem value={11}><em>November</em></MenuItem>
+                                        <MenuItem value={12}><em>December</em></MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <Grid item md={4}><Button className={classes.searchBtn} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                                <Grid item md={2}></Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
                     {/* section to hold featured events */}
-                    <Grid container item md={12} spacing={3}>
-                        <Grid item md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
-                        <Grid container item md={4}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE 1</Typography>
-                                </CardContent>
-                            </Card>
+                    <Box className={classes.landMargin}>
+                        <Grid container item md={12} spacing={2}>
+                            <Grid item md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
+                            <Grid container item md={4}>
+                                <Card>
+                                    <CardContent>
+                                        <Typography>FEATURE 1</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid container item md={4}>
+                                <Card>
+                                    <CardContent>
+                                        <Typography>FEATURE 2</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid container item md={4}>
+                                <Card>
+                                    <CardContent>
+                                        <Typography>FEATURE 3</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
                         </Grid>
-                        <Grid container item md={4}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE 2</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid container item md={4}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE 3</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    </Grid>
+                    </Box>
                 </Grid>
             </Box>
         )//end return
