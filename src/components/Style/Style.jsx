@@ -21,9 +21,16 @@ const styles = {
         minWidth: '15%',
         marginLeft: '1%'
     },
+    advSearch: {
+        minWidth: '15%',
+        marginTop: '2%',
+        marginBottom: '2%'
+    },
     filterBtn: {
-        padding: '8%',
-        margin: '6%'
+        paddingLeft: '8%',
+        paddingRight: '8%',
+        margin: '6%',
+        letterSpacing: '2px',
     },
     btn_def: {
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient
