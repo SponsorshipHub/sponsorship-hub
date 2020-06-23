@@ -1,43 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Paper, Input } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Paper } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class CreateSponsor extends Component {
+
+    state = {
+        
+    }
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
             <Box>
                 {/* Breadcrumbs go up here */}
-                <h2>Create Sponsorship Packages</h2>
+                <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
                 <Box mx={10} spacing={3}>
                     {/* input fields go here */}
-                    <Grid container spacing={3}>
-                        <Grid item md={4} sm={12}>
-                            <TextField fullWidth placeholder="Package Name"></TextField>
+                    <Grid justify="center" container spacing={3}>
+                        <Grid item md={3} sm={9}>
+                            <TextField fullWidth label="Package Name" placeholder="Package Name"></TextField>
                         </Grid>
-                        <Grid item md={4} sm={12}>
-                            <TextField fullWidth placeholder="Packagae Price"></TextField>
+                        <Grid item md={3} sm={9}>
+                            <TextField fullWidth label="Packagae Price" placeholder="$"></TextField>
                         </Grid>
-                        <Grid item md={4} sm={12}>
-                            <TextField fullWidth placeholder="Image URL"></TextField>
+                        <Grid item md={3} sm={9}>
+                            <TextField fullWidth label="Image URL"placeholder="http://"></TextField>
                         </Grid>
-                        <Grid item md={10} sm={12}>
-                            <TextField fullWidth label="Package Description" placeholder="Package Description"></TextField>
+                        <Grid item md={8} sm={9}>
+                            <TextField fullWidth multiline variant="outlined" label="Package Description" placeholder="Package Description"></TextField>
                         </Grid>
-                        <Grid item md={2} sm={12}>
+                        <Grid item md={1} sm={9}>
                             <Button>Submit</Button>
                         </Grid>
                     </Grid>
                 </Box>
                 <Box>
-                    <h2>Current Sponsorship Packages</h2>
+                    <Typography align="center" variant="h2">Current Packages</Typography>
                     <ul>
                         <li>$100</li>
                         <li>$1,000</li>
@@ -46,16 +51,13 @@ class CreateSponsor extends Component {
 
                     {/* display sponsorships go here */}
                     <Box mx={10} spacing={3}>
-                        <Grid container>
-
-
-                            <Grid item md={4} sm={6}>
-                                <Button>Back</Button>
+                        <Grid justify="center" container>
+                            <Grid item md={3} sm={6}>
+                                <Link to="/create-event"><Button fullWidth className={classes.btn_def} variant="outlined">Back</Button></Link>
                             </Grid>
-                            <Grid item md={4} sm={0}>
-                            </Grid>
-                            <Grid item md={4} sm={6}>
-                                <Button>Next</Button>
+                            <Grid item md={3}></Grid>
+                            <Grid item md={3} sm={6}>
+                                <Link to="/create-demo"><Button fullWidth className={classes.btn_def} variant="outlined">Next</Button></Link>
                             </Grid>
                         </Grid>
 
