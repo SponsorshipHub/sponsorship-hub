@@ -7,6 +7,8 @@ import Footer from '../Structure/Footer/Footer';
 import ProtectedRoute from '../Structure/ProtectedRoute/ProtectedRoute';
 import LandingPage from '../LandingPage/LandingPage';
 import CreateSponsor from '../Create/CreateSponsor';
+import CreateEvent from '../Create/CreateEvent';
+
 //style for app
 import './App.css';
 
@@ -34,6 +36,7 @@ class App extends Component {
               path="/home"
               component={LandingPage}
             />
+            <ProtectedRoute path="/create-event" component={CreateEvent} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <LandingPage />
