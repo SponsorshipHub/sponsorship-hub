@@ -1,4 +1,17 @@
 const styles = {
+    landHead: {
+        backgroundColor: '#DDE2EC',
+    },
+    landHeadText: {
+        fontSize: '80px',
+        textAlign: 'center',
+        padding: '50px'
+    },
+    landSearchTitle: {
+        textAlign: 'center',
+        fontSize: '25px',
+        padding: '20px'
+    },
     btn_def: {
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient
         color: 'white', // Button's text color
