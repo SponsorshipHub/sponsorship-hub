@@ -52,6 +52,7 @@ class LandingPage extends Component {
                     {/* <CardMedia image="" title="" height="500px" width="500px"> */}
                     <Box className={classes.landHead}>
                         <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
+                        <Button className={classes.btn_submit} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>
                     </Box>
                     {/* section to hold search inputs */}
                     <Box className={classes.box_grey}>
@@ -88,7 +89,7 @@ class LandingPage extends Component {
                         <Grid container spacing={2} justify="center">
                             <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
                             <Grid container xs={12} item md={4}>
-                                <Card>
+                                <Card onClick={()=>this.props.history.push('/event')}>
                                     <CardContent>
                                         <Typography>FEATURE 1</Typography>
                                     </CardContent>

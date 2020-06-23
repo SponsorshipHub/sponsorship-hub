@@ -33,16 +33,20 @@ const styles = {
         letterSpacing: '2px',
     },
     btn_def: {
-        background: 'grey'
-    },
-    eventDemo: {
-        alignContent: 'center',
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient
         color: 'white', // Button's text color
             // transition: 'all 0.3s', // Optional Hover Effect
             // '&:hover': {
             //     boxShadow: '1px 1px 5px black',
             // }
+    },
+    btn_submit: {
+        background: 'linear-gradient(200deg, #DEDEDE, #CCCCCC)', // Extremely subtle gradient
+        color: 'black', // Button's text color
+        // transition: 'all 0.3s', // Optional Hover Effect
+        // '&:hover': {
+        //     boxShadow: '1px 1px 5px black',
+        // }
     },
     box_grey: {
         background: '#ECECEC', // Adds a grey box to the background
