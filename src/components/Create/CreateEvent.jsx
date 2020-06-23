@@ -12,11 +12,38 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class CreateEvent extends Component {
-    state = { newVenue: true, venue: '', cancel: false }
+    state = { 
+        newVenue: false, 
+        venue: '', 
+        cancel: false,
+        event_name: '',
+        year_established: '',
+        start_date: '',
+        end_date: '',
+        event_image_url: '',
+        event_website: '',
+        event_status: '',
+        estimated_attendance: '',
+        event_notes: '',
+        contact_name: '',
+        contact_title: '',
+        contact_email: '',
+        contact_phone: '',
+        event_facebook: '',
+        event_instagram: '',
+        event_twitter: '',
+        event_description: '', 
+        event_sponsorship_kit: ''
+    }
 
     cancelSelect = (event) => {
         this.setState({ cancel: event.target.value });
     };
+
+    nextClick = () => {
+        // TODO - Post Dispatch Goes Here 
+        this.props.history.push('/create-sponsor')
+    }
 
     venueSelect(event) {
         console.log(event.target.value)
@@ -31,30 +58,43 @@ class CreateEvent extends Component {
         return (
             <>
                 <Box className={classes.margin}>
-                    <h1>Create Event</h1>
+                    <Grid justify="center" container>
+                        <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
+                        <Grid item xs={12} md={4}></Grid>
+                    </Grid>
+                    
 
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={12}>
+                    <Box mb={2}>
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField inputProps={{ maxLength: 255 }} label="Event Name" placeholder="Name of the Event" />
+                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Event Name" placeholder="Name of the Event" />
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} />
                         </Grid>
                     </Grid>
+                    </Box>
 
                     {/* Row Start */}
+                    <Box mb={2}>
                     <Grid container spacing={2} item md={12}>
+                        <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField label="Start Date" placeholder="Start Date" />
+                            <InputLabel>Start Date</InputLabel>
+                            <TextField type="date" placeholder="Start Date" />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField label="End Date" placeholder="End Date" />
+                            <InputLabel>End Date</InputLabel>
+                            <TextField type="date" placeholder="End Date" />
                         </Grid>
+                        <Grid item md={2}></Grid>
                     </Grid>
+                    </Box>
 
                     {/* Row Start */}
                     <Grid container spacing={2} item md={12}>
+                        <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
                             <InputLabel id="venue">Venue</InputLabel>
                             <Select onChange={this.venueSelect}>
@@ -80,33 +120,38 @@ class CreateEvent extends Component {
                                 <MenuItem value={10}>Street Market Festival</MenuItem>
                             </Select>
                         </Grid>
+                        <Grid item md={2}></Grid>
                     </Grid>
                 </Box>
 
                 {/* Show Only if newVenue=true */}
-                {this.state.newVenue && <Box className={classes.box_grey}>
-                    <Box className={classes.margin}>
-                        <h2>New Venue</h2>
+                {this.state.newVenue && 
+                <Box className={classes.box_grey}>
+                <Box className={classes.margin}>
+                        <Grid justify="center" container>
+                            <Grid item xs={12} md={4}><h2>New Venue</h2></Grid>
+                            <Grid item xs={12} md={4}></Grid>  
+                        </Grid>
 
                         {/* Row Start */}
-                        <Grid container spacing={4} item md={12}>
-                            <Grid item xs={6} md={4}>
+                        <Grid justify="center" container spacing={4}>
+                            <Grid item xs={6} md={6}>
                                 <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Venue Name" placeholder="Name" />
                             </Grid>
-                            <Grid item xs={3} md={1}>
+                            <Grid item xs={3} md={2}>
                                 <TextField fullWidth={true} type="number" label="Capacity" placeholder="#" />
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
-                        <Grid container spacing={4} item md={12}>
+                        <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={8}>
                                 <TextField fullWidth={true} multiline={true} label="Street Address" placeholder="Notes about the Venue" />
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
-                        <Grid container spacing={4} item md={12}>
+                        <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={4}>
                                 <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="City" placeholder="City" />
                             </Grid>
@@ -171,7 +216,7 @@ class CreateEvent extends Component {
                         </Grid>
 
                         {/* Row Start */}
-                        <Grid container spacing={4} item md={12}>
+                        <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={8}>
                                 <TextField variant="outlined" fullWidth={true} multiline={true} label="Notes" placeholder="Notes about the Venue" />
                             </Grid>
@@ -182,17 +227,17 @@ class CreateEvent extends Component {
 
                 <Box className={classes.margin}>
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={8}>
-                        <Grid item xs={12} md={12}>
+                    <Grid justify="center" container spacing={2}>
+                        <Grid item xs={12} md={8}>
                             <TextField multiline={true} label="Website" placeholder="URL" fullWidth={true} />
                         </Grid>
-                        <Grid item xs={12} md={12}>
+                        <Grid item xs={12} md={8}>
                             <TextField multiline={true} label="Event Image" placeholder="URL" fullWidth={true} />
                         </Grid>
                     </Grid>
 
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={12}>
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={2}>
                             <InputLabel>Cancelled?</InputLabel>
                             <Radio
@@ -216,16 +261,22 @@ class CreateEvent extends Component {
                     </Grid>
 
                     {/* Row Start */}
-                    <Grid container spacing={4} item md={12}>
+                    <Grid justify="center" container spacing={4}>
                         <Grid item xs={12} md={8}>
                             <TextField variant="outlined" fullWidth={true} multiline={true} label="Event Description" placeholder="A short description of the event" />
                         </Grid>
                     </Grid></Box>
 
                 <Box className={classes.box_grey}><Box className={classes.margin}>
-                    <h2>Event Contact Information</h2>
+                    
+                    <Grid justify="center" container>
+                        <Grid item xs={12} md={4}><h2>Event Contact Information</h2></Grid>
+                        <Grid item xs={12} md={4}></Grid>
+                    </Grid>
+
+
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={12}>
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
                             <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Contact Name" placeholder="Name of Event Contact" />
                         </Grid>
@@ -235,7 +286,7 @@ class CreateEvent extends Component {
                     </Grid>
 
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={12}>
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
                             <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Email Address" placeholder="Email Address" />
                         </Grid>
@@ -246,8 +297,13 @@ class CreateEvent extends Component {
                 </Box>
 
                 <Box className={classes.margin}>
-                    <h2>Social Tags</h2>
-                    <Grid container spacing={2} item md={12}>
+                    
+                    <Grid justify="center" container>
+                        <Grid item xs={12} md={4}><h2>Social Tags</h2></Grid>
+                        <Grid item xs={12} md={4}></Grid>
+                    </Grid>
+
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
                             <TextField multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.facebook.com/</InputAdornment>,
@@ -268,7 +324,7 @@ class CreateEvent extends Component {
 
                 <Box className={classes.box_grey}><Box className={classes.margin}>
                     {/* Row Start */}
-                    <Grid container spacing={2} item md={12}>
+                    <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
                             <TextField fullWidth={true} label="Sponsorship Kit" placeholder="URL" />
                         </Grid>
@@ -278,7 +334,13 @@ class CreateEvent extends Component {
                     </Grid></Box>
                 </Box>
 
-                <Button variant="outlined" className={classes.btn_def}>Next</Button>
+                <Grid justify="center" container>
+                    <Grid item xs={12} md={3}></Grid>
+                    <Grid item xs={12} md={3}><Button onClick={this.nextClick} fullWidth={true} variant="outlined" className={classes.btn_def}>Next</Button></Grid>
+                    <Grid item xs={12} md={3}>
+                    </Grid>
+                </Grid>
+                
 
             </>
         )//end return
