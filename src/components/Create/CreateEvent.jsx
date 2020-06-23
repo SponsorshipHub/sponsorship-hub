@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
-import { InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
+import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -14,15 +14,15 @@ import styles from '../Style/Style';
 class CreateEvent extends Component {
     state = { 
         newVenue: false, 
-        venue: '', 
-        cancel: false,
+        venue_id: '', 
         event_name: '',
         year_established: '',
         start_date: '',
         end_date: '',
         event_image_url: '',
         event_website: '',
-        event_status: '',
+        event_status: 'false',
+        event_type: '',
         estimated_attendance: '',
         event_notes: '',
         contact_name: '',
@@ -33,12 +33,19 @@ class CreateEvent extends Component {
         event_instagram: '',
         event_twitter: '',
         event_description: '', 
-        event_sponsorship_kit: ''
+        event_sponsorship_kit: '',
+        event_open: false,
+        venue_open: false,
     }
 
     cancelSelect = (event) => {
-        this.setState({ cancel: event.target.value });
+        this.setState({ event_status: event.target.value });
     };
+
+    handleChange = (event, property) => {
+        this.setState({ ...this.state, [property]: event.target.value})
+        console.log(this.state)
+    }
 
     nextClick = () => {
         // TODO - Post Dispatch Goes Here 
@@ -50,10 +57,52 @@ class CreateEvent extends Component {
         // this.setState({ venue: event.target.value })
     }
 
+    // SELECTOR EVENT TYPE START
+    eventOpen = () => {
+        this.setState({
+            event_open: true
+        })
+    }
+    eventClose = () => {
+        this.setState({
+            event_open: false
+        })
+    }
+    eventSelector = (event) => {
+        console.log('You have set the event type to:', event.target.value);
+        this.setState({
+            event_type: event.target.value
+        })
+    }  // SELECTOR EVENT TYPE END
+
+    // SELECTOR EVENT TYPE START
+    venueOpen = () => {
+        this.setState({
+            venue_open: true
+        })
+    }
+    venueClose = () => {
+        this.setState({
+            venue_open: false
+        })
+    }
+    venueSelector = (event) => {
+        console.log('You have set the event type to:', event.target.value);
+        if (event.target.value == 0) {
+            this.setState({
+                newVenue: true,
+                venue_id: event.target.value
+            })}
+        else {this.setState({
+            newVenue: false,
+            venue_id: event.target.value
+        })}
+    }  // SELECTOR EVENT TYPE END
+
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
-        let cancelValue = String(this.state.cancel);
+        let cancelValue = String(this.state.event_status);
 
         return (
             <>
@@ -62,16 +111,30 @@ class CreateEvent extends Component {
                         <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
-                    
 
+                    {/* <FormControl>
+                        <InputLabel>Test</InputLabel>
+                        <Select
+                            open={this.state.event_open}
+                            onClose={this.eventClose}
+                            onOpen={this.eventOpen}
+                            value={this.state.event_type}
+                            onChange={(event) => this.eventSelector(event)}>
+                            <MenuItem value={1}><em>Buy</em></MenuItem>
+                            <MenuItem value={2}><em>Sell</em></MenuItem>
+                            <MenuItem value={3}><em>Trade</em></MenuItem>
+                        </Select>
+                    </FormControl> */}
+                    
+                    {/* SECTION - FIRST */}
                     {/* Row Start */}
                     <Box mb={2}>
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Event Name" placeholder="Name of the Event" />
+                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Event Name" placeholder="Name of the Event" onChange={(event)=>this.handleChange(event, 'event_name')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} />
+                                <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')}/>
                         </Grid>
                     </Grid>
                     </Box>
@@ -82,11 +145,11 @@ class CreateEvent extends Component {
                         <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
                             <InputLabel>Start Date</InputLabel>
-                            <TextField type="date" placeholder="Start Date" />
+                                <TextField type="date" placeholder="Start Date" onChange={(event) => this.handleChange(event, 'start_date')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <InputLabel>End Date</InputLabel>
-                            <TextField type="date" placeholder="End Date" />
+                                    <TextField type="date" placeholder="End Date" onChange={(event) => this.handleChange(event, 'end_date')}/>
                         </Grid>
                         <Grid item md={2}></Grid>
                     </Grid>
@@ -96,34 +159,47 @@ class CreateEvent extends Component {
                     <Grid container spacing={2} item md={12}>
                         <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
-                            <InputLabel id="venue">Venue</InputLabel>
-                            <Select onChange={this.venueSelect}>
-                                <MenuItem value='text'>Create New</MenuItem>
-                                <MenuItem value='text2'>Hard Coded Location 1</MenuItem>
-                                <MenuItem value={2}>Hard Coded Location 2</MenuItem>
-                                <MenuItem value={3}>Hard Coded Location 3</MenuItem>
-                            </Select>
+                            <InputLabel>Venue</InputLabel>
+                            <FormControl>
+                                <Select
+                                    open={this.state.venue_open}
+                                    onClose={this.venueClose}
+                                    onOpen={this.venueOpen}
+                                    value={this.state.venue_id}
+                                    onChange={(event) => this.venueSelector(event)}>
+                                    <MenuItem value={1}>The Armory</MenuItem>
+                                    <MenuItem value={2}>State Fairgrounds</MenuItem>
+                                    <MenuItem value={0}>Other - Create New</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
                         <Grid item xs={12} md={4}>
                             <InputLabel>Event Type</InputLabel>
-                            <Select>
-                                <MenuItem value={0}>None</MenuItem>
-                                <MenuItem value={1}>Art Festival</MenuItem>
-                                <MenuItem value={2}>Auto Show</MenuItem>
-                                <MenuItem value={3}>Beer Festival</MenuItem>
-                                <MenuItem value={4}>City Show</MenuItem>
-                                <MenuItem value={5}>Cultural Festival</MenuItem>
-                                <MenuItem value={6}>Film Show</MenuItem>
-                                <MenuItem value={7}>Food & Wine Festival</MenuItem>
-                                <MenuItem value={8}>Motorcycle Rally</MenuItem>
-                                <MenuItem value={9}>Music Festival</MenuItem>
-                                <MenuItem value={10}>Street Market Festival</MenuItem>
-                            </Select>
+                            <FormControl>
+                                <Select
+                                    open={this.state.event_open}
+                                    onClose={this.eventClose}
+                                    onOpen={this.eventOpen}
+                                    value={this.state.event_type}
+                                    onChange={(event) => this.eventSelector(event)}>
+                                    <MenuItem value={1}>Art Festival</MenuItem>
+                                    <MenuItem value={2}>Auto Show</MenuItem>
+                                    <MenuItem value={3}>Beer Festival</MenuItem>
+                                    <MenuItem value={4}>City Show</MenuItem>
+                                    <MenuItem value={5}>Cultural Festival</MenuItem>
+                                    <MenuItem value={6}>Film Show</MenuItem>
+                                    <MenuItem value={7}>Food & Wine Festival</MenuItem>
+                                    <MenuItem value={8}>Motorcycle Rally</MenuItem>
+                                    <MenuItem value={9}>Music Festival</MenuItem>
+                                    <MenuItem value={10}>Street Market Festival</MenuItem>
+                                </Select>
+                            </FormControl>
                         </Grid>
                         <Grid item md={2}></Grid>
                     </Grid>
                 </Box>
 
+                {/* SECTION - VENUE */}
                 {/* Show Only if newVenue=true */}
                 {this.state.newVenue && 
                 <Box className={classes.box_grey}>
@@ -135,10 +211,10 @@ class CreateEvent extends Component {
 
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
-                            <Grid item xs={6} md={6}>
+                            <Grid item xs={12} md={6}>
                                 <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Venue Name" placeholder="Name" />
                             </Grid>
-                            <Grid item xs={3} md={2}>
+                            <Grid item xs={12} md={2}>
                                 <TextField fullWidth={true} type="number" label="Capacity" placeholder="#" />
                             </Grid>
                         </Grid>
@@ -225,17 +301,19 @@ class CreateEvent extends Component {
                 </Box>
                 }
 
+                {/* SECTION - WEBSITE - IMAGE - CANCELLED */}
+                {/* Row Start */}
                 <Box className={classes.margin}>
-                    {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} label="Website" placeholder="URL" fullWidth={true} />
+                            <TextField multiline={true} label="Website" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_website')} />
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} label="Event Image" placeholder="URL" fullWidth={true} />
+                            <TextField multiline={true} label="Event Image" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_image_url')}/>
                         </Grid>
                     </Grid>
 
+                    
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={2}>
@@ -256,17 +334,18 @@ class CreateEvent extends Component {
                             />No
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <TextField type="number" label="Estimated Attendance" placeholder="#" fullWidth={true} />
+                            <TextField type="number" label="Estimated Attendance" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')}/>
                         </Grid>
                     </Grid>
 
                     {/* Row Start */}
                     <Grid justify="center" container spacing={4}>
                         <Grid item xs={12} md={8}>
-                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Event Description" placeholder="A short description of the event" />
+                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Event Description" placeholder="A short description of the event" onChange={(event) => this.handleChange(event, 'event_description')}/>
                         </Grid>
                     </Grid></Box>
 
+                {/* SECTION - CONTACT INFO */}
                 <Box className={classes.box_grey}><Box className={classes.margin}>
                     
                     <Grid justify="center" container>
@@ -274,69 +353,68 @@ class CreateEvent extends Component {
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
 
-
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Contact Name" placeholder="Name of Event Contact" />
+                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Contact Name" placeholder="Name of Event Contact" onChange={(event) => this.handleChange(event, 'contact_name')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Title" placeholder="Contact's Title" />
+                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Title" placeholder="Title or Occupation" onChange={(event) => this.handleChange(event, 'contact_title')}/>
                         </Grid>
                     </Grid>
 
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Email Address" placeholder="Email Address" />
+                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Email Address" placeholder="Email Address" onChange={(event) => this.handleChange(event, 'contact_email')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} label="Phone Number" placeholder="#" />
+                            <TextField fullWidth={true} label="Phone Number" placeholder="#" onChange={(event) => this.handleChange(event, 'contact_phone')}/>
                         </Grid>
                     </Grid></Box>
                 </Box>
 
+                {/* SECTION - SOCIAL TAGS */}
                 <Box className={classes.margin}>
-                    
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h2>Social Tags</h2></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
-
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
                             <TextField multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.facebook.com/</InputAdornment>,
-                            }} label={<><FacebookIcon /><span> Facebook</span></>} placeholder="social-tag" />
+                            }} label={<><FacebookIcon /><span> Facebook</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_facebook')}/>
                         </Grid>
                         <Grid item xs={12} md={8}>
                             <TextField multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.instagram.com/</InputAdornment>,
-                            }} label={<><InstagramIcon /><span> Instagram</span></>} placeholder="social-tag" />
+                            }} label={<><InstagramIcon /><span> Instagram</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_instagram')}/>
                         </Grid>
                         <Grid item xs={12} md={8}>
                             <TextField multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.twitter.com/</InputAdornment>,
-                            }} label={<><TwitterIcon /><span> Twitter</span></>} placeholder="social-tag" />
+                            }} label={<><TwitterIcon /><span> Twitter</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_twitter')}/>
                         </Grid>
                     </Grid>
                 </Box>
 
+                {/* SECTION - SPONSOR KIT - NOTES */}
                 <Box className={classes.box_grey}><Box className={classes.margin}>
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
-                            <TextField fullWidth={true} label="Sponsorship Kit" placeholder="URL" />
+                            <TextField fullWidth={true} label="Sponsorship Kit" placeholder="URL" onChange={(event) => this.handleChange(event, 'event_sponsorship_kit')}/>
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Additional Notes" placeholder="Further notes on the event" />
+                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Additional Notes" placeholder="Further notes on the event" onChange={(event) => this.handleChange(event, 'event_notes')}/>
                         </Grid>
                     </Grid></Box>
                 </Box>
 
                 <Grid justify="center" container>
                     <Grid item xs={12} md={3}></Grid>
-                    <Grid item xs={12} md={3}><Button onClick={this.nextClick} fullWidth={true} variant="outlined" className={classes.btn_def}>Next</Button></Grid>
+                    <Grid item xs={12} md={3}><Button fullWidth={true} variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
                     <Grid item xs={12} md={3}>
                     </Grid>
                 </Grid>

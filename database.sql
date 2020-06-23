@@ -13,8 +13,9 @@ CREATE TABLE "user"
     "password" varchar NOT NULL,
     "name" varchar,
     "title" varchar,
+    "company" varchar,
     "phone" varchar (255),
-    "access_level" varchar (255) DEFAULT 0
+    "access_level" INT DEFAULT 0
 );
 
 -- EVENT --
@@ -39,7 +40,8 @@ CREATE TABLE "event"
     "event_twitter" varchar(2000) ,
     "event_instagram" varchar(2000) ,
     "event_description" varchar(2000),
-    "event_sponsorship_kit" varchar(2000)
+    "event_sponsorship_kit" varchar(2000),
+    "venue_id" int
 );
 
 -- VENUES --
@@ -55,14 +57,14 @@ CREATE TABLE "venues"
     "venue_capacity" integer
 );
 
-CREATE TABLE "junction_event_venue"
-(
-    "id" serial PRIMARY KEY NOT NULL,
-    "venues_id" integer NOT NULL,
-    "event_id" integer NOT NULL,
-    FOREIGN KEY ("venues_id") REFERENCES venues ("id"),
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
-);
+--CREATE TABLE "junction_event_venue"
+--(
+--    "id" serial PRIMARY KEY NOT NULL,
+--    "venues_id" integer NOT NULL,
+--    "event_id" integer NOT NULL,
+--    FOREIGN KEY ("venues_id") REFERENCES venues ("id"),
+--    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
+--);
 
 -- "event" TYPES --
 CREATE TABLE "event_type"
@@ -224,30 +226,30 @@ VALUES
 
 -- EVENT --
 INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description)
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
 VALUES
-    ('Second Sky Festival 2020', '2003', '2020-07-22 13:00:09.250411+00', '2020-08-02 20:30:09.250411+00', 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', 'https://secretskyfest.com/', FALSE, '12000', 'Second Sky Festival is annual', 'John Doe', '"event" Specialist', 'info.secondskyfest@goldenvoice.com', '855-838-3892', 'secondskyfest', 'secondskyfest', 'secondskyfest', 'Miscellaneous Notes!');
+    ('Second Sky Festival 2020', '2003', '2020-07-22 13:00:09.250411+00', '2020-08-02 20:30:09.250411+00', 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', 'https://secretskyfest.com/', FALSE, '12000', 'Second Sky Festival is annual', 'John Doe', '"event" Specialist', 'info.secondskyfest@goldenvoice.com', '855-838-3892', 'secondskyfest', 'secondskyfest', 'secondskyfest', 'Miscellaneous Notes!', 1);
 
 INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description)
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
 VALUES
-    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', TRUE, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!');
+    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', TRUE, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2);
 
 INSERT INTO "event"
     -- Testing Null Data --
-    (event_name, start_date, end_date, estimated_attendance)
+    (event_name, start_date, end_date, estimated_attendance, venue_id)
 VALUES
-    ('Spring Jam 2021', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', '13000');
+    ('Spring Jam 2021', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', '13000', 3);
 
 INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description)
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
 VALUES
-    ('Coachella Music Festival 2021', '2011', '2021-04-09 13:00:09.250411+00', '2021-04-18 20:30:09.250411+00', 'https://images.unsplash.com/photo-1505224628533-c4fc42c389e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1192&q=80', 'https://www.coachella.com/', FALSE, '99000', 'Like a barometer always reading a temperature of awesome, the traditional kickoff to the summer festival season is dominated by Coachella. The glitz and glamour of Los Angeles migrates east to the Indio desert for back to back weekends of the biggest names in music. What started as a small electronic festival in the desert has transformed into a cultural touchstone for the festival season.', 'Billy Blaze', 'Event Coordinator', 'sponsorship@coachella.com', '1-855-771-3667', 'coachella', 'coachella', 'coachella', 'Coachella was cancelled in October 2020 and pushed to April 2021.');
+    ('Coachella Music Festival 2021', '2011', '2021-04-09 13:00:09.250411+00', '2021-04-18 20:30:09.250411+00', 'https://images.unsplash.com/photo-1505224628533-c4fc42c389e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1192&q=80', 'https://www.coachella.com/', FALSE, '99000', 'Like a barometer always reading a temperature of awesome, the traditional kickoff to the summer festival season is dominated by Coachella. The glitz and glamour of Los Angeles migrates east to the Indio desert for back to back weekends of the biggest names in music. What started as a small electronic festival in the desert has transformed into a cultural touchstone for the festival season.', 'Billy Blaze', 'Event Coordinator', 'sponsorship@coachella.com', '1-855-771-3667', 'coachella', 'coachella', 'coachella', 'Coachella was cancelled in October 2020 and pushed to April 2021.', 4);
 
 INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description)
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
 VALUES
-    ('Minnesota Craft Beef Festival', '2020', '2020-09-19 13:00:09.250411+00', '2021-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020');
+    ('Minnesota Craft Beef Festival', '2020', '2020-09-19 13:00:09.250411+00', '2021-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
 
 -- VENUES --
 INSERT INTO venues
@@ -298,16 +300,12 @@ VALUES
 ------ INSERT JUNCTIONS ------
 ------------------------------
 
--- VENUE JUNCTIONS --
-
-INSERT INTO junction_event_venue
-    (venues_id, event_id)
-VALUES
-    (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4),
-    (5, 5);
+---- VENUE JUNCTIONS --
+--
+--INSERT INTO junction_event_venue
+--    (venues_id, event_id)
+--VALUES
+--    (1, 1), (2, 2), (3, 3), (4, 4), (5, 5);
 
 -- EVENT TYPE JUNCTION --
 INSERT INTO "junction_event_type"
@@ -445,8 +443,7 @@ FROM "event";
 ---- GET EVENTS with VENUE
 SELECT *
 FROM "event"
-    JOIN junction_event_venue ON "event".id = event_id
-    JOIN venues ON venues_id=venues.id;
+    JOIN venues ON venues.id=event.venue_id;
 
 ---- GET EVENTS by Name (SEARCH)
 SELECT *
@@ -457,8 +454,7 @@ ILIKE '%2021%';
 ---- GET by State (SEARCH)
 SELECT *
 FROM "event"
-    JOIN junction_event_venue ON "event".id = event_id
-    JOIN venues ON venues_id=venues.id
+    JOIN venues ON venues.id=event.venue_id
 WHERE state
 ILIKE '%Minnesota%';
 
@@ -470,8 +466,7 @@ ORDER BY start_date ASC LIMIT 2;
 
 ---- Filter by Date & State
 SELECT * FROM "event"
-JOIN junction_event_venue ON "event".id = event_id
-JOIN venues ON venues_id=venues.id 
+JOIN venues ON venues.id=event.venue_id
 WHERE state ILIKE '%Minnesota%'
 AND end_date >= '%2021-08-23%'
 AND start_date < '%2021-08-28%';
@@ -481,8 +476,7 @@ SELECT *
 FROM junction_event_gender
     JOIN gender AS g ON gender_id = g.id
     JOIN "event" ON "event".id = event_id
-    JOIN junction_event_venue AS JEV ON "event".id = JEV.event_id
-    JOIN venues ON venues_id=venues.id
+    JOIN venues ON venues.id=event.venue_id
 WHERE gender='male'
     AND percentage >= 40
     AND city = 'St. Paul';
@@ -492,8 +486,7 @@ SELECT *
 FROM junction_event_gender
     JOIN gender ON gender_id = gender.id
     JOIN "event" ON "event".id = junction_event_gender.event_id
-    JOIN junction_event_venue ON junction_event_venue.event_id = "event".id
-    JOIN venues ON venues_id=venues.id
+    JOIN venues ON venues.id=event.venue_id
     JOIN junction_event_residency ON "junction_event_residency".event_id = "event".id
     JOIN residency ON residency.id = residency_id
 WHERE gender='female' AND junction_event_gender.percentage >= 30
@@ -503,8 +496,7 @@ WHERE gender='female' AND junction_event_gender.percentage >= 30
 -- Filter by Location, Month, Type, Attendance, Sponsorship Cost, and Household Income -- SUPER FILTER --
 SELECT *
 FROM "event"
-    JOIN junction_event_venue ON "event".id = junction_event_venue.event_id
-    JOIN venues ON venues_id=venues.id
+    JOIN venues ON venues.id=event.venue_id
     JOIN sponsorships ON event.id=sponsorships.event_id
     JOIN junction_event_income ON "event".id = junction_event_income.event_id
 WHERE state ILIKE '%Minnesota%' -- State
