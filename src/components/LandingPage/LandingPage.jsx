@@ -56,10 +56,10 @@ class LandingPage extends Component {
                     {/* section to hold search inputs */}
                     <Box className={classes.box_grey}>
                         <Box className={classes.landMargin}>
-                            <Grid container item md={12} spacing={2}>
-                                <Grid item md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
-                                <Grid item md={2}></Grid>
-                                <Grid item md={4}><TextField fullWidth={true} label="Location" /></Grid>
+                            <Grid container item xs={12} md={12} spacing={2}>
+                                <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
+                                <Grid item xs={1} md={2}></Grid>
+                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" /></Grid>
                                 {/* begin month selector */}
                                 <FormControl className={classes.formControl}>
                                     <InputLabel style={{marginLeft: '10%'}} >Select Month</InputLabel>
@@ -78,30 +78,30 @@ class LandingPage extends Component {
                                         <MenuItem value={12}><em>December</em></MenuItem>
                                     </Select>
                                 </FormControl>
-                                <Grid item md={4}><Button className={classes.searchBtn} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
-                                <Grid item md={2}></Grid>
+                                <Grid item xs={12} md={4}><Button className={classes.searchBtn} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                                <Grid item xs={1} md={2}></Grid>
                             </Grid>
                         </Box>
                     </Box>
                     {/* section to hold featured events */}
                     <Box className={classes.landMargin}>
-                        <Grid container item md={12} spacing={2}>
-                            <Grid item md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
-                            <Grid container item md={4}>
+                        <Grid container spacing={2} justify="center">
+                            <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
+                            <Grid container xs={12} item md={4}>
                                 <Card>
                                     <CardContent>
                                         <Typography>FEATURE 1</Typography>
                                     </CardContent>
                                 </Card>
                             </Grid>
-                            <Grid container item md={4}>
+                            <Grid container item xs={12} md={4}>
                                 <Card>
                                     <CardContent>
                                         <Typography>FEATURE 2</Typography>
                                     </CardContent>
                                 </Card>
                             </Grid>
-                            <Grid container item md={4}>
+                            <Grid container item xs={12} md={4}>
                                 <Card>
                                     <CardContent>
                                         <Typography>FEATURE 3</Typography>
