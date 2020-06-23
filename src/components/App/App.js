@@ -40,10 +40,6 @@ class App extends Component {
             <ProtectedRoute exact path="/create-sponsor" component={CreateSponsor}/>
             <ProtectedRoute exact path="/create-demo" component={CreateDemo} />
             <ProtectedRoute
-              path="/home"
-              component={LandingPage}
-            />
-            <ProtectedRoute
               path="/event"
               component={Event} 
             />
