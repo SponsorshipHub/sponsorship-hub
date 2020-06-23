@@ -122,7 +122,7 @@ class ResultPage extends Component {
                     <Grid container spacing={2}>
                         <Grid item md={12}><Typography className={classes.landSearchTitle}>RESULTS</Typography></Grid>
                         <Grid item md={4}>
-                            <Card>
+                            <Card onClick={()=>this.props.history.push('/event')}>
                                 <CardContent>
                                     <Typography>FEATURE</Typography>
                                 </CardContent>
