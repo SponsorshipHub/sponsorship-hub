@@ -78,7 +78,7 @@ class LandingPage extends Component {
                                         <MenuItem value={12}><em>December</em></MenuItem>
                                     </Select>
                                 </FormControl>
-                                <Grid item xs={12} md={4}><Button className={classes.searchBtn} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                                <Grid item xs={12} md={4}><Button variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
                                 <Grid item xs={1} md={2}></Grid>
                             </Grid>
                         </Box>

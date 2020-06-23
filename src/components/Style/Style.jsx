@@ -21,6 +21,10 @@ const styles = {
         minWidth: '15%',
         marginLeft: '1%'
     },
+    filterBtn: {
+        padding: '8%',
+        margin: '6%'
+    },
     btn_def: {
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient
         color: 'white', // Button's text color

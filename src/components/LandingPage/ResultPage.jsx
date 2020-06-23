@@ -8,13 +8,18 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class ResultPage extends Component {
+
+    componentDidMount(){
+        console.log('ResultPage has been MOUNTED');
+    };//end componentDidMount
+    
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
             <Box>
                 {/* outer grid that wraps all the other grids */}
-                <Box>
+                <Grid spacing={2}>
                     {/* section that holds the main header */}
                     <Grid className={classes.landHead} item md={12}>
                         <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
@@ -35,11 +40,11 @@ class ResultPage extends Component {
                                 <Grid item xs={12} md={3}><TextField fullWidth={true} label="Household Income" /></Grid>
                             </Grid>
                             <Grid container justify="center">
-                            <Grid item xs={12} md={1}><Button variant="outlined">Filter</Button></Grid>
+                            <Grid item xs={12} md={1}><Button className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
                             </Grid>
                         </Grid>
                     </Box>
-                </Box>
+                </Grid>
             </Box>
         )//end return
     };//end render
