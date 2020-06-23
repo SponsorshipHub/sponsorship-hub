@@ -278,7 +278,7 @@ class CreateEvent extends Component {
                     </Grid></Box>
                 </Box>
 
-                <Button variant="outlined" color="primary">Next</Button>
+                <Button variant="outlined" className={classes.btn_def}>Next</Button>
 
             </>
         )//end return
