@@ -5,12 +5,32 @@ const styles = {
     landHeadText: {
         fontSize: '80px',
         textAlign: 'center',
-        padding: '50px'
+        padding: '3%'
     },
     landSearchTitle: {
         textAlign: 'center',
         fontSize: '25px',
-        padding: '20px'
+        padding: '2%'
+    },
+    landMargin: {
+        marginLeft: '2%',
+        marginRight: '2%',
+        paddingBottom: '2%'
+    },
+    formControl: {
+        minWidth: '15%',
+        marginLeft: '1%'
+    },
+    advSearch: {
+        minWidth: '15%',
+        marginTop: '2%',
+        marginBottom: '2%'
+    },
+    filterBtn: {
+        paddingLeft: '8%',
+        paddingRight: '8%',
+        margin: '6%',
+        letterSpacing: '2px',
     },
     btn_def: {
         background: 'grey'
