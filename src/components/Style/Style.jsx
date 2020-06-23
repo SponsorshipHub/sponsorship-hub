@@ -25,7 +25,8 @@ const styles = {
             // }
     },
     box_grey: {
-        background: '#ECECEC' // Adds a grey box to the background
+        background: '#ECECEC', // Adds a grey box to the background
+        margin: '0px'
     },
     margin: {
         margin: '20px' // Adds a small margin to the page
