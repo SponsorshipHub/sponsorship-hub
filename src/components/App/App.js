@@ -9,10 +9,12 @@ import LandingPage from '../LandingPage/LandingPage';
 import ResultPage from '../LandingPage/ResultPage';
 import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
+import CreateDemo from '../Create/CreateDemo';
 
 
 //style for app
 import './App.css';
+import Event from '../Event/Event';
 
 class App extends Component {
   componentDidMount () {
@@ -35,8 +37,12 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <ProtectedRoute exact path="/home" component={LandingPage}/>
             <ProtectedRoute exact path="/results" component={ResultPage}/>
-            <ProtectedRoute exact path="/add-sponsor" component={CreateSponsor}/>
-            <ProtectedRoute path="/home" component={LandingPage}/>
+            <ProtectedRoute exact path="/create-sponsor" component={CreateSponsor}/>
+            <ProtectedRoute exact path="/create-demo" component={CreateDemo} />
+            <ProtectedRoute
+              path="/event"
+              component={Event} 
+            />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

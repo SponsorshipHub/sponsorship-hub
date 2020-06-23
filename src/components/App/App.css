@@ -47,3 +47,12 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+
+
+.DemoBackground{
+    background: #d8d8d8; 
+}
+
+.venue{
+    background: #e1e3f0;
+}
