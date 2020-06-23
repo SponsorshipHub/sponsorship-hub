@@ -6,7 +6,9 @@ import Nav from '../Structure/Nav/Nav';
 import Footer from '../Structure/Footer/Footer';
 import ProtectedRoute from '../Structure/ProtectedRoute/ProtectedRoute';
 import LandingPage from '../LandingPage/LandingPage';
+import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
+
 //style for app
 import './App.css';
 
@@ -29,8 +31,8 @@ class App extends Component {
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
+            <ProtectedRoute exact path="/add-sponsor" component={CreateSponsor}/>
             <ProtectedRoute
-              exact
               path="/home"
               component={LandingPage}
             />
