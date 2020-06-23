@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -48,11 +49,11 @@ class CreateSponsor extends Component {
                     <Box mx={10} spacing={3}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>
-                                <Button fullWidth className={classes.btn_def} variant="outlined">Back</Button>
+                                <Link to="/create-event"><Button fullWidth className={classes.btn_def} variant="outlined">Back</Button></Link>
                             </Grid>
                             <Grid item md={3}></Grid>
                             <Grid item md={3} sm={6}>
-                                <Button fullWidth className={classes.btn_def} variant="outlined">Next</Button>
+                                <Link to="/create-demo"><Button fullWidth className={classes.btn_def} variant="outlined">Next</Button></Link>
                             </Grid>
                         </Grid>
 
