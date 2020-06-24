@@ -8,24 +8,28 @@ import { Grid, Typography, TextField, Box, Button, Paper } from '@material-ui/co
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import StarsIcon from '@material-ui/icons/Stars';
 
 class CreateSponsor extends Component {
 
     state = {
         id: 2,
-        // hardcoded or MN State Fair
+        // hardcoded or MN State Fair, will need to change to the just created event in create or the selected event in edit
         sponsor_name: "",
         sponsor_price: "",
         sponsor_image_url: "",
         sponsor_description: "",
-    
+        viewOrEdit: "",
+
     }
 
-    componentDidMount(){
-this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
+    componentDidMount() {
+        this.props.dispatch({ type: "FETCH_SPONSORS", payload: this.state.id })
     }
 
-    backClick = () =>{
+    backClick = () => {
         this.props.history.push('/create-event')
     }
 
@@ -39,11 +43,11 @@ this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
             [property]: event.target.value
         })
         console.log(this.state);
-        
+
     }
 
     handleClick = () => {
-        this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state})
+        this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state })
         this.setState({
             sponsor_name: "",
             sponsor_price: "",
@@ -52,7 +56,7 @@ this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
         });
         window.location.reload();
         // this is intended to clear the inputs and refresh the page with the added sponsor
-        console.log(this.state);   
+        console.log(this.state);
     }
     // This needs to re-render the page with the inputs empty
 
@@ -86,16 +90,27 @@ this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
                 <Box>
                     <Typography align="center" variant="h2">Current Packages</Typography>
 
-                    <Grid container>
-                        
-                    <SponsorItem></SponsorItem>
+                    <Grid container >
+                        {
+                            this.props.sponsors.map(sponsorItem =>
+                                
+                                <Grid justify="center" container item key={sponsorItem.id} md={12}>
+                                    <Grid item md={2}><img className={classes.sponsor_image} src={sponsorItem.sponsor_image_url}/></Grid>
+                                    <Grid container item md={7}>
+
+                                        <Grid container item md={4}>
+                                            <Grid item md={12}><Typography>{sponsorItem.sponsor_name}</Typography></Grid>
+                                            <Grid item md={12}><Typography>{sponsorItem.sponsor_price}</Typography></Grid>
+                                        </Grid>
+                                        
+                                        <Grid item md={8}><Typography>{sponsorItem.sponsor_description}</Typography></Grid>
+                                    </Grid>
+                                    <Grid item md={2}><EditIcon></EditIcon><DeleteIcon></DeleteIcon></Grid>
+                                    
+                                </Grid>)
+                        }
                     </Grid>
-                    <p>{JSON.stringify(this.props.sponsor)}</p>
-                    <ul>
-                        <li>$100</li>
-                        <li>$1,000</li>
-                        <li>$1,000,000</li>
-                    </ul>
+          
 
                     {/* display sponsorships go here */}
                     <Box mx={10} spacing={3}>
@@ -123,8 +138,9 @@ this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
 CreateSponsor.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
-    sponsor: state.sponsor,
+    sponsors: state.sponsors,
+
 });
 
 // const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(CreateSponsor));
+export default connect(mapStateToProps)(withStyles(styles)(CreateSponsor));

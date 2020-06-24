@@ -2,7 +2,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* sponsorSaga() {
-    yield takeLatest('FETCH_SPONSOR', fetchSponsor);
+    yield takeLatest('FETCH_SPONSORS', fetchSponsor);
+    yield takeLatest('ADD_SPONSOR', sendSponsor);
 }
 
 function* fetchSponsor(action) {
@@ -14,6 +15,18 @@ function* fetchSponsor(action) {
         console.log('Sponsor GET request failed', error);
 
     }
+}
+
+function* sendSponsor(action){
+    console.log('in addWeek', action.payload);
+    try{
+        yield axios.post('/sponsor', action.payload);
+        yield put ({ type: 'FETCH_SPONSORS', payload: action.payload});
+    }catch(error){
+        console.log('add sponsor failed', error);
+        
+    }
+    
 }
 
 

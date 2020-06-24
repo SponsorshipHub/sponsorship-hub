@@ -13,7 +13,10 @@ class SponsorItem extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
-            <h1>SponsorItem</h1>
+            <Grid item container>
+                
+            </Grid>
+           
         )//end return
     };//end render
 };//end class
