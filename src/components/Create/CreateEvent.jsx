@@ -67,10 +67,10 @@ class CreateEvent extends Component {
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
         else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
             // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-            this.props.dispatch({ type: 'POST_EVENT', payload: this.state })
+            this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
             console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
             // PUSHES TO the NEW ID
-            this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
+            // this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
     }
 
     venueSelect(event) {
