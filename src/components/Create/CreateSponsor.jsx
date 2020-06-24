@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -14,6 +14,15 @@ class CreateSponsor extends Component {
     state = {
         
     }
+
+    backClick = () =>{
+        this.props.history.push('/create-event')
+    }
+
+    forwardClick = () => {
+        this.props.history.push('/create-demo')
+    }
+
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
@@ -37,7 +46,7 @@ class CreateSponsor extends Component {
                             <TextField fullWidth multiline variant="outlined" label="Package Description" placeholder="Package Description"></TextField>
                         </Grid>
                         <Grid item md={1} sm={9}>
-                            <Button>Submit</Button>
+                            <Button className={classes.btn_def}>Submit</Button>
                         </Grid>
                     </Grid>
                 </Box>
@@ -53,11 +62,11 @@ class CreateSponsor extends Component {
                     <Box mx={10} spacing={3}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>
-                                <Link to="/create-event"><Button fullWidth className={classes.btn_def} variant="outlined">Back</Button></Link>
+                                <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.backClick}>Back</Button>
                             </Grid>
                             <Grid item md={3}></Grid>
                             <Grid item md={3} sm={6}>
-                                <Link to="/create-demo"><Button fullWidth className={classes.btn_def} variant="outlined">Next</Button></Link>
+                                <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.forwardClick}>Next</Button>
                             </Grid>
                         </Grid>
 
