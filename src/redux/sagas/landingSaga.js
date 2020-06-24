@@ -9,17 +9,17 @@ function* landingSaga(){
 // generator functions
 // this function controls the GET for the landing page featured events
 function* getLanding(){
-    console.log('---------------> fetchLanding IS HERE');
+    console.log('---------------> in fetchLanding saga');
     try{
-        const response = yield axios.get('/landing');
+        //send GET request for /landing and send to our reducer
+        const response = yield axios.get(`/landing`);
         yield put({
             type: 'GET_LANDING',
             payload: response.data
         })
     }catch(err){
         console.log('Error in landing saga:', err)
-    }
+    };//end try
 };//end getLanding
-
 
 export default landingSaga;
