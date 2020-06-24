@@ -46,24 +46,24 @@ class ResultPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                {/* section that holds the main header */}
+                {/* temporary header */}
                 <Grid className={classes.landHead} item md={12}>
                     <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
                 </Grid>
                 {/* section that holds the advanced search filters */}
                 <Box className={classes.box_grey}>
                         <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Results View</Typography></Grid>
+                            <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
                             {/* location and month selector options */}
                             <Grid container justify="center" spacing={2}>
                                 <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" /></Grid>
                                 {/* month selector with date text fields */}
                                 <Grid item xs={12} md={2}>
-                                    <InputLabel>start date</InputLabel>
+                                    <InputLabel>search start date</InputLabel>
                                     <TextField type="date" />
                                 </Grid>
                                 <Grid item xs={12} md={2}>
-                                    <InputLabel>end date</InputLabel>
+                                    <InputLabel>search end date</InputLabel>
                                     <TextField type="date" />
                                 </Grid>
                             </Grid>
@@ -90,10 +90,10 @@ class ResultPage extends Component {
                                 </Grid> {/* END TYPE SELECTOR */}
                                 {/* begin ATTENDANCE selector */}
                                 <Grid item xs={12} md={2} className={classes.advSearch}>
-                                    <TextField label="MIN attendees" />
+                                    <TextField label="Min Attendees" />
                                 </Grid>
                                 <Grid item xs={12} md={2} className={classes.advSearch}>
-                                    <TextField label="MAX attendees" />
+                                    <TextField label="Max Attendees" />
                                 </Grid>
                                 {/* END ATTENDANCE SELECTOR */}
                             </Grid>

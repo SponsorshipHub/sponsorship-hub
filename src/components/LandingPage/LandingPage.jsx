@@ -46,16 +46,16 @@ class LandingPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                {/* top section that holds media image */}
-                {/* <CardMedia image="" title="" height="500px" width="500px"> */}
+                {/* temporary header */}
                 <Box className={classes.landHead}>
                     <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
                     <Button className={classes.btn_submit} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>
                 </Box>
+
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>
                     <Box className={classes.landMargin}>
-                        <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
+                        <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
                         {/* grid that wraps location and selector */}
                         <Grid container justify="center" spacing={2}>
                             <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" /></Grid>
@@ -90,7 +90,7 @@ class LandingPage extends Component {
                         <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
                         {/* begin grid that wraps events */}
                         <Grid container justify="space-evenly">
-                            <Grid item xs={12} md={3} justify="center">
+                            <Grid item xs={12} md={3}>
                                 <Card onClick={() => this.props.history.push('/event')}>
                                     <CardContent>
                                         <Typography>FEATURE 1</Typography>
