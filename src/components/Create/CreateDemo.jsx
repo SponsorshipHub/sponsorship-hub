@@ -15,7 +15,6 @@ class CreateDemo extends Component {
         gender1: 0,
         gender2: 0,
         gender3: 0,
-        genderTotal: 0,
         income1: 0,
         income2: 0,
         income3: 0,
@@ -23,7 +22,6 @@ class CreateDemo extends Component {
         income5: 0,
         income6: 0,
         income7: 0,
-        incomeTotal: 0,
         age1: 0,
         age2: 0,
         age3: 0,
@@ -31,10 +29,8 @@ class CreateDemo extends Component {
         age5: 0,
         age6: 0,
         age7: 0,
-        ageTotal: 0,
         resident1: 0,
         resident2: 0,
-        residentTotal: 0
     }
 
     backClick = () => {
@@ -49,13 +45,7 @@ class CreateDemo extends Component {
         this.setState({
             ...this.state,
             [property]: Number(event.target.value),
-            // I need to figure out how to create a delay here
-            genderTotal: this.state.gender1 + this.state.gender2 + this.state.gender3,
-            incomeTotal: this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7,
-            ageTotal: this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7,
-            residentTotal: this.state.resident1 + this.state.resident2
-        });
-        // console.log(this.state);  
+        }); 
     }
 
     componentDidUpdate
@@ -87,7 +77,7 @@ class CreateDemo extends Component {
                                 <TextField label="Other" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total %{this.state.genderTotal}</Typography>
+                                <Typography>Total: {this.state.gender1 + this.state.gender2 + this.state.gender3}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -122,7 +112,7 @@ class CreateDemo extends Component {
                                 <TextField label="$200,001 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total %{this.state.incomeTotal}</Typography>
+                                <Typography>Total: {this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -157,7 +147,7 @@ class CreateDemo extends Component {
                                 <TextField label="65 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total %{this.state.ageTotal}</Typography>
+                                <Typography>Total: {this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -177,7 +167,7 @@ class CreateDemo extends Component {
                                 <TextField label="Non-Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'resident2')}></TextField>
                             </Grid>
                             <Grid item md={1} sm={12}>
-                                <Typography>Total %{this.state.residentTotal}</Typography>
+                                <Typography>Total: {this.state.resident1 + this.state.resident2}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>

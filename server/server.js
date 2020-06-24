@@ -14,6 +14,10 @@ const userRouter = require('./routes/user.router');
 const event = require('./routes/event.router');
 // Venue router for getting every venue
 const venue = require('./routes/venue.router');
+//Sponsor router for getting event specific sponsors (create and edit pages)
+const sponsors = require('./routes/sponsor.router');
+
+// landing router contains routes for landing & result page data
 // landing and results router
 const landing = require('./routes/landing.router');
 const results = require('./routes/results.router');
@@ -33,7 +37,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/event', event);
 app.use('/venue', venue); // Used to GET all Venues
-app.use('/landing', landing); 
+app.use('/landing', landing);
+app.use('/sponsor', sponsors)
 app.use('/results', results);
 
 // Serve static files

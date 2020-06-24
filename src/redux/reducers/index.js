@@ -4,6 +4,8 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import venues from './venuesReducer';
 import oneEvent from './oneEventReducer';
+import landingReducer from './landingReducer';
+import sponsors from './sponsorReducer';
 import landing from './landingReducer';
 import results from './resultsReducer';
 
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   venues,
   oneEvent, // holds all the information for one event
+  landingReducer, //will hold event data
+  sponsors, //holds event specific sponsor information for add and edit pages.
   landing, //will hold event data
   results, //will hold data for results
 });
