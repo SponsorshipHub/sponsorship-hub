@@ -36,11 +36,24 @@ class CreateEvent extends Component {
         event_sponsorship_kit: '',
         event_open: false,
         venue_open: false,
+        state_open: false,
+        venue_name: '',
+        venue_address: '',
+        venue_city: '',
+        venue_state: '',
+        venue_zipcode: '',
+        venue_notes: '',
+        venue_capacity: '',   
     }
 
     cancelSelect = (event) => {
         this.setState({ event_status: event.target.value });
     };
+
+    componentDidMount = () => {
+        console.log('componentDidMount: FETCH_VENUES')
+        this.props.dispatch({ type: 'FETCH_VENUES' }) /* Gets all the venues */
+    }
 
     handleChange = (event, property) => {
         this.setState({ ...this.state, [property]: event.target.value})
@@ -99,6 +112,24 @@ class CreateEvent extends Component {
         })}
     }  // SELECTOR EVENT TYPE END
 
+    // SELECTOR EVENT TYPE START
+    stateOpen = () => {
+        this.setState({
+            state_open: true
+        })
+    }
+    stateClose = () => {
+        this.setState({
+            state_open: false
+        })
+    }
+    stateSelector = (event) => {
+        console.log('You have set the state to:', event.target.value);
+            this.setState({
+                venue_state: event.target.value
+            })
+    }  // SELECTOR EVENT TYPE END
+
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
@@ -111,20 +142,6 @@ class CreateEvent extends Component {
                         <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
-
-                    {/* <FormControl>
-                        <InputLabel>Test</InputLabel>
-                        <Select
-                            open={this.state.event_open}
-                            onClose={this.eventClose}
-                            onOpen={this.eventOpen}
-                            value={this.state.event_type}
-                            onChange={(event) => this.eventSelector(event)}>
-                            <MenuItem value={1}><em>Buy</em></MenuItem>
-                            <MenuItem value={2}><em>Sell</em></MenuItem>
-                            <MenuItem value={3}><em>Trade</em></MenuItem>
-                        </Select>
-                    </FormControl> */}
                     
                     {/* SECTION - FIRST */}
                     {/* Row Start */}
@@ -167,8 +184,9 @@ class CreateEvent extends Component {
                                     onOpen={this.venueOpen}
                                     value={this.state.venue_id}
                                     onChange={(event) => this.venueSelector(event)}>
-                                    <MenuItem value={1}>The Armory</MenuItem>
-                                    <MenuItem value={2}>State Fairgrounds</MenuItem>
+                                        {this.props.venues.map(venue =>
+                                            <MenuItem key={venue.id} value={venue.id}>{venue.name}</MenuItem>
+                                        )}
                                     <MenuItem value={0}>Other - Create New</MenuItem>
                                 </Select>
                             </FormControl>
@@ -212,89 +230,98 @@ class CreateEvent extends Component {
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={6}>
-                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Venue Name" placeholder="Name" />
+                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Venue Name" placeholder="Name" onChange={(event) => this.handleChange(event, 'venue_name')}/>
                             </Grid>
                             <Grid item xs={12} md={2}>
-                                <TextField fullWidth={true} type="number" label="Capacity" placeholder="#" />
+                                <TextField fullWidth={true} type="number" label="Capacity" placeholder="#" onChange={(event) => this.handleChange(event, 'venue_capacity')}/>
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={8}>
-                                <TextField fullWidth={true} multiline={true} label="Street Address" placeholder="Notes about the Venue" />
+                                <TextField fullWidth={true} multiline={true} label="Street Address" placeholder="Notes about the Venue" onChange={(event) => this.handleChange(event, 'venue_address')}/>
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={4}>
-                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="City" placeholder="City" />
+                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="City" placeholder="City" onChange={(event) => this.handleChange(event, 'venue_city')}/>
                             </Grid>
                             <Grid item xs={9} md={2}>
                                 <InputLabel>State</InputLabel>
-                                <Select>
-                                    <MenuItem value={1}>Alabama</MenuItem>
-                                    <MenuItem value={2}>Alaska</MenuItem>
-                                    <MenuItem value={3}>Arizona</MenuItem>
-                                    <MenuItem value={4}>Arkansas</MenuItem>
-                                    <MenuItem value={5}>California</MenuItem>
-                                    <MenuItem value={6}>Colorado</MenuItem>
-                                    <MenuItem value={7}>Connecticut</MenuItem>
-                                    <MenuItem value={8}>Delaware</MenuItem>
-                                    <MenuItem value={9}>Florida</MenuItem>
-                                    <MenuItem value={10}>Georgia</MenuItem>
-                                    <MenuItem value={11}>Hawaii</MenuItem>
-                                    <MenuItem value={12}>Idaho</MenuItem>
-                                    <MenuItem value={13}>Illinois</MenuItem>
-                                    <MenuItem value={14}>Indiana</MenuItem>
-                                    <MenuItem value={15}>Iowa</MenuItem>
-                                    <MenuItem value={16}>Kansas</MenuItem>
-                                    <MenuItem value={17}>Kentucky</MenuItem>
-                                    <MenuItem value={18}>Louisiana</MenuItem>
-                                    <MenuItem value={19}>Maine</MenuItem>
-                                    <MenuItem value={20}>Maryland</MenuItem>
-                                    <MenuItem value={21}>Massachusetts</MenuItem>
-                                    <MenuItem value={22}>Michigan</MenuItem>
-                                    <MenuItem value={23}>Minnesota</MenuItem>
-                                    <MenuItem value={24}>Mississippi</MenuItem>
-                                    <MenuItem value={25}>Missouri</MenuItem>
-                                    <MenuItem value={26}>Montana</MenuItem>
-                                    <MenuItem value={27}>Nebraska</MenuItem>
-                                    <MenuItem value={28}>Nevada</MenuItem>
-                                    <MenuItem value={29}>New Hampshire</MenuItem>
-                                    <MenuItem value={30}>New Jersey</MenuItem>
-                                    <MenuItem value={31}>New Mexico</MenuItem>
-                                    <MenuItem value={32}>New York</MenuItem>
-                                    <MenuItem value={33}>North Carolina</MenuItem>
-                                    <MenuItem value={34}>North Dakota</MenuItem>
-                                    <MenuItem value={35}> Ohio </MenuItem>
-                                    <MenuItem value={36}> Oklohoma </MenuItem>
-                                    <MenuItem value={37}> Oregon </MenuItem>
-                                    <MenuItem value={38}> Pennsylvania </MenuItem>
-                                    <MenuItem value={39}> Rhode Island </MenuItem>
-                                    <MenuItem value={40}> South Carolina </MenuItem>
-                                    <MenuItem value={41}> South Dakota </MenuItem>
-                                    <MenuItem value={42}> Tennessee </MenuItem>
-                                    <MenuItem value={43}> Texas </MenuItem>
-                                    <MenuItem value={44}> Utah </MenuItem>
-                                    <MenuItem value={45}> Vermont </MenuItem>
-                                    <MenuItem value={46}> Virginia </MenuItem>
-                                    <MenuItem value={47}> Washington </MenuItem>
-                                    <MenuItem value={48}> West Virginia </MenuItem>
-                                    <MenuItem value={49}> Wisconsin </MenuItem>
-                                    <MenuItem value={50}> Wyoming </MenuItem>
-                                </Select>
+
+                                <FormControl>
+                                    <Select
+                                        open={this.state.state_open}
+                                        onClose={this.stateClose}
+                                        onOpen={this.stateOpen}
+                                        value={this.state.venue_state}
+                                        onChange={(event) => this.stateSelector(event)}>
+                                        <MenuItem value='Alabama'>Alabama</MenuItem>
+                                        <MenuItem value='Alaska'>Alaska</MenuItem>
+                                        <MenuItem value='Arizona'>Arizona</MenuItem>
+                                        <MenuItem value='Arkansas'>Arkansas</MenuItem>
+                                        <MenuItem value='California'>California</MenuItem>
+                                        <MenuItem value='Colorado'>Colorado</MenuItem>
+                                        <MenuItem value='Connecticut'>Connecticut</MenuItem>
+                                        <MenuItem value='Delaware'>Delaware</MenuItem>
+                                        <MenuItem value='Florida'>Florida</MenuItem>
+                                        <MenuItem value='Georgia'>Georgia</MenuItem>
+                                        <MenuItem value='Hawaii'>Hawaii</MenuItem>
+                                        <MenuItem value='Idaho'>Idaho</MenuItem>
+                                        <MenuItem value='Illinois'>Illinois</MenuItem>
+                                        <MenuItem value='Indiana'>Indiana</MenuItem>
+                                        <MenuItem value='Iowa'>Iowa</MenuItem>
+                                        <MenuItem value='Kansas'>Kansas</MenuItem>
+                                        <MenuItem value='Kentucky'>Kentucky</MenuItem>
+                                        <MenuItem value='Louisiana'>Louisiana</MenuItem>
+                                        <MenuItem value='Maine'>Maine</MenuItem>
+                                        <MenuItem value='Maryland'>Maryland</MenuItem>
+                                        <MenuItem value='Massachusetts'>Massachusetts</MenuItem>
+                                        <MenuItem value='Michigan'>Michigan</MenuItem>
+                                        <MenuItem value='Minnesota'>Minnesota</MenuItem>
+                                        <MenuItem value='Mississippi'>Mississippi</MenuItem>
+                                        <MenuItem value='Missouri'>Missouri</MenuItem>
+                                        <MenuItem value='Montana'>Montana</MenuItem>
+                                        <MenuItem value='Nebraska'>Nebraska</MenuItem>
+                                        <MenuItem value='Nevada'>Nevada</MenuItem>
+                                        <MenuItem value='New Hampshire'>New Hampshire</MenuItem>
+                                        <MenuItem value='New Jersey'>New Jersey</MenuItem>
+                                        <MenuItem value='New Mexico'>New Mexico</MenuItem>
+                                        <MenuItem value='New York'>New York</MenuItem>
+                                        <MenuItem value='North Carolina'>North Carolina</MenuItem>
+                                        <MenuItem value='North Dakota'>North Dakota</MenuItem>
+                                        <MenuItem value='Ohio'> Ohio </MenuItem>
+                                        <MenuItem value='Oklohoma'> Oklohoma </MenuItem>
+                                        <MenuItem value='Oregon'> Oregon </MenuItem>
+                                        <MenuItem value='Pennsylvania'> Pennsylvania </MenuItem>
+                                        <MenuItem value='Rhode Island'> Rhode Island </MenuItem>
+                                        <MenuItem value='South Carolina'> South Carolina </MenuItem>
+                                        <MenuItem value='South Dakota'> South Dakota </MenuItem>
+                                        <MenuItem value='Tennessee'> Tennessee </MenuItem>
+                                        <MenuItem value='Texas'> Texas </MenuItem>
+                                        <MenuItem value='Utah'> Utah </MenuItem>
+                                        <MenuItem value='Vermont'> Vermont </MenuItem>
+                                        <MenuItem value='Virginia'> Virginia </MenuItem>
+                                        <MenuItem value='Washington'> Washington </MenuItem>
+                                        <MenuItem value='West Virginia'> West Virginia </MenuItem>
+                                        <MenuItem value='Wisconsin'> Wisconsin </MenuItem>
+                                        <MenuItem value='Wyoming'> Wyoming </MenuItem>
+                                    </Select>
+                                </FormControl>
+
                             </Grid>
                             <Grid item xs={3} md={2}>
-                                <TextField fullWidth={true} type="number" label="Zip Code" placeholder="#" />
+                                <TextField fullWidth={true} type="number" label="Zip Code" placeholder="#" onChange={(event) => this.handleChange(event, 'venue_zipcode')}/>
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={8}>
-                                <TextField variant="outlined" fullWidth={true} multiline={true} label="Notes" placeholder="Notes about the Venue" />
+                                <TextField variant="outlined" fullWidth={true} multiline={true} label="Notes" placeholder="Notes about the Venue" onChange={(event) => this.handleChange(event, 'venue_notes')}/>
                             </Grid>
                         </Grid>
                     </Box>
@@ -419,7 +446,6 @@ class CreateEvent extends Component {
                     </Grid>
                 </Grid>
                 
-
             </>
         )//end return
     };//end render
@@ -428,5 +454,9 @@ class CreateEvent extends Component {
 // PropTypes allows us to import style.jsx for use
 CreateEvent.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(CreateEvent));
+// Destructures reduxState to pull venues only.
+const putStateOnProps = reduxState => ({
+    venues: reduxState.venues
+});
+
+export default connect(putStateOnProps)(withStyles(styles)(CreateEvent));
