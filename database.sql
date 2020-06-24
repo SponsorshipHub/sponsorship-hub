@@ -559,5 +559,7 @@ FROM event AS e
     ON e.id = s.event_id
 WHERE e.id = 1
 GROUP BY e.id, v.id, et.type;
+
+
 SELECT *
 FROM "event";

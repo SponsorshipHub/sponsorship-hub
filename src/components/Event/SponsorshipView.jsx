@@ -11,6 +11,8 @@ import styles from '../Style/Style';
 class SponsorshipView extends Component {
     render() {
         // allows us to connect this.props to styles 
+        console.log(`Sponsorship: `, this.props.oneEvent.sponsorship);
+        
         const { classes } = this.props;
         return (
             <Box my={2}>
@@ -26,19 +28,22 @@ class SponsorshipView extends Component {
                                 <Table>
                                     <TableHead className="DemoBackground">
                                         <TableRow>
+                                            <TableCell>Sponsor Image</TableCell>
                                             <TableCell>Sponsorship Opportunity</TableCell>
                                             <TableCell>Price</TableCell>
                                             <TableCell>Details</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        <TableRow>
-                                            {/* Example Data */}
-                                            <TableCell>Hot Air Balloon</TableCell>
-                                            <TableCell>$5,000</TableCell>
-                                            <TableCell><Button variant="outlined">more</Button></TableCell>
                                             {/* Will be populated my with map*/}
-                                        </TableRow>
+                                        {/* {this.props.oneEvent.sponsorship.map(item => 
+                                            <TableRow>
+                                                <TableCell><image href={item.sponsor_image_url}/></TableCell>
+                                                <TableCell>{item.sponsor_name}</TableCell>
+                                                <TableCell>{item.sponsor_price}</TableCell>
+                                                <TableCell><Button variant="outlined">more</Button></TableCell>
+                                            </TableRow>
+                                        )} */}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
@@ -53,5 +58,8 @@ class SponsorshipView extends Component {
 // PropTypes allows us to import style.jsx for use
 SponsorshipView.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(SponsorshipView));
+const putStateOnProps = reduxState => ({
+    oneEvent: reduxState.oneEvent
+});
+
+export default connect(putStateOnProps)(withStyles(styles)(SponsorshipView));

@@ -84,15 +84,13 @@ class LandingPage extends Component {
                             <Grid item xs={12} md={2}><Button variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
                         </Grid>
                     </Box>
-                </Box>
-                {/* section to hold featured events */}
-                <Box className={classes.landMargin}>
-                    <Grid container spacing={2} justify="center">
-                        <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
-                        {/* begin grid that wraps events */}
-                        <Grid container justify="space-evenly">
-                            <Grid item xs={12} md={3}>
-                                <Card onClick={() => this.props.history.push('/event')}>
+
+                    {/* section to hold featured events */}
+                    <Box className={classes.landMargin}>
+                        <Grid container spacing={2} justify="center">
+                            <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
+                            <Grid container xs={12} item md={4}>
+                                <Card onClick={()=>this.props.history.push('/event/1')}>
                                     <CardContent>
                                         <Typography>FEATURE 1</Typography>
                                     </CardContent>
