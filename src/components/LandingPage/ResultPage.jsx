@@ -69,7 +69,7 @@ class ResultPage extends Component {
                             </Grid>
 
                             {/* type and attendance selector options*/}
-                            <Grid container justify="center" spacing={2}>
+                            <Grid container justify="center">
                                 {/* begin TYPE selector option */}
                                 <Grid item xs={12} md={4}>
                                     <FormControl className={classes.advSearch} fullWidth={true}>

@@ -6,6 +6,8 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 //GET router for the landing page to display limit 6 events
 router.get('/', rejectUnauthenticated, (req, res) => {
+    console.log('in /landing GET');
+    
     let queryString = `
         SELECT * FROM "event"
         ORDER BY "start_date" 

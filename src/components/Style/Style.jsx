@@ -39,7 +39,8 @@ const styles = {
     landCard: {
         display: 'inline-block',
         maxWidth: '31vw',
-        maxHeight: '45vh'
+        maxHeight: '45vh',
+        minHeight: '30vh'
     },
     btn_def: {
         background: 'linear-gradient(200deg, #2f8ffa, #1985ff)', // Extremely subtle gradient

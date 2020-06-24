@@ -10,39 +10,44 @@ import styles from '../Style/Style';
 class LandingPage extends Component {
 
     state = {
-        month: '',
-        open: false
+        startDate: '',
+        endDate: '',
+        location: '',
     };//end state
 
     componentDidMount() {
         console.log('Landing Page has been MOUNTED');
+        // on landing page load, get our data for the featured events
         this.props.dispatch({ type: 'FETCH_LANDING' })
     };//end componentDidMount
 
     handleSearch = () => {
-        console.log('search on Landing Page has been clicked');
+        console.log('search on Landing Page has been clicked', this.state.month);
         // on click of the search button, the user will be taken to the results view page
         this.props.history.push('/results');
+        // send our inputs to our results view page
+        this.props.dispatch({ type: 'FETCH_RESULTS', payload: this.state})
     };//end handleSearch
 
-    handleOpen = () => {
-        this.setState({
-            open: true
-        })
-    };//end handleOpen
+    //handles location input change
+    handleLocation = (event) => {
+        console.log('setting input for location', event.target.value);
+        this.setState({ location: event.target.value });
+    };//end handle location
 
-    handleClose = () => {
-        this.setState({
-            open: false
-        })
-    };// handleClose
+    //handle start and end date selectors
+    handleStart = (event) => {
+        console.log('selected START date:', event.target.value);
+        // change the data of startDate
+        this.setState({startDate: event.target.value});
+    };//end handleStart
+    handleEnd = (event) => {
+        console.log('selected END date:', event.target.value);
+        // change the data of endDate
+        this.setState({endDate: event.target.value});
+    };//end handleEnd
 
-    handleChange = (event) => {
-        this.setState({
-            month: event.target.value
-        })
-    };//end handleChange
-
+    // handleEvent allows the user to go to the page of the event on click
     handleEvent = (events) => {
         console.log('take me to the event', events);
         this.props.history.push(`/event/${events.id}`)
@@ -63,72 +68,48 @@ class LandingPage extends Component {
                     <Box className={classes.landMargin}>
                         <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
                         {/* grid that wraps location and selector */}
-                        <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" /></Grid>
-                            {/* begin month selector option */}
-                            <Grid item xs={12} md={2}>
-                                <FormControl className={classes.formControl} fullWidth={true}>
-                                    <InputLabel style={{ marginLeft: '10%' }} >Select Month</InputLabel>
-                                    <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.month} onChange={(event) => this.handleChange(event)}>
-                                        <MenuItem value={1}><em>January</em></MenuItem>
-                                        <MenuItem value={2}><em>February</em></MenuItem>
-                                        <MenuItem value={3}><em>March</em></MenuItem>
-                                        <MenuItem value={4}><em>April</em></MenuItem>
-                                        <MenuItem value={5}><em>May</em></MenuItem>
-                                        <MenuItem value={6}><em>June</em></MenuItem>
-                                        <MenuItem value={7}><em>July</em></MenuItem>
-                                        <MenuItem value={8}><em>August</em></MenuItem>
-                                        <MenuItem value={9}><em>September</em></MenuItem>
-                                        <MenuItem value={10}><em>October</em></MenuItem>
-                                        <MenuItem value={11}><em>November</em></MenuItem>
-                                        <MenuItem value={12}><em>December</em></MenuItem>
-                                    </Select>
-                                </FormControl>
+                        <Grid container justify="center">
+                            {/* location and month selector options */}
+                            <Grid container justify="center" spacing={2}>
+                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" onChange={(event) => this.handleLocation(event)}/></Grid>
+                                {/* month selector with date text fields */}
+                                <Grid item xs={12} md={2}>
+                                    <InputLabel>start date</InputLabel>
+                                    <TextField type="date" onChange={(event) => this.handleStart(event)} />
+                                </Grid>
+                                <Grid item xs={12} md={2}>
+                                    <InputLabel>end date</InputLabel>
+                                    <TextField type="date" onChange={(event) => this.handleEnd(event)} />
+                                </Grid>
                             </Grid>
+                            {/* end location and month selector */}
                             {/* button search grid */}
-                            <Grid item xs={12} md={2}><Button variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                            <Grid item xs={12} md={1}><Button className={classes.advSearch} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
                         </Grid>
                     </Box>
                 </Box>
 
-                {/* section to hold featured events */}
-                <Box className={classes.landMargin}>
-                    <Grid container spacing={2} justify="center">
-                        <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
-                        {/* being displaying events */}
-                        <Grid container xs={12} item md={4}>
-                            <Card onClick={() => this.props.history.push('/event/1')}>
-                                <CardContent>
-                                    <Typography>FEATURE 1</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    </Grid>
-                </Box>
-                {/* end BOX that wraps events */}
-
-                {/* section that holds new mapped data */}
-                <Box bm={2} className={classes.box_grey}>
-                    <Typography>Featured Events</Typography>
-                    {/* BEGING RID */}
+                {/* section that holds mapped EVENTS */}
+                <Box bm={2}>
+                    <Typography variant="h4" align="center">Featured Events</Typography>
+                    {/* BEGIN GRID */}
                     <Grid container justify="space-evenly">
                         {this.props.landing.map(events =>
                             <Box key={events.id}>
-                                    <Card variant="outlined" className={classes.landCard}>
-                                        <CardContent>
-                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} onClick={(event) => this.handleEvent(events)} />
-                                        </CardContent>
-                                        <CardContent>
-                                            <Typography>{events.event_name}</Typography>
-                                        </CardContent>
-                                    </Card>
+                                <Card variant="outlined" className={classes.landCard}>
+                                    <CardContent>
+                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} onClick={(event) => this.handleEvent(events)} />
+                                    </CardContent>
+                                    <CardContent>
+                                        <Typography>{events.event_name}</Typography>
+                                    </CardContent>
+                                </Card>
                             </Box>
                         )}
                         {/* end of mapping for landing page GET */}
                     </Grid>
                 </Box>
                 {/* end of mapped data */}
-
             </Box>
             // Box that wraps page
         )//end return
