@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Card, CardContent, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Card, CardContent, FormControl, MenuItem, Select, InputLabel, CardMedia } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -42,6 +42,11 @@ class LandingPage extends Component {
             month: event.target.value
         })
     };//end handleChange
+
+    handleEvent = (events) => {
+        console.log('take me to the event', events);
+        this.props.history.push(`/event/${events.id}`)
+    };//end handleEvent
 
     render() {
         const { classes } = this.props;
@@ -84,37 +89,48 @@ class LandingPage extends Component {
                             <Grid item xs={12} md={2}><Button variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
                         </Grid>
                     </Box>
-
-                    {/* section to hold featured events */}
-                    <Box className={classes.landMargin}>
-                        <Grid container spacing={2} justify="center">
-                            <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
-                            <Grid container xs={12} item md={4}>
-                                <Card onClick={() => this.props.history.push('/event/1')}>
-                                    <CardContent>
-                                        <Typography>FEATURE 1</Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                            <Grid item xs={12} md={3}>
-                                <Card>
-                                    <CardContent>
-                                        <Typography>FEATURE 2</Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                            <Grid item xs={12} md={3}>
-                                <Card>
-                                    <CardContent>
-                                        <Typography>FEATURE 3</Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                    {/* end grid that wraps features */}
                 </Box>
+
+                {/* section to hold featured events */}
+                <Box className={classes.landMargin}>
+                    <Grid container spacing={2} justify="center">
+                        <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
+                        {/* being displaying events */}
+                        <Grid container xs={12} item md={4}>
+                            <Card onClick={() => this.props.history.push('/event/1')}>
+                                <CardContent>
+                                    <Typography>FEATURE 1</Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    </Grid>
+                </Box>
+                {/* end BOX that wraps events */}
+
+                {/* section that holds new mapped data */}
+                <Box bm={2} className={classes.box_grey}>
+                    <Typography>Featured Events</Typography>
+                    {/* BEGING RID */}
+                    <Grid container justify="space-evenly">
+                        {this.props.landing.map(events =>
+                            <Box key={events.id}>
+                                    <Card variant="outlined" className={classes.landCard}>
+                                        <CardContent>
+                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} onClick={(event) => this.handleEvent(events)} />
+                                        </CardContent>
+                                        <CardContent>
+                                            <Typography>{events.event_name}</Typography>
+                                        </CardContent>
+                                    </Card>
+                            </Box>
+                        )}
+                        {/* end of mapping for landing page GET */}
+                    </Grid>
+                </Box>
+                {/* end of mapped data */}
+
             </Box>
+            // Box that wraps page
         )//end return
     };//end render
 };//end LandingPage
@@ -123,7 +139,7 @@ class LandingPage extends Component {
 LandingPage.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    reduxState
+    landing: reduxState.landing,
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(LandingPage));

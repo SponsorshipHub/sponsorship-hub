@@ -1,4 +1,4 @@
-const landingReducer = (state = [], action) => {
+const landing = (state = [], action) => {
     console.log('---------> in landingReducer');
     if(action.type === 'GET_LANDING'){
         return action.payload;
@@ -6,4 +6,4 @@ const landingReducer = (state = [], action) => {
     return state;
 };//end landingReducer
 
-export default landingReducer;
+export default landing;
