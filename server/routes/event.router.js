@@ -37,11 +37,11 @@ router.get('/:id', (req, res) => {
     GROUP BY e.id, v.id, et.type;
     `
     let id = req.params.id;
-    console.log(id);
+    // console.log(id);
     
 
     pool.query(query, [id]).then(result => {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
     }).catch(err => {
         console.log(err);

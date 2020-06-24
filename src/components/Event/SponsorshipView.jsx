@@ -11,7 +11,7 @@ import styles from '../Style/Style';
 class SponsorshipView extends Component {
     render() {
         // allows us to connect this.props to styles 
-        console.log(this.props.oneEvent.sponsorship);
+        console.log(`Sponsorship: `, this.props.oneEvent.sponsorship);
         
         const { classes } = this.props;
         return (
@@ -38,6 +38,7 @@ class SponsorshipView extends Component {
                                             {/* Will be populated my with map*/}
                                         {/* {this.props.oneEvent.sponsorship.map(item => 
                                             <TableRow>
+                                                <TableCell><image href={item.sponsor_image_url}/></TableCell>
                                                 <TableCell>{item.sponsor_name}</TableCell>
                                                 <TableCell>{item.sponsor_price}</TableCell>
                                                 <TableCell><Button variant="outlined">more</Button></TableCell>

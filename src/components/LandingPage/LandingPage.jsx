@@ -89,7 +89,7 @@ class LandingPage extends Component {
                         <Grid container spacing={2} justify="center">
                             <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Featured Events</Typography></Grid>
                             <Grid container xs={12} item md={4}>
-                                <Card onClick={()=>this.props.history.push('/event')}>
+                                <Card onClick={()=>this.props.history.push('/event/1')}>
                                     <CardContent>
                                         <Typography>FEATURE 1</Typography>
                                     </CardContent>

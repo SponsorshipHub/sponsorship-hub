@@ -8,9 +8,7 @@ function* oneEventSaga() {
 }
 
 function* fetchOneEvent(action){
-    try{
-        console.log(action.payload);
-        
+    try{        
         const res = yield axios.get(`/event/${action.payload}`);
         yield put({type: 'SET_ONE_EVENT', payload: res.data[0]});
     }catch(err){

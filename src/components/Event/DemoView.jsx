@@ -8,10 +8,33 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
+import {PieChart, Pie, Sector, Cell} from 'rechart';
+
 import '../App/App.css';
 
 class DemoView extends Component {
+
+    state = {
+        age: [
+            {
+                // name: this.props.oneEvent.age[0].age_range,
+                // value: this.props.oneEvent.age[0].age_percentage
+            }
+        ],
+        gender: {
+
+        },
+        income: {
+
+        },
+        residency: {
+
+        }
+    }
+
     render() {
+        console.log(`Age Demo:`, this.props.oneEvent.age);
+        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -54,4 +77,4 @@ const putStateOnProps = reduxState => ({
     oneEvent: reduxState.oneEvent
 });
 
-export default connect()(withStyles(styles)(DemoView));
+export default connect(putStateOnProps)(withStyles(styles)(DemoView));
