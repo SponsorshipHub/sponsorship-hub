@@ -14,6 +14,8 @@ const userRouter = require('./routes/user.router');
 const event = require('./routes/event.router');
 // Venue router for getting every venue
 const venue = require('./routes/venue.router');
+//Sponsor router for getting event specific sponsors (create and edit pages)
+const sponsors = require('./routes/sponsor.router');
 
 // landing router contains routes for landing & result page data
 const landing = require('./routes/landing.router');
@@ -34,6 +36,7 @@ app.use('/api/user', userRouter);
 app.use('/event', event);
 app.use('/venue', venue); // Used to GET all Venues
 app.use('/landing', landing);
+app.use('/sponsor', sponsors)
 
 // Serve static files
 app.use(express.static('build'));

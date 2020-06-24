@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import SponsorItem from './SponsorItem';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -12,14 +12,17 @@ import styles from '../Style/Style';
 class CreateSponsor extends Component {
 
     state = {
+        id: 2,
+        // hardcoded or MN State Fair
         sponsor_name: "",
         sponsor_price: "",
         sponsor_image_url: "",
         sponsor_description: "",
-        default_sponsor_name: "",
-        default_sponsor_price: "",
-        default_image_url: "",
-        default_description: ""
+    
+    }
+
+    componentDidMount(){
+this.props.dispatch({type: "FETCH_SPONSORS", payload: this.state.id })
     }
 
     backClick = () =>{
@@ -46,8 +49,9 @@ class CreateSponsor extends Component {
             sponsor_price: "",
             sponsor_image_url: "",
             sponsor_description: ""
-            
         });
+        window.location.reload();
+        // this is intended to clear the inputs and refresh the page with the added sponsor
         console.log(this.state);   
     }
     // This needs to re-render the page with the inputs empty
@@ -81,6 +85,12 @@ class CreateSponsor extends Component {
                 </Box>
                 <Box>
                     <Typography align="center" variant="h2">Current Packages</Typography>
+
+                    <Grid container>
+                        
+                    <SponsorItem></SponsorItem>
+                    </Grid>
+                    <p>{JSON.stringify(this.props.sponsor)}</p>
                     <ul>
                         <li>$100</li>
                         <li>$1,000</li>
@@ -111,6 +121,10 @@ class CreateSponsor extends Component {
 
 // PropTypes allows us to import style.jsx for use
 CreateSponsor.propTypes = { classes: PropTypes.object.isRequired };
+
+const mapStateToProps = state => ({
+    sponsor: state.sponsor,
+});
 
 // const putStateOnProps = reduxState => ({reduxState});
 export default connect()(withStyles(styles)(CreateSponsor));
