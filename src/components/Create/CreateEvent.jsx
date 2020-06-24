@@ -16,34 +16,34 @@ class CreateEvent extends Component {
         newVenue: false, 
         venue_id: '', 
         event_name: '',
-        year_established: '',
+        year_established: null,
         start_date: '',
         end_date: '',
-        event_image_url: '',
-        event_website: '',
+        event_image_url: null,
+        event_website: null,
         event_status: 'false',
         event_type: '',
         estimated_attendance: '',
-        event_notes: '',
-        contact_name: '',
-        contact_title: '',
-        contact_email: '',
-        contact_phone: '',
-        event_facebook: '',
-        event_instagram: '',
-        event_twitter: '',
-        event_description: '', 
-        event_sponsorship_kit: '',
-        event_open: false,
-        venue_open: false,
-        state_open: false,
-        venue_name: '',
-        venue_address: '',
-        venue_city: '',
+        event_notes: null,
+        contact_name: null,
+        contact_title: null,
+        contact_email: null,
+        contact_phone: null,
+        event_facebook: null,
+        event_instagram: null,
+        event_twitter: null,
+        event_description: null, 
+        event_sponsorship_kit: null,
+        event_open: false, // Dropdowns
+        venue_open: false, // Dropdowns 
+        state_open: false, // Dropdowns
+        venue_name: null,
+        venue_address: null,
+        venue_city: null,
         venue_state: '',
-        venue_zipcode: '',
-        venue_notes: '',
-        venue_capacity: '',   
+        venue_zipcode: null,
+        venue_notes: null,
+        venue_capacity: null,   
     }
 
     cancelSelect = (event) => {
@@ -61,8 +61,16 @@ class CreateEvent extends Component {
     }
 
     nextClick = () => {
-        // TODO - Post Dispatch Goes Here 
-        this.props.history.push('/create-sponsor')
+        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
+        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
+        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
+        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
+        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+            // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
+            this.props.dispatch({ type: 'POST_EVENT', payload: this.state })
+            console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
+            // PUSHES TO the NEW ID
+            this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
     }
 
     venueSelect(event) {
@@ -148,7 +156,7 @@ class CreateEvent extends Component {
                     <Box mb={2}>
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Event Name" placeholder="Name of the Event" onChange={(event)=>this.handleChange(event, 'event_name')}/>
+                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Event Name</span> <span className={classes.red}>*</span></>} placeholder="Name of the Event" onChange={(event)=>this.handleChange(event, 'event_name')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
                                 <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')}/>
@@ -161,11 +169,11 @@ class CreateEvent extends Component {
                     <Grid container spacing={2} item md={12}>
                         <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
-                            <InputLabel>Start Date</InputLabel>
+                                <InputLabel>Start Date <span className={classes.red}>*</span></InputLabel>
                                 <TextField type="date" placeholder="Start Date" onChange={(event) => this.handleChange(event, 'start_date')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <InputLabel>End Date</InputLabel>
+                                <InputLabel>End Date <span className={classes.red}>*</span></InputLabel>
                                     <TextField type="date" placeholder="End Date" onChange={(event) => this.handleChange(event, 'end_date')}/>
                         </Grid>
                         <Grid item md={2}></Grid>
@@ -176,7 +184,7 @@ class CreateEvent extends Component {
                     <Grid container spacing={2} item md={12}>
                         <Grid item md={2}></Grid>
                         <Grid item xs={12} md={4}>
-                            <InputLabel>Venue</InputLabel>
+                            <InputLabel>Venue <span className={classes.red}>*</span></InputLabel>
                             <FormControl>
                                 <Select
                                     open={this.state.venue_open}
@@ -230,7 +238,7 @@ class CreateEvent extends Component {
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={6}>
-                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Venue Name" placeholder="Name" onChange={(event) => this.handleChange(event, 'venue_name')}/>
+                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Venue Name</span> <span className={classes.red}>*</span></>} placeholder="Name" onChange={(event) => this.handleChange(event, 'venue_name')}/>
                             </Grid>
                             <Grid item xs={12} md={2}>
                                 <TextField fullWidth={true} type="number" label="Capacity" placeholder="#" onChange={(event) => this.handleChange(event, 'venue_capacity')}/>
@@ -240,17 +248,17 @@ class CreateEvent extends Component {
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={8}>
-                                <TextField fullWidth={true} multiline={true} label="Street Address" placeholder="Notes about the Venue" onChange={(event) => this.handleChange(event, 'venue_address')}/>
+                                <TextField fullWidth={true} multiline={true} label={<><span>Street Address</span> <span className={classes.red}>*</span></>} placeholder="Notes about the Venue" onChange={(event) => this.handleChange(event, 'venue_address')}/>
                             </Grid>
                         </Grid>
 
                         {/* Row Start */}
                         <Grid justify="center" container spacing={4}>
                             <Grid item xs={12} md={4}>
-                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="City" placeholder="City" onChange={(event) => this.handleChange(event, 'venue_city')}/>
+                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>City</span> <span className={classes.red}>*</span></>} placeholder="City" onChange={(event) => this.handleChange(event, 'venue_city')}/>
                             </Grid>
                             <Grid item xs={9} md={2}>
-                                <InputLabel>State</InputLabel>
+                                <InputLabel>State <span className={classes.red}>*</span></InputLabel>
 
                                 <FormControl>
                                     <Select
@@ -361,7 +369,7 @@ class CreateEvent extends Component {
                             />No
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <TextField type="number" label="Estimated Attendance" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')}/>
+                            <TextField type="number" label={<><span>Estimated Attendance</span> <span className={classes.red}>*</span></>} placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')}/>
                         </Grid>
                     </Grid>
 
@@ -456,7 +464,8 @@ CreateEvent.propTypes = { classes: PropTypes.object.isRequired };
 
 // Destructures reduxState to pull venues only.
 const putStateOnProps = reduxState => ({
-    venues: reduxState.venues
+    venues: reduxState.venues,
+    currentEvent: reduxState.currentEvent
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(CreateEvent));
