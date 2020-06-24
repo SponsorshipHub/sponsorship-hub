@@ -41,7 +41,11 @@ class CreateSponsor extends Component {
             sponsor_name: "",
             sponsor_price: "",
             sponsor_image_url: "",
-            sponsor_description: ""
+            sponsor_description: "",
+            default_sponsor_name: "",
+            default_sponsor_price: "",
+            default_image_url: "", 
+            default_description: ""
         });
         console.log(this.state);   
     }
@@ -58,7 +62,7 @@ class CreateSponsor extends Component {
                     {/* input fields go here */}
                     <Grid justify="center" container spacing={3}>
                         <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Package Name" placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
+                            <TextField fullWidth label="Package Name" defaultValue={this.state.default_sponsor_name} placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
                         </Grid>
                         <Grid item md={3} sm={9}>
                             <TextField fullWidth label="Package Price" placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
