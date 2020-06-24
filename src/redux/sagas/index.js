@@ -6,6 +6,7 @@ import venuesSaga from './venuesSaga';
 import oneEventSaga from './oneEventSaga';
 import landingSaga from './landingSaga';
 import postEventSaga from './postEventSaga';
+import sponsorSaga from './sponsorSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     oneEventSaga(),
     postEventSaga(),
     landingSaga(),
+    sponsorSaga(),
   ]);
 }
