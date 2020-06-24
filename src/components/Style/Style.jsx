@@ -65,9 +65,8 @@ const styles = {
     margin: {
         margin: '20px' // Adds a small margin to the page
     },
-// sponsor image is a duplicate
-    sponsor_image: {
-        maxWidth: '100px'
+    sponsorshipIcon: {
+        maxWidth: '100px' //Alan had sponsor_image, does the same thing
     }
 }
 
