@@ -164,7 +164,7 @@ class CreateDemo extends Component {
                 </Box>
                 {/* End Age Inputs */}
                 {/* Begin Residency Inputs */}
-                <Box>
+                <Box spacing={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Residency</Typography>

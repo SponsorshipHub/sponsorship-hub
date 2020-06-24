@@ -12,7 +12,10 @@ import styles from '../Style/Style';
 class CreateSponsor extends Component {
 
     state = {
-        
+        sponsor_name: "",
+        sponsor_price: "",
+        sponsor_image_url: "",
+        sponsor_description: ""
     }
 
     backClick = () =>{
@@ -22,6 +25,27 @@ class CreateSponsor extends Component {
     forwardClick = () => {
         this.props.history.push('/create-demo')
     }
+
+    handleChange = (event, property) => {
+        this.setState({
+            ...this.state,
+            [property]: event.target.value
+        })
+        console.log(this.state);
+        
+    }
+
+    handleClick = () => {
+        this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state})
+        this.setState({
+            sponsor_name: "",
+            sponsor_price: "",
+            sponsor_image_url: "",
+            sponsor_description: ""
+        });
+        console.log(this.state);   
+    }
+    // This needs to re-render the page with the inputs empty
 
     render() {
         // allows us to connect this.props to styles 
@@ -34,19 +58,19 @@ class CreateSponsor extends Component {
                     {/* input fields go here */}
                     <Grid justify="center" container spacing={3}>
                         <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Package Name" placeholder="Package Name"></TextField>
+                            <TextField fullWidth label="Package Name" placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
                         </Grid>
                         <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Packagae Price" placeholder="$"></TextField>
+                            <TextField fullWidth label="Package Price" placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
                         </Grid>
                         <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Image URL"placeholder="http://"></TextField>
+                            <TextField fullWidth label="Image URL" placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
                         </Grid>
                         <Grid item md={8} sm={9}>
-                            <TextField fullWidth multiline variant="outlined" label="Package Description" placeholder="Package Description"></TextField>
+                            <TextField fullWidth multiline variant="outlined" label="Package Description" placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField>
                         </Grid>
                         <Grid item md={1} sm={9}>
-                            <Button className={classes.btn_def}>Submit</Button>
+                            <Button className={classes.btn_def} onClick={this.handleClick}>Submit</Button>
                         </Grid>
                     </Grid>
                 </Box>
