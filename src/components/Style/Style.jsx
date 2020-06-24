@@ -54,6 +54,9 @@ const styles = {
     },
     margin: {
         margin: '20px' // Adds a small margin to the page
+    },
+    red: {
+        color: 'red'
     }
 }
 
