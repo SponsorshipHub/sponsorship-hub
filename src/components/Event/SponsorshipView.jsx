@@ -9,9 +9,23 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class SponsorshipView extends Component {
+
+    state = {
+        sponsorship: [],
+    }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.oneEvent.sponsorship != this.props.oneEvent.sponsorship){
+            this.setState({
+                sponsorship: this.props.oneEvent.sponsorship
+            })
+        }
+    }
+
+
     render() {
         // allows us to connect this.props to styles 
-        console.log(`Sponsorship: `, this.props.oneEvent.sponsorship);
+        console.log(`Sponsorship: `, this.state.sponsorship);
         
         const { classes } = this.props;
         return (
@@ -36,14 +50,16 @@ class SponsorshipView extends Component {
                                     </TableHead>
                                     <TableBody>
                                             {/* Will be populated my with map*/}
-                                        {/* {this.props.oneEvent.sponsorship.map(item => 
-                                            <TableRow>
-                                                <TableCell><image href={item.sponsor_image_url}/></TableCell>
+                                            {/* {JSON.stringify(this.props.oneEvent.sponsorship)} */}
+
+                                        {this.state.sponsorship.map(item => 
+                                            <TableRow key={item.sponsorship_id}>
+                                                <TableCell><img className={classes.sponsorshipIcon} src={item.sponsor_image_url} alt={item.sponsor_name}/></TableCell>
                                                 <TableCell>{item.sponsor_name}</TableCell>
                                                 <TableCell>{item.sponsor_price}</TableCell>
                                                 <TableCell><Button variant="outlined">more</Button></TableCell>
                                             </TableRow>
-                                        )} */}
+                                        )}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
