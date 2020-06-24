@@ -19,23 +19,23 @@ class Venue extends Component {
                 <Grid container justify="space-evenly">
                     <Grid item md={4}>
                         {/* Venue Name */}
-                        <h2>Venue Name</h2>
+                        <h2>{this.props.oneEvent.name}</h2>
                         {/* Capacity Need to fix spacing */}
                         {/* venue_capacity */}
-                        <Typography>Capacity</Typography>
+                        <Typography>Capacity: {this.props.oneEvent.venue_capacity}</Typography>
                         <Box>
                             <PlaceIcon />
                             <Typography display="inline">Address</Typography>
                             {/* Address */}
-                            <Typography>8570 University Ave.</Typography>
-                            <Typography>Minneapolis, MN</Typography>
+                            <Typography>{this.props.oneEvent.address}</Typography>
+                            <Typography>{this.props.oneEvent.city}, {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography>
                         </Box>
                     </Grid>
                     <Grid item md={4}>
                         <Box p={2} my={2} className="venue">
                             {/* venue_notes */}
                             <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.  
+                                {this.props.oneEvent.venue_notes}
                             </Typography>
                         </Box>
                     </Grid>
@@ -48,5 +48,8 @@ class Venue extends Component {
 // PropTypes allows us to import style.jsx for use
 Venue.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(Venue));
+const putStateOnProps = reduxState => ({
+    oneEvent: reduxState.oneEvent
+});
+
+export default connect(putStateOnProps)(withStyles(styles)(Venue));
