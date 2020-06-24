@@ -46,6 +46,10 @@ class CreateSponsor extends Component {
 
     }
 
+    handleDelete = () => {
+        this.props.dispatch({ type: "DELETE", payload: this.state})
+    }
+
     handleClick = () => {
         this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state })
         this.setState({
@@ -105,7 +109,7 @@ class CreateSponsor extends Component {
                                         
                                         <Grid item md={8}><Typography>{sponsorItem.sponsor_description}</Typography></Grid>
                                     </Grid>
-                                    <Grid item md={2}><EditIcon></EditIcon><DeleteIcon></DeleteIcon></Grid>
+                                    <Grid item md={2}><EditIcon onClick={this.toggleEdit}></EditIcon><DeleteIcon onClick={this.handleDelete}></DeleteIcon></Grid>
                                     
                                 </Grid>)
                         }

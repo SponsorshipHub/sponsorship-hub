@@ -4,6 +4,11 @@ import axios from 'axios';
 function* sponsorSaga() {
     yield takeLatest('FETCH_SPONSORS', fetchSponsor);
     yield takeLatest('ADD_SPONSOR', sendSponsor);
+    yield takeLatest('DELETE', deleteSponsor);
+}
+function* deleteSponsor(action){
+    console.log("in deleteSponsor", action.payload);
+    //DELETE stuff goes here.
 }
 
 function* fetchSponsor(action) {
