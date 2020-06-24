@@ -15,7 +15,11 @@ class CreateSponsor extends Component {
         sponsor_name: "",
         sponsor_price: "",
         sponsor_image_url: "",
-        sponsor_description: ""
+        sponsor_description: "",
+        default_sponsor_name: "",
+        default_sponsor_price: "",
+        default_image_url: "",
+        default_description: ""
     }
 
     backClick = () =>{
@@ -41,11 +45,8 @@ class CreateSponsor extends Component {
             sponsor_name: "",
             sponsor_price: "",
             sponsor_image_url: "",
-            sponsor_description: "",
-            default_sponsor_name: "",
-            default_sponsor_price: "",
-            default_image_url: "", 
-            default_description: ""
+            sponsor_description: ""
+            
         });
         console.log(this.state);   
     }
