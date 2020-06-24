@@ -19,6 +19,10 @@ import Venue from './Venue';
 
 class Event extends Component {
 
+    componentDidMount(){
+        this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id})
+    }
+
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;

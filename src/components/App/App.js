@@ -39,9 +39,7 @@ class App extends Component {
             <ProtectedRoute exact path="/results" component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor" component={CreateSponsor}/>
             <ProtectedRoute exact path="/create-demo" component={CreateDemo} />
-            <ProtectedRoute
-              path="/event"
-              component={Event} 
+            <ProtectedRoute path="/event/:id" component={Event} 
             />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
             {/* This works the same as the other protected route, except that if the user is logged in,
