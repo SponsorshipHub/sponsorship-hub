@@ -18,7 +18,9 @@ const venue = require('./routes/venue.router');
 const sponsors = require('./routes/sponsor.router');
 
 // landing router contains routes for landing & result page data
+// landing and results router
 const landing = require('./routes/landing.router');
+const results = require('./routes/results.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -37,6 +39,7 @@ app.use('/event', event);
 app.use('/venue', venue); // Used to GET all Venues
 app.use('/landing', landing);
 app.use('/sponsor', sponsors)
+app.use('/results', results);
 
 // Serve static files
 app.use(express.static('build'));
