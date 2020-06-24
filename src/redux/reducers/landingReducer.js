@@ -4,11 +4,6 @@ const landing = (state = [], action) => {
     if(action.type === 'GET_LANDING'){
         return action.payload;
     }
-    // get data for results page
-    else if(action.type === 'GET_RESULTS'){
-        return action.payload;
-    }
-    
     return state;
 };//end landingReducer
 

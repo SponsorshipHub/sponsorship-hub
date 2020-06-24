@@ -10,9 +10,9 @@ import styles from '../Style/Style';
 class LandingPage extends Component {
 
     state = {
-        startDate: '',
-        endDate: '',
-        location: '',
+        startDate: 'null',
+        endDate: 'null',
+        location: 'null',
     };//end state
 
     componentDidMount() {
@@ -22,7 +22,7 @@ class LandingPage extends Component {
     };//end componentDidMount
 
     handleSearch = () => {
-        console.log('search on Landing Page has been clicked', this.state.month);
+        console.log('search on Landing Page has been clicked');
         // on click of the search button, the user will be taken to the results view page
         this.props.history.push('/results');
         // send our inputs to our results view page

@@ -24,11 +24,14 @@ function* getLanding(){
 };//end getLanding
 
 //this function handles the results page on search from the landing page
-function* getResults(){
-    console.log('-------------> in getResults saga');
+function* getResults(action){
+    let startD = action.payload.startDate;
+    let endD = action.payload.endDate;
+    let location = action.payload.location
+    console.log('-------------> in getResults saga', action.payload);
     try{
         //send GET request for /results and send to our reducer
-        const response = yield axios.get(`/results`);
+        const response = yield axios.get(`/results/${location}/${startD}/${endD}`);
         yield put({
             type: 'GET_RESULTS',
             payload: response.data
@@ -36,6 +39,6 @@ function* getResults(){
     }catch(err){
         console.log('Error in getResults saga');
     }
-};//end getRestults
+};//end getResults
 
 export default landingSaga;

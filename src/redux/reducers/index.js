@@ -5,6 +5,7 @@ import user from './userReducer';
 import venues from './venuesReducer';
 import oneEvent from './oneEventReducer';
 import landing from './landingReducer';
+import results from './resultsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   venues,
   oneEvent, // holds all the information for one event
   landing, //will hold event data
+  results, //will hold data for results
 });
 
 export default rootReducer;
