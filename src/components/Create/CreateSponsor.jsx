@@ -99,7 +99,7 @@ class CreateSponsor extends Component {
                             this.props.sponsors.map(sponsorItem =>
                                 
                                 <Grid justify="center" container item key={sponsorItem.id} md={12}>
-                                    <Grid item md={2}><img className={classes.sponsor_image} src={sponsorItem.sponsor_image_url}/></Grid>
+                                    <Grid item md={2}><img className={classes.sponsorshipIcon} src={sponsorItem.sponsor_image_url}/></Grid>
                                     <Grid container item md={7}>
 
                                         <Grid container item md={4}>
