@@ -1,9 +1,10 @@
-const landingReducer = (state = [], action) => {
+const landing = (state = [], action) => {
     console.log('---------> in landingReducer');
+    // get data for landing page featured events
     if(action.type === 'GET_LANDING'){
         return action.payload;
-    };//end if statement
+    }
     return state;
 };//end landingReducer
 
-export default landingReducer;
+export default landing;

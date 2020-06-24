@@ -14,9 +14,9 @@ const userRouter = require('./routes/user.router');
 const event = require('./routes/event.router');
 // Venue router for getting every venue
 const venue = require('./routes/venue.router');
-
-// landing router contains routes for landing & result page data
+// landing and results router
 const landing = require('./routes/landing.router');
+const results = require('./routes/results.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,7 +33,8 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/event', event);
 app.use('/venue', venue); // Used to GET all Venues
-app.use('/landing', landing);
+app.use('/landing', landing); 
+app.use('/results', results);
 
 // Serve static files
 app.use(express.static('build'));
