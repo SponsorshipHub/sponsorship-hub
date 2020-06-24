@@ -50,5 +50,8 @@ class DemoView extends Component {
 // PropTypes allows us to import style.jsx for use
 DemoView.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
+const putStateOnProps = reduxState => ({
+    oneEvent: reduxState.oneEvent
+});
+
 export default connect()(withStyles(styles)(DemoView));

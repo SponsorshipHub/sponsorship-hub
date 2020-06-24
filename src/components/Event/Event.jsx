@@ -41,39 +41,39 @@ class Event extends Component {
                         <Box className="DemoBackground" p={2}>
                             {/* event_description */}
                             <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.  
+                                {this.props.oneEvent.event_description} 
                             </Typography>
                         </Box>
                         <Box textAlign="center" mt={1}>
                             <CalendarTodayIcon mr={2}/>
                             {/* year_established */}
-                            <Typography display="inline">Established in</Typography>
+                            <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
                         </Box>
 
                     </Grid>
                     <Grid item md={4} sm={10}>
                         {/* Sponsorship link */}
-                        <Button fullWidth variant="outlined">View Sponsorship Kit</Button>
+                        <a href={this.props.oneEvent.event_sponsorship_kit} target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a>
                         {/* estimated_attendance */}
-                        <Typography>Estimated Attendance</Typography>
+        <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
                         <OpenInNewIcon />
                         {/* event_website */}
-                        <Typography display="inline">www.something.com</Typography>
+        <Typography display="inline">{this.props.oneEvent.event_website}</Typography>
                         <Box>
                             <PersonIcon />
                             <Typography display="inline">Contact Info</Typography>
                             {/* contact_name & contact_title */}
-                            <Typography>Name, Title</Typography>
+                            <Typography>{this.props.oneEvent.contact_name}, {this.props.oneEvent.contact_title}</Typography>
                             {/* contact_email*/}
-                            <Typography>Email</Typography>
+                            <Typography>{this.props.oneEvent.contact_email}</Typography>
                             {/* contact_phone*/}
-                            <Typography>Phone</Typography>
+                            <Typography>{this.props.oneEvent.contact_phone}</Typography>
                         </Box>
                     </Grid>
                 </Grid>
                 <DemoView/>
                 <SponsorshipView/>
-                <Venue />
+                <Venue/>
                 <Grid container justify="center">
                     <Grid item md={10} textAlign="center">
                         <h2>Additional Details</h2>
@@ -84,7 +84,7 @@ class Event extends Component {
                         <Box className="DemoBackground" p={2}>
                             {/* event_notes */}
                             <Typography>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque.  
+                                {this.props.oneEvent.event_notes}
                             </Typography>
                         </Box>
                     </Grid>
@@ -97,5 +97,7 @@ class Event extends Component {
 // PropTypes allows us to import style.jsx for use
 Event.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(Event));
+const putStateOnProps = reduxState => ({
+    oneEvent:reduxState.oneEvent
+});
+export default connect(putStateOnProps)(withStyles(styles)(Event));

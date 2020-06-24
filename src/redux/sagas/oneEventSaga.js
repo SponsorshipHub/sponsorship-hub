@@ -12,7 +12,7 @@ function* fetchOneEvent(action){
         console.log(action.payload);
         
         const res = yield axios.get(`/event/${action.payload}`);
-        yield put({type: 'SET_ONE_EVENT', payload: res.data});
+        yield put({type: 'SET_ONE_EVENT', payload: res.data[0]});
     }catch(err){
         console.log(`ERROR in FETCH ONE EVENT saga:`, err);
     }
