@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Paper, CardMedia, Card, CardContent, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Card, CardContent, FormControl, MenuItem, Select, InputLabel } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -16,6 +16,7 @@ class LandingPage extends Component {
 
     componentDidMount() {
         console.log('Landing Page has been MOUNTED');
+        this.props.dispatch({ type: 'FETCH_LANDING' })
     };//end componentDidMount
 
     handleSearch = () => {
@@ -123,4 +124,8 @@ class LandingPage extends Component {
 // PropTypes allows us to import style.jsx for use
 LandingPage.propTypes = { classes: PropTypes.object.isRequired };
 
-export default connect()(withStyles(styles)(LandingPage));
+const putStateOnProps = reduxState => ({
+    reduxState
+});
+
+export default connect(putStateOnProps)(withStyles(styles)(LandingPage));
