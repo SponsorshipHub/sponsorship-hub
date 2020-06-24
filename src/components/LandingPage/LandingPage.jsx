@@ -23,6 +23,7 @@ class LandingPage extends Component {
 
     handleSearch = () => {
         console.log('search on Landing Page has been clicked');
+        //IF STATEMENT SO THAT THEY DO BOTH START AND END DATE
         // on click of the search button, the user will be taken to the results view page
         this.props.history.push('/results');
         // send our inputs to our results view page
