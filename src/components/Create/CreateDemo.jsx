@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -12,46 +12,55 @@ import styles from '../Style/Style';
 class CreateDemo extends Component {
 
     state = {
-        gender1: "0",
-        gender2: "0",
-        gender3: "0",
-        genderTotal: "0",
-        income1: "0",
-        income2: "0",
-        income3: "0",
-        income4: "0",
-        income5: "0",
-        income6: "0",
-        income7: "0",
-        incomeTotal: "0",
-        age1: "0",
-        age2: "0",
-        age3: "0",
-        age4: "0",
-        age5: "0",
-        age6: "0",
-        age7: "0",
-        ageTotal: "0",
-        resident1: "0",
-        resident2: "0",
-        residentTotal: "0"
+        gender1: 0,
+        gender2: 0,
+        gender3: 0,
+        genderTotal: 0,
+        income1: 0,
+        income2: 0,
+        income3: 0,
+        income4: 0,
+        income5: 0,
+        income6: 0,
+        income7: 0,
+        incomeTotal: 0,
+        age1: 0,
+        age2: 0,
+        age3: 0,
+        age4: 0,
+        age5: 0,
+        age6: 0,
+        age7: 0,
+        ageTotal: 0,
+        resident1: 0,
+        resident2: 0,
+        residentTotal: 0
     }
 
-   handleChange = (event, property) => {
-       this.setState({
-           ...this.state,
-           [property]: event.target.value
-       })
-       console.log(this.state);
-       
-   
-       
-   }
+    backClick = () => {
+        this.props.history.push('/create-sponsor')
+    }
 
- calculatePercents = () => {
-    console.log("calculation goes here", this.state);
-    
- }
+    forwardClick = () => {
+        this.props.history.push('/home')
+    }
+
+    handleChange = (event, property) => {
+        this.setState({
+            ...this.state,
+            [property]: Number(event.target.value),
+            // I need to figure out how to create a delay here
+            genderTotal: this.state.gender1 + this.state.gender2 + this.state.gender3,
+            incomeTotal: this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7,
+            ageTotal: this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7,
+            residentTotal: this.state.resident1 + this.state.resident2
+        });
+        // console.log(this.state);  
+    }
+
+    componentDidUpdate
+    // having async issues with this, not sure the best way to resolve
+
 
 
     render() {
@@ -69,7 +78,7 @@ class CreateDemo extends Component {
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Female" type="number" placeholder="%" onChange={(event)=>this.handleChange(event, 'gender1')}></TextField>
+                                <TextField label="Female" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
                                 <TextField label="Male" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
@@ -77,12 +86,12 @@ class CreateDemo extends Component {
                             <Grid item md={3} sm={12}>
                                 <TextField label="Other" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
-                        <Grid item md={2} sm={12}>
-                            <Typography>Total %</Typography>
-                        </Grid>   
+                            <Grid item md={2} sm={12}>
+                                <Typography>Total %{this.state.genderTotal}</Typography>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Box> 
+                </Box>
                 {/* End Gender Demographic Inputs */}
                 {/* Begin Household Income Inputs */}
                 <Box>
@@ -113,7 +122,7 @@ class CreateDemo extends Component {
                                 <TextField label="$200,001 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total %</Typography>
+                                <Typography>Total %{this.state.incomeTotal}</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -148,14 +157,14 @@ class CreateDemo extends Component {
                                 <TextField label="65 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total %</Typography>
+                                <Typography>Total %{this.state.ageTotal}</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Box>
                 {/* End Age Inputs */}
                 {/* Begin Residency Inputs */}
-                <Box>
+                <Box spacing={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Residency</Typography>
@@ -168,7 +177,7 @@ class CreateDemo extends Component {
                                 <TextField label="Non-Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'resident2')}></TextField>
                             </Grid>
                             <Grid item md={1} sm={12}>
-                                <Typography>Total %</Typography>
+                                <Typography>Total %{this.state.residentTotal}</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -177,17 +186,17 @@ class CreateDemo extends Component {
                 <Box mx={10} spacing={3}>
                     <Grid justify="center" container>
                         <Grid item md={3} sm={6}>
-                            <Link to="/create-sponsor"><Button fullWidth className={classes.btn_def} variant="outlined">Back</Button></Link>
+                            <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.backClick}>Back</Button>
                         </Grid>
                         <Grid item md={3}></Grid>
                         <Grid item md={3} sm={6}>
-                            <Link to="/home"><Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.calculatePercents}>Submit</Button></Link>
+                            <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.forwardClick}>Submit</Button>
                         </Grid>
                     </Grid>
 
                 </Box>
             </Box>
-            
+
         )//end return
     };//end render
 };//end class
