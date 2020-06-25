@@ -16,6 +16,7 @@ const event = require('./routes/event.router');
 const venue = require('./routes/venue.router');
 //Sponsor router for getting event specific sponsors (create and edit pages)
 const sponsors = require('./routes/sponsor.router');
+const demo = require('./routes/demo.router');
 
 // landing router contains routes for landing & result page data
 // landing and results router
@@ -38,8 +39,9 @@ app.use('/api/user', userRouter);
 app.use('/event', event);
 app.use('/venue', venue); // Used to GET all Venues
 app.use('/landing', landing);
-app.use('/sponsor', sponsors)
+app.use('/sponsor', sponsors);
 app.use('/results', results);
+app.use('/demo', demo);
 
 // Serve static files
 app.use(express.static('build'));
