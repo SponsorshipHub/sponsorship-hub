@@ -21,6 +21,7 @@ class Event extends Component {
 
     componentDidMount(){
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id})
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -75,12 +76,12 @@ class Event extends Component {
                 <SponsorshipView/>
                 <Venue/>
                 <Grid container justify="center">
-                    <Grid item md={10} textAlign="center">
+                    <Grid item md={10}>
                         <h2>Additional Details</h2>
                     </Grid>
                 </Grid>
                 <Grid container justify="center">
-                    <Grid item md={8} textAlign="center">
+                    <Grid item md={8}>
                         <Box className="DemoBackground" p={2}>
                             {/* event_notes */}
                             <Typography>
