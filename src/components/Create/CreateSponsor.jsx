@@ -29,7 +29,7 @@ class CreateSponsor extends Component {
     }
 
     backClick = () => {
-        this.props.history.push('/create-event')
+        this.props.history.push(`/event/edit/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
