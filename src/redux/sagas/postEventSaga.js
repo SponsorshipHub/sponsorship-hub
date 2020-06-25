@@ -26,6 +26,7 @@ function* postEvent(action) {
         let event_id = responseEvent.data.id;
         // console.log ('New Event has an ID of:', event_id)
         yield put({ type: 'SET_CURRENT_EVENT', payload: event_id });
+        yield action.history.push(`/create-sponsor/${event_id}`) // Pushes history using YIELD!
     } catch (err) {
         console.log(`ERROR in FETCH ONE EVENT saga:`, err);
     }
