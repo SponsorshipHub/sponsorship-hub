@@ -101,7 +101,7 @@ class SponsorItem extends Component {
                     <TextField fullWidth multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField>
                     </Grid>
                     <Grid item md={1} sm={9}>
-                        <Button className={classes.btn_def} onClick={this.handleClick}>Submit</Button>
+                        <Button className={classes.btn_def} onClick={this.handleSubmitClick}>Submit</Button>
                     </Grid>
                 </Grid>
             </Box>

@@ -15,7 +15,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 class CreateSponsor extends Component {
 
     state = {
-        id: 2,
+        id: this.props.match.params.id,
         // hardcoded or MN State Fair, will need to change to the just created event in create or the selected event in edit
         sponsor_name: "",
         sponsor_price: "",
