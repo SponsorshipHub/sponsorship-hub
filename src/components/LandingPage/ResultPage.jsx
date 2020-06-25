@@ -22,6 +22,7 @@ class ResultPage extends Component {
     };//end state
 
     componentDidMount() {
+        document.title = "Sponsorship Hub - Results"; // Sets browser's title
         console.log('ResultPage has been MOUNTED');
     };//end componentDidMount
 

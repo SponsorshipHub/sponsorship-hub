@@ -10,7 +10,7 @@ import ResultPage from '../LandingPage/ResultPage';
 import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
 import CreateDemo from '../Create/CreateDemo';
-
+import EditEvent from '../Create/EditEvent';
 
 //style for app
 import './App.css';
@@ -38,9 +38,9 @@ class App extends Component {
             <Route exact path="/home" component={LandingPage}/>
             <ProtectedRoute exact path="/results" component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
-            <ProtectedRoute exact path="/create-demo" component={CreateDemo} />
-            <ProtectedRoute path="/event/:id" component={Event} 
-            />
+            <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />
+            <ProtectedRoute exact path="/event/:id" component={Event} />
+            <ProtectedRoute exact path="/event/edit/:id" component={EditEvent} />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

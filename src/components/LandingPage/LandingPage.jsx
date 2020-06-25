@@ -16,6 +16,7 @@ class LandingPage extends Component {
     };//end state
 
     componentDidMount() {
+        document.title = "Sponsorship Hub"; // Sets browser's title
         console.log('Landing Page has been MOUNTED');
         // on landing page load, get our data for the featured events
         this.props.dispatch({ type: 'FETCH_LANDING' });

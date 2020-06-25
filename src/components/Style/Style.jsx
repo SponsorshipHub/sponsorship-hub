@@ -70,6 +70,22 @@ const styles = {
     },
     sponsorshipIcon: {
         maxWidth: '100px' 
+    },
+    goodPercent: {
+        color: 'green'
+    },
+    badPercent: {
+        color: 'red'
+    },
+    modal: {
+        // position: 'absolute',
+        width: 400,
+        backgroundColor: '#eaeced',
+        // border: '2px solid #000',
+        boxShadow: 2,
+        padding: 5,
+        margin: 'auto',
+        marginTop: '50vh'
     }
 }
 
