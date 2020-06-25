@@ -8,7 +8,12 @@ function* sponsorSaga() {
 }
 function* deleteSponsor(action){
     console.log("in deleteSponsor", action.payload);
-    //DELETE stuff goes here.
+    try{
+        yield axios.delete(`/sponsor/${action.payload}`);
+        yield put ({ type: 'FETCH_SPONSORS', payload: action.payload});
+    }catch(error){
+        console.log('DELETE failed', error); 
+    }
 }
 
 function* fetchSponsor(action) {
@@ -23,7 +28,7 @@ function* fetchSponsor(action) {
 }
 
 function* sendSponsor(action){
-    console.log('in addWeek', action.payload);
+    console.log('in sendSponsor', action.payload);
     try{
         yield axios.post('/sponsor', action.payload);
         yield put ({ type: 'FETCH_SPONSORS', payload: action.payload});
