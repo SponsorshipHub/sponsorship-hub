@@ -71,6 +71,11 @@ const styles = {
     sponsorshipIcon: {
         maxWidth: '100px' 
     },
+    goodPercent: {
+        color: 'green'
+    },
+    badPercent: {
+        color: 'red'
     modal: {
         // position: 'absolute',
         width: 400,

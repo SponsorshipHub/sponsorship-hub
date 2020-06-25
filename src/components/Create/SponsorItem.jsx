@@ -20,10 +20,10 @@ class SponsorItem extends Component {
         console.log('in SponsorItem', this.props.sponsorItem);
         this.setState({
             id: this.props.sponsorItem.id,
-            sponsor_image_url: this.props.sponsor_image_url,
-            sponsor_name: this.props.sponsor_name,
-            sponsor_price: this.props.sponsor_price,
-            sponsor_description: this.props.sponsor_description
+            sponsor_image_url: this.props.sponsorItem.sponsor_image_url,
+            sponsor_name: this.props.sponsorItem.sponsor_name,
+            sponsor_price: this.props.sponsorItem.sponsor_price,
+            sponsor_description: this.props.sponsorItem.sponsor_description
 
         })
     }
@@ -38,8 +38,8 @@ class SponsorItem extends Component {
     }
 
     handleDelete = () => {
-        this.props.dispatch({ type: "DELETE", payload: this.props.sponsorItem.id })
-        window.location.reload();
+        this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem})
+        // window.location.reload();
         // without this reload the undeleted sponsors disappear to
     }
 
@@ -66,7 +66,7 @@ class SponsorItem extends Component {
             <Grid justify="center" container item md={12}>
             <Grid item md={2}>{this.props.sponsorItem.sponsor_image_url ? 
             <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                <StarsIcon minWidth="100px"></StarsIcon>}
+                <StarsIcon></StarsIcon>}
                 </Grid>
                 <Grid container item md={7}>
 
