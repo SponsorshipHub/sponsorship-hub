@@ -12,7 +12,8 @@ class Nav extends Component {
     return (
       <div className="nav">
         <Link to="/home">
-          <h2 className="nav-title">Sponsorship Hub</h2>
+          <img src='./images/logo_white_drop_shadow.png' height="55vh" alt="Sponsorship Hub Logo"/>
+          {/* <h2 className="nav-title">Sponsorship Hub</h2> */}
         </Link>
         <div className="nav-right">
           <Link className="nav-link" to="/home">
