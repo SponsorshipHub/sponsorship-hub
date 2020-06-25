@@ -44,7 +44,7 @@ class Event extends Component {
                 </Grid>
                 <Grid container justify="space-evenly">
                     <Grid item md={4} sm={10}>
-                        <Box className="DemoBackground" p={2}>
+                        <Box className={classes.eventTextBoxes} p={2}>
                             {/* event_description */}
                             <Typography>
                                 {this.props.oneEvent.event_description} 
