@@ -57,8 +57,7 @@ class CreateDemo extends Component {
             this.state.resident1 + this.state.resident2 === 100
         ){
             console.log("ALL 100");
-            
-        this.props.dispatch({ type: 'ADD_DEMOGRAPHICS', payload:this.state })
+            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state })
         } else {
             console.log('not ALL 100');
             
