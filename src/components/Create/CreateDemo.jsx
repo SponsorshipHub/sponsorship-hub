@@ -36,7 +36,7 @@ class CreateDemo extends Component {
     }
 
     backClick = () => {
-        this.props.history.push('/create-sponsor')
+        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
@@ -57,8 +57,7 @@ class CreateDemo extends Component {
             this.state.resident1 + this.state.resident2 === 100
         ){
             console.log("ALL 100");
-            
-        this.props.dispatch({ type: 'ADD_DEMOGRAPHICS', payload:this.state, history:this.props.history})
+            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state })
         } else {
             console.log('not ALL 100');
             
@@ -80,7 +79,7 @@ class CreateDemo extends Component {
 
             <Box>
                 <Typography align="center" variant="h2">Enter Demographics</Typography>
-                {/* Begin Gender Dempgraphic Inputs */}
+                {/* Begin Gender Demographic Inputs */}
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
