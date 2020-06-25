@@ -15,7 +15,7 @@ class CreateEvent extends Component {
     state = {
         newVenue: false,
         venue_id: '',
-        event_name: '',
+        event_name: 'Test',
         year_established: null,
         start_date: '',
         end_date: '',
@@ -51,8 +51,10 @@ class CreateEvent extends Component {
     };
 
     componentDidMount = () => {
-        console.log('componentDidMount: FETCH_VENUES')
-        this.props.dispatch({ type: 'FETCH_VENUES' }) /* Gets all the venues */
+        document.title = "Sponsorship Hub - Edit Event"; // Sets browser's title
+        this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id }); /* Gets one event */
+        this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
+        this.setState({ event_name: this.props.oneEvent.event_name });
     }
 
     handleChange = (event, property) => {
@@ -61,16 +63,16 @@ class CreateEvent extends Component {
     }
 
     nextClick = () => {
-        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
-        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
-        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
-        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+        // if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
+        // else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
+        // else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
+        // else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
+        // else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
         // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-        this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
+        // this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
         console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
         // PUSHES TO the NEW ID
-        // this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
+        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }
 
     venueSelect(event) {
@@ -145,12 +147,12 @@ class CreateEvent extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);
-
+        console.log('CURRENTLY EDITING EVENT:', this.props.oneEvent);
         return (
             <>
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
-                        <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
+                        <Grid item xs={12} md={4}><h1>Edit {this.props.oneEvent.event_name} Event</h1></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
 
@@ -159,7 +161,7 @@ class CreateEvent extends Component {
                     <Box mb={2}>
                         <Grid justify="center" container spacing={2}>
                             <Grid item xs={12} md={4}>
-                                <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Event Name</span> <span className={classes.red}>*</span></>} placeholder="Name of the Event" onChange={(event) => this.handleChange(event, 'event_name')} />
+                                <TextField value={this.state.event_name} fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Event Name</span> <span className={classes.red}>*</span></>} placeholder="Name of the Event" onChange={(event) => this.handleChange(event, 'event_name')} />
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')} />
@@ -468,7 +470,8 @@ CreateEvent.propTypes = { classes: PropTypes.object.isRequired };
 // Destructures reduxState to pull venues only.
 const putStateOnProps = reduxState => ({
     venues: reduxState.venues,
-    currentEvent: reduxState.currentEvent
+    currentEvent: reduxState.currentEvent,
+    oneEvent: reduxState.oneEvent
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(CreateEvent));
