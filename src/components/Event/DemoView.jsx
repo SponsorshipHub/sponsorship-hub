@@ -8,7 +8,7 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
-import {PieChart, Pie, Sector, Cell, Label} from 'recharts';
+import {PieChart, Pie, Sector, Cell, LabelList, Label} from 'recharts';
 
 import '../App/App.css';
 
@@ -63,18 +63,48 @@ class DemoView extends Component {
 
                         </Grid>
                     </Grid>
-                    <Grid container justify="space-evenly">
-                        <Grid item md={8}>
+                    <Grid container justify="center">
+                        <Grid item md={10}>
                             <Grid container>
                                 <Grid item md={6} sm={8} xs={8}>
+                    {/* ----------------- AGE ------------------- */}
                                     <h4>Age Ranges</h4>
-                                    <PieChart width={400} height={400}>
-                                        
+                                    <PieChart width={360} height={210}>
                                         <Pie data={this.state.age}
-                                            cx={200}
-                                            cy={200}
+                                            cx={170}
+                                            cy={95}
                                             labelLine
-                                            label
+                                            
+                                            label={({
+                                                cx,
+                                                cy,
+                                                midAngle,
+                                                innerRadius,
+                                                outerRadius,
+                                                value,
+                                                index
+                                            }) => {
+                                                console.log("handling label?");
+                                                const RADIAN = Math.PI / 180;
+                                                // eslint-disable-next-line
+                                                const radius = 25 + innerRadius + (outerRadius - innerRadius);
+                                                // eslint-disable-next-line
+                                                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                                                // eslint-disable-next-line
+                                                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                                                return (
+                                                    <text
+                                                        x={x}
+                                                        y={y}
+                                                        fill="#8884d8"
+                                                        textAnchor={x > cx ? "start" : "end"}
+                                                        dominantBaseline="central"
+                                                    >
+                                                        {this.state.age[index].age_range} ({value}%)
+                                                    </text>
+                                                );
+                                            }}
                                             outerRadius={80}
                                             fill="#8884d8"
                                             dataKey='age_percentage'
@@ -83,37 +113,97 @@ class DemoView extends Component {
                                             {this.state.age.map((entry, i) => 
                                                 <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
                                             )}
-                                            <Label content={this.state.age.age_range} value={this.state.age.age} />
                                         </Pie>
                                     </PieChart>
                                    
                                 </Grid>
                                 <Grid item md={6} sm={8} xs={8}>
+                   {/* ----------------- INCOME ------------------- */}
                                     <h4>Household Income</h4>
-                                    <PieChart width={400} height={400}>
+                                    <PieChart width={485} height={210}>
                                         <Pie data={this.state.income}
-                                            cx={200}
-                                            cy={200}
+                                            cx={230}
+                                            cy={105}
                                             labelLine
-                                            label
+                                            outerRadius={100}
+                                            label={({
+                                                cx,
+                                                cy,
+                                                midAngle,
+                                                innerRadius,
+                                                outerRadius,
+                                                value,
+                                                index
+                                            }) => {
+                                                console.log("handling label?");
+                                                const RADIAN = Math.PI / 180;
+                                                // eslint-disable-next-line
+                                                const radius = 25 + innerRadius + (outerRadius - innerRadius);
+                                                // eslint-disable-next-line
+                                                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                                                // eslint-disable-next-line
+                                                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                                                return (
+                                                    <text
+                                                        x={x}
+                                                        y={y}
+                                                        fill="#8884d8"
+                                                        textAnchor={x > cx ? "start" : "end"}
+                                                        dominantBaseline="central"
+                                                    >
+                                                        {this.state.income[index].income_range} ({value}%)
+                                                    </text>
+                                                );
+                                            }}
                                             outerRadius={80}
                                             fill="#8884d8"
                                             dataKey='income_percentage'>
 
-                                            {this.state.age.map((entry, i) =>
+                                            {this.state.income.map((entry, i) =>
                                                 <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
                                 </Grid>
                                 <Grid item md={6} sm={8} xs={8}>
+                    {/* ----------------- GENDER ------------------- */}
                                     <h4>Gender</h4>
-                                    <PieChart width={400} height={400}>
+                                    <PieChart width={360} height={250}>
                                         <Pie data={this.state.gender}
-                                            cx={200}
-                                            cy={200}
+                                            cx={165}
+                                            cy={120}
                                             labelLine
-                                            label
+                                            label={({
+                                                cx,
+                                                cy,
+                                                midAngle,
+                                                innerRadius,
+                                                outerRadius,
+                                                value,
+                                                index
+                                            }) => {
+                                                console.log("handling label?");
+                                                const RADIAN = Math.PI / 180;
+                                                // eslint-disable-next-line
+                                                const radius = 25 + innerRadius + (outerRadius - innerRadius);
+                                                // eslint-disable-next-line
+                                                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                                                // eslint-disable-next-line
+                                                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                                                return (
+                                                    <text
+                                                        x={x}
+                                                        y={y}
+                                                        fill="#8884d8"
+                                                        textAnchor={x > cx ? "start" : "end"}
+                                                        dominantBaseline="central"
+                                                    >
+                                                        {this.state.gender[index].gender} ({value}%)
+                                                    </text>
+                                                );
+                                            }}
                                             outerRadius={80}
                                             fill="#8884d8"
                                             dataKey='gender_percentage'>
@@ -125,14 +215,43 @@ class DemoView extends Component {
                                     </PieChart>
                                 </Grid>
                                 <Grid item md={6} sm={8} xs={8}>
+                   {/* ----------------- RESIDENCY ------------------- */}
                                     <h4>Attendees Location</h4>
-                                    <PieChart width={400} height={400}>
+                                    <PieChart width={320} height={250}>
                                         <Pie data={this.state.residency}
-                                            cx={200}
-                                            cy={200}
+                                            cx={170}
+                                            cy={120}
                                             labelLine
-                                            label
-                                            // nameKey={this.props.residency.residency}
+                                            label={({
+                                                cx,
+                                                cy,
+                                                midAngle,
+                                                innerRadius,
+                                                outerRadius,
+                                                value,
+                                                index
+                                            }) => {
+                                                console.log("handling label?");
+                                                const RADIAN = Math.PI / 180;
+                                                // eslint-disable-next-line
+                                                const radius = 25 + innerRadius + (outerRadius - innerRadius);
+                                                // eslint-disable-next-line
+                                                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                                                // eslint-disable-next-line
+                                                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                                                return (
+                                                    <text
+                                                        x={x}
+                                                        y={y}
+                                                        fill="#8884d8"
+                                                        textAnchor={x > cx ? "start" : "end"}
+                                                        dominantBaseline="central"
+                                                    >
+                                                        {this.state.residency[index].residency} ({value}%)
+                                                    </text>
+                                                );
+                                            }}
                                             outerRadius={80}
                                             fill="#8884d8"
                                             dataKey='residency_percentage'>

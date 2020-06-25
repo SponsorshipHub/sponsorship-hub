@@ -69,7 +69,7 @@ const styles = {
         color: 'red'
     },
     sponsorshipIcon: {
-        maxWidth: '100px' //Alan had sponsor_image, does the same thing
+        maxWidth: '100px' 
     }
 }
 
