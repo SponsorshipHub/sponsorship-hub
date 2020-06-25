@@ -98,10 +98,13 @@ class ResultPage extends Component {
         this.setState({ maxSponsorPrice: event.target.value });
     };//end handleMaxSponsorPrice
 
+    /// waiting for karl /// HOUSE HOLD INCOME SEARCH
+
 
     //handleFilter will filter the adv search
     handleFilter = () => {
         console.log('clicked on filter for advanced search');
+        this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state})
     };//end handleFilter
 
     render() {

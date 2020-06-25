@@ -9,6 +9,10 @@ const results = (state = [], action) => {
         return action.payload;
     }
     // GET results for adv search
+    else if (action.type === 'GET_ADV_RESULTS'){
+        return action.payload
+    }
+    
     return state;
 };//end results
 
