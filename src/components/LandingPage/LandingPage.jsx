@@ -97,9 +97,9 @@ class LandingPage extends Component {
                     <Grid container justify="space-evenly">
                         {this.props.landing.map(events =>
                             <Box key={events.id}>
-                                <Card variant="outlined" className={classes.landCard}>
+                                <Card variant="outlined" className={classes.landCard} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
-                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} onClick={(event) => this.handleEvent(events)} />
+                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
                                     </CardContent>
                                     <CardContent>
                                         <Typography>{events.event_name}</Typography>
