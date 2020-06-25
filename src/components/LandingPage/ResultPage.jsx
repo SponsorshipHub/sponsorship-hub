@@ -115,7 +115,6 @@ class ResultPage extends Component {
                                 <Grid item xs={12} md={1}><Button className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
                             </Grid>
                         </Grid>
-                  
                     {/* END ADVANCED FILTER */}
                 </Box>
                 {/* BEGIN RESULTS DISPLAY */}
@@ -124,7 +123,7 @@ class ResultPage extends Component {
                     <Grid container justify="space-evenly">
                         <Grid item md={12}><Typography className={classes.landSearchTitle}>RESULTS</Typography></Grid>
                         <Grid item md={3}>
-                            <Card onClick={() => this.props.history.push('/event')}>
+                            <Card>
                                 <CardContent>
                                     <Typography>FEATURE</Typography>
                                 </CardContent>

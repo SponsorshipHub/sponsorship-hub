@@ -1,11 +1,9 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-//import authentication - this way only users with access can see ( protects server side ).
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 //GET router for the landing page to display limit 6 events
-router.get('/', rejectUnauthenticated, (req, res) => {
+router.get('/', (req, res) => {
     console.log('in /landing GET');
     let queryString = `
         SELECT * FROM "event"
