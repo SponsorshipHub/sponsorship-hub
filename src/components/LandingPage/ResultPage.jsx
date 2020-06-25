@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Input, TypeDate, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Card, CardContent, CardMedia } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -11,13 +11,10 @@ class ResultPage extends Component {
 
     state = {
         openType: false,
-        month: '',
         type: '',
-        minAttend: 0,
-        maxAttend: 0,
-        sponsorPriceMin: 0,
-        sponsorPriceMax: 0,
-        income: 0
+        state: '',
+        startD: '',
+        endD: ''
     };//end state
 
     componentDidMount() {
@@ -46,6 +43,33 @@ class ResultPage extends Component {
         this.props.history.push(`/event/${events.id}`)
     };//end handleEvent
 
+    //handleState allows the user to type in a state search
+    handleState = (event) => {
+        console.log('changing State in advanced search:', event.target.value);
+        //change value of state in our states
+        this.setState({ state: event.target.value })
+    };//end handleState
+
+    //handleStartD allows user to type select start date
+    handleStartD = (event) => {
+        console.log('selected START date:', event.target.value);
+        // change the data of startD
+        this.setState({ startD: event.target.value });
+    };//end handleStartD
+
+    //handleEndD allows user to type select end date
+    handleEndD = (event) => {
+        console.log('selected END date:', event.target.value);
+        // change the data of endD
+        this.setState({ endD: event.target.value });
+    };//end handleStartD
+
+
+
+    //handleFilter will filter the adv search
+    handleFilter = () => {
+        console.log('clicked on filter for advanced search');
+    };//end handleFilter
 
     render() {
         // allows us to connect this.props to styles 
@@ -62,15 +86,15 @@ class ResultPage extends Component {
                             <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
                             {/* state and month selector options */}
                             <Grid container justify="center" spacing={2}>
-                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="state" /></Grid>
+                                <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} fullWidth={true} label="State" /></Grid>
                                 {/* month selector with date text fields */}
                                 <Grid item xs={12} md={2}>
                                     <InputLabel>search start date</InputLabel>
-                                    <TextField type="date" />
+                                    <TextField onChange={(event) => this.handleStartD(event)} type="date" />
                                 </Grid>
                                 <Grid item xs={12} md={2}>
                                     <InputLabel>search end date</InputLabel>
-                                    <TextField type="date" />
+                                <TextField onChange={(event) => this.handleEndD(event)} type="date" />
                                 </Grid>
                             </Grid>
 
@@ -118,7 +142,7 @@ class ResultPage extends Component {
                             </Grid>
                             {/* button grid that centers it */}
                             <Grid container justify="center" spacing={2}>
-                                <Grid item xs={12} md={1}><Button className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
+                                <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
                             </Grid>
                         </Grid>
                     {/* END ADVANCED FILTER */}
