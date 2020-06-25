@@ -36,7 +36,7 @@ class CreateDemo extends Component {
     }
 
     backClick = () => {
-        this.props.history.push('/create-sponsor')
+        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
