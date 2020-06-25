@@ -29,11 +29,11 @@ class CreateSponsor extends Component {
     }
 
     backClick = () => {
-        this.props.history.push('/create-event')
+        this.props.history.push(`/event/edit/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
-        this.props.history.push('/create-demo')
+        this.props.history.push(`/create-demo/${this.props.match.params.id}`)
     }
 
     handleChange = (event, property) => {
@@ -58,8 +58,7 @@ class CreateSponsor extends Component {
             sponsor_image_url: "",
             sponsor_description: ""
         });
-        window.location.reload();
-        // this is intended to clear the inputs and refresh the page with the added sponsor
+        
         console.log(this.state);
     }
    
@@ -93,32 +92,15 @@ class CreateSponsor extends Component {
                 </Box>
                 <Box>
                     <Typography align="center" variant="h2">Current Packages</Typography>
-
+{/* existing sponsorships display here */}
                     <Grid container >
                         {
                             this.props.sponsors.map(sponsorItem =>
                                 <SponsorItem key={sponsorItem.id} sponsorItem={sponsorItem} />)}
-                                {/* <Grid justify="center" container item key={sponsorItem.id} md={12}>
-                                    <Grid item md={2}><img className={classes.sponsorshipIcon} src={sponsorItem.sponsor_image_url}/></Grid>
-                                    <Grid container item md={7}>
 
-                                        <Grid container item md={4}>
-                                            <Grid item md={12}><Typography>{sponsorItem.sponsor_name}</Typography></Grid>
-                                            <Grid item md={12}><Typography>{sponsorItem.sponsor_price}</Typography></Grid>
-                                        </Grid>
-                                        
-                                        <Grid item md={8}><Typography>{sponsorItem.sponsor_description}</Typography></Grid>
-                                    </Grid>
-                                    <Grid item md={2}><EditIcon onClick={this.toggleEdit}></EditIcon><DeleteIcon onClick={this.handleDelete}></DeleteIcon></Grid>
-                                    
-                                </Grid>)
-
-                        */}
                        
                     </Grid>
           
-
-                    {/* display sponsorships go here */}
                     <Box mx={10} spacing={3}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>

@@ -12,6 +12,8 @@ import styles from '../Style/Style';
 class CreateDemo extends Component {
 
     state = {
+        id: this.props.match.params.id,
+        //the id needs to come over from the origin page to identify the event
         gender1: 0,
         gender2: 0,
         gender3: 0,
@@ -34,7 +36,7 @@ class CreateDemo extends Component {
     }
 
     backClick = () => {
-        this.props.history.push('/create-sponsor')
+        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
@@ -48,12 +50,30 @@ class CreateDemo extends Component {
         }); 
     }
 
-    componentDidUpdate
-    // having async issues with this, not sure the best way to resolve
-
+    handleSubmit = () => {
+        if (this.state.gender1 + this.state.gender2 + this.state.gender3 === 100 &&
+            this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7 === 100 &&
+            this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7 === 100 &&
+            this.state.resident1 + this.state.resident2 === 100
+        ){
+            console.log("ALL 100");
+            
+        this.props.dispatch({ type: 'ADD_DEMOGRAPHICS', payload:this.state, history:this.props.history})
+        } else {
+            console.log('not ALL 100');
+            
+        }
+      
+        // this will need to be also send the user to the created events page on a succesful post
+    }
 
 
     render() {
+        let genderPercent = this.state.gender1 + this.state.gender2 + this.state.gender3;
+        let incomePercent = this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7;
+        let agePercent = this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7;
+        let residentPercent = this.state.resident1 + this.state.resident2;
+        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -77,7 +97,7 @@ class CreateDemo extends Component {
                                 <TextField label="Other" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total: {this.state.gender1 + this.state.gender2 + this.state.gender3}%</Typography>
+                                <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent }>Total: {genderPercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -112,7 +132,7 @@ class CreateDemo extends Component {
                                 <TextField label="$200,001 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total: {this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7}%</Typography>
+                                <Typography className={incomePercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {incomePercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -147,7 +167,7 @@ class CreateDemo extends Component {
                                 <TextField label="65 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age7')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography>Total: {this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7}%</Typography>
+                                <Typography className={agePercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {agePercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -167,7 +187,7 @@ class CreateDemo extends Component {
                                 <TextField label="Non-Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'resident2')}></TextField>
                             </Grid>
                             <Grid item md={1} sm={12}>
-                                <Typography>Total: {this.state.resident1 + this.state.resident2}%</Typography>
+                                <Typography className={residentPercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {residentPercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -180,7 +200,7 @@ class CreateDemo extends Component {
                         </Grid>
                         <Grid item md={3}></Grid>
                         <Grid item md={3} sm={6}>
-                            <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.forwardClick}>Submit</Button>
+                            <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.handleSubmit}>Submit</Button>
                         </Grid>
                     </Grid>
 
