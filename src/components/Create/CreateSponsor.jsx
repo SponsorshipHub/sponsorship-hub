@@ -21,7 +21,6 @@ class CreateSponsor extends Component {
         sponsor_price: "",
         sponsor_image_url: "",
         sponsor_description: "",
-        viewOrEdit: "",
 
     }
 
@@ -46,9 +45,10 @@ class CreateSponsor extends Component {
 
     }
 
-    handleDelete = () => {
-        this.props.dispatch({ type: "DELETE", payload: this.state})
-    }
+    // handleDelete = () => {
+    //     this.props.dispatch({ type: "DELETE", payload: this.props.sponsors.id})
+    // }
+    //I can't figure out how to identify and send the id of the sponsorItem clicked, considering shipping it down to a component
 
     handleClick = () => {
         this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state })
@@ -62,7 +62,7 @@ class CreateSponsor extends Component {
         // this is intended to clear the inputs and refresh the page with the added sponsor
         console.log(this.state);
     }
-    // This needs to re-render the page with the inputs empty
+   
 
     render() {
         // allows us to connect this.props to styles 
@@ -78,7 +78,7 @@ class CreateSponsor extends Component {
                             <TextField fullWidth label="Package Name" defaultValue={this.state.default_sponsor_name} placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
                         </Grid>
                         <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Package Price" placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
+                            <TextField fullWidth label="Package Price" type="number" placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
                         </Grid>
                         <Grid item md={3} sm={9}>
                             <TextField fullWidth label="Image URL" placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
@@ -97,8 +97,8 @@ class CreateSponsor extends Component {
                     <Grid container >
                         {
                             this.props.sponsors.map(sponsorItem =>
-                                
-                                <Grid justify="center" container item key={sponsorItem.id} md={12}>
+                                <SponsorItem key={sponsorItem.id} sponsorItem={sponsorItem} />)}
+                                {/* <Grid justify="center" container item key={sponsorItem.id} md={12}>
                                     <Grid item md={2}><img className={classes.sponsorshipIcon} src={sponsorItem.sponsor_image_url}/></Grid>
                                     <Grid container item md={7}>
 
@@ -112,7 +112,9 @@ class CreateSponsor extends Component {
                                     <Grid item md={2}><EditIcon onClick={this.toggleEdit}></EditIcon><DeleteIcon onClick={this.handleDelete}></DeleteIcon></Grid>
                                     
                                 </Grid>)
-                        }
+
+                        */}
+                       
                     </Grid>
           
 
