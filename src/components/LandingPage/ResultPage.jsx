@@ -14,7 +14,11 @@ class ResultPage extends Component {
         type: '',
         state: '',
         startD: '',
-        endD: ''
+        endD: '',
+        minAttend: '',
+        maxAttend: '',
+        minSponsorPrice: '',
+        maxSponsorPrice: ''
     };//end state
 
     componentDidMount() {
@@ -64,6 +68,35 @@ class ResultPage extends Component {
         this.setState({ endD: event.target.value });
     };//end handleStartD
 
+    //handleType allows user to select type value which is a number
+    handleType = (event) => {
+        console.log('changing the event type:', event.target.value);
+        this.setState({ type: event.target.value })
+    };//end handleType
+
+    //handleMinAttend allows user to select minimum amount of attendees
+    handleMinAttend = (event) => {
+        console.log('changing minimum attendee:', event.target.value);
+        this.setState({ minAttend: event.target.value });
+    };//end handleMinAttend
+
+    //handleMaxAttend allows user to select maximum amount of attendees
+    handleMaxAttend = (event) => {
+        console.log('changing maximum attendee:', event.target.value);
+        this.setState({ maxAttend: event.target.value });
+    };//end handleMaxAttend
+
+    //handleMinSponsorPrice allows user to select minimum sponsorship price
+    handleMinSponsorPrice = (event) => {
+        console.log('changing minimum sponsorship price:', event.target.value);
+        this.setState({ minSponsorPrice: event.target.value });
+    };//end handleMinSponsorPrice
+
+    //handleMinSponsorPrice allows user to select maximum sponsorship price
+    handleMaxSponsorPrice = (event) => {
+        console.log('changing maximum sponsorship price:', event.target.value);
+        this.setState({ maxSponsorPrice: event.target.value });
+    };//end handleMaxSponsorPrice
 
 
     //handleFilter will filter the adv search
@@ -82,69 +115,69 @@ class ResultPage extends Component {
                 </Grid>
                 {/* section that holds the advanced search filters */}
                 <Box className={classes.box_grey}>
+                    <Grid container justify="center" spacing={2}>
+                        <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
+                        {/* state and month selector options */}
                         <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
-                            {/* state and month selector options */}
-                            <Grid container justify="center" spacing={2}>
-                                <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} fullWidth={true} label="State" /></Grid>
-                                {/* month selector with date text fields */}
-                                <Grid item xs={12} md={2}>
-                                    <InputLabel>search start date</InputLabel>
-                                    <TextField onChange={(event) => this.handleStartD(event)} type="date" />
-                                </Grid>
-                                <Grid item xs={12} md={2}>
-                                    <InputLabel>search end date</InputLabel>
+                            <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} fullWidth={true} label="State" /></Grid>
+                            {/* month selector with date text fields */}
+                            <Grid item xs={12} md={2}>
+                                <InputLabel>search start date</InputLabel>
+                                <TextField onChange={(event) => this.handleStartD(event)} type="date" />
+                            </Grid>
+                            <Grid item xs={12} md={2}>
+                                <InputLabel>search end date</InputLabel>
                                 <TextField onChange={(event) => this.handleEndD(event)} type="date" />
-                                </Grid>
-                            </Grid>
-
-                            {/* type and attendance selector options*/}
-                            <Grid container justify="center">
-                                {/* begin TYPE selector option */}
-                                <Grid item xs={12} md={4}>
-                                    <FormControl className={classes.advSearch} fullWidth={true}>
-                                        <InputLabel>Type</InputLabel>
-                                        <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
-                                            <MenuItem value={1}><em>Auto Show</em></MenuItem>
-                                            <MenuItem value={2}><em>Motorcycle Rally</em></MenuItem>
-                                            <MenuItem value={3}><em>Art Festival</em></MenuItem>
-                                            <MenuItem value={4}><em>City Festival</em></MenuItem>
-                                            <MenuItem value={5}><em>Film Festival</em></MenuItem>
-                                            <MenuItem value={6}><em>Beer Festival</em></MenuItem>
-                                            <MenuItem value={7}><em>Music Festival</em></MenuItem>
-                                            <MenuItem value={8}><em>Cultural Festival</em></MenuItem>
-                                            <MenuItem value={9}><em>Street Market Fest</em></MenuItem>
-                                            <MenuItem value={10}><em>Food & Wine Festival</em></MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid> {/* END TYPE SELECTOR */}
-                                {/* begin ATTENDANCE selector */}
-                                <Grid item xs={12} md={2} className={classes.advSearch}>
-                                    <TextField label="Min Attendees" />
-                                </Grid>
-                                <Grid item xs={12} md={2} className={classes.advSearch}>
-                                    <TextField label="Max Attendees" />
-                                </Grid>
-                                {/* END ATTENDANCE SELECTOR */}
-                            </Grid>
-
-                            {/* sponsorship cost and household income options */}
-                            <Grid container justify="center" spacing={2}>
-                                {/* begin SPONSORSHIP PRICE selector */}
-                                <Grid item xs={12} md={2}>
-                                    <TextField fullWidth={true} label="Min Sponsorship Price" />
-                                </Grid>
-                                <Grid item xs={12} md={2}>
-                                    <TextField fullWidth={true} label="Max Sponsorship Price" />
-                                </Grid>
-                                {/* END SPONSORSHIP PRICE SELECTOR */}
-                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="Household Income" /></Grid>
-                            </Grid>
-                            {/* button grid that centers it */}
-                            <Grid container justify="center" spacing={2}>
-                                <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
                             </Grid>
                         </Grid>
+
+                        {/* type and attendance selector options*/}
+                        <Grid container justify="center">
+                            {/* begin TYPE selector option */}
+                            <Grid item xs={12} md={4}>
+                                <FormControl className={classes.advSearch} fullWidth={true}>
+                                    <InputLabel>Type</InputLabel>
+                                    <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
+                                        <MenuItem value={1}><em>Auto Show</em></MenuItem>
+                                        <MenuItem value={2}><em>Motorcycle Rally</em></MenuItem>
+                                        <MenuItem value={3}><em>Art Festival</em></MenuItem>
+                                        <MenuItem value={4}><em>City Festival</em></MenuItem>
+                                        <MenuItem value={5}><em>Film Festival</em></MenuItem>
+                                        <MenuItem value={6}><em>Beer Festival</em></MenuItem>
+                                        <MenuItem value={7}><em>Music Festival</em></MenuItem>
+                                        <MenuItem value={8}><em>Cultural Festival</em></MenuItem>
+                                        <MenuItem value={9}><em>Street Market Fest</em></MenuItem>
+                                        <MenuItem value={10}><em>Food & Wine Festival</em></MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid> {/* END TYPE SELECTOR */}
+                            {/* begin ATTENDANCE selector */}
+                            <Grid item xs={12} md={2} className={classes.advSearch}>
+                                <TextField onChange={(event) => this.handleMinAttend(event)} label="Min Attendees" />
+                            </Grid>
+                            <Grid item xs={12} md={2} className={classes.advSearch}>
+                                <TextField onChange={(event) => this.handleMaxAttend(event)} label="Max Attendees" />
+                            </Grid>
+                            {/* END ATTENDANCE SELECTOR */}
+                        </Grid>
+
+                        {/* sponsorship cost and household income options */}
+                        <Grid container justify="center" spacing={2}>
+                            {/* begin SPONSORSHIP PRICE selector */}
+                            <Grid item xs={12} md={2}>
+                                <TextField onChange={(event) => this.handleMinSponsorPrice(event)} fullWidth={true} label="Min Sponsorship Price" />
+                            </Grid>
+                            <Grid item xs={12} md={2}>
+                                <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} fullWidth={true} label="Max Sponsorship Price" />
+                            </Grid>
+                            {/* END SPONSORSHIP PRICE SELECTOR */}
+                            <Grid item xs={12} md={4}><TextField fullWidth={true} label="Household Income" /></Grid>
+                        </Grid>
+                        {/* button grid that centers it */}
+                        <Grid container justify="center" spacing={2}>
+                            <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
+                        </Grid>
+                    </Grid>
                     {/* END ADVANCED FILTER */}
                 </Box>
                 {/* BEGIN RESULTS VIEW */}
