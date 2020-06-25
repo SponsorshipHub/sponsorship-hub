@@ -32,6 +32,10 @@ class Event extends Component {
                 <Box m={2}>
                     <Button onClick={()=>this.props.history.push('/results')} variant="outlined">Back to Results</Button>
                 </Box>
+                <Box m={2}>
+                    <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
+                </Box>
+
                 <Grid container justify="center">
                     <Grid item md={10}>
                         <h3>Event Overview</h3>
@@ -56,10 +60,10 @@ class Event extends Component {
                         {/* Sponsorship link */}
                         <a href={this.props.oneEvent.event_sponsorship_kit} target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a>
                         {/* estimated_attendance */}
-        <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
+                        <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
                         <OpenInNewIcon />
                         {/* event_website */}
-        <Typography display="inline">{this.props.oneEvent.event_website}</Typography>
+                        <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website}</a> </Typography>
                         <Box>
                             <PersonIcon />
                             <Typography display="inline">Contact Info</Typography>

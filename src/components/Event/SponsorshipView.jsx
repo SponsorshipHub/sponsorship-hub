@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Modal, Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -12,6 +12,7 @@ class SponsorshipView extends Component {
 
     state = {
         sponsorship: [],
+        openModal: false
     }
 
     componentDidUpdate(prevProps){
@@ -23,9 +24,22 @@ class SponsorshipView extends Component {
     }
 
 
+    handleOpen = () => {
+        if(this.openModal){
+            this.setState({
+                openModal: !this.state.openModal
+            })
+        }
+        else{
+            this.setState({
+                openModal: !this.state.openModal
+            })
+        }
+    }
+
     render() {
         // allows us to connect this.props to styles 
-        console.log(`Sponsorship: `, this.state.sponsorship);
+        console.log(`Sponsorship: `, this.state.openModal);
         
         const { classes } = this.props;
         return (
@@ -50,14 +64,26 @@ class SponsorshipView extends Component {
                                     </TableHead>
                                     <TableBody>
                                             {/* Will be populated my with map*/}
-                                            {/* {JSON.stringify(this.props.oneEvent.sponsorship)} */}
-
                                         {this.state.sponsorship.map(item => 
                                             <TableRow key={item.sponsorship_id}>
                                                 <TableCell><img className={classes.sponsorshipIcon} src={item.sponsor_image_url} alt={item.sponsor_name}/></TableCell>
                                                 <TableCell>{item.sponsor_name}</TableCell>
                                                 <TableCell>{item.sponsor_price}</TableCell>
-                                                <TableCell><Button variant="outlined">more</Button></TableCell>
+                                                <TableCell><Button variant="outlined" onClick={this.handleOpen.bind(this)}>more</Button></TableCell>
+
+                                                <Dialog open={this.state.openModal}
+                                                    onClose={this.handleOpen}
+                                                    aria-labelledby="simple-model-title"
+                                                    aria-describedby="simple-model-description"
+                                                    className={classes.modal}>
+                                                    <DialogTitle>
+                                                        Title
+                                                    </DialogTitle>
+                                                    <DialogContent>
+                                                        Content
+                                                    </DialogContent>
+                                                </Dialog>
+
                                             </TableRow>
                                         )}
                                     </TableBody>
