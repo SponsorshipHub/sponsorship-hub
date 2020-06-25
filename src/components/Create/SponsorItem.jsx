@@ -66,7 +66,7 @@ class SponsorItem extends Component {
             <Grid justify="center" container item md={12}>
             <Grid item md={2}>{this.props.sponsorItem.sponsor_image_url ? 
             <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                <StarsIcon minWidth="100px"></StarsIcon>}
+                <StarsIcon></StarsIcon>}
                 </Grid>
                 <Grid container item md={7}>
 
