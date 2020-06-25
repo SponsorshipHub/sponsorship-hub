@@ -33,7 +33,7 @@ class CreateSponsor extends Component {
     }
 
     forwardClick = () => {
-        this.props.history.push('/create-demo')
+        this.props.history.push(`/create-demo/${this.props.match.params.id}`)
     }
 
     handleChange = (event, property) => {

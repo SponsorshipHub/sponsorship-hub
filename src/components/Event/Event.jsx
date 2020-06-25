@@ -20,6 +20,7 @@ import Venue from './Venue';
 class Event extends Component {
 
     componentDidMount(){
+        document.title = "Sponsorship Hub - Event Page"; // Sets browser's title
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id})
         window.scrollTo(0, 0);
     }
