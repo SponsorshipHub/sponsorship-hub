@@ -79,14 +79,22 @@ const styles = {
     },
     modal: {
         // position: 'absolute',
-        width: 400,
-        backgroundColor: '#eaeced',
+        minWidth: 400,
+        // backgroundColor: '#eaeced',
         // border: '2px solid #000',
         boxShadow: 2,
         padding: 5,
         margin: 'auto',
-        marginTop: '50vh'
-    }
+        marginTop: '10vh'
+    },
+    modalImg: {
+        maxWith: '300'
+    },
+    eventTextBoxes:{
+        minHeight: '100px',
+        borderRadius: '.8em',
+        backgroundColor: '#eaeced',
+    },
 }
 
 export default styles;
