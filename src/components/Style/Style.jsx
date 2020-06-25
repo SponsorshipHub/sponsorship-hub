@@ -95,6 +95,9 @@ const styles = {
         borderRadius: '.8em',
         backgroundColor: '#eaeced',
     },
+    coral: {
+        color: '#F45255'
+    }
 }
 
 export default styles;
