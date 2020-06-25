@@ -1,7 +1,11 @@
 const results = (state = [], action) => {
     console.log('---------> in resultsReducer');
     // get data for results page
-    if (action.type === 'GET_RESULTS') {
+    if (action.type === 'GET_DEFAULT_RESULTS'){
+        return action.payload;
+    }
+    //GET RESULTS ON SEARCH
+    else if (action.type === 'GET_RESULTS') {
         return action.payload;
     }
     return state;

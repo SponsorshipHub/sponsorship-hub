@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Input, TypeDate, Card, CardContent } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Input, TypeDate, Card, CardContent, CardMedia } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -40,6 +40,12 @@ class ResultPage extends Component {
         this.setState({ type: event.target.value })
     };//end handleAttendance
 
+    // handleEvent allows the user to go to the page of the event on click
+    handleEvent = (events) => {
+        console.log('take me to the event', events);
+        this.props.history.push(`/event/${events.id}`)
+    };//end handleEvent
+
 
     render() {
         // allows us to connect this.props to styles 
@@ -54,9 +60,9 @@ class ResultPage extends Component {
                 <Box className={classes.box_grey}>
                         <Grid container justify="center" spacing={2}>
                             <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
-                            {/* location and month selector options */}
+                            {/* state and month selector options */}
                             <Grid container justify="center" spacing={2}>
-                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="Location" /></Grid>
+                                <Grid item xs={12} md={4}><TextField fullWidth={true} label="state" /></Grid>
                                 {/* month selector with date text fields */}
                                 <Grid item xs={12} md={2}>
                                     <InputLabel>search start date</InputLabel>
@@ -117,35 +123,28 @@ class ResultPage extends Component {
                         </Grid>
                     {/* END ADVANCED FILTER */}
                 </Box>
-                {/* BEGIN RESULTS DISPLAY */}
-                <Box>
-                    {/* origin grid wrapper */}
+                {/* BEGIN RESULTS VIEW */}
+                {/* section that holds mapped EVENTS */}
+                <Box bm={2}>
+                    <Typography variant="h4" align="center">Events</Typography>
+                    {/* BEGIN GRID */}
                     <Grid container justify="space-evenly">
-                        <Grid item md={12}><Typography className={classes.landSearchTitle}>RESULTS</Typography></Grid>
-                        <Grid item md={3}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item md={3}>
-                            <Card>
-                                <CardContent>
-                                    <Typography>FEATURE</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
+                        {this.props.results.map(events =>
+                            <Box key={events.id}>
+                                <Card variant="outlined" className={classes.landCard} onClick={(event) => this.handleEvent(events)}>
+                                    <CardContent>
+                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
+                                    </CardContent>
+                                    <CardContent>
+                                        <Typography>{events.event_name}</Typography>
+                                    </CardContent>
+                                </Card>
+                            </Box>
+                        )}
+                        {/* end of mapping for landing page GET */}
                     </Grid>
-                    {/* end original grid wrapper */}
                 </Box>
+                {/* end of mapped data */}
                 {/* END RESULTS DISPLAY */}
             </Box>
         )//end return
@@ -155,5 +154,7 @@ class ResultPage extends Component {
 // PropTypes allows us to import style.jsx for use
 ResultPage.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
-export default connect()(withStyles(styles)(ResultPage));
+const putStateOnProps = reduxState => ({
+    results: reduxState.results
+});
+export default connect(putStateOnProps)(withStyles(styles)(ResultPage));

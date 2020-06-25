@@ -4,7 +4,22 @@ const router = express.Router();
 //import authentication - this way only users with access can see ( protects server side ).
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-//GET router for results
+//GET router for DEFAULT results on load
+router.get('/', rejectUnauthenticated, (req, res) => {
+    console.log('in /results GET default');
+    let queryString = `
+        SELECT * FROM "event"
+        ORDER BY "start_date" DESC;
+    `;
+    pool.query(queryString).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('error in /results GET default:', error);
+        res.sendStatus(500);
+    });//end pool query 
+});// end default get ROUTER
+
+//GET router for search results
 router.get('/:location/:start/:end', rejectUnauthenticated, (req, res) => {
     console.log('in /results GET', req.params.location, 'start:', req.params.start, 'end:', req.params.end);
     let location = req.params.location;
