@@ -51,6 +51,7 @@ class CreateEvent extends Component {
     };
 
     componentDidMount = () => {
+        document.title = "Sponsorship Hub - Create Event"; // Sets browser's title
         console.log('componentDidMount: FETCH_VENUES')
         this.props.dispatch({ type: 'FETCH_VENUES' }) /* Gets all the venues */
     }
