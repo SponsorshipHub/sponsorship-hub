@@ -1,4 +1,6 @@
 // Reducer for GET current event - Utilized by CreateEvent.jsx
+// LOOK INTO DELETING??
+
 
 const currentEventReducer = (state = {}, action) => {
     switch (action.type) {

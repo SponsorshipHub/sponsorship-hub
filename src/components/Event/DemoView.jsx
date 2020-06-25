@@ -35,23 +35,7 @@ class DemoView extends Component {
         }
     }
 
-    renderCustomizedLabel = ({
-        cx, cy, midAngle, innerRadius, outerRadius, percent, index,
-    }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * this.state.RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * this.state.RADIAN);
-
-        return(
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        )
-    }
-
-    render() {
-        console.log(`Age Demo:`, this.state);
-        
+    render() {        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -69,10 +53,10 @@ class DemoView extends Component {
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- AGE ------------------- */}
                                     <h4>Age Ranges</h4>
-                                    <PieChart width={360} height={210}>
+                                    <PieChart width={460} height={310}>
                                         <Pie data={this.state.age}
-                                            cx={170}
-                                            cy={95}
+                                            cx={220}
+                                            cy={150}
                                             labelLine
                                             
                                             label={({
@@ -84,7 +68,6 @@ class DemoView extends Component {
                                                 value,
                                                 index
                                             }) => {
-                                                console.log("handling label?");
                                                 const RADIAN = Math.PI / 180;
                                                 // eslint-disable-next-line
                                                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
@@ -120,10 +103,10 @@ class DemoView extends Component {
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- INCOME ------------------- */}
                                     <h4>Household Income</h4>
-                                    <PieChart width={485} height={210}>
+                                    <PieChart width={560} height={310}>
                                         <Pie data={this.state.income}
-                                            cx={230}
-                                            cy={105}
+                                            cx={235}
+                                            cy={150}
                                             labelLine
                                             outerRadius={100}
                                             label={({
@@ -135,7 +118,6 @@ class DemoView extends Component {
                                                 value,
                                                 index
                                             }) => {
-                                                console.log("handling label?");
                                                 const RADIAN = Math.PI / 180;
                                                 // eslint-disable-next-line
                                                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
@@ -169,10 +151,10 @@ class DemoView extends Component {
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- GENDER ------------------- */}
                                     <h4>Gender</h4>
-                                    <PieChart width={360} height={250}>
+                                    <PieChart width={460} height={350}>
                                         <Pie data={this.state.gender}
-                                            cx={165}
-                                            cy={120}
+                                            cx={240}
+                                            cy={130}
                                             labelLine
                                             label={({
                                                 cx,
@@ -183,7 +165,6 @@ class DemoView extends Component {
                                                 value,
                                                 index
                                             }) => {
-                                                console.log("handling label?");
                                                 const RADIAN = Math.PI / 180;
                                                 // eslint-disable-next-line
                                                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
@@ -217,9 +198,9 @@ class DemoView extends Component {
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- RESIDENCY ------------------- */}
                                     <h4>Attendees Location</h4>
-                                    <PieChart width={320} height={250}>
+                                    <PieChart width={520} height={350}>
                                         <Pie data={this.state.residency}
-                                            cx={170}
+                                            cx={250}
                                             cy={120}
                                             labelLine
                                             label={({
@@ -231,7 +212,6 @@ class DemoView extends Component {
                                                 value,
                                                 index
                                             }) => {
-                                                console.log("handling label?");
                                                 const RADIAN = Math.PI / 180;
                                                 // eslint-disable-next-line
                                                 const radius = 25 + innerRadius + (outerRadius - innerRadius);
