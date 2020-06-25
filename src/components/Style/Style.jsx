@@ -86,6 +86,9 @@ const styles = {
         padding: 5,
         margin: 'auto',
         marginTop: '50vh'
+    },
+    coral: {
+        color: '#45255'
     }
 }
 

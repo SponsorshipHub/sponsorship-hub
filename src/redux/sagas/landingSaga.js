@@ -6,7 +6,7 @@ function* landingSaga(){
     yield takeLatest('FETCH_LANDING', getLanding);
     yield takeLatest('FETCH_RESULTS', getResults);
     yield takeLatest('FETCH_DEFAULT_RESULTS', getDefaultResults);
-    yield takeLatest('FETCH_ADV_RESULTS', getAdvResults)
+    yield takeLatest('FETCH_ADV_RESULTS', getAdvResults);
 };//end landingSaga
 
 // generator functions
