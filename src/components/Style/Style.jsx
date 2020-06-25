@@ -76,6 +76,7 @@ const styles = {
     },
     badPercent: {
         color: 'red'
+    },
     modal: {
         // position: 'absolute',
         width: 400,
