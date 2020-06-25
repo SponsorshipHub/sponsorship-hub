@@ -88,7 +88,7 @@ const styles = {
         marginTop: '50vh'
     },
     coral: {
-        color: '#45255'
+        color: '#F45255'
     }
 }
 
