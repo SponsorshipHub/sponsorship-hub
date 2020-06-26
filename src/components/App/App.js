@@ -11,10 +11,20 @@ import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
 import CreateDemo from '../Create/CreateDemo';
 import EditEvent from '../Create/EditEvent';
-
+import Event from '../Event/Event';
 //style for app
 import './App.css';
-import Event from '../Event/Event';
+import { MuiThemeProvider } from '@material-ui/core/';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+
+const mainTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#F45255',
+    }
+  }
+});
 
 class App extends Component {
   componentDidMount () {
@@ -23,6 +33,7 @@ class App extends Component {
 
   render() {
     return (
+      <MuiThemeProvider theme={mainTheme}>
       <Router>
         <div>
           <Nav />
@@ -50,7 +61,7 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
-      </Router>
+        </Router></MuiThemeProvider>
   )}
 }
 
