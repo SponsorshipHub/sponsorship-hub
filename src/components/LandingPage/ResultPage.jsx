@@ -12,13 +12,13 @@ class ResultPage extends Component {
     state = {
         openType: false,
         type: '',
-        state: '',
-        startD: '',
-        endD: '',
-        minAttend: '',
-        maxAttend: '',
-        minSponsorPrice: '',
-        maxSponsorPrice: ''
+        state: 'null',
+        startD: 'null',
+        endD: 'null',
+        minAttend: 'null',
+        maxAttend: 'null',
+        minSponsorPrice: 'null',
+        maxSponsorPrice: 'null'
     };//end state
 
     componentDidMount() {
