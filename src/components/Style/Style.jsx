@@ -129,13 +129,13 @@ const styles = {
     },
     modal: {
         // position: 'absolute',
-        minWidth: 400,
+        minWidth: '400px',
         // backgroundColor: '#eaeced',
         // border: '2px solid #000',
-        boxShadow: 2,
-        padding: 5,
+        boxShadow: '0px 0px 1px 2px',
+        padding: '5px',
         margin: 'auto',
-        marginTop: '10vh'
+        marginTop: '10vh',
     },
     modalImg: {
         maxWith: '300'
