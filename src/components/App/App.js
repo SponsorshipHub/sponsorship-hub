@@ -47,6 +47,7 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <Route exact path="/home" component={LandingPage}/>
+            <ProtectedRoute exact path="/home/login" component={LandingPage}/>
             <ProtectedRoute exact path="/results" component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />

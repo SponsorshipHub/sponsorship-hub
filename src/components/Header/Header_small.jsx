@@ -14,13 +14,10 @@ class Header_small extends Component {
         const { classes } = this.props;
         return (
             <>
-                <div className={classes.header_small}>There's a box here full of information! There's a box here full of information!
-                There's a box here full of information!
-                There's a box here full of information!
-                There's a box here full of information!
-                There's a box here full of information!
-                There's a box here full of information!</div>
-                <Box className={classes.header_small_sizing}/>
+                <Box className={classes.header_small}>
+                    <Box className={classes.header_small_spacing}>Sponsorship Hub</Box>
+                </Box>
+                
             </>
         )//end return
     };//end render

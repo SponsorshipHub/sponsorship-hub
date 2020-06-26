@@ -4,18 +4,19 @@ const styles = {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '25vh',
+        width: '100%',
         position: 'absolute',
         top: '0px',
-        zIndex: '-1'
+        zIndex: '-1',
+        color: 'white',
     },
     header_small_spacing: {
-        height: '25vh',
-    },
-    header: {
-        backgroundImage: `url(./images/header_darker.jpg)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: "40vh",
+        color: 'black',
+        minHeight: '25vh',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50 %, -50 %)',
     },
     landHead: {
         backgroundColor: '#DDE2EC',
