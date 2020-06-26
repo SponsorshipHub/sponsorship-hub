@@ -22,8 +22,6 @@ class LandingPage extends Component {
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
         this.props.dispatch({ type: 'FETCH_DEFAULT_RESULTS' });
-        // get our event types
-        this.props.dispatch({type: 'FETCH_EVENT_TYPES'});
     };//end componentDidMount
 
     handleSearch = () => {
