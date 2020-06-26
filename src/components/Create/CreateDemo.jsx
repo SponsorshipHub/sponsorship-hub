@@ -57,8 +57,8 @@ class CreateDemo extends Component {
             this.state.resident1 + this.state.resident2 === 100
         ){
             console.log("ALL 100");
-            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state })
-            this.props.history.push(`/event/${this.props.match.params.id}`)
+            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state, history:this.props.history })
+            // this.props.history.push(`/event/${this.props.match.params.id}`)
             //this push is happening too fast, only some information is ready to render and a refresh is necessary
         } else {
             console.log('not ALL 100');
