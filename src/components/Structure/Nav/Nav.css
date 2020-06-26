@@ -5,7 +5,9 @@
     color: #f2f2f2;
     padding-left: 10px;
 }
-
+#hoverLogo:hover {
+    content: url('./logo_coral_drop_shadow.png');
+}
 .nav {
   overflow: hidden;
   /* background-color: #00acb0; */

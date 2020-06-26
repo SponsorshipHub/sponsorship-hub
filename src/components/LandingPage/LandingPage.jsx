@@ -71,7 +71,7 @@ class LandingPage extends Component {
                 {/* temporary header */}
                 <Box className={classes.landHead}>
                     <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                    <Button className={classes.btn_submit} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>
+                    {this.props.user.access_level > 1 && <Button className={classes.btn_submit} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
                 </Box>
 
                 {/* section to hold search inputs */}
@@ -134,6 +134,7 @@ LandingPage.propTypes = { classes: PropTypes.object.isRequired };
 const putStateOnProps = reduxState => ({
     reduxState,
     landing: reduxState.landing,
+    user: reduxState.user,
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(LandingPage));

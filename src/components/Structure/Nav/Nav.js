@@ -13,7 +13,7 @@ class Nav extends Component {
     return (
       <div className="nav">
         <Link to="/home">
-          <img src='./images/logo_white_drop_shadow.png' height="55vh" alt="Sponsorship Hub Logo"/>
+          <img id="hoverLogo" src='./images/logo_white_drop_shadow.png' height="55vh" alt="Sponsorship Hub Logo"/>
           {/* <h2 className="nav-title">Sponsorship Hub</h2> */}
         </Link>
         <div className="nav-right">
@@ -24,6 +24,7 @@ class Nav extends Component {
           {this.props.user.id ? <Button>Home</Button> : <Button>Login / Register</Button>}
           </Link>
           {/* Show the link to the info page and the logout button if the user is logged in */}
+          {this.props.user.access_level === 3 && <Button>Admin</Button>}
           {this.props.user.id && (
             <>
               {/* <Link className="nav-link" to="/info">
