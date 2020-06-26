@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
-import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
+import { Divider, FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -150,6 +150,7 @@ class CreateEvent extends Component {
             <>
             <Header_small />
             <Box className={classes.header_margin_small} />
+            
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>

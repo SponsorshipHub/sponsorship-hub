@@ -71,7 +71,7 @@ class LandingPage extends Component {
             <Box>
                 {/* temporary header */}
                 <Header /><Box className={classes.header_margin} />
-                <Box>{this.props.user.access_level > 1 && <Button color="secondary" className={classes.btn_default} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
+                <Box>{this.props.user.access_level > 1 && <Button color="secondary" onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
                 
                 {/* <Box className={classes.landHead}>
                     <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>

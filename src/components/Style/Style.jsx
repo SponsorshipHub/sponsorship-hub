@@ -42,6 +42,7 @@ const styles = {
     },
     header_margin: {
         marginTop: '27vh',
+        // boxShadow: '2px 2px 2px 2px'
     },
     landHead: {
         backgroundColor: '#DDE2EC',
