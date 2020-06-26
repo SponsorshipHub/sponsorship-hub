@@ -59,7 +59,8 @@ const styles = {
         // }
     },
     box_grey: {
-        background: '#ECECEC', // Adds a grey box to the background
+        background: '#EAECED', // Color that Karl submitted
+        // background: '#ECECEC', // Adds a grey box to the background
         margin: '0px'
     },
     margin: {
