@@ -8,6 +8,7 @@ import currentEvent from './currentEventReducer';
 import sponsors from './sponsorReducer';
 import landing from './landingReducer';
 import results from './resultsReducer';
+import eventTypeReducer from './eventTypeReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   sponsors, //holds event specific sponsor information for add and edit pages.
   landing, //will hold event data
   results, //will hold data for results
+  eventTypeReducer, //will hold data for event types
 });
 
 export default rootReducer;

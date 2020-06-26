@@ -90,7 +90,7 @@ VALUES
     ('Beer Festival'),
     ('City Festival'),
     ('Cultural Festival'),
-    ('Film 	Festival'),
+    ('Film Festival'),
     ('Food & Wine Festival'),
     ('Motorcycle Rally'),
     ('Music Festival'),
