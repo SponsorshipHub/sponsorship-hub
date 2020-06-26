@@ -87,13 +87,13 @@ class CreateEvent extends Component {
     }
 
     nextClick = () => {
-        // if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
-        // else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
-        // else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
-        // else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        // else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
+        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
+        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
+        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
+        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
         // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-        // this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
+        this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
         console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
         // PUSHES TO the NEW ID
         this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
@@ -240,7 +240,7 @@ class CreateEvent extends Component {
                                     value={this.state.event_id}
                                     onChange={(event) => this.eventSelector(event)}>
                                     {this.props.types.map(types =>
-                                        <MenuItem key={types.id} value={types.id}><em>{types.type}</em></MenuItem>
+                                        <MenuItem key={types.id} value={types.id}>{types.type}</MenuItem>
                                     )}
                                 </Select>
                             </FormControl>
@@ -365,10 +365,10 @@ class CreateEvent extends Component {
                 <Box className={classes.margin}>
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} label="Website" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_website')} />
+                            <TextField value={this.state.event_website} multiline={true} label="Website" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_website')} />
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} label="Event Image" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_image_url')} />
+                            <TextField value={this.state.event_image_url} multiline={true} label="Event Image" placeholder="URL" fullWidth={true} onChange={(event) => this.handleChange(event, 'event_image_url')} />
                         </Grid>
                     </Grid>
 
@@ -393,14 +393,14 @@ class CreateEvent extends Component {
                             />No
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <TextField type="number" label={<><span>Estimated Attendance</span> <span className={classes.red}>*</span></>} placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')} />
+                            <TextField value={this.state.estimated_attendance} type="number" label={<><span>Estimated Attendance</span> <span className={classes.red}>*</span></>} placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')} />
                         </Grid>
                     </Grid>
 
                     {/* Row Start */}
                     <Grid justify="center" container spacing={4}>
                         <Grid item xs={12} md={8}>
-                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Event Description" placeholder="A short description of the event" onChange={(event) => this.handleChange(event, 'event_description')} />
+                            <TextField value={this.state.event_description} variant="outlined" fullWidth={true} multiline={true} label="Event Description" placeholder="A short description of the event" onChange={(event) => this.handleChange(event, 'event_description')} />
                         </Grid>
                     </Grid></Box>
 
@@ -415,20 +415,20 @@ class CreateEvent extends Component {
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Contact Name" placeholder="Name of Event Contact" onChange={(event) => this.handleChange(event, 'contact_name')} />
+                            <TextField value={this.state.contact_name} fullWidth={true} inputProps={{ maxLength: 255 }} label="Contact Name" placeholder="Name of Event Contact" onChange={(event) => this.handleChange(event, 'contact_name')} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Title" placeholder="Title or Occupation" onChange={(event) => this.handleChange(event, 'contact_title')} />
+                            <TextField value={this.state.contact_title} fullWidth={true} inputProps={{ maxLength: 255 }} label="Title" placeholder="Title or Occupation" onChange={(event) => this.handleChange(event, 'contact_title')} />
                         </Grid>
                     </Grid>
 
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label="Email Address" placeholder="Email Address" onChange={(event) => this.handleChange(event, 'contact_email')} />
+                            <TextField value={this.state.contact_email} fullWidth={true} inputProps={{ maxLength: 255 }} label="Email Address" placeholder="Email Address" onChange={(event) => this.handleChange(event, 'contact_email')} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <TextField fullWidth={true} label="Phone Number" placeholder="#" onChange={(event) => this.handleChange(event, 'contact_phone')} />
+                            <TextField value={this.state.contact_phone} fullWidth={true} label="Phone Number" placeholder="#" onChange={(event) => this.handleChange(event, 'contact_phone')} />
                         </Grid>
                     </Grid></Box>
                 </Box>
@@ -441,17 +441,17 @@ class CreateEvent extends Component {
                     </Grid>
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} fullWidth={true} InputProps={{
+                            <TextField value={this.state.event_facebook} multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.facebook.com/</InputAdornment>,
                             }} label={<><FacebookIcon /><span> Facebook</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_facebook')} />
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} fullWidth={true} InputProps={{
+                            <TextField value={this.state.event_instagram} multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.instagram.com/</InputAdornment>,
                             }} label={<><InstagramIcon /><span> Instagram</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_instagram')} />
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField multiline={true} fullWidth={true} InputProps={{
+                            <TextField value={this.state.event_twitter} multiline={true} fullWidth={true} InputProps={{
                                 startAdornment: <InputAdornment position="start">https://www.twitter.com/</InputAdornment>,
                             }} label={<><TwitterIcon /><span> Twitter</span></>} placeholder="social-tag" onChange={(event) => this.handleChange(event, 'event_twitter')} />
                         </Grid>
@@ -463,10 +463,10 @@ class CreateEvent extends Component {
                     {/* Row Start */}
                     <Grid justify="center" container spacing={2}>
                         <Grid item xs={12} md={8}>
-                            <TextField fullWidth={true} label="Sponsorship Kit" placeholder="URL" onChange={(event) => this.handleChange(event, 'event_sponsorship_kit')} />
+                            <TextField value={this.state.event_sponsorship_kit} fullWidth={true} label="Sponsorship Kit" placeholder="URL" onChange={(event) => this.handleChange(event, 'event_sponsorship_kit')} />
                         </Grid>
                         <Grid item xs={12} md={8}>
-                            <TextField variant="outlined" fullWidth={true} multiline={true} label="Additional Notes" placeholder="Further notes on the event" onChange={(event) => this.handleChange(event, 'event_notes')} />
+                            <TextField value={this.state.event_notes} variant="outlined" fullWidth={true} multiline={true} label="Additional Notes" placeholder="Further notes on the event" onChange={(event) => this.handleChange(event, 'event_notes')} />
                         </Grid>
                     </Grid></Box>
                 </Box>

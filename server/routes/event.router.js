@@ -71,4 +71,76 @@ router.post('/create/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
     })
 });
 
+// UPDATE ROUTE for ONE EVENT
+router.put('/update/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+    const r = req.body;
+    const venue_id = req.params.id;
+    console.log('REQ BODY FOR UPDATE IS:', r)
+    const query = `INSERT INTO "event" (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING id`
+    pool.query(query, [
+        r.event_name, 
+        r.year_established, 
+        r.start_date, 
+        r.end_date, 
+        r.event_image_url, 
+        r.event_website, 
+        r.event_status, 
+        r.estimated_attendance, 
+        r.event_notes, 
+        r.contact_name, 
+        r.contact_title, 
+        r.contact_email, 
+        r.contact_phone, 
+        r.event_facebook, 
+        r.event_twitter, 
+        r.event_instagram, 
+        r.event_description, 
+        venue_id
+    ]).then(result => {
+        console.log('New Event ID is:', result.rows[0])
+        res.send(result.rows[0]);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    })
+});
+
+
+/*
+state = {
+        newVenue: false,
+        venue_id: '',
+        event_name: 'Test',
+        year_established: null,
+        start_date: '',
+        end_date: '',
+        event_image_url: null,
+        event_website: 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
+        event_status: 'false',
+        event_type: '',
+        estimated_attendance: '',
+        event_notes: null,
+        contact_name: null,
+        contact_title: null,
+        contact_email: null,
+        contact_phone: null,
+        event_facebook: null,
+        event_instagram: null,
+        event_twitter: null,
+        event_description: null,
+        event_sponsorship_kit: null,
+        event_open: false, // Dropdowns
+        venue_open: false, // Dropdowns
+        state_open: false, // Dropdowns
+        venue_name: null,
+        venue_address: null,
+        venue_city: null,
+        venue_state: '',
+        venue_zipcode: null,
+        venue_notes: null,
+        venue_capacity: null,
+    }
+*/
+
 module.exports = router;
