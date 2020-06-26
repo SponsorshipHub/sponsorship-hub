@@ -4,6 +4,7 @@
 body {
     font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-color: rgba(245, 245, 245, 0.539);
 }
 
 .alert {
