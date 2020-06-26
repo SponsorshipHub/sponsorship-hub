@@ -19,7 +19,7 @@ class DemoView extends Component {
         gender: [],
         income: [],
         residency: [],
-        COLORS: ['#c0504e', '#9cbc58', '#2cbfaa', '#8064a1', '#4f81bc'],
+        COLORS: ['#f2a8a9', '#f68b8d', '#f46f71', '#f45255', '#f33e41', '#f42e32', '#f11a1e'],
         RADIAN: Math.PI / 180
     }
 
@@ -80,7 +80,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -130,7 +130,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -139,7 +139,7 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='income_percentage'>
 
                                             {this.state.income.map((entry, i) =>
@@ -177,7 +177,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -186,7 +186,7 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='gender_percentage'>
 
                                             {this.state.age.map((entry, i) =>
@@ -224,7 +224,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -233,7 +233,7 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='residency_percentage'>
 
                                             {this.state.age.map((entry, i) =>
