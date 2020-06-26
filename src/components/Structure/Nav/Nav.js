@@ -5,8 +5,6 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 
-// Tan Making Changes //
-
 class Nav extends Component {
 
   render() {

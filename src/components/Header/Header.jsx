@@ -12,9 +12,13 @@ class Header extends Component {
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
-        return (
-            <Grid><img src="../images/header_darker.jpg" width="100%" /></Grid>
-        )//end return
+        return (<>
+            <Box className={classes.header}>
+                <Box className={classes.header_spacing}>Sponsorship Hub</Box>
+            </Box>
+            
+            {/* <Grid><img src="../images/header_darker.jpg" width="100%" /></Grid> */}
+        </>)//end return
     };//end render
 };//end class
 

@@ -149,6 +149,7 @@ class CreateEvent extends Component {
         return (
             <>
             <Header_small />
+            <Box className={classes.header_margin_small} />
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
