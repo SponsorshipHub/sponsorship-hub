@@ -19,9 +19,14 @@ class DemoView extends Component {
         gender: [],
         income: [],
         residency: [],
-        COLORS: ['#f2a8a9', '#f68b8d', '#f46f71', '#f45255', '#f33e41', '#f42e32', '#f11a1e'],
+        COLORS: ['#F6CBCC', '#EFA1A2', '#F17A7C', '#f45255', '#D9373A', '#A01B1E', '#760E10'],
+        COLORS2: ['#C5DFFF', '#A7CEFF', '#6EA7F1', '#3F7FD2', '#296EC8', '#20549A', '#0D366C'],
+        COLORS3: ['#f45255', '#3F7FD2', '#FFAB18'],
+        COLORS4: ['#f45255', '#3F7FD2'],
         RADIAN: Math.PI / 180
     }
+
+    // f45255 - CORRAL
 
 
     componentDidUpdate(prevProps){
@@ -143,7 +148,7 @@ class DemoView extends Component {
                                             dataKey='income_percentage'>
 
                                             {this.state.income.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS2[i % this.state.COLORS2.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -190,7 +195,7 @@ class DemoView extends Component {
                                             dataKey='gender_percentage'>
 
                                             {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -237,7 +242,7 @@ class DemoView extends Component {
                                             dataKey='residency_percentage'>
 
                                             {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
                                             )}
                                             <Label value={this.state.residency.residency} position="outside" />
                                         </Pie>
