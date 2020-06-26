@@ -125,15 +125,15 @@ class ResultPage extends Component {
                         <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
                         {/* state and month selector options */}
                         <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} fullWidth={true} label="State" /></Grid>
+                            <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" /></Grid>
                             {/* month selector with date text fields */}
                             <Grid item xs={12} md={2}>
                                 <InputLabel>search start date</InputLabel>
-                                <TextField onChange={(event) => this.handleStartD(event)} type="date" />
+                                <TextField onChange={(event) => this.handleStartD(event)} defaultValue={this.props.match.params.startDate} type="date" />
                             </Grid>
                             <Grid item xs={12} md={2}>
                                 <InputLabel>search end date</InputLabel>
-                                <TextField onChange={(event) => this.handleEndD(event)} type="date" />
+                                <TextField onChange={(event) => this.handleEndD(event)} defaultValue={this.props.match.params.endDate} type="date" />
                             </Grid>
                         </Grid>
 
@@ -145,7 +145,7 @@ class ResultPage extends Component {
                                 <FormControl className={classes.advSearch} fullWidth={true}>
                                     <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
                                     {this.props.types.map(types => 
-                                            <MenuItem key={types.id} value={types.id}><em>{types.type}</em></MenuItem>
+                                            <MenuItem key={types.id} value={types.type}><em>{types.type}</em></MenuItem>
                                     )}
                                     </Select>
                                 </FormControl>
