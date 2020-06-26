@@ -5,7 +5,7 @@ const router = express.Router();
 
 //GET router for the landing page to display limit 6 events
 router.get('/', (req, res) => {
-    console.log('in /landing GET');
+    // console.log('in /landing GET');
     let queryString = `
         SELECT * FROM "event"
         ORDER BY "start_date" 
