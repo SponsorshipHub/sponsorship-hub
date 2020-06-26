@@ -24,6 +24,8 @@ class ResultPage extends Component {
     componentDidMount() {
         document.title = "Sponsorship Hub - Results"; // Sets browser's title
         console.log('ResultPage has been MOUNTED');
+        // get our event types
+        this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
     };//end componentDidMount
 
     handleOpen = () => {
@@ -139,24 +141,12 @@ class ResultPage extends Component {
                         <Grid container justify="center">
                             {/* begin TYPE selector option */}
                             <Grid item xs={12} md={4}>
+                                <InputLabel>Type</InputLabel>
                                 <FormControl className={classes.advSearch} fullWidth={true}>
-                                    <InputLabel>Type</InputLabel>
-                                    {/* {this.props.types.map(types => 
-                                        <Select key={}variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
-                                            <MenuItem value={types.id}><em>{types.event.type}</em></MenuItem>
-                                        </Select>
-                                    )} */}
                                     <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
-                                        <MenuItem value={1}><em>Art Festival</em></MenuItem>
-                                        <MenuItem value={2}><em>Auto Show</em></MenuItem>
-                                        <MenuItem value={3}><em>Beer Festival</em></MenuItem>
-                                        <MenuItem value={4}><em>City Festival</em></MenuItem>
-                                        <MenuItem value={5}><em>Cultural Festival</em></MenuItem>
-                                        <MenuItem value={6}><em>Film Festival</em></MenuItem>
-                                        <MenuItem value={7}><em>Food & Wine Festival</em></MenuItem>
-                                        <MenuItem value={8}><em>Motorcycle Rally</em></MenuItem>
-                                        <MenuItem value={9}><em>Music Festival</em></MenuItem>
-                                        <MenuItem value={10}><em>Street Market Fest</em></MenuItem>
+                                    {this.props.types.map(types => 
+                                            <MenuItem key={types.id} value={types.id}><em>{types.type}</em></MenuItem>
+                                    )}
                                     </Select>
                                 </FormControl>
                             </Grid> {/* END TYPE SELECTOR */}
