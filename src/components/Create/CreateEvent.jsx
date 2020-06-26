@@ -10,6 +10,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Header_small from '../Header/Header_small';
 
 class CreateEvent extends Component {
     state = { 
@@ -147,6 +148,7 @@ class CreateEvent extends Component {
 
         return (
             <>
+            <Header_small />
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
@@ -356,6 +358,7 @@ class CreateEvent extends Component {
                         <Grid item xs={12} md={2}>
                             <InputLabel>Cancelled?</InputLabel>
                             <Radio
+                                color="primary"
                                 checked={cancelValue === 'true'}
                                 onChange={this.cancelSelect}
                                 value='true'
@@ -363,6 +366,7 @@ class CreateEvent extends Component {
                                 inputProps={{ 'aria-label': 'TRUE' }}
                             />Yes
                             <Radio
+                                color="primary"
                                 checked={cancelValue === 'false'}
                                 onChange={this.cancelSelect}
                                 value='false'
