@@ -5,7 +5,7 @@ function* demoSaga(){
     yield takeLatest('ADD_DEMO', sendDemo);
 }
 
-//The POST
+//The Demographic POST
 function* sendDemo(action){
     console.log('in sendDemo', action.payload );
     try{
@@ -13,6 +13,7 @@ function* sendDemo(action){
         yield axios.post(`/demo/income`, action.payload);
         yield axios.post(`/demo/age`, action.payload);
         yield axios.post(`/demo/resident`, action.payload);
+        yield action.history.push(`/event/${action.payload.id}`)
 //may need to add a FETCH call here if we want to review and edit
     }catch(error){
         console.log('add demo failed', error);

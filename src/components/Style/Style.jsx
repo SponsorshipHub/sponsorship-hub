@@ -117,6 +117,10 @@ const styles = {
     sponsorshipIcon: {
         maxWidth: '100px' 
     },
+    sponsorshipIconSmall: {
+        maxWidth: '75px'
+    },
+
     goodPercent: {
         color: 'green'
     },

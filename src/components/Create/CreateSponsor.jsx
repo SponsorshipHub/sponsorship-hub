@@ -96,7 +96,7 @@ class CreateSponsor extends Component {
                     <Grid container >
                         {
                             this.props.sponsors.map(sponsorItem =>
-                                <SponsorItem key={sponsorItem.id} sponsorItem={sponsorItem} />)}
+                                <SponsorItem key={sponsorItem.id} sponsorItem={sponsorItem} match={this.props.match}/>)}
 
                        
                     </Grid>
