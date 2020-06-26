@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import SponsorshipPackage from './SponsorshipPackage';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -12,61 +13,26 @@ class SponsorshipView extends Component {
 
     state = {
         sponsorship: [],
-        openModal: false
+        openModal: false,
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.oneEvent.sponsorship != this.props.oneEvent.sponsorship){
+    componentDidUpdate(prevProps) {
+        if (prevProps.oneEvent.sponsorship != this.props.oneEvent.sponsorship) {
             this.setState({
                 sponsorship: this.props.oneEvent.sponsorship
             })
         }
     }
 
-
-    handleOpen = (item, classes) => {
-        if(this.openModal){
-            this.setState({
-                openModal: !this.state.openModal
-            })
-        }
-        else{
-            this.setState({
-                openModal: !this.state.openModal
-            })
-        }
-
-        return(
-            <Dialog open={this.state.openModal}
-                onClose={this.handleOpen}
-                aria-labelledby="simple-model-title"
-                aria-describedby="simple-model-description"
-                className={classes.modal}
-                >
-                <DialogTitle>
-                    <Typography variant='h2'>{item.sponsor_name}</Typography>
-                    <Typography variant='h4'>Price: ${item.sponsor_price}</Typography>
-                </DialogTitle>
-                <DialogContent>
-                    <Paper>
-                        <img className={classes.modalImg} src={item.sponsor_image_url} alt={item.sponsor_name} />
-                        <DialogContentText>
-
-                        </DialogContentText>
-                    </Paper>
-                </DialogContent>
-            </Dialog>
-        )
-    }
-
     render() {
         // allows us to connect this.props to styles 
         console.log(`Sponsorship: `, this.state.openModal);
-        
+        console.log('BREAKING POINT', this.props);
+
         const { classes } = this.props;
         return (
             <Box my={2}>
-                <Divider className="venue"/>
+                <Divider className="venue" />
                 <Grid container justify="space-evenly">
                     <Grid item md={10}>
                         <h2>Sponsorship</h2>
@@ -86,15 +52,36 @@ class SponsorshipView extends Component {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                            {/* Will be populated my with map*/}
-                                        {this.state.sponsorship.map(item => 
-                                            <TableRow key={item.sponsorship_id}>
-                                                <TableCell><img className={classes.sponsorshipIcon} src={item.sponsor_image_url} alt={item.sponsor_name}/></TableCell>
-                                                <TableCell>{item.sponsor_name}</TableCell>
-                                                <TableCell>${item.sponsor_price}</TableCell>
-                                                <TableCell><Button variant="outlined" onClick={() => this.handleOpen(item, classes)}>more</Button></TableCell>
-                                            </TableRow>
+                                        
+                                        {/* Will be populated my with map*/}
+                                        {this.state.sponsorship.map(item =>
+                                            <SponsorshipPackage item={item} />
                                         )}
+                                        {/* <Dialog open={this.state.openModal}
+                                            onClose={this.handleOpen}
+                                            aria-labelledby="simple-model-title"
+                                            aria-describedby="simple-model-description"
+                                            className={classes.modal}
+                                        > */}
+                                        {/* {this.props.oneEvent.sponsorship.filter(sponsorship => sponsorship.sponsorship_id === this.state.sponsorshipId).map(filterSponsor => (
+                                                <DialogTitle>
+                                                    <Typography>{filterSponsor.sponsor_name}</Typography>
+                                                </DialogTitle>
+                                            ))} */}
+                                        {/* <DialogTitle>
+                                                <Typography>HELLO THERE</Typography>
+                                                <Typography variant='h2'>{this.props.oneEvent.sponsorship[1].sponsor_name}</Typography>
+                                                {/* <Typography variant='h4'>Price: ${item.sponsor_price}</Typography> */}
+                                        {/* </DialogTitle> */}
+                                        {/* <DialogContent> */}
+                                        {/* <Paper> */}
+                                        {/* <img className={classes.modalImg} src={item.sponsor_image_url} alt={item.sponsor_name} /> */}
+                                        {/* <DialogContentText> */}
+                                        {/* </DialogContentText> */}
+                                        {/* </Paper> */}
+                                        {/* </DialogContent> */}
+                                        {/* </Dialog> */}
+                                        
                                     </TableBody>
                                 </Table>
                             </TableContainer>

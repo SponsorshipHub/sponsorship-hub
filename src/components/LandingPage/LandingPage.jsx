@@ -11,9 +11,9 @@ import Header from '../Header/Header';
 class LandingPage extends Component {
 
     state = {
-        startDate: 'null',
-        endDate: 'null',
-        state: 'null',
+        startDate: null,
+        endDate: null,
+        state: null,
     };//end state
 
     componentDidMount() {
@@ -36,7 +36,7 @@ class LandingPage extends Component {
             return
         };//end if statement
         // on click of the search button, the user will be taken to the results view page
-        this.props.history.push('/results');
+        this.props.history.push(`/results/${this.state.state}/${this.state.startDate}/${this.state.endDate}`);
         // send our inputs to our results view page
         this.props.dispatch({ type: 'FETCH_RESULTS', payload: this.state })
     };//end handleSearch

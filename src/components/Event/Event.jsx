@@ -31,7 +31,7 @@ class Event extends Component {
         return (
             <Box>
                 <Box m={2}>
-                    <Button onClick={()=>this.props.history.push('/results')} variant="outlined">Back to Results</Button>
+                    <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
                 </Box>
                 <Box m={2}>
                     <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>

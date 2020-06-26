@@ -19,9 +19,14 @@ class DemoView extends Component {
         gender: [],
         income: [],
         residency: [],
-        COLORS: ['#c0504e', '#9cbc58', '#2cbfaa', '#8064a1', '#4f81bc'],
+        COLORS: ['#F6CBCC', '#EFA1A2', '#F17A7C', '#f45255', '#D9373A', '#A01B1E', '#760E10'],
+        COLORS2: ['#C5DFFF', '#A7CEFF', '#6EA7F1', '#3F7FD2', '#296EC8', '#20549A', '#0D366C'],
+        COLORS3: ['#f45255', '#3F7FD2', '#FFAB18'],
+        COLORS4: ['#f45255', '#3F7FD2'],
         RADIAN: Math.PI / 180
     }
+
+    // f45255 - CORRAL
 
 
     componentDidUpdate(prevProps){
@@ -80,7 +85,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -130,7 +135,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -139,11 +144,11 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='income_percentage'>
 
                                             {this.state.income.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS2[i % this.state.COLORS2.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -177,7 +182,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -186,11 +191,11 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='gender_percentage'>
 
                                             {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -224,7 +229,7 @@ class DemoView extends Component {
                                                     <text
                                                         x={x}
                                                         y={y}
-                                                        fill="#8884d8"
+                                                        fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
@@ -233,11 +238,11 @@ class DemoView extends Component {
                                                 );
                                             }}
                                             outerRadius={80}
-                                            fill="#8884d8"
+                                            fill="#000000"
                                             dataKey='residency_percentage'>
 
                                             {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
                                             )}
                                             <Label value={this.state.residency.residency} position="outside" />
                                         </Pie>
