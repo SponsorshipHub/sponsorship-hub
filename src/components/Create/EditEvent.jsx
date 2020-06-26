@@ -10,6 +10,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+const moment = require('moment');
 
 class CreateEvent extends Component {
     state = {
@@ -52,9 +53,32 @@ class CreateEvent extends Component {
 
     componentDidMount = () => {
         document.title = "Sponsorship Hub - Edit Event"; // Sets browser's title
+        this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id }); /* Gets one event */
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
-        this.setState({ event_name: this.props.oneEvent.event_name });
+        this.setState({ 
+            newVenue: false,
+            venue_id: this.props.oneEvent.venue_id,
+            event_name: this.props.oneEvent.event_name,
+            year_established: this.props.oneEvent.year_established,
+            start_date: this.props.oneEvent.start_date,
+            end_date: this.props.oneEvent.end_date,
+            event_image_url: this.props.oneEvent.event_image_url,
+            event_website: this.props.oneEvent.event_website,
+            event_status: String(this.props.oneEvent.event_status),
+            event_type: this.props.oneEvent.type_id,
+            estimated_attendance: this.props.oneEvent.estimated_attendance,
+            event_notes: this.props.oneEvent.event_notes,
+            contact_name: this.props.oneEvent.contact_name,
+            contact_title: this.props.oneEvent.contact_title,
+            contact_email: this.props.oneEvent.contact_email,
+            contact_phone: this.props.oneEvent.contact_phone,
+            event_facebook: this.props.oneEvent.event_facebook,
+            event_instagram: this.props.oneEvent.event_instagram,
+            event_twitter: this.props.oneEvent.event_twitter,
+            event_description: this.props.oneEvent.event_description,
+            event_sponsorship_kit: this.props.oneEvent.event_sponsorship_kit,
+        });
     }
 
     handleChange = (event, property) => {
@@ -94,7 +118,7 @@ class CreateEvent extends Component {
     eventSelector = (event) => {
         console.log('You have set the event type to:', event.target.value);
         this.setState({
-            event_type: event.target.value
+            event_type: event.target.value,
         })
     }  // SELECTOR EVENT TYPE END
 
@@ -147,12 +171,14 @@ class CreateEvent extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);
-        console.log('CURRENTLY EDITING EVENT:', this.props.oneEvent);
+        let start_date = moment(this.state.start_date).format(`YYYY-MM-DD`);
+        let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
+        console.log('DATES ARE:', start_date, end_date)
         return (
             <>
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
-                        <Grid item xs={12} md={4}><h1>Edit {this.props.oneEvent.event_name} Event</h1></Grid>
+                        <Grid item xs={12} md={4}><h1>Editing {this.props.oneEvent.event_name}</h1></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
 
@@ -164,7 +190,7 @@ class CreateEvent extends Component {
                                 <TextField value={this.state.event_name} fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Event Name</span> <span className={classes.red}>*</span></>} placeholder="Name of the Event" onChange={(event) => this.handleChange(event, 'event_name')} />
                             </Grid>
                             <Grid item xs={12} md={4}>
-                                <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')} />
+                                <TextField value={this.state.year_established} inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')} />
                             </Grid>
                         </Grid>
                     </Box>
@@ -175,11 +201,11 @@ class CreateEvent extends Component {
                             <Grid item md={2}></Grid>
                             <Grid item xs={12} md={4}>
                                 <InputLabel>Start Date <span className={classes.red}>*</span></InputLabel>
-                                <TextField type="date" placeholder="Start Date" onChange={(event) => this.handleChange(event, 'start_date')} />
+                                <TextField value={start_date} type="date" placeholder="Start Date" onChange={(event) => this.handleChange(event, 'start_date')} />
                             </Grid>
                             <Grid item xs={12} md={4}>
                                 <InputLabel>End Date <span className={classes.red}>*</span></InputLabel>
-                                <TextField type="date" placeholder="End Date" onChange={(event) => this.handleChange(event, 'end_date')} />
+                                <TextField value={end_date} type="date" placeholder="End Date" onChange={(event) => this.handleChange(event, 'end_date')} />
                             </Grid>
                             <Grid item md={2}></Grid>
                         </Grid>
@@ -211,18 +237,11 @@ class CreateEvent extends Component {
                                     open={this.state.event_open}
                                     onClose={this.eventClose}
                                     onOpen={this.eventOpen}
-                                    value={this.state.event_type}
+                                    value={this.state.event_id}
                                     onChange={(event) => this.eventSelector(event)}>
-                                    <MenuItem value={1}>Art Festival</MenuItem>
-                                    <MenuItem value={2}>Auto Show</MenuItem>
-                                    <MenuItem value={3}>Beer Festival</MenuItem>
-                                    <MenuItem value={4}>City Show</MenuItem>
-                                    <MenuItem value={5}>Cultural Festival</MenuItem>
-                                    <MenuItem value={6}>Film Show</MenuItem>
-                                    <MenuItem value={7}>Food & Wine Festival</MenuItem>
-                                    <MenuItem value={8}>Motorcycle Rally</MenuItem>
-                                    <MenuItem value={9}>Music Festival</MenuItem>
-                                    <MenuItem value={10}>Street Market Festival</MenuItem>
+                                    {this.props.types.map(types =>
+                                        <MenuItem key={types.id} value={types.id}><em>{types.type}</em></MenuItem>
+                                    )}
                                 </Select>
                             </FormControl>
                         </Grid>
@@ -471,7 +490,8 @@ CreateEvent.propTypes = { classes: PropTypes.object.isRequired };
 const putStateOnProps = reduxState => ({
     venues: reduxState.venues,
     currentEvent: reduxState.currentEvent,
-    oneEvent: reduxState.oneEvent
+    oneEvent: reduxState.oneEvent,
+    types: reduxState.eventType
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(CreateEvent));
