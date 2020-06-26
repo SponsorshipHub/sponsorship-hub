@@ -10,9 +10,9 @@ const results = (state = [], action) => {
     }
     // GET results for adv search
     else if (action.type === 'GET_ADV_RESULTS'){
-        return action.payload
+        console.log('YOU HAVE GOTTEN ADVANCED RESULTS', action.payload);
+        return action.payload;
     }
-    
     return state;
 };//end results
 
