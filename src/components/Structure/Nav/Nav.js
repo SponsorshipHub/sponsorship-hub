@@ -19,10 +19,10 @@ class Nav extends Component {
             {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-          {this.props.user.id ? <Button>Home</Button> : <Button>Login / Register</Button>}
+            {this.props.user.id ? <Button color="primary">Home</Button> : <Button color="primary">Login / Register</Button>}
           </Link>
           {/* Show the link to the info page and the logout button if the user is logged in */}
-          {this.props.user.access_level === 3 && <Button>Admin</Button>}
+          {this.props.user.access_level === 3 && <Button color="primary">Admin</Button>}
           {this.props.user.id && (
             <>
               {/* <Link className="nav-link" to="/info">

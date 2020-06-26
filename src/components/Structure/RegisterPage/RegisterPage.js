@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Box } from '@material-ui/core';
+import Header_small from '../../Header/Header_small';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import styles from '../../Style/Style';
 
 class RegisterPage extends Component {
   state = {
@@ -30,8 +35,10 @@ class RegisterPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
+        <Header_small /><Box className={classes.header_margin} />
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -87,6 +94,9 @@ class RegisterPage extends Component {
   }
 }
 
+// PropTypes allows us to import style.jsx for use
+RegisterPage.propTypes = { classes: PropTypes.object.isRequired };
+
 // Instead of taking everything from state, we just want the error messages.
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({errors}) => ({ errors });
@@ -94,5 +104,5 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(RegisterPage);
+export default connect(mapStateToProps)(withStyles(styles)(RegisterPage));
 
