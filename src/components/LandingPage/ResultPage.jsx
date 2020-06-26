@@ -141,6 +141,11 @@ class ResultPage extends Component {
                             <Grid item xs={12} md={4}>
                                 <FormControl className={classes.advSearch} fullWidth={true}>
                                     <InputLabel>Type</InputLabel>
+                                    {/* {this.props.types.map(types => 
+                                        <Select key={}variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
+                                            <MenuItem value={types.id}><em>{types.event.type}</em></MenuItem>
+                                        </Select>
+                                    )} */}
                                     <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
                                         <MenuItem value={1}><em>Art Festival</em></MenuItem>
                                         <MenuItem value={2}><em>Auto Show</em></MenuItem>
@@ -216,6 +221,7 @@ class ResultPage extends Component {
 ResultPage.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    results: reduxState.results
+    results: reduxState.results,
+    types: reduxState.eventType
 });
 export default connect(putStateOnProps)(withStyles(styles)(ResultPage));
