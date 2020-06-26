@@ -82,103 +82,46 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
 router.get('/filter', rejectUnauthenticated, (req, res) => {
     console.log('TEST MEEEEEE', req.query)
 
-    let state = req.query.state
-    let start = req.query.start
-    let end = req.query.end
-    let type = req.query.type
-    let minAttend = req.query.minAttend
-    let maxAttend = req.query.maxAttend
-    let minSponsor = req.query.minSponsor
-    let maxSponsor = req.query.maxSponsor
+    let state = ''
+    let start = '1753-01-01'
+    let end = '3000-12-31'
+    let type = ''
+    let minAttend = 0
+    let maxAttend = 2147483647
+    let minSponsor = 0
+    let maxSponsor = 2147483647
     // console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
     // TEST SEARCH USING IF STATEMENT
 
-    let results = [
-    {state},
-    {start},
-    {end},
-    {type},
-    {minAttend},
-    {maxAttend},
-    {minSponsor},
-    {maxSponsor}];
-
-
-
-    let queryStart = `
-    SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
-    FROM "event"
-    FULL JOIN venues ON venues.id=event.venue_id
-    FULL JOIN sponsorships ON event.id=sponsorships.event_id
-    FULL JOIN junction_event_income ON "event".id = junction_event_income.event_id
-    FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
-    FULL JOIN event_type ON junction_event_type.type_id = event_type.id
-    `;
-
-    let newResult = [];
-
-    for(let search of results){
-        let placeholder = ''
-        if(results.indexOf(search) === 0){
-            let where = `WHERE `;
-            queryStart = queryStart + where;
-        }else if(placeholder !== queryStart){
-            let and = `AND `;
-            queryStart = queryStart + and;
-        }
-
-        if(search.state != 'null'){
-            let queryState = `state ILIKE $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryState;
-            newResult.push(search.state);
-        }
-        if(search.start != 'null'){
-            let queryStartDate = `start_date >= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryStartDate;
-            newResult.push(search.start);
-        }
-        if(search.end != 'null'){
-            let queryEnd = `end_date >= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryEnd;
-            newResult.push(search.end);
-        }
-        if(search.type != ''){
-            let queryType = `type_id = $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryType;
-            newResult.push(search.type);
-        }
-        if (search.minAttend != 'null'){
-            let queryMinAtt = `estimated_attendance >= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryMinAtt;
-            newResult.push(search.minAttend);
-        }
-        if (search.maxAttend != 'null'){
-            let queryMaxAtt = `estimated_attendance <= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryMaxAtt;
-            newResult.push(search.maxAttend);
-        }
-        if (search.minSponsor != 'null'){
-            let queryMinSponsor = `sponsor_price >= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryMinSponsor;
-            newResult.push(search.minSponsor);
-        }
-        if (search.maxSponsor != 'null'){
-            let queryMaxSponsor = `sponsor_price <= $${results.indexOf(search) + 1}`;
-            queryStart = queryStart + queryMaxSponsor;
-            newResult.push(search.maxSponsor);
-        }
-
-        placeholder = queryStart;
-
+    
+    if(req.query.state){
+        state = req.query.state;
     }
+    if(req.query.startD){
+        start = req.query.startD;
+    }
+    if(req.query.endD){
+        end = req.query.endD;
+    }
+    if(req.query.type != ''){
+        type = req.query.type;
+    }
+    if(req.query.minAttend){
+        minAttend = req.query.minAttend;
+    }
+    if(req.query.maxAttend){
+        maxAttend = req.query.maxAttend;
+    }
+    if(req.query.minSponsorPrice){
+        minSponsor = req.query.minSponsorPrice;
+    }
+    if(req.query.maxSponsorPrice){
+        maxSponsor = req.query.maxSponsorPrice;
+    }
+    
+    let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor];
 
-    console.log('test me', queryStart);
-    console.log('test me 2:', results);
-
-
-
-    if (state !== null || start !== null || end !== null || type !== '' || minAttend !== null || maxAttend !== null || minSponsor !== null || maxSponsor !== null) {
-        let queryString = `
+    let queryString = `
     SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
     FROM "event"
     FULL JOIN venues ON venues.id=event.venue_id
@@ -189,21 +132,20 @@ router.get('/filter', rejectUnauthenticated, (req, res) => {
     WHERE state ILIKE $1
     AND start_date >= $2
     AND end_date <= $3
-	AND type_id = $4
+	AND type ILIKE $4
 	AND estimated_attendance >= $5
 	AND estimated_attendance <= $6
 	AND sponsor_price >= $7
 	AND sponsor_price <= $8
     GROUP BY "event".id, venues.city, venues.state, event_type.type
     ;`
-        pool.query(queryString, [state, `%${start}%`, `%${end}%`, type, minAttend, maxAttend, minSponsor, maxSponsor]).then((result) => {
+        pool.query(queryString, results).then((result) => {
             // console.log('HELLOOOOO', result.rows)
             res.send(result.rows);
         }).catch((error) => {
             console.log('error with advanced filter results:', error);
             res.sendStatus(500);
         });//end pool query
-    }//end if statement
 });//end GET router for Advanced Search
 
 
