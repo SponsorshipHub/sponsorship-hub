@@ -19,7 +19,7 @@ class CreateSponsor extends Component {
         // hardcoded or MN State Fair, will need to change to the just created event in create or the selected event in edit
         sponsor_name: "",
         sponsor_price: "",
-        sponsor_image_url: "",
+        sponsor_image_url: "./images/sponsor_icon.png",
         sponsor_description: "",
 
     }
