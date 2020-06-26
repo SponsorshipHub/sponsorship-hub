@@ -15,8 +15,11 @@ class CreateDemo extends Component {
         id: this.props.match.params.id,
         //the id needs to come over from the origin page to identify the event
         gender1: 0,
+        female: 0,
         gender2: 0,
+        male: 0,
         gender3: 0,
+        other: 0,
         income1: 0,
         income2: 0,
         income3: 0,
@@ -88,6 +91,12 @@ class CreateDemo extends Component {
                             <Typography align="center" variant="h3">Gender</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
+                            {/* {this.props.oneEvent.gender.map(gender => 
+                                <Grid item md={3} sm={12}>
+                                    <TextField label={gender.gender} type="number" placeholder="%" defaultValue={gender.gender_percentage} onChange={(event) => this.handleChange(event, 'gender.gender')}></TextField>
+                                </Grid>
+                                )}; */}
+
                             <Grid item md={3} sm={12}>
                                 <TextField label="Female" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
                             </Grid>
@@ -214,6 +223,11 @@ class CreateDemo extends Component {
 
 // PropTypes allows us to import style.jsx for use
 CreateDemo.propTypes = { classes: PropTypes.object.isRequired };
+
+const mapStateToProps = state => ({
+    oneEvent: state.oneEvent,
+
+});
 
 // const putStateOnProps = reduxState => ({reduxState});
 export default connect()(withStyles(styles)(CreateDemo));
