@@ -32,7 +32,7 @@ class Venue extends Component {
                         </Box>
                     </Grid>
                     <Grid item md={4}>
-                        <Box p={2} my={2} className="venue">
+                        <Box p={2} my={2} className={classes.eventTextBoxes}>
                             {/* venue_notes */}
                             <Typography>
                                 {this.props.oneEvent.venue_notes}

@@ -19,7 +19,7 @@ class DemoView extends Component {
         gender: [],
         income: [],
         residency: [],
-        COLORS: ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'],
+        COLORS: ['#c0504e', '#9cbc58', '#2cbfaa', '#8064a1', '#4f81bc'],
         RADIAN: Math.PI / 180
     }
 
