@@ -23,7 +23,7 @@ function* editSponsor(action){
     console.log('in editSponsor', action.payload );
     try{
         yield axios.put(`/sponsor/edit`, action.payload);
-   yield put ({type: 'FETCH_SPONSORS', payload: action.payload});
+   yield put ({type: 'FETCH_SPONSORS', payload: action.payload.event_id});
     }catch(error){
         console.log('editSponsor failed/', error);
         
