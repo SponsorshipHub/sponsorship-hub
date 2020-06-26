@@ -78,14 +78,40 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
 router.get('/:state/:start/:end/:type/:minAttend/:maxAttend/:minSponsor/:maxSponsor', rejectUnauthenticated, (req, res) => {
     console.log('in /results for advanced search GET');
     let state = req.params.state
-    let start = req.params.startD
-    let end = req.params.endD
+    let start = req.params.start
+    let end = req.params.end
     let type = req.params.type
     let minAttend = req.params.minAttend
     let maxAttend = req.params.maxAttend
-    let minSponsor = req.params.minSponsorPrice
-    let maxSponsor = req.params.maxSponsorPrice
-    
+    let minSponsor = req.params.minSponsor
+    let maxSponsor = req.params.maxSponsor
+    // TEST SEARCH USING IF STATEMENT
+    if (state === '' || start === '' || end === '' || type === '' || minAttend === '' || maxAttend === '' || minSponsor === '' || maxSponsor === ''){
+        let queryString = `
+    SELECT event.id, event_name, start_date, end_date, city, state, event_image_url, "type", estimated_attendance, json_agg(DISTINCT jsonb_build_object('sponsor_price', sponsorships.sponsor_price)) AS sponsorships
+    FROM "event"
+    JOIN venues ON venues.id=event.venue_id
+    JOIN sponsorships ON event.id=sponsorships.event_id
+    JOIN junction_event_income ON "event".id = junction_event_income.event_id
+    JOIN junction_event_type ON junction_event_type.event_id = event.id
+    JOIN event_type ON junction_event_type.type_id = event_type.id
+    WHERE state = $1
+    AND start_date >= $2
+    AND end_date <= $3
+	AND type_id = $4
+	AND estimated_attendance >= $5
+	AND estimated_attendance <= $6
+	AND sponsor_price >= $7
+	AND sponsor_price <= $8
+    GROUP BY "event".id, venues.city, venues.state, event_type.type
+    ;`
+        pool.query(queryString, [state, `%${start}%`, `%${end}%`, type, minAttend, maxAttend, minSponsor, maxSponsor]).then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('error with advanced filter results:', error);
+            res.sendStatus(500);
+        });//end pool query
+    }//end if statement
 });//end GET router for Advanced Search
 
 
