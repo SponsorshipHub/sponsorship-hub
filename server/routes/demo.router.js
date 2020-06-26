@@ -72,26 +72,6 @@ router.post('/resident', (req, res) => {
         })
 });
 
-//     
-//     INSERT INTO junction_event_age
-//     (event_id, age_range_id, percentage)
-//     VALUES ($1, 1, $12), ($1, 2, $13), ($1, 3, $14), ($1, 4, $15), ($1, 5, $16), ($1, 6, $17), ($1, 7, $18);
-//     INSERT INTO junction_event_residency
-//     (event_id, residency_id, percentage)
-//     VALUES ($1, 1, $19), ($1, 2, $20);`;
-//     pool.query(queryText, 
-//         [req.body.id, 
-//         req.body.gender1, req.body.gender2, req.body.gender3,
-//         
-//         ,
-//         ])
-//         .then( result => {
-//             res.sendStatus(200);
-//         }).catch (error => {
-//             console.log('post Demo route has error', error);
-//             res.sendStatus(500);
-            
-//         })
 
     
 
