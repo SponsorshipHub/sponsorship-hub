@@ -1,4 +1,22 @@
 const styles = {
+    header_small: {
+        backgroundImage: `url(./images/header_darker_small.png)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '25vh',
+        position: 'absolute',
+        top: '0px',
+        zIndex: '-1'
+    },
+    header_small_spacing: {
+        height: '25vh',
+    },
+    header: {
+        backgroundImage: `url(./images/header_darker.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: "40vh",
+    },
     landHead: {
         backgroundColor: '#DDE2EC',
     },
