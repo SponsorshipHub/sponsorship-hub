@@ -1,15 +1,20 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+
+//import authentication - this way only users with access can see ( protects server side ).
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const { rejectLevel0 } = require('../modules/auth_lvl_0'); // Rejects level 0 [Unapproved]
 const { rejectLevel1 } = require('../modules/auth_lvl_1'); // Rejects level 1 and under [Brand]
 const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 and under [Researcher]
 
+
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     let query = `
     SELECT e.*, et.type, et.id AS type_id, v.*, json_agg(DISTINCT jsonb_build_object('sponsorship_id', s.id, 'sponsor_name', s.sponsor_name, 'sponsor_price', s.sponsor_price, 'sponsor_image_url', s.sponsor_image_url, 'sponsor_description', s.sponsor_description)) AS sponsorship, json_agg(DISTINCT jsonb_build_object('age_range_id', jea.age_range_id, 'age_percentage', jea.percentage, 'age_range', ar.age_range)) AS age, json_agg(DISTINCT jsonb_build_object('gender_id', g.id, 'gender', g.gender, 'gender_percentage', jeg.percentage)) AS gender, json_agg(DISTINCT jsonb_build_object('income_range_id', ir.id, 'income_range', ir.income_range, 'income_percentage', jei.percentage)) AS income, json_agg(DISTINCT jsonb_build_object('residency_id', r.id, 'residency', r.residency, 'residency_percentage', jer.percentage)) AS residency
     FROM event AS e
@@ -54,7 +59,11 @@ router.get('/:id', (req, res) => {
 /**
  * POST ONE New Event
  */
+
+router.post('/create/:id', rejectUnauthenticated, (req, res) => {
+
 router.post('/create/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+
     // console.log('Received from client, req.body:', req.body, 'req.params.id:',req.params.id)
     const venue_id = req.params.id;
     const r = req.body;
