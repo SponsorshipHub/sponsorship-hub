@@ -77,17 +77,19 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
     }
 });//end get Router for results landing page
 
+// : state /: start /: end /: type /: minAttend /: maxAttend /: minSponsor /: maxSponsor
 // GET router for ADVANCED SEARCH FILTER
-router.get('/:state/:start/:end/:type/:minAttend/:maxAttend/:minSponsor/:maxSponsor', rejectUnauthenticated, (req, res) => {
+router.get('/filter', rejectUnauthenticated, (req, res) => {
+    console.log('TEST MEEEEEE', req.query)
 
-    let state = req.params.state
-    let start = req.params.start
-    let end = req.params.end
-    let type = req.params.type
-    let minAttend = req.params.minAttend
-    let maxAttend = req.params.maxAttend
-    let minSponsor = req.params.minSponsor
-    let maxSponsor = req.params.maxSponsor
+    let state = req.query.state
+    let start = req.query.start
+    let end = req.query.end
+    let type = req.query.type
+    let minAttend = req.query.minAttend
+    let maxAttend = req.query.maxAttend
+    let minSponsor = req.query.minSponsor
+    let maxSponsor = req.query.maxSponsor
     // console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
     // TEST SEARCH USING IF STATEMENT
 
