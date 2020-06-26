@@ -7,6 +7,7 @@ function* landingSaga(){
     yield takeLatest('FETCH_RESULTS', getResults);
     yield takeLatest('FETCH_DEFAULT_RESULTS', getDefaultResults);
     yield takeLatest('FETCH_ADV_RESULTS', getAdvResults);
+    yield takeLatest('FETCH_EVENT_TYPES', eventTypes);
 };//end landingSaga
 
 // generator functions
@@ -78,5 +79,18 @@ function* getAdvResults(action){
         console.log('Error in getAdvResults saga')
     }
 };//end getAdvResults
+
+// this function gets our event types so we can map through our event type selectors
+function* eventTypes(){
+    try{
+        const response = yield axios.get(`/landing/event-types`);
+        yield put({
+            type: 'GET_EVENT_TYPES',
+            payload: response.data
+        })
+    }catch(err){
+        console.log('error in getting event types:', err)
+    }
+};//end eventTypes
 
 export default landingSaga;

@@ -9,7 +9,10 @@ function* demoSaga(){
 function* sendDemo(action){
     console.log('in sendDemo', action.payload );
     try{
-        yield axios.post(`/demo`, action.payload);
+        yield axios.post(`/demo/gender`, action.payload);
+        yield axios.post(`/demo/income`, action.payload);
+        yield axios.post(`/demo/age`, action.payload);
+        yield axios.post(`/demo/resident`, action.payload);
 //may need to add a FETCH call here if we want to review and edit
     }catch(error){
         console.log('add demo failed', error);
