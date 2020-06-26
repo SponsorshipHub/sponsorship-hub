@@ -6,6 +6,7 @@ import { Grid, Typography, TextField, Box, Button, Card, CardContent, InputLabel
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Header from '../Header/Header';
 
 class LandingPage extends Component {
 
@@ -69,10 +70,12 @@ class LandingPage extends Component {
         return (
             <Box>
                 {/* temporary header */}
-                <Box className={classes.landHead}>
+                <Header /><Box className={classes.header_margin} />
+                <Box>{this.props.user.access_level > 1 && <Button color="secondary" onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
+                
+                {/* <Box className={classes.landHead}>
                     <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                    {this.props.user.access_level > 1 && <Button className={classes.btn_submit} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
-                </Box>
+                </Box> */}
 
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>

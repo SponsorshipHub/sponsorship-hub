@@ -16,8 +16,7 @@ class Header_small extends Component {
             <>
                 <Box className={classes.header_small}>
                     <Box className={classes.header_small_spacing}>Sponsorship Hub</Box>
-                </Box>
-                
+                </Box>        
             </>
         )//end return
     };//end render

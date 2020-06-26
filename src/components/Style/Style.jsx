@@ -18,6 +18,32 @@ const styles = {
         left: '50%',
         transform: 'translate(-50 %, -50 %)',
     },
+    header: {
+        backgroundImage: `url(./images/header_darker.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '40vh',
+        width: '100%',
+        position: 'absolute',
+        top: '0px',
+        zIndex: '-1',
+        color: 'white',
+    },
+    header_spacing: {
+        color: 'black',
+        minHeight: '40vh',
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50 %, -50 %)',
+    },
+    header_margin_small: {
+        marginTop: '20vh',
+    },
+    header_margin: {
+        marginTop: '27vh',
+        // boxShadow: '2px 2px 2px 2px'
+    },
     landHead: {
         backgroundColor: '#DDE2EC',
     },
