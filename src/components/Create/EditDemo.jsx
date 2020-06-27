@@ -11,7 +11,7 @@ import styles from '../Style/Style';
 import Swal from 'sweetalert2';
 
 
-class CreateDemo extends Component {
+class EditDemo extends Component {
 
     state = {
         id: this.props.match.params.id,
@@ -49,7 +49,7 @@ class CreateDemo extends Component {
         this.setState({
             ...this.state,
             [property]: Number(event.target.value),
-        }); 
+        });
     }
 
     handleSubmit = () => {
@@ -57,9 +57,9 @@ class CreateDemo extends Component {
             this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7 === 100 &&
             this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7 === 100 &&
             this.state.resident1 + this.state.resident2 === 100
-        ){
+        ) {
             console.log("ALL 100");
-            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state, history:this.props.history })
+            this.props.dispatch({ type: 'ADD_DEMO', payload: this.state, history: this.props.history })
             // this.props.history.push(`/event/${this.props.match.params.id}`)
             //this push is happening too fast, only some information is ready to render and a refresh is necessary
         } else {
@@ -71,9 +71,9 @@ class CreateDemo extends Component {
                 footer: '<a href>Exit without submitting any demographic data</a>',
                 timer: 5000
             });
-            
+
         }
-      
+
         // this will need to be also send the user to the created events page on a succesful post
     }
 
@@ -83,7 +83,7 @@ class CreateDemo extends Component {
         let incomePercent = this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7;
         let agePercent = this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7;
         let residentPercent = this.state.resident1 + this.state.resident2;
-        
+
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -113,7 +113,7 @@ class CreateDemo extends Component {
                                 <TextField label="Other %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent }>Total: {genderPercent}%</Typography>
+                                <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {genderPercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -228,7 +228,7 @@ class CreateDemo extends Component {
 };//end class
 
 // PropTypes allows us to import style.jsx for use
-CreateDemo.propTypes = { classes: PropTypes.object.isRequired };
+EditDemo.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
     oneEvent: state.oneEvent,
@@ -236,4 +236,4 @@ const mapStateToProps = state => ({
 });
 
 // const putStateOnProps = reduxState => ({reduxState});
-export default connect(mapStateToProps)(withStyles(styles)(CreateDemo));
+export default connect(mapStateToProps)(withStyles(styles)(EditDemo));
