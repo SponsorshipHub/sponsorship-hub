@@ -28,14 +28,16 @@ class Event extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                <img className={classes.event_header} src={this.props.oneEvent.event_image_url}/>
-                <Box className={classes.event_margin} />
-                <Box m={2}>
-                    <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
+                <Box>
+                    <img className={classes.event_header} src={this.props.oneEvent.event_image_url}/>
+                    <Box className={classes.event_margin} />
+                    <Box m={2}>
+                        <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
+                    </Box>
+                    {this.props.user.access_level > 1 && <Box m={2}>
+                        <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
+                    </Box>}
                 </Box>
-                {this.props.user.access_level > 1 && <Box m={2}>
-                    <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
-                </Box>}
 
                 <Grid container justify="center">
                     <Grid item md={10}>
