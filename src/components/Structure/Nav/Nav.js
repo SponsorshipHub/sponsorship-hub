@@ -31,7 +31,7 @@ class Nav extends Component {
               {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
-              <Button color="primary" style={{ fontWeight: '500'}} onClick={()=>this.props.dispatch({ type: 'LOGOUT' })}>Logout</Button>
+              <Button color="primary" style={{ fontWeight: '500', textShadow: '0px 1px 2px black'}} onClick={()=>this.props.dispatch({ type: 'LOGOUT' })}>Logout</Button>
               {/* <LogOutButton className="nav-link" /> */}
             </>
           )}
