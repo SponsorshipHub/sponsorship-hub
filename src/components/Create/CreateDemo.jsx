@@ -8,6 +8,8 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Swal from 'sweetalert2';
+
 
 class CreateDemo extends Component {
 
@@ -65,6 +67,13 @@ class CreateDemo extends Component {
             //this push is happening too fast, only some information is ready to render and a refresh is necessary
         } else {
             console.log('not ALL 100');
+            Swal.fire({
+                icon: 'error',
+                title: 'Cannot Submit Incomplete Data',
+                text: 'All categories must total 100% to be submitted',
+                footer: '<a href>Exit without submitting any demographic data</a>',
+                timer: 5000
+            });
             
         }
       
