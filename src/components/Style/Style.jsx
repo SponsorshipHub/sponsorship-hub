@@ -168,7 +168,9 @@ const styles = {
         marginTop: '10vh',
     },
     modalImg: {
-        maxWith: '300'
+        // maxWith: '300px',
+        width: '100vw',
+        height: '70vh'
     },
     eventTextBoxes:{
         minHeight: '100px',

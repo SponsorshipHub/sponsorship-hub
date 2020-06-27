@@ -52,36 +52,13 @@ class SponsorshipView extends Component {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        
+
                                         {/* Will be populated my with map*/}
                                         {this.state.sponsorship.map(item =>
-                                            <SponsorshipPackage item={item} />
+                                            <TableRow key={item.id}>
+                                                <SponsorshipPackage item={item} />
+                                            </TableRow>
                                         )}
-                                        {/* <Dialog open={this.state.openModal}
-                                            onClose={this.handleOpen}
-                                            aria-labelledby="simple-model-title"
-                                            aria-describedby="simple-model-description"
-                                            className={classes.modal}
-                                        > */}
-                                        {/* {this.props.oneEvent.sponsorship.filter(sponsorship => sponsorship.sponsorship_id === this.state.sponsorshipId).map(filterSponsor => (
-                                                <DialogTitle>
-                                                    <Typography>{filterSponsor.sponsor_name}</Typography>
-                                                </DialogTitle>
-                                            ))} */}
-                                        {/* <DialogTitle>
-                                                <Typography>HELLO THERE</Typography>
-                                                <Typography variant='h2'>{this.props.oneEvent.sponsorship[1].sponsor_name}</Typography>
-                                                {/* <Typography variant='h4'>Price: ${item.sponsor_price}</Typography> */}
-                                        {/* </DialogTitle> */}
-                                        {/* <DialogContent> */}
-                                        {/* <Paper> */}
-                                        {/* <img className={classes.modalImg} src={item.sponsor_image_url} alt={item.sponsor_name} /> */}
-                                        {/* <DialogContentText> */}
-                                        {/* </DialogContentText> */}
-                                        {/* </Paper> */}
-                                        {/* </DialogContent> */}
-                                        {/* </Dialog> */}
-                                        
                                     </TableBody>
                                 </Table>
                             </TableContainer>
