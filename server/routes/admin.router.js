@@ -9,7 +9,7 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
 /**
  * GET route template
  */
-router.get('/users', rejectUnauthenticated, (req, res) => {
+router.get('/users', rejectUnauthenticated, rejectLevel2, (req, res) => {
     let query = `
     SELECT id, username, name, title, company, phone, access_level
     FROM "user";`

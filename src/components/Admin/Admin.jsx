@@ -28,7 +28,7 @@ class Admin extends Component {
     }
 
     render() {
-        console.log(`||||||||||`, this.state.users);
+        console.log(`||||||||||`, this.props.userList);
         
         // allows us to connect this.props to styles 
         const { classes } = this.props;
@@ -75,7 +75,7 @@ class Admin extends Component {
 Admin.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    userList: reduxState.adminReducer
+    userList: reduxState.admin
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(Admin));

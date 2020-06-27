@@ -22,7 +22,7 @@ class Nav extends Component {
             {this.props.user.id ? <Button color="primary">Home</Button> : <Button color="primary">Login / Register</Button>}
           </Link>
           {/* Show the link to the info page and the logout button if the user is logged in */}
-          {this.props.user.access_level === 3 && <Button color="primary">Admin</Button>}
+          {this.props.user.access_level === 3 && <Link className="nav-link" to="/admin"><Button color="primary">Admin</Button></Link>}
           {this.props.user.id && (
             <>
               {/* <Link className="nav-link" to="/info">
