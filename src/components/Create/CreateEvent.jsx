@@ -457,7 +457,7 @@ class CreateEvent extends Component {
 
                 <Grid justify="center" container>
                     <Grid item xs={12} md={3}></Grid>
-                    <Grid item xs={12} md={3}><Button fullWidth={true} variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
+                    <Grid item xs={10} md={3}><Button fullWidth={true} variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
                     <Grid item xs={12} md={3}>
                     </Grid>
                 </Grid>

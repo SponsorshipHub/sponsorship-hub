@@ -1,4 +1,16 @@
 const styles = {
+    header_text: {
+        fontSize: '45px',
+        textAlign: 'center',
+        marginTop: '16vh',
+        textShadow: '0px 1px 5px black',
+    },
+    header_text_small: {
+        fontSize: '42px',
+        textAlign: 'center',
+        marginTop: '10vh',
+        textShadow: '0px 1px 5px black',
+    },
     header_small: {
         backgroundImage: `url(./images/header_darker_small.png)`,
         backgroundSize: 'cover',
@@ -22,20 +34,14 @@ const styles = {
         backgroundImage: `url(./images/header_darker.jpg)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '40vh',
+        height: '50vh',
         width: '100%',
         position: 'absolute',
         top: '0px',
         zIndex: '-1',
         color: 'white',
-    },
-    header_spacing: {
-        color: 'black',
-        minHeight: '40vh',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50 %, -50 %)',
+        objectFit: 'cover',
+        objectPosition: '50% 50%',
     },
     header_margin_small: {
         marginTop: '20vh',
@@ -44,18 +50,30 @@ const styles = {
         marginTop: '27vh',
         // boxShadow: '2px 2px 2px 2px'
     },
+    event_header: {
+        backgroundImage: `url(./images/header_darker.jpg)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '38vh',
+        width: '100%',
+        position: 'absolute',
+        top: '0px',
+        zIndex: '-1',
+        color: 'white',
+        objectFit: 'cover',
+        objectPosition: '50% 50%',
+    },
+    event_margin: {
+        marginTop: '30vh',
+        // boxShadow: '2px 2px 2px 2px'
+    },
     landHead: {
         backgroundColor: '#DDE2EC',
-    },
-    landHeadText: {
-        fontSize: '80px',
-        textAlign: 'center',
-        padding: '3%'
     },
     landSearchTitle: {
         textAlign: 'center',
         fontSize: '25px',
-        padding: '2%'
+        padding: '1%'
     },
     landMargin: {
         marginLeft: '2%',
@@ -103,6 +121,17 @@ const styles = {
         // '&:hover': {
         //     boxShadow: '1px 1px 5px black',
         // }
+    },
+    btn_create_event: {
+        color: 'white',
+        textShadow: '0px 1px 2px black',
+        borderColor: '#EAECED',
+        borderRadius: '0px',
+        fontWeight: '600',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+        color: '#F45255',
+        }
     },
     box_grey: {
         background: '#EAECED', // Color that Karl submitted
