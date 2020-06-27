@@ -8,6 +8,8 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Swal from 'sweetalert2';
+
 
 class CreateDemo extends Component {
 
@@ -65,6 +67,13 @@ class CreateDemo extends Component {
             //this push is happening too fast, only some information is ready to render and a refresh is necessary
         } else {
             console.log('not ALL 100');
+            Swal.fire({
+                icon: 'error',
+                title: 'Cannot Submit Incomplete Data',
+                text: 'All categories must total 100% to be submitted',
+                footer: '<a href>Exit without submitting any demographic data</a>',
+                timer: 5000
+            });
             
         }
       
@@ -98,13 +107,13 @@ class CreateDemo extends Component {
                                 )}; */}
 
                             <Grid item md={3} sm={12}>
-                                <TextField label="Female" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
+                                <TextField label="Female %" type="number" placeholder="%" defaultValue={this.state.gender1} onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Male" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
+                                <TextField label="Male %" type="number" placeholder="%" defaultValue={this.state.gender2} onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Other" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
+                                <TextField label="Other %" type="number" placeholder="%" defaultValue={this.state.gender3} onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
                                 <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent }>Total: {genderPercent}%</Typography>
