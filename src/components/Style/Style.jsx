@@ -134,7 +134,7 @@ const styles = {
         }
     },
     box_grey: {
-        background: '#EAECED', // Color that Karl submitted
+        background: '#EAECED', // Color that Karl submitted *GREY*
         // background: '#ECECEC', // Adds a grey box to the background
         margin: '0px'
     },
@@ -173,10 +173,10 @@ const styles = {
     eventTextBoxes:{
         minHeight: '100px',
         borderRadius: '.8em',
-        backgroundColor: '#eaeced',
+        backgroundColor: '#eaeced', // Karl grey
     },
     coral: {
-        color: '#F45255'
+        color: '#F45255' // Karl coral
     }
 }
 
