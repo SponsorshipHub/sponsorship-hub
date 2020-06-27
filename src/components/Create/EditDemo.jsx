@@ -38,7 +38,7 @@ class EditDemo extends Component {
     }
 
     backClick = () => {
-        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
+        this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
     }
 
     forwardClick = () => {
