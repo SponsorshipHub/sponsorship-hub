@@ -33,9 +33,9 @@ class Event extends Component {
                 <Box m={2}>
                     <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
                 </Box>
-                <Box m={2}>
+                {this.props.user.access_level > 1 && <Box m={2}>
                     <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
-                </Box>
+                </Box>}
 
                 <Grid container justify="center">
                     <Grid item md={10}>
@@ -104,6 +104,7 @@ class Event extends Component {
 Event.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    oneEvent: reduxState.oneEvent
+    oneEvent: reduxState.oneEvent,
+    user: reduxState.user
 });
 export default connect(putStateOnProps)(withStyles(styles)(Event));
