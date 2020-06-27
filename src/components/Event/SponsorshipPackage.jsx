@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
+// import { CloseIcon } from '@material-ui/icons/Close';
 import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog, Paper, DialogContent, DialogContentText, Card, CardContent, CardMedia } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
@@ -44,27 +45,26 @@ class SponsorshipPackage extends Component {
                 <TableCell>
                     <Button variant="outlined" onClick={() => this.handleOpen(this.props.item.sponsorship_id, classes)}>more</Button>
                 </TableCell>
+
                 <Dialog open={this.state.openModal}
                     onClose={this.handleOpen}
-                    aria-labelledby="simple-model-title"
-                    aria-describedby="simple-model-description"
                     className={classes.modal}
+                    maxWidth={"md"}
+                    // title={
+                    //     <div>
+                    //         <CloseIcon classes={classes.icon}/>
+                    //     </div>
+                    // }
                 >
-                    <DialogTitle>
-                        <Typography variant='h3'>{this.props.item.sponsor_description}</Typography>
-                        <Typography variant='h5'>Price: ${this.props.item.sponsor_price}</Typography>
+                    <DialogTitle className={classes.modalContent}>
+                        <Typography className={classes.coral} variant='h3'>{this.props.item.sponsor_name}</Typography>
+                        <Typography variant='overline'>{this.props.item.sponsor_description}</Typography>
+                        <Typography variant='subtitle2'>Price: ${this.props.item.sponsor_price}</Typography>
                     </DialogTitle>
-                <DialogContent>
-                    {/* <Paper> */}
-                    <Card>
-                        <CardContent>
-                                <CardMedia className={classes.modalImg} image={this.props.item.sponsor_image_url} title={this.props.item.sponsor_name}/>
-                        </CardContent>
-                    </Card>
-                        {/* <img className={classes.modalImg} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} /> */}
-                    {/* </Paper> */}
-                </DialogContent>
-            </Dialog>
+                    <DialogContent>
+                        <img className={classes.modalImg} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} />
+                    </DialogContent>
+                </Dialog>
             </>
         )//end return
     };//end render

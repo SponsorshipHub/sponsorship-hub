@@ -158,19 +158,24 @@ const styles = {
         color: 'red'
     },
     modal: {
-        // position: 'absolute',
-        minWidth: '400px',
-        // backgroundColor: '#eaeced',
-        // border: '2px solid #000',
-        boxShadow: '0px 0px 1px 2px',
-        padding: '5px',
-        margin: 'auto',
-        marginTop: '10vh',
+        backgroundColor: 'rgba(244, 82, 85, .1)',
+        position: 'absolute',
+        width: '100vw',
     },
     modalImg: {
-        // maxWith: '300px',
-        width: '100vw',
-        height: '70vh'
+        width: '100vh',
+        height: '66vh'
+    },
+    icon: {
+        cursor: 'pointer',
+        float: 'right',
+        marginTop: '5px',
+        width: '20px'
+    },
+    modalContent: {
+        background: '#EAECED', // Color that Karl submitted
+        margin: '0px',
+        borderBottom: '1px solid #F45255'
     },
     eventTextBoxes:{
         minHeight: '100px',
