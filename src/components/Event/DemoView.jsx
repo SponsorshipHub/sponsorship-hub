@@ -21,8 +21,8 @@ class DemoView extends Component {
         residency: [],
         COLORS: ['#F6CBCC', '#EFA1A2', '#F17A7C', '#f45255', '#D9373A', '#A01B1E', '#760E10'],
         COLORS2: ['#C5DFFF', '#A7CEFF', '#6EA7F1', '#3F7FD2', '#296EC8', '#20549A', '#0D366C'],
-        COLORS3: ['#f45255', '#3F7FD2', '#FFAB18'],
-        COLORS4: ['#f45255', '#3F7FD2'],
+        COLORS3: ['#FFD3A1', '#FFAC4E', '#FF8700'],
+        COLORS4: ['#86F7A7', '#41F575'],
         RADIAN: Math.PI / 180
     }
 

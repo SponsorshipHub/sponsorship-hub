@@ -69,13 +69,9 @@ class LandingPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                {/* temporary header */}
+                {/* Header */}
                 <Header /><Box className={classes.header_margin} />
-                <Box>{this.props.user.access_level > 1 && <Button color="secondary" onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
-                
-                {/* <Box className={classes.landHead}>
-                    <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                </Box> */}
+                <Box>{this.props.user.access_level > 1 && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
 
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>

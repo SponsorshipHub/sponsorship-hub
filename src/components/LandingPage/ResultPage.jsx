@@ -6,6 +6,7 @@ import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Header_small from '../Header/Header_small'
 
 class ResultPage extends Component {
 
@@ -115,10 +116,8 @@ class ResultPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                {/* temporary header */}
-                <Grid className={classes.landHead} item md={12}>
-                    <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                </Grid>
+                <Header_small />
+                <Box className={classes.header_margin_small} />
                 {/* section that holds the advanced search filters */}
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" spacing={2}>
