@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
+import { Grid, Paper, Typography, TextField, Box, Button } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -14,7 +14,13 @@ class Header extends Component {
         const { classes } = this.props;
         return (<>
             <Box className={classes.header}>
-                <Box className={classes.header_spacing}>Sponsorship Hub</Box>
+                <Grid container justify="center" alignItems="center">
+                    <Grid item md={4}>
+                        <Box style={{ textAlign: "center" }}>
+                            <Typography className={classes.header_text}>Sponsorship Hub</Typography>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Box>
             
             {/* <Grid><img src="../images/header_darker.jpg" width="100%" /></Grid> */}
