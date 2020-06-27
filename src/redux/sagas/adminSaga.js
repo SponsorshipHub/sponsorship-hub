@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* adminSaga(){
     yield takeLatest('FETCH_USER_LIST', fetchUserList);
+    yield takeLatest('CHANGE_ACCESS_LEVEL', changeAccessLevel);
 }
 
 function* fetchUserList(action){
@@ -12,6 +13,16 @@ function* fetchUserList(action){
         
     }catch(err){
         console.log(`ERROR in ADMIN SAGA:`, err);
+    }
+}
+
+
+function* changeAccessLevel(action){
+    try{
+       yield axios.put('/admin/access-level', action.payload);
+    }catch(err){
+        console.log(`ERROR in ChangeAccessLevel:`, err);
+        
     }
 }
 

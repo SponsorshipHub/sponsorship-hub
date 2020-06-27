@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Table, TableContainer, TableHead, TableRow, TableCell, Paper, TableBody } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Table, TableContainer, TableHead, TableRow, TableCell, Paper, TableBody, Select, MenuItem } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -12,7 +12,8 @@ import UserList from './UserList';
 class Admin extends Component {
 
     state = {
-        users: []
+        users: [],
+        selectOpen: false
     }
 
     componentDidMount(){
@@ -27,8 +28,14 @@ class Admin extends Component {
         }
     }
 
+    accessLevelOpen = () => {
+        this.setState({
+            selectOpen: !this.state.selectOpen
+        })
+    }
+
     render() {
-        console.log(`||||||||||`, this.props.userList);
+        // console.log(`||||||||||`, this.props.userList);
         
         // allows us to connect this.props to styles 
         const { classes } = this.props;
@@ -41,24 +48,24 @@ class Admin extends Component {
                 <TableContainer component={Paper}>
                     <Table>
                         <TableHead>
-                            <TableRow>
-                                <TableCell>User</TableCell>
-                                <TableCell>Title</TableCell>
-                                <TableCell>Company</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Phone</TableCell>
-                                <TableCell>Access Level</TableCell>
+                                <TableRow className="DemoBackground">
+                                    <TableCell>User</TableCell>
+                                    <TableCell>Title</TableCell>
+                                    <TableCell>Company</TableCell>
+                                    <TableCell>Email</TableCell>
+                                    <TableCell>Phone</TableCell>
+                                    <TableCell>Access Level</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {this.state.users.map(user => 
-                                <TableRow>
+                                <TableRow key={user.id}>
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.title}</TableCell>
                                     <TableCell>{user.company}</TableCell>
                                     <TableCell>{user.username}</TableCell>
                                     <TableCell>{user.phone}</TableCell>
-                                    <TableCell>{user.access_level}</TableCell>
+                                    <UserList user={user}/>
                                 </TableRow>
                             )}
                         </TableBody>
