@@ -134,7 +134,7 @@ const styles = {
         }
     },
     box_grey: {
-        background: '#EAECED', // Color that Karl submitted
+        background: '#EAECED', // Color that Karl submitted *GREY*
         // background: '#ECECEC', // Adds a grey box to the background
         margin: '0px'
     },
@@ -158,25 +158,41 @@ const styles = {
         color: 'red'
     },
     modal: {
-        // position: 'absolute',
-        minWidth: '400px',
-        // backgroundColor: '#eaeced',
-        // border: '2px solid #000',
-        boxShadow: '0px 0px 1px 2px',
-        padding: '5px',
-        margin: 'auto',
-        marginTop: '10vh',
+        backgroundColor: 'rgba(244, 82, 85, .1)',
+        position: 'absolute',
+        width: '100vw',
     },
     modalImg: {
-        maxWith: '300'
+        width: '260px',
+        height: '200px',
+        display: 'flex',
+        float: 'right',
+        paddingLeft: '300px',
+    },
+    modalTitle: {
+        color: '#F45255',
+        display: 'flex',
+        // paddingTop: '10%',
+    },
+    icon: {
+        cursor: 'pointer',
+        float: 'right',
+        marginTop: '5px',
+        width: '20px'
+    },
+    modalContent: {
+        background: '#EAECED', // Color that Karl submitted
+        margin: '0px',
+        borderBottom: '1px solid #F45255',
+        display: 'flex',
     },
     eventTextBoxes:{
         minHeight: '100px',
         borderRadius: '.8em',
-        backgroundColor: '#eaeced',
+        backgroundColor: '#eaeced', // Karl grey
     },
     coral: {
-        color: '#F45255'
+        color: '#F45255' // Karl coral
     }
 }
 

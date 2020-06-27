@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Divider } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import StarsIcon from '@material-ui/icons/Stars';
+import Swal from 'sweetalert2';
+
 
 class SponsorItem extends Component {
     state = {
@@ -39,9 +40,28 @@ class SponsorItem extends Component {
     }
 
     handleDelete = () => {
-        this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem })
-        // window.location.reload();
-        // without this reload the undeleted sponsors disappear to
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            timer: 10000,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem });
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success',
+                    500
+                    
+                )
+            }
+        })
+        
     }
 
     handleEditClick = () => {
@@ -83,7 +103,7 @@ class SponsorItem extends Component {
                     <EditIcon onClick={this.handleEditClick}></EditIcon>
                     <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
                 </Grid>
-
+                <Divider/>
             </Grid>
         if (this.state.editMode) {
             viewOrEdit =
@@ -104,7 +124,7 @@ class SponsorItem extends Component {
                             <Grid item md={12}><TextField fullWidth label="Package Price" type="number" defaultValue={this.props.sponsorItem.sponsor_price} placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField></Grid>
                         </Grid>
 
-                        <Grid item md={8}><TextField fullWidth fullHeight multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField></Grid>
+                        <Grid item md={8}><TextField fullWidth multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField></Grid>
                     </Grid>
                     <Grid item md={1}></Grid>
                     <Grid item md={9}>
