@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog } from '@material-ui/core';
+// import { CloseIcon } from '@material-ui/icons/Close';
+import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog, Paper, DialogContent, DialogContentText } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -37,27 +38,36 @@ class SponsorshipPackage extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
-            <Box>
-                <TableRow key={this.props.item.sponsorship_id}>
-                    <TableCell><img className={classes.sponsorshipIcon} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} /></TableCell>
-                    <TableCell>{this.props.item.sponsor_name}</TableCell>
-                    <TableCell>${this.props.item.sponsor_price}</TableCell>
-                    <TableCell><Button variant="outlined" onClick={() => this.handleOpen(this.props.item.sponsorship_id, classes)}>more</Button>
-                    </TableCell>
-                </TableRow>
+            <>
+                <TableCell><img className={classes.sponsorshipIcon} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} /></TableCell>
+                <TableCell>{this.props.item.sponsor_name}</TableCell>
+                <TableCell>${this.props.item.sponsor_price}</TableCell>
+                <TableCell>
+                    <Button variant="outlined" onClick={() => this.handleOpen(this.props.item.sponsorship_id, classes)}>more</Button>
+                </TableCell>
+
                 <Dialog open={this.state.openModal}
                     onClose={this.handleOpen}
-                    aria-labelledby="simple-model-title"
-                    aria-describedby="simple-model-description"
                     className={classes.modal}
+                    // minWidth={"md"}
+                    fullWidth={true}
+                    maxWidth={"md"}
+                // title={
+                //     <div>
+                //         <CloseIcon classes={classes.icon}/>
+                //     </div>
+                // }
                 >
-                    <DialogTitle>
-                        <Typography variant='h2'>{this.props.item.sponsor_description}</Typography>
-                        {/* <Typography variant='h4'>Price: ${item.sponsor_price}</Typography> */}
+                    <DialogTitle className={classes.modalContent}>
+                        <img className={classes.modalImg} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} />
+                        <Typography className={classes.modalTitle} variant='h3'>{this.props.item.sponsor_name}</Typography>
                     </DialogTitle>
-
+                    <DialogContent>
+                        <Typography variant='subtitle2'>Price: ${this.props.item.sponsor_price}</Typography>
+                        <Typography variant='overline'>{this.props.item.sponsor_description}</Typography>
+                    </DialogContent>
                 </Dialog>
-            </Box>
+            </>
         )//end return
     };//end render
 };//end class
