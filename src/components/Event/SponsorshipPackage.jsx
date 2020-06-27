@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
 // import { CloseIcon } from '@material-ui/icons/Close';
-import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog, Paper, DialogContent, DialogContentText, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog, Paper, DialogContent, DialogContentText } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -49,20 +49,22 @@ class SponsorshipPackage extends Component {
                 <Dialog open={this.state.openModal}
                     onClose={this.handleOpen}
                     className={classes.modal}
+                    // minWidth={"md"}
+                    fullWidth={true}
                     maxWidth={"md"}
-                    // title={
-                    //     <div>
-                    //         <CloseIcon classes={classes.icon}/>
-                    //     </div>
-                    // }
+                // title={
+                //     <div>
+                //         <CloseIcon classes={classes.icon}/>
+                //     </div>
+                // }
                 >
                     <DialogTitle className={classes.modalContent}>
-                        <Typography className={classes.coral} variant='h3'>{this.props.item.sponsor_name}</Typography>
-                        <Typography variant='overline'>{this.props.item.sponsor_description}</Typography>
-                        <Typography variant='subtitle2'>Price: ${this.props.item.sponsor_price}</Typography>
+                        <img className={classes.modalImg} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} />
+                        <Typography className={classes.modalTitle} variant='h3'>{this.props.item.sponsor_name}</Typography>
                     </DialogTitle>
                     <DialogContent>
-                        <img className={classes.modalImg} src={this.props.item.sponsor_image_url} alt={this.props.item.sponsor_name} />
+                        <Typography variant='subtitle2'>Price: ${this.props.item.sponsor_price}</Typography>
+                        <Typography variant='overline'>{this.props.item.sponsor_description}</Typography>
                     </DialogContent>
                 </Dialog>
             </>

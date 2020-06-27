@@ -163,8 +163,16 @@ const styles = {
         width: '100vw',
     },
     modalImg: {
-        width: '100vh',
-        height: '66vh'
+        width: '260px',
+        height: '200px',
+        display: 'flex',
+        float: 'right',
+        paddingLeft: '300px',
+    },
+    modalTitle: {
+        color: '#F45255',
+        display: 'flex',
+        // paddingTop: '10%',
     },
     icon: {
         cursor: 'pointer',
@@ -175,7 +183,8 @@ const styles = {
     modalContent: {
         background: '#EAECED', // Color that Karl submitted
         margin: '0px',
-        borderBottom: '1px solid #F45255'
+        borderBottom: '1px solid #F45255',
+        display: 'flex',
     },
     eventTextBoxes:{
         minHeight: '100px',

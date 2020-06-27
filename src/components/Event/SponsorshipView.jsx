@@ -54,8 +54,8 @@ class SponsorshipView extends Component {
                                     <TableBody>
 
                                         {/* Will be populated my with map*/}
-                                        {this.state.sponsorship.map(item =>
-                                            <TableRow key={item.id}>
+                                        {this.state.sponsorship.map((item, index) =>
+                                            <TableRow key={index}>
                                                 <SponsorshipPackage item={item} />
                                             </TableRow>
                                         )}
