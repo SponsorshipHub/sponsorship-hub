@@ -98,13 +98,13 @@ class CreateDemo extends Component {
                                 )}; */}
 
                             <Grid item md={3} sm={12}>
-                                <TextField label="Female" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
+                                <TextField label="Female %" type="number" placeholder="%" defaultValue={this.state.gender1} onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Male" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
+                                <TextField label="Male %" type="number" placeholder="%" defaultValue={this.state.gender2} onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Other" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
+                                <TextField label="Other %" type="number" placeholder="%" defaultValue={this.state.gender3} onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
                                 <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent }>Total: {genderPercent}%</Typography>

@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
  * POST routes gender, income, age, residency
  */
 //gender
-router.post('/gender', (req, res) => {
+router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in gender demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_gender 
     (event_id, gender_id, percentage) 
@@ -32,7 +32,7 @@ router.post('/gender', (req, res) => {
 });
 
 //income
-router.post('/income', (req, res) => {
+router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in income demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_income
     (event_id, income_range_id, percentage)
@@ -47,7 +47,7 @@ router.post('/income', (req, res) => {
 });
 
 //age
-router.post('/age', (req, res) => {
+router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in age demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_age
     (event_id, age_range_id, percentage)
@@ -62,7 +62,7 @@ router.post('/age', (req, res) => {
 });
 
 //residency
-router.post('/resident', (req, res) => {
+router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in resident demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_residency 
     (event_id, residency_id, percentage) 
