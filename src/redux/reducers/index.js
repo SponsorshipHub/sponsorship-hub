@@ -8,6 +8,7 @@ import sponsors from './sponsorReducer';
 import landing from './landingReducer';
 import results from './resultsReducer';
 import eventType from './eventTypeReducer';
+import admin from './adminReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   landing, //will hold event data
   results, //will hold data for results
   eventType, //will hold data for event types
+  admin, //sets user list for admin
 });
 
 export default rootReducer;

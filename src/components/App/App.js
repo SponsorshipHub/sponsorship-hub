@@ -16,6 +16,7 @@ import Event from '../Event/Event';
 import './App.css';
 import { MuiThemeProvider } from '@material-ui/core/';
 import { createMuiTheme } from '@material-ui/core/styles';
+import Admin from '../Admin/Admin';
 
 
 const mainTheme = createMuiTheme({
@@ -57,6 +58,7 @@ class App extends Component {
             <ProtectedRoute exact path="/event/:id" component={Event} />
             <ProtectedRoute exact path="/event/edit/:id" component={EditEvent} />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
+            <ProtectedRoute exact path="/admin" component={Admin} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             
