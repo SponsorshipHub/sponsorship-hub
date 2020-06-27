@@ -23,6 +23,8 @@ const demo = require('./routes/demo.router');
 const landing = require('./routes/landing.router');
 const results = require('./routes/results.router');
 
+const path = require('path'); /* Used for Heroku Import if using BrowserRouter */
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,6 +47,11 @@ app.use('/demo', demo);
 
 // Serve static files
 app.use(express.static('build'));
+
+// Adding for HEROKU - CATCH ALL -> Go here instead if above is not found.
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 // App Set //
 const PORT = process.env.PORT || 5000;

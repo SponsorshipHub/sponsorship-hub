@@ -15,8 +15,14 @@ class Header_small extends Component {
         return (
             <>
                 <Box className={classes.header_small}>
-                    <Box className={classes.header_small_spacing}>Sponsorship Hub</Box>
-                </Box>        
+                    <Grid container justify="center" alignItems="center">
+                        <Grid item xs={12} md={6}>
+                            <Box style={{ textAlign: "center" }}>
+                                <Typography className={classes.header_text_small}>Sponsorship Hub</Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Box>
             </>
         )//end return
     };//end render

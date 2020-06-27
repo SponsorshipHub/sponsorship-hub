@@ -26,7 +26,7 @@ CREATE TABLE "event"
     "year_established" int,
     "start_date" TIMESTAMP NOT NULL,
     "end_date" TIMESTAMP NOT NULL,
-    "event_image_url" varchar(2000) DEFAULT 'https://images.unsplash.com/photo-1468234847176-28606331216a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1615&q=80',
+    "event_image_url" varchar DEFAULT 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
     "event_website" varchar(2000),
     "event_status" BOOLEAN,
     -- Stretch
@@ -90,7 +90,7 @@ VALUES
     ('Beer Festival'),
     ('City Festival'),
     ('Cultural Festival'),
-    ('Film Festival'),
+    ('Film 	Festival'),
     ('Food & Wine Festival'),
     ('Motorcycle Rally'),
     ('Music Festival'),
@@ -231,9 +231,9 @@ VALUES
     ('Second Sky Festival 2020', '2003', '2020-07-22 13:00:09.250411+00', '2020-08-02 20:30:09.250411+00', 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', 'https://secretskyfest.com/', FALSE, '12000', 'Second Sky Festival is annual', 'John Doe', '"event" Specialist', 'info.secondskyfest@goldenvoice.com', '855-838-3892', 'secondskyfest', 'secondskyfest', 'secondskyfest', 'Miscellaneous Notes!', 1);
 
 INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id, event_sponsorship_kit)
 VALUES
-    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', TRUE, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2);
+    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', TRUE, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
 
 INSERT INTO "event"
     -- Testing Null Data --
@@ -250,6 +250,11 @@ INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
 VALUES
     ('Minnesota Craft Beef Festival', '2020', '2020-09-19 13:00:09.250411+00', '2021-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
+
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id, event_sponsorship_kit)
+VALUES
+    ('Boca Fest', '1986', '2021-01-09 10:00:09.250411+00', '2021-01-10 17:00:09.250411+00', 'https://unsplash.com/photos/5MTf9XyVVgM/download?force=true&w=1920', 'https://http://www.artfestival.com/festivals/annual-boca-fest/artist/', TRUE, '1000', 'Boca Fest will be located in the lot at the intersection of St. Andrews Boulevard and Glades Road at The Town Center Mall. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.', 'Howard Alan', 'Event Planner', 'info@artfestival.com', '561-746-6615', 'HowardAlanEvents', 'artfestivals', 'artfestivals', 'Howard Alan Events is excited to announce that Boca Fest will now take place at The Town Center Mall at Boca Raton. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. The show will be located in the parking lot of The Terrace, a recent expansion near Bloomingdale''s, Pinon Grill, and The Gap. The Town Center is located right off I-95 and Glades Road.  The show offers a convenient location with over 150 national artists and plenty of parking, including valet! This outdoor gallery style juried event will present a variety of handmade art and unique gift items, as well as functional pieces. The eclectic displays, appealing to all tastes and budgets, will offer a wide array of artistic mediums including paintings, sculptures, photography, ceramics, glass, wood, handmade jewelry, and mixed media.', 6, 'https://www.zapplication.org/event-info.php?ID=8564');
 
 -- VENUES --
 INSERT INTO venues
@@ -277,6 +282,11 @@ INSERT INTO venues
 VALUES
     ('Minneapolis Convention Center', '1301 2nd Avenue South', 'Minneapolis', 'Minnesota', '55403', 'Hall E', '2000');
 
+INSERT INTO venues
+    (name, address, city, state, zipcode, venue_notes, venue_capacity)
+VALUES
+    ('Town Center Mall', '5590 Glades Road', 'Boca Raton', 'Florida', '33431', 'The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.  The Town Center features over 200 stores including Tory Burch, Tiffany & Co, Louis Vuitton, The Apple Store and many more.', '3000');
+
 -- SPONSORSHIP PACKAGES --   
 INSERT INTO "sponsorships"
     (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
@@ -294,7 +304,9 @@ VALUES
     ('Small Booth', '1000', 'https://images.unsplash.com/photo-1573376670774-4427757f7963?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80', 'A small booth, 6 by 6 feet', 4),
     ('Medium Booth', '1500', 'https://images.unsplash.com/photo-1553858117-30fb2c04eaad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80', 'A medium booth, 10 by 10 feet', 4),
     ('Large Booth', '2000', 'https://images.unsplash.com/photo-1581420515590-cee76de451b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80', 'A large booth, 16 by 16 feet', 4),
-    ('Small Booth', '1000', 'https://images.unsplash.com/photo-1563208085-648526fc0a70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'A small booth, 6 by 6 feet', 5);
+    ('Small Booth', '1000', 'https://images.unsplash.com/photo-1563208085-648526fc0a70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'A small booth, 6 by 6 feet', 5),
+    ('Single Booth 10''x10''', '495', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2017/png/iconmonstr-building-43.png&r=0&g=0&b=0', 'A large booth, 10 by 10 feet', 6),
+    ('Double Booth', '990', 'https://cdns.iconmonstr.com/wp-content/assets/preview/2017/96/iconmonstr-building-13.png', 'Limited Quantity', 6);
 
 ------------------------------
 ------ INSERT JUNCTIONS ------
@@ -315,7 +327,8 @@ VALUES
     (10, 2),
     (9, 3),
     (9, 4),
-    (3, 5);
+    (3, 5),
+    (1, 6);
 
 -- DEMO GENDER JUNCTION --
 INSERT INTO "junction_event_gender"
@@ -335,7 +348,10 @@ VALUES
     (4, 3, 20),
     (5, 1, 35),
     (5, 2, 45),
-    (5, 3, 20);
+    (5, 3, 20),
+    (6, 1, 40),
+    (6, 2, 45),
+    (6, 3, 25);
 
 -- DEMO RESIDENCY JUNCTION --
 INSERT INTO "junction_event_residency"
@@ -350,7 +366,9 @@ VALUES
     (4, 1, 15),
     (4, 2, 85),
     (5, 1, 85),
-    (5, 2, 15);
+    (5, 2, 15),
+    (6, 1, 75),
+    (6, 2, 25);
 
 -- DEMO INCOME JUNCTION --
 INSERT INTO "junction_event_income"
@@ -390,7 +408,14 @@ VALUES
     (5, 4, 15),
     (5, 5, 6),
     (5, 6, 4),
-    (5, 7, 0);
+    (5, 7, 0),
+    (6, 1, 10),
+    (6, 2, 45),
+    (6, 3, 20),
+    (6, 4, 15),
+    (6, 5, 6),
+    (6, 6, 4),
+    (6, 7, 0);
 
 -- DEMO AGE JUNCTION --
 INSERT INTO "junction_event_age"
@@ -430,7 +455,14 @@ VALUES
     (5, 4, 10),
     (5, 5, 0),
     (5, 6, 0),
-    (5, 7, 0);
+    (5, 7, 0),
+    (6, 1, 26),
+    (6, 2, 39),
+    (6, 3, 25),
+    (6, 4, 7),
+    (6, 5, 3),
+    (6, 6, 0),
+    (6, 7, 0);
 
 ------------------------------
 ------ SELECT STATEMENTS------
@@ -499,61 +531,107 @@ FROM "event"
     JOIN venues ON venues.id=event.venue_id
     JOIN sponsorships ON event.id=sponsorships.event_id
     JOIN junction_event_income ON "event".id = junction_event_income.event_id
+
+WHERE state
+ILIKE '%Minnesota%' -- State
+    
+    GROUP BY event.id, venues.city, venues.state;
+
+
+SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
+FROM "event"
+    JOIN venues ON venues.id=event.venue_id
+    JOIN sponsorships ON event.id=sponsorships.event_id
+    JOIN junction_event_income ON "event".id = junction_event_income.event_id
 WHERE state ILIKE '%Minnesota%' -- State
-    AND end_date >= '%2021-08-23%' -- Date Range Start
+    AND end_date >= '%2021-08-01%' -- Date Range Start;
     AND start_date <= '%2021-08-28%' -- Date Range End
     AND estimated_attendance > 500 -- Attendance Start
     AND estimated_attendance < 2000 -- Attendance End
     AND sponsor_price >= 500 -- Sponsorship Start
     AND sponsor_price <= 1500 -- Sponsorship End
-    AND income_range_id=3 AND percentage = 20;
--- Income Range (50000-75999) is 20%
+    AND income_range_id=3
+    AND percentage = 20;
+-- Income Range 3(50000-75999) is 20%
 
 ---- GET ALL EVENTS
-SELECT * FROM "event";
-
----- SELECT * WHERE EVENT.ID = $1
-SELECT e.*, et.type, v.*, json_agg(DISTINCT jsonb_build_object('sponsorship_id', s.id, 'sponsor_name', s.sponsor_name, 'sponsor_price', s.sponsor_price, 'sponsor_image_url', s.sponsor_image_url, 'sponsor_description', s.sponsor_description)) AS sponsorship, json_agg(DISTINCT jsonb_build_object('age_range_id', jea.age_range_id, 'age_percentage', jea.percentage, 'age_range', ar.age_range)) AS age, json_agg(DISTINCT jsonb_build_object('gender_id', g.id, 'gender', g.gender, 'gender_percentage', jeg.percentage)) AS gender, json_agg(DISTINCT jsonb_build_object('income_range_id', ir.id, 'income_range', ir.income_range, 'income_percentage', jei.percentage)) AS income, json_agg(DISTINCT jsonb_build_object('residency_id', r.id, 'residency', r.residency, 'residency_percentage', jer.percentage)) AS residency
-FROM event AS e
---TYPE JUNCITON
-FULL JOIN junction_event_type AS jet
-ON e.id = jet.event_id
---TYPE
-FULL JOIN event_type AS et
-ON jet.type_id = et.id
---VENUE
-FULL JOIN venues AS v
-ON e.venue_id = v.id
---AGE RANGE JUNCTION
-FULL JOIN junction_event_age AS jea
-ON e.id = jea.event_id
---AGE RANGE
-FULL JOIN age_range AS ar
-ON jea.age_range_id = ar.id
---GENDER JUNCTION
-FULL JOIN junction_event_gender AS jeg
-ON e.id = jeg.event_id
---GENDER
-FULL JOIN gender AS g
-ON jeg.gender_id = g.id
---INCOME JUNCTION
-FULL JOIN junction_event_income AS jei
-ON e.id = jei.event_id
---INCOME RANGE
-FULL JOIN income_range AS ir
-ON jei.income_range_id = ir.id
---LOCTION JUNCTION
-FULL JOIN junction_event_residency AS jer
-ON e.id = jer.event_id
---LOCTION
-FULL JOIN residency AS r
-ON jer.residency_id = r.id
---SPONSORSHIP
-FULL JOIN sponsorships AS s
-ON e.id = s.event_id
-WHERE e.id = 6
-GROUP BY e.id, v.id, et.type;
-
-
 SELECT *
 FROM "event";
+
+---- SELECT * WHERE EVENT.ID = $1
+SELECT e.*, et.type, v.*,
+    json_agg(DISTINCT jsonb_build_object('sponsorship_id', s.id, 'sponsor_name', s.sponsor_name, 'sponsor_price', s.sponsor_price, 'sponsor_image_url', s.sponsor_image_url, 'sponsor_description', s.sponsor_description)) AS sponsorship,
+    json_agg(DISTINCT jsonb_build_object('age_range_id', jea.age_range_id, 'age_percentage', jea.percentage, 'age_range', ar.age_range)) AS age,
+    json_agg(DISTINCT jsonb_build_object('gender_id', g.id, 'gender', g.gender, 'gender_percentage', jeg.percentage)) AS gender,
+    json_agg(DISTINCT jsonb_build_object('income_range_id', ir.id, 'income_range', ir.income_range, 'income_percentage', jei.percentage)) AS income,
+    json_agg(DISTINCT jsonb_build_object('residency_id', r.id, 'residency', r.residency, 'residency_percentage', jer.percentage)) AS residency
+FROM event AS e
+    --TYPE JUNCITON
+    JOIN junction_event_type AS jet
+    ON e.id = jet.event_id
+    --TYPE
+    JOIN event_type AS et
+    ON jet.type_id = et.id
+    --VENUE
+    JOIN venues AS v
+    ON e.venue_id = v.id
+    --AGE RANGE JUNCTION
+    JOIN junction_event_age AS jea
+    ON e.id = jea.event_id
+    --AGE RANGE
+    JOIN age_range AS ar
+    ON jea.age_range_id = ar.id
+    --GENDER JUNCTION
+    JOIN junction_event_gender AS jeg
+    ON e.id = jeg.event_id
+    --GENDER
+    JOIN gender AS g
+    ON jeg.gender_id = g.id
+    --INCOME JUNCTION
+    JOIN junction_event_income AS jei
+    ON e.id = jei.event_id
+    --INCOME RANGE
+    JOIN income_range AS ir
+    ON jei.income_range_id = ir.id
+    --LOCTION JUNCTION
+    JOIN junction_event_residency AS jer
+    ON e.id = jer.event_id
+    --LOCTION
+    JOIN residency AS r
+    ON jer.residency_id = r.id
+    --SPONSORSHIP
+    JOIN sponsorships AS s
+    ON e.id = s.event_id
+WHERE e.id = 1
+GROUP BY e.id, v.id, et.type;
+SELECT *
+FROM "event";
+
+SELECT e.*, et.type, et.id AS type_id, v.*, json_agg(DISTINCT jsonb_build_object('sponsorship_id', s.id, 'sponsor_name', s.sponsor_name, 'sponsor_price', s.sponsor_price, 'sponsor_image_url', s.sponsor_image_url, 'sponsor_description', s.sponsor_description)) AS sponsorship, json_agg(DISTINCT jsonb_build_object('age_range_id', jea.age_range_id, 'age_percentage', jea.percentage, 'age_range', ar.age_range)) AS age, json_agg(DISTINCT jsonb_build_object('gender_id', g.id, 'gender', g.gender, 'gender_percentage', jeg.percentage)) AS gender, json_agg(DISTINCT jsonb_build_object('income_range_id', ir.id, 'income_range', ir.income_range, 'income_percentage', jei.percentage)) AS income, json_agg(DISTINCT jsonb_build_object('residency_id', r.id, 'residency', r.residency, 'residency_percentage', jer.percentage)) AS residency
+FROM event AS e
+    FULL JOIN junction_event_type AS jet
+    ON e.id = jet.event_id
+    FULL JOIN event_type AS et
+    ON jet.type_id = et.id
+    FULL JOIN venues AS v
+    ON e.venue_id = v.id
+    FULL JOIN junction_event_age AS jea
+    ON e.id = jea.event_id
+    FULL JOIN age_range AS ar
+    ON jea.age_range_id = ar.id
+    FULL JOIN junction_event_gender AS jeg
+    ON e.id = jeg.event_id
+    FULL JOIN gender AS g
+    ON jeg.gender_id = g.id
+    FULL JOIN junction_event_income AS jei
+    ON e.id = jei.event_id
+    FULL JOIN income_range AS ir
+    ON jei.income_range_id = ir.id
+    FULL JOIN junction_event_residency AS jer
+    ON e.id = jer.event_id
+    FULL JOIN residency AS r
+    ON jer.residency_id = r.id
+    FULL JOIN sponsorships AS s
+    ON e.id = s.event_id
+WHERE e.id = 1
+GROUP BY e.id, v.id, et.type, et.id;

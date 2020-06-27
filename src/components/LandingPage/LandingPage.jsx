@@ -11,9 +11,9 @@ import Header from '../Header/Header';
 class LandingPage extends Component {
 
     state = {
-        startDate: 'null',
-        endDate: 'null',
-        state: 'null',
+        startDate: null,
+        endDate: null,
+        state: null,
     };//end state
 
     componentDidMount() {
@@ -36,7 +36,7 @@ class LandingPage extends Component {
             return
         };//end if statement
         // on click of the search button, the user will be taken to the results view page
-        this.props.history.push('/results');
+        this.props.history.push(`/results/${this.state.state}/${this.state.startDate}/${this.state.endDate}`);
         // send our inputs to our results view page
         this.props.dispatch({ type: 'FETCH_RESULTS', payload: this.state })
     };//end handleSearch
@@ -69,13 +69,9 @@ class LandingPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                {/* temporary header */}
+                {/* Header */}
                 <Header /><Box className={classes.header_margin} />
-                <Box>{this.props.user.access_level > 1 && <Button color="secondary" onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
-                
-                {/* <Box className={classes.landHead}>
-                    <Typography className={classes.landHeadText}>Sponsorship Hub</Typography>
-                </Box> */}
+                <Box>{this.props.user.access_level > 1 && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
 
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>
