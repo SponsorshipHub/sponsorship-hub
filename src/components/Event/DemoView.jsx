@@ -105,7 +105,7 @@ class DemoView extends Component {
                                             nameKey={this.state.age.age_range}>
                                             
                                             {this.state.age.map((entry, i) => 
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell onClick={() => alert(entry.age_percentage + '%' + ' attendees are age: ' + entry.age_range)} key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -161,7 +161,7 @@ class DemoView extends Component {
 
                                             {this.state.income.map((entry, i) =>
                                                 <Cell 
-                                                onClick={()=>alert(entry.income_range+' is '+entry.income_percentage)}
+                                                    onClick={() => alert(entry.income_percentage+'%'+' households make: '+entry.income_range)}
                                                 key={i} fill={this.state.COLORS2[i % this.state.COLORS2.length]} />
                                             )}
                                         </Pie>
@@ -208,8 +208,8 @@ class DemoView extends Component {
                                             fill="#000000"
                                             dataKey='gender_percentage'>
 
-                                            {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
+                                            {this.state.gender.map((entry, i) =>
+                                                <Cell key={i} onClick={() => alert(entry.gender_percentage + '%' + ' attendees are: ' + entry.gender)} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
