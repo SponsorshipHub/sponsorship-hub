@@ -1,17 +1,42 @@
 const styles = {
+    header_social: {
+        fontSize: '275%',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255'
+        },
+    },
     header_text: {
         fontSize: '45px',
-        marginTop: '10%',
         textShadow: '0px 1px 5px black',
+        position: 'absolute',
+        top: '125px',
+    },
+        header_text_event: {
+        fontSize: '45px',
+        textShadow: '0px 1px 5px black',
+        position: 'absolute',
+        top: '110px',
+        textAlign: 'center'
+    },
+    header_button_right: {
+        position: 'absolute',
+        top: '260px',
+        right: '5px',
+        fontSize: '75%'
+    },
+        header_button_left: {
+        position: 'absolute',
+        top: '250px',
+        left: '5px',
     },
     header: {
-        backgroundColor: '#EAECED',
         backgroundPosition: 'center',
         marginBottom: '5px',
         backgroundSize: 'cover',
         height: '300px',
         backgroundPosition: 'center',
-        display: 'flex'
         // boxShadow: '1px 1px 5px black'
     },
     landHead: {
