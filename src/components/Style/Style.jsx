@@ -1,8 +1,7 @@
 const styles = {
     header_text: {
         fontSize: '45px',
-        textAlign: 'center',
-        marginTop: '16vh',
+        marginTop: '10%',
         textShadow: '0px 1px 5px black',
     },
     header: {
@@ -10,8 +9,9 @@ const styles = {
         backgroundPosition: 'center',
         marginBottom: '5px',
         backgroundSize: 'cover',
-        height: '40vh',
+        height: '300px',
         backgroundPosition: 'center',
+        display: 'flex'
         // boxShadow: '1px 1px 5px black'
     },
     landHead: {
