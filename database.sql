@@ -216,13 +216,13 @@ CREATE TABLE "sponsorships"
 
 -- USERS --
 INSERT INTO "user"
-    (name, title, password, username, phone, access_level)
+    (name, title, company, password, username, phone, access_level)
 VALUES
-    ('Heather B.', 'FizzBuzz Rep', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '612-500-5030', 0),
-    ('Alan H.', 'Henderson Business Solutions', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-505-5050', 1),
-    ('Tan N.', 'Research Co.', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-500-5001', 2),
-    ('Shaokee M.', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
-    ('Karl N.', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sponsorshiphub@gmail.com', '612-100-1000', 3);
+    ('Heather Braid', 'FizzBuzz Rep', 'Fizzbuzz', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '612-500-5030', 0),
+    ('Alan Hemsworth', 'Owner', 'Henderson Business Solutions', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-505-5050', 1),
+    ('Tan Nugent', 'Expert Researcher', 'Research Co.', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-500-5001', 2),
+    ('Shaokee Moolah', 'Coding Engineer', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
+    ('Karl N.', 'Founder', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sponsorshiphub@gmail.com', '612-100-1000', 3);
 
 -- EVENT --
 INSERT INTO "event"
@@ -635,3 +635,8 @@ FROM event AS e
     ON e.id = s.event_id
 WHERE e.id = 1
 GROUP BY e.id, v.id, et.type, et.id;
+
+-- Gets the count of users that need approval
+SELECT Count(access_level) as access_lvl_0
+FROM "user"
+WHERE access_level = 0;
