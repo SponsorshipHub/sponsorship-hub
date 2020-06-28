@@ -28,7 +28,7 @@ class Venue extends Component {
                             <Typography display="inline">Address</Typography>
                             {/* Address */}
                             <Typography>{this.props.oneEvent.address}</Typography>
-                            <Typography>{this.props.oneEvent.city}, {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography>
+                            <Typography>{this.props.oneEvent.city && this.props.oneEvent.city + ', '} {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography>
                         </Box>
                     </Grid>
                     <Grid item md={4}>

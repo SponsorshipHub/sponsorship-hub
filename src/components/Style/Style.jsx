@@ -5,67 +5,14 @@ const styles = {
         marginTop: '16vh',
         textShadow: '0px 1px 5px black',
     },
-    header_text_small: {
-        fontSize: '42px',
-        textAlign: 'center',
-        marginTop: '10vh',
-        textShadow: '0px 1px 5px black',
-    },
-    header_small: {
-        backgroundImage: `url(./images/header_darker_small.png)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '25vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
-    },
-    header_small_spacing: {
-        color: 'black',
-        minHeight: '25vh',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50 %, -50 %)',
-    },
     header: {
-        backgroundImage: `url(./images/header_darker.jpg)`,
-        backgroundSize: 'cover',
+        backgroundColor: '#EAECED',
         backgroundPosition: 'center',
-        height: '50vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
-        objectFit: 'cover',
-        objectPosition: '50% 50%',
-    },
-    header_margin_small: {
-        marginTop: '20vh',
-    },
-    header_margin: {
-        marginTop: '27vh',
-        // boxShadow: '2px 2px 2px 2px'
-    },
-    event_header: {
-        backgroundImage: `url(./images/header_darker.jpg)`,
+        marginBottom: '5px',
         backgroundSize: 'cover',
+        height: '40vh',
         backgroundPosition: 'center',
-        height: '38vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
-        objectFit: 'cover',
-        objectPosition: '50% 50%',
-    },
-    event_margin: {
-        marginTop: '30vh',
-        // boxShadow: '2px 2px 2px 2px'
+        // boxShadow: '1px 1px 5px black'
     },
     landHead: {
         backgroundColor: '#DDE2EC',
@@ -128,13 +75,14 @@ const styles = {
         borderColor: '#EAECED',
         borderRadius: '0px',
         fontWeight: '600',
+        fontSize: '125%',
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
         color: '#F45255',
         }
     },
     box_grey: {
-        background: '#EAECED', // Color that Karl submitted
+        background: '#EAECED', // Color that Karl submitted *GREY*
         // background: '#ECECEC', // Adds a grey box to the background
         margin: '0px'
     },
@@ -158,25 +106,41 @@ const styles = {
         color: 'red'
     },
     modal: {
-        // position: 'absolute',
-        minWidth: '400px',
-        // backgroundColor: '#eaeced',
-        // border: '2px solid #000',
-        boxShadow: '0px 0px 1px 2px',
-        padding: '5px',
-        margin: 'auto',
-        marginTop: '10vh',
+        backgroundColor: 'rgba(244, 82, 85, .1)',
+        position: 'absolute',
+        width: '100vw',
     },
     modalImg: {
-        maxWith: '300'
+        width: '260px',
+        height: '200px',
+        display: 'flex',
+        float: 'right',
+        paddingLeft: '300px',
+    },
+    modalTitle: {
+        color: '#F45255',
+        display: 'flex',
+        // paddingTop: '10%',
+    },
+    icon: {
+        cursor: 'pointer',
+        float: 'right',
+        marginTop: '5px',
+        width: '20px'
+    },
+    modalContent: {
+        background: '#EAECED', // Color that Karl submitted
+        margin: '0px',
+        borderBottom: '1px solid #F45255',
+        display: 'flex',
     },
     eventTextBoxes:{
         minHeight: '100px',
         borderRadius: '.8em',
-        backgroundColor: '#eaeced',
+        backgroundColor: '#eaeced', // Karl grey
     },
     coral: {
-        color: '#F45255'
+        color: '#F45255' // Karl coral
     }
 }
 

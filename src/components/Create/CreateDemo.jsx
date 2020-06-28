@@ -9,6 +9,7 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Swal from 'sweetalert2';
+import Header from '../Header/Header';
 
 
 class CreateDemo extends Component {
@@ -89,6 +90,9 @@ class CreateDemo extends Component {
         return (
 
             <Box>
+                {/* Header */}
+                <Header history={this.props.history}/>
+
                 <Typography align="center" variant="h2">Enter Demographics</Typography>
                 {/* Begin Gender Demographic Inputs */}
                 <Box className={classes.box_grey}>

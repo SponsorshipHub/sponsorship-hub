@@ -80,8 +80,27 @@ router.put('/update/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
     const r = req.body;
     const venue_id = req.params.id;
     console.log('REQ BODY FOR UPDATE IS:', r)
-    const query = `INSERT INTO "event" (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING id`
+    const query = `UPDATE "event"
+SET 
+event_name = $1,
+year_established = $2,
+start_date = $3,
+end_date = $4,
+event_image_url = $5,
+event_website = $6,
+event_status = $7,
+estimated_attendance = $8,
+event_notes = $9,
+contact_name = $10,
+contact_title = $11,
+contact_email = $12,
+contact_phone = $13,
+event_facebook = $14,
+event_twitter = $15,
+event_instagram = $16,
+event_description = $17,
+venue_id = $18
+WHERE id = $19;`
     pool.query(query, [
         r.event_name, 
         r.year_established, 
@@ -100,10 +119,10 @@ router.put('/update/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
         r.event_twitter, 
         r.event_instagram, 
         r.event_description, 
-        venue_id
+        venue_id, 
+        r.event_id
     ]).then(result => {
-        console.log('New Event ID is:', result.rows[0])
-        res.send(result.rows[0]);
+        res.sendStatus(200);
     }).catch(err => {
         console.log(err);
         res.sendStatus(500);
