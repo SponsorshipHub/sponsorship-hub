@@ -209,7 +209,7 @@ class DemoView extends Component {
                                             dataKey='gender_percentage'>
 
                                             {this.state.gender.map((entry, i) =>
-                                                <Cell key={i} onClick={() => alert(entry.gender_percentage + '%' + ' attendees are: ' + entry.gender)} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
+                                                <Cell key={i} onClick={() => alert(entry.gender_percentage + '%' + ' attendees are ' + entry.gender)} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -255,8 +255,8 @@ class DemoView extends Component {
                                             fill="#000000"
                                             dataKey='residency_percentage'>
 
-                                            {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
+                                            {this.state.residency.map((entry, i) =>
+                                                <Cell onClick={() => alert(entry.residency_percentage + '%' + ' attendees are from ' + entry.residency)} key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
                                             )}
                                             <Label value={this.state.residency.residency} position="outside" />
                                         </Pie>
