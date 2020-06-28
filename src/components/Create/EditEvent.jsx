@@ -190,7 +190,7 @@ class CreateEvent extends Component {
         let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
         return (
             <>
-                <Header_Event history={this.props.history} />
+                <Header_Event history={this.props.history} match={this.props.match}/>
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Editing {this.props.oneEvent.event_name}</h1></Grid>
