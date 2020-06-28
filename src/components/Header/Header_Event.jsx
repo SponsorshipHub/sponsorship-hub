@@ -71,9 +71,9 @@ class Header_Event extends Component {
                         justifyContent="center"
                         className={classes.header_button_left}>
                             <Link to={`/details/${this.props.cardId}`} />
-                        <a href={`https://www.facebook.com/${this.props.oneEvent.event_facebook}`} target="_blank"><FacebookIcon color="secondary" className={classes.header_social} /></a>
-                        <a href={`https://www.instagram.com/${this.props.oneEvent.event_instagram}`} target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }}/></a>
-                        <a href={`https://www.twitter.com/${this.props.oneEvent.event_twitter}`} target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>
+                        {this.props.oneEvent.event_facebook && <a href={`https://www.facebook.com/${this.props.oneEvent.event_facebook}`} target="_blank"><FacebookIcon color="secondary" className={classes.header_social} /></a>}
+                        {this.props.oneEvent.event_instagram && <a href={`https://www.instagram.com/${this.props.oneEvent.event_instagram}`} target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }}/></a>}
+                        {this.props.oneEvent.event_twitter && <a href={`https://www.twitter.com/${this.props.oneEvent.event_twitter}`} target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>}
                     </Box>
 
                 </Box>
