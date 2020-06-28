@@ -383,12 +383,14 @@ class CreateEvent extends Component {
                                 value='true'
                                 name="radio-button-demo"
                                 inputProps={{ 'aria-label': 'TRUE' }}
+                                color="primary"
                             />Yes
                             <Radio
                                 checked={cancelValue === 'false'}
                                 onChange={this.cancelSelect}
                                 value='false'
                                 name="radio-button-demo"
+                                color="primary"
                                 inputProps={{ 'aria-label': 'FALSE' }}
                             />No
                         </Grid>
