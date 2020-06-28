@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SponsorItem from './SponsorItem';
+import Header from '../Header/Header'
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -68,6 +69,9 @@ class CreateSponsor extends Component {
         const { classes } = this.props;
         return (
             <Box>
+                {/* Header */}
+                <Header history={this.props.history} />
+                
                 {/* Breadcrumbs go up here */}
                 <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
                 <Box mx={10} spacing={3}>

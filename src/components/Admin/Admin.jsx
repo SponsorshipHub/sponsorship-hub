@@ -8,6 +8,7 @@ import { Grid, Typography, TextField, Box, Button, Table, TableContainer, TableH
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import UserList from './UserList';
+import Header from '../Header/Header';
 
 class Admin extends Component {
 
@@ -41,6 +42,9 @@ class Admin extends Component {
         const { classes } = this.props;
         return (
             <Box>
+                {/* Header */}
+                <Header history={this.props.history} />
+
                 <Grid container justify="space-evenly">
                     <Grid item md={8} xs={11}>
 

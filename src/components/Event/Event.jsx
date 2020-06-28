@@ -14,6 +14,7 @@ import styles from '../Style/Style';
 import DemoView from './DemoView';
 import SponsorshipView from './SponsorshipView';
 import Venue from './Venue';
+import Header_Event from '../Header/Header_Event';
 
 class Event extends Component {
 
@@ -29,14 +30,14 @@ class Event extends Component {
         return (
             <Box>
                 <Box>
-                    <img className={classes.event_header} src={this.props.oneEvent.event_image_url}/>
-                    <Box className={classes.event_margin} />
+                    {/* Header */}
+                    <Header_Event history={this.props.history} match={this.props.match} />
+                    
+                    
                     <Box m={2}>
                         <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
                     </Box>
-                    {this.props.user.access_level > 1 && <Box m={2}>
-                        <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
-                    </Box>}
+                    
                 </Box>
 
                 <Grid container justify="center">
