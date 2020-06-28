@@ -128,6 +128,7 @@ const styles = {
         borderColor: '#EAECED',
         borderRadius: '0px',
         fontWeight: '600',
+        fontSize: '125%',
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
         color: '#F45255',

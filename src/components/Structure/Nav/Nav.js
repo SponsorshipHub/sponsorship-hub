@@ -7,8 +7,13 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
 import { withStyles } from '@material-ui/core/styles';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 class Nav extends Component {
+
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_APPROVAL' });
+  }
 
   render() {
     const { classes } = this.props;
@@ -25,13 +30,13 @@ class Nav extends Component {
             {this.props.user.id ? <Button className={classes.btn_create_event}>Home</Button> : <Button color="primary">Login / Register</Button>}
           </Link>
           {/* Show the link to the info page and the logout button if the user is logged in */}
-          {this.props.user.access_level === 3 && <Link className="nav-link" to="/admin"><Button className={classes.btn_create_event}>Admin</Button></Link>}
+          {this.props.user.access_level === 3 && <Link className="nav-link" to="/admin"><Button className={classes.btn_create_event}>Admin{this.props.approval.access_lvl_0 != 0 && <div className={classes.notification}>(<NotificationsIcon style={{ fontSize: '80%' }}/>{this.props.approval.access_lvl_0})</div>}</Button></Link>}
           {this.props.user.id && (
             <>
               {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
-              <Button color="primary" style={{ fontWeight: '500', textShadow: '0px 1px 2px black'}} onClick={()=>this.props.dispatch({ type: 'LOGOUT' })}>Logout</Button>
+              <Button className={classes.coral} style={{fontWeight: '500', fontSize: '125%', textShadow: '0px 1px 2px black'}} onClick={()=>this.props.dispatch({ type: 'LOGOUT' })}>Logout</Button>
               {/* <LogOutButton className="nav-link" /> */}
             </>
           )}
@@ -50,6 +55,7 @@ Nav.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
   user: state.user,
+  approval: state.approval,
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(Nav));
