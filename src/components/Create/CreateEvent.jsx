@@ -11,6 +11,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Header_small from '../Header/Header_small';
+// Sweetalert 2
+import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
 
 class CreateEvent extends Component {
     state = { 
@@ -70,10 +73,21 @@ class CreateEvent extends Component {
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
         else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
             // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-            this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
-            console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
-            // PUSHES TO the NEW ID
-            // this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
+
+        Swal.fire({
+            title: `${this.state.event_name}`,
+            text: `Create this new event?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Make More Changes'
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
+            }
+        })
     }
 
     venueSelect(event) {

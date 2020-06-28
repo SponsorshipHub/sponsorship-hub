@@ -10,7 +10,9 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+// Sweetalert 2
 import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
 
 const moment = require('moment');
 
