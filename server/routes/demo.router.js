@@ -11,9 +11,6 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
  */
 router.get('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
 console.log('in demo GET req.params.id:', req.params.id);
-const queryText = `SELECT  FROM 
-
-junction_event_gender junction_event_income junction_event_age junction_event_residency 
 });
 
 /**
