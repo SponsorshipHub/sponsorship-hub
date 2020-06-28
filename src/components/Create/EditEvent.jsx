@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Header_Event from '../Header/Header_Event'
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
@@ -190,6 +190,7 @@ class CreateEvent extends Component {
         let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
         return (
             <>
+                <Header_Event history={this.props.history} />
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Editing {this.props.oneEvent.event_name}</h1></Grid>

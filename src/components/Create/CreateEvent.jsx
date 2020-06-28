@@ -10,7 +10,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
-import Header_small from '../Header/Header_small';
+import Header from '../Header/Header';
 // Sweetalert 2
 import Swal from 'sweetalert2';
 import '../Style/Swal.scss';
@@ -162,8 +162,7 @@ class CreateEvent extends Component {
 
         return (
             <>
-            <Header_small />
-            <Box className={classes.header_margin_small} />
+                <Header history={this.props.history} />
             
                 <Box className={classes.margin}>
                     <Grid justify="center" container>

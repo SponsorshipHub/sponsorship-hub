@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Box } from '@material-ui/core';
-import Header_small from '../../Header/Header_small';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
+import Header from '../../Header/Header';
 
 class LoginPage extends Component {
   state = {
@@ -38,7 +38,7 @@ class LoginPage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header_small /><Box className={classes.header_margin} />
+        <Header />
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
