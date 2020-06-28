@@ -12,5 +12,5 @@ const sponsorReducer = (state = [], action) => {
 };
 
 // sponsors will be on the redux state at:
-// state.userHistory
+// state.sponsors
 export default sponsorReducer;

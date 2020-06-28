@@ -9,6 +9,7 @@ import landing from './landingReducer';
 import results from './resultsReducer';
 import eventType from './eventTypeReducer';
 import admin from './adminReducer';
+import demo from './demoReducer';
 import approval from './approvalReducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   results, //will hold data for results
   eventType, //will hold data for event types
   admin, //sets user list for admin
+  demo, //current event demographic information for defaulting values in Edit mode
   approval, // shows count of users that need to be approved
 });
 
