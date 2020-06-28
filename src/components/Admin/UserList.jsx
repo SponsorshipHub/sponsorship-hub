@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
 
 class UserList extends Component {
 

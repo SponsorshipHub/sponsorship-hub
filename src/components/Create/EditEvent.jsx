@@ -10,6 +10,8 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import Swal from 'sweetalert2';
+
 const moment = require('moment');
 
 class CreateEvent extends Component {
@@ -78,6 +80,7 @@ class CreateEvent extends Component {
             event_twitter: this.props.oneEvent.event_twitter,
             event_description: this.props.oneEvent.event_description,
             event_sponsorship_kit: this.props.oneEvent.event_sponsorship_kit,
+            event_id: this.props.match.params.id,
         });
     }
 
@@ -92,11 +95,21 @@ class CreateEvent extends Component {
         else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
         else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
-        // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-        this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
-        console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
-        // PUSHES TO the NEW ID
-        this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
+
+        Swal.fire({
+            title: `${this.props.oneEvent.event_name}`,
+            text: `Accept all changes and continue?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm'
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
+                this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
+            }
+        })
     }
 
     venueSelect(event) {
@@ -173,7 +186,6 @@ class CreateEvent extends Component {
         let cancelValue = String(this.state.event_status);
         let start_date = moment(this.state.start_date).format(`YYYY-MM-DD`);
         let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
-        console.log('DATES ARE:', start_date, end_date)
         return (
             <>
                 <Box className={classes.margin}>

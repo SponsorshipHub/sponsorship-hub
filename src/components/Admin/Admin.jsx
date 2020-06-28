@@ -63,7 +63,7 @@ class Admin extends Component {
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.title}</TableCell>
                                     <TableCell>{user.company}</TableCell>
-                                    <TableCell>{user.username}</TableCell>
+                                    <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
                                 </TableRow>
