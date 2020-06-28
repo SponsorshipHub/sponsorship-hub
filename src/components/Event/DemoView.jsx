@@ -64,7 +64,7 @@ class DemoView extends Component {
                                         <Pie data={this.state.age}
                                             cx={220}
                                             cy={150}
-                                            labelLine
+                                            labelLine={false}
                                             
                                             label={({
                                                 cx,
@@ -91,8 +91,12 @@ class DemoView extends Component {
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
-                                                        {this.state.age[index].age_range} ({value}%)
-                                                    </text>
+
+                                                        {value > 4 && this.state.age[index].age_range}
+                                                        {value > 4 && ' (' + value + '%)'}
+
+                                                        {/* {this.state.age[index].age_range} ({value}%)*/}
+                                                    </text> 
                                                 );
                                             }}
                                             outerRadius={80}
@@ -145,7 +149,9 @@ class DemoView extends Component {
                                                     >                                                        
                                                         {value > 4 && this.state.income[index].income_range}
                                                         {value > 4 && ' (' + value + '%)'}
-
+                                                        
+                                                        {/* {this.state.income[index].income_range} ({value}%)
+                                                        </text> */}
                                                     </text>
                                                 );
                                             }}
