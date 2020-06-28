@@ -51,12 +51,12 @@ router.get('/users/approval', rejectUnauthenticated, rejectLevel2, (req, res) =>
     let query = `
     SELECT Count(access_level) as access_lvl_0 FROM "user"
     WHERE access_level = 0;`
-    console.log(`IN ADMIN!`);
+    // console.log(`IN ADMIN!`);
     pool.query(query).then(results => {
-        console.log(results.rows);
+        // console.log(results.rows);
         res.send(results.rows[0])
     }).catch(err => {
-        console.log(`ERROR in ADMIN:`, err);
+        // console.log(`ERROR in ADMIN:`, err);
         res.sendStatus(500);
     })
 });
