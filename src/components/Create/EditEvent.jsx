@@ -96,7 +96,7 @@ class CreateEvent extends Component {
         else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
         else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; 
+        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
 
         Swal.fire({
             title: `${this.props.oneEvent.event_name}`,
@@ -109,10 +109,9 @@ class CreateEvent extends Component {
         }).then(result => {
             if (result.value) {
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
-                this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
+                this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
             }
         })
-
     }
 
     venueSelect(event) {
