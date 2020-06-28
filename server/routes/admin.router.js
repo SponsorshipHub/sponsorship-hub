@@ -12,7 +12,8 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
 router.get('/users', rejectUnauthenticated, rejectLevel2, (req, res) => {
     let query = `
     SELECT id, username, name, title, company, phone, access_level
-    FROM "user";`
+    FROM "user"
+    ORDER BY access_level, name;`
 
     console.log(`IN ADMIN!`);
     
@@ -21,14 +22,44 @@ router.get('/users', rejectUnauthenticated, rejectLevel2, (req, res) => {
         res.send(results.rows)
     }).catch(err => {
         console.log(`ERROR in ADMIN:`, err);
+        res.sendStatus(500);
     })
 });
 
 /**
- * POST route template
+ * PUT route template
  */
-router.post('/', (req, res) => {
+router.put('/access-level', rejectUnauthenticated, rejectLevel2, (req, res) => {
+    let query = `
+    UPDATE "user"
+    SET access_level = $1
+    WHERE id = $2;`;
 
+    let id = req.body.user_id;
+    let newLevel = req.body.newLevel
+
+    pool.query(query, [newLevel, id]).then(results => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(`ERROR in ADMIN/ACCESS-LEVEL:`, err);
+        res.sendStatus(500);
+    })
 });
+
+// Shows a count of how many users need approval
+router.get('/users/approval', rejectUnauthenticated, rejectLevel2, (req, res) => {
+    let query = `
+    SELECT Count(access_level) as access_lvl_0 FROM "user"
+    WHERE access_level = 0;`
+    // console.log(`IN ADMIN!`);
+    pool.query(query).then(results => {
+        // console.log(results.rows);
+        res.send(results.rows[0])
+    }).catch(err => {
+        // console.log(`ERROR in ADMIN:`, err);
+        res.sendStatus(500);
+    })
+});
+
 
 module.exports = router;

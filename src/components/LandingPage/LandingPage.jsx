@@ -18,7 +18,7 @@ class LandingPage extends Component {
 
     componentDidMount() {
         document.title = "Sponsorship Hub"; // Sets browser's title
-        console.log('Landing Page has been MOUNTED');
+        // console.log('Landing Page has been MOUNTED');
         // on landing page load, get our data for the featured events
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
@@ -70,8 +70,8 @@ class LandingPage extends Component {
         return (
             <Box>
                 {/* Header */}
-                <Header /><Box className={classes.header_margin} />
-                <Box>{this.props.user.access_level > 1 && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}</Box>
+                <Header history={this.props.history}/>
+                
 
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>

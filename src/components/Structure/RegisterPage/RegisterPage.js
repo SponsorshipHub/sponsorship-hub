@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Box } from '@material-ui/core';
-import Header_small from '../../Header/Header_small';
+import Header from '../../Header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
@@ -38,7 +38,7 @@ class RegisterPage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header_small /><Box className={classes.header_margin} />
+        <Header />
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"

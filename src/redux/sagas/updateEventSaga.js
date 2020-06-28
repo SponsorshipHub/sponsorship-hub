@@ -17,7 +17,7 @@ function* updateEvent(action) {
             console.log('New venue has ID of:', venue_id)
         }
         console.log(`updateEvent has received:`, action.payload);
-        yield axios.put(`/event/update/${ venue_id }`, action.payload);
+        yield axios.put(`/event/update/${venue_id}`, action.payload);
     } catch (error) {
         console.log(`Error in updateEventSaga:`, error);
     }

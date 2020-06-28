@@ -10,6 +10,7 @@ import results from './resultsReducer';
 import eventType from './eventTypeReducer';
 import admin from './adminReducer';
 import demo from './demoReducer';
+import approval from './approvalReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   eventType, //will hold data for event types
   admin, //sets user list for admin
   demo, //current event demographic information for defaulting values in Edit mode
+  approval, // shows count of users that need to be approved
 });
 
 export default rootReducer;

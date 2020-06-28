@@ -17,8 +17,11 @@ class EditDemo extends Component {
         id: this.props.match.params.id,
         //the id needs to come over from the origin page to identify the event
         gender1: 0,
+        female: 0,
         gender2: 0,
+        male: 0,
         gender3: 0,
+        other: 0,
         income1: 0,
         income2: 0,
         income3: 0,
@@ -61,7 +64,7 @@ class EditDemo extends Component {
             console.log("ALL 100");
             this.props.dispatch({ type: 'ADD_DEMO', payload: this.state, history: this.props.history })
             // this.props.history.push(`/event/${this.props.match.params.id}`)
-            //this push is happening too fast, only some information is ready to render and a refresh is necessary
+            //this push was happening too fast so i moved the push to the saga.
         } else {
             console.log('not ALL 100');
             Swal.fire({

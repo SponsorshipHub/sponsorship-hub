@@ -9,6 +9,7 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Swal from 'sweetalert2';
+import Header from '../Header/Header';
 
 
 class CreateDemo extends Component {
@@ -53,10 +54,10 @@ class CreateDemo extends Component {
     }
 
     handleSubmit = () => {
-        if (this.state.gender1 + this.state.gender2 + this.state.gender3 === 100 &&
-            this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7 === 100 &&
-            this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7 === 100 &&
-            this.state.resident1 + this.state.resident2 === 100
+        if (this.state.gender1 + this.state.gender2 + this.state.gender3 === 100 || 0 &&
+            this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7 === 100 || 0 &&
+            this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7 === 100 || 0 &&
+            this.state.resident1 + this.state.resident2 === 100 || 0
         ){
             console.log("ALL 100");
             this.props.dispatch({ type: 'ADD_DEMO', payload:this.state, history:this.props.history })
@@ -89,6 +90,9 @@ class CreateDemo extends Component {
         return (
 
             <Box>
+                {/* Header */}
+                <Header history={this.props.history}/>
+
                 <Typography align="center" variant="h2">Enter Demographics</Typography>
                 {/* Begin Gender Demographic Inputs */}
                 <Box className={classes.box_grey}>

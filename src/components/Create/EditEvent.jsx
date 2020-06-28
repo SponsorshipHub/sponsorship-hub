@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import Header_Event from '../Header/Header_Event'
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
@@ -10,6 +10,10 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+// Sweetalert 2
+import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
+
 const moment = require('moment');
 
 class CreateEvent extends Component {
@@ -78,6 +82,7 @@ class CreateEvent extends Component {
             event_twitter: this.props.oneEvent.event_twitter,
             event_description: this.props.oneEvent.event_description,
             event_sponsorship_kit: this.props.oneEvent.event_sponsorship_kit,
+            event_id: this.props.match.params.id,
         });
     }
 
@@ -92,11 +97,21 @@ class CreateEvent extends Component {
         else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
         else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
-        // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-        this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
-        console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
-        // PUSHES TO the NEW ID
-        this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
+
+        Swal.fire({
+            title: `${this.props.oneEvent.event_name}`,
+            text: `Accept all changes and continue?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm'
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
+                this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
+            }
+        })
     }
 
     venueSelect(event) {
@@ -173,9 +188,9 @@ class CreateEvent extends Component {
         let cancelValue = String(this.state.event_status);
         let start_date = moment(this.state.start_date).format(`YYYY-MM-DD`);
         let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
-        console.log('DATES ARE:', start_date, end_date)
         return (
             <>
+                <Header_Event history={this.props.history} />
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Editing {this.props.oneEvent.event_name}</h1></Grid>
@@ -383,12 +398,14 @@ class CreateEvent extends Component {
                                 value='true'
                                 name="radio-button-demo"
                                 inputProps={{ 'aria-label': 'TRUE' }}
+                                color="primary"
                             />Yes
                             <Radio
                                 checked={cancelValue === 'false'}
                                 onChange={this.cancelSelect}
                                 value='false'
                                 name="radio-button-demo"
+                                color="primary"
                                 inputProps={{ 'aria-label': 'FALSE' }}
                             />No
                         </Grid>
