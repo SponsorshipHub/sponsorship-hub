@@ -120,22 +120,24 @@ class ResultPage extends Component {
                 {/* Header */}
                 <Header history={this.props.history} />
                 {/* section that holds the advanced search filters */}
-                <Box className={classes.margin}>
+                <Box className={classes.search_section}>
                     {/* section that holds search events */}
                     <Grid container justify="center">
-                    <Grid item xs={12} md={8}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
+                    <Grid item xs={12} md={10}><Typography className={classes.title} variant="h4">Advanced Search</Typography></Grid>
                     </Grid>
 
                     {/* state and month selector options */}
                     <Grid container justify="center" spacing={2}>
-                        <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" /></Grid>
+                        <Grid item xs={12} md={4}>
+                            <TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" />
+                            </Grid>
                         {/* month selector with date text fields */}
                         <Grid item xs={12} md={2}>
-                            <InputLabel>search start date</InputLabel>
+                            <InputLabel>Start Date</InputLabel>
                             <TextField onChange={(event) => this.handleStartD(event)} defaultValue={this.props.match.params.startDate} type="date" />
                         </Grid>
                         <Grid item xs={12} md={2}>
-                            <InputLabel>search end date</InputLabel>
+                            <InputLabel>End Date</InputLabel>
                             <TextField onChange={(event) => this.handleEndD(event)} defaultValue={this.props.match.params.endDate} type="date" />
                             {/* </Grid> */}
                         </Grid>
@@ -145,9 +147,9 @@ class ResultPage extends Component {
                     <Grid container justify="center" spacing={2}>
                         {/* begin TYPE selector option */}
                         <Grid item xs={12} md={4}>
-                            <InputLabel>Type</InputLabel>
+                            <InputLabel>Event Type</InputLabel>
                             <FormControl className={classes.advSearch} fullWidth={true}>
-                                <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
+                                <Select open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
                                     {this.props.types.map(types =>
                                         <MenuItem key={types.id} value={types.type}><em>{types.type}</em></MenuItem>
                                     )}
@@ -178,7 +180,7 @@ class ResultPage extends Component {
                     </Grid>
                     {/* button grid that centers it */}
                     <Grid container justify="center" spacing={2}>
-                        <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
+                        <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.btn_search} variant="outlined">Filter</Button></Grid>
                     </Grid>
                     {/* </Grid> */}
                     {/* END ADVANCED FILTER */}
@@ -186,21 +188,22 @@ class ResultPage extends Component {
 
                 {/* BEGIN RESULTS VIEW */}
                 {/* section that holds mapped EVENTS */}
-                <Box bm={2}>
-                    <Typography variant="h4" align="center">Events</Typography>
+                <Box className={classes.margin}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} md={10}><Typography className={classes.title} variant="h4">Events</Typography></Grid>
+                    </Grid>
+                    
                     {/* BEGIN GRID */}
-                    <Grid container justify="space-evenly">
+                    <Grid container justify="center" spacing={2}>
                         {this.props.results.map(events =>
-                            <Box key={events.id}>
-                                <Card variant="outlined" className={classes.landCard} onClick={(event) => this.handleEvent(events)}>
+                            <Grid item xs={4} md={4} key={events.id}>
+                                <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                    </CardContent>
-                                    <CardContent>
-                                        <Typography>{events.event_name}</Typography>
+                                        <Typography variant="h6" style={{paddingTop: '12px'}}>{events.event_name}</Typography>
                                     </CardContent>
                                 </Card>
-                            </Box>
+                            </Grid>
                         )}
                         {/* end of mapping for landing page GET */}
                     </Grid>

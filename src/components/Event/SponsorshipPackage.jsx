@@ -54,8 +54,8 @@ class SponsorshipPackage extends Component {
                     <Typography className={classes.modalTitle} variant='h3'>{this.props.item.sponsor_name}</Typography>
                 </DialogTitle>
                 <DialogContent>
-                    <Typography variant='subtitle2'>Price: ${this.props.item.sponsor_price}</Typography>
-                    <Typography variant='overline'>{this.props.item.sponsor_description}</Typography>
+                    <Typography variant='subtitle1'>Price: ${this.props.item.sponsor_price}</Typography>
+                    <Typography variant='subtitle2'>{this.props.item.sponsor_description}</Typography>
                 </DialogContent>
             </Dialog>
             </>
