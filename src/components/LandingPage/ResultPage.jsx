@@ -23,8 +23,9 @@ class ResultPage extends Component {
     };//end state
 
     componentDidMount() {
+        let defaultState = ''
         document.title = "Sponsorship Hub - Results"; // Sets browser's title
-        console.log('ResultPage has been MOUNTED');
+        // console.log('ResultPage has been MOUNTED');
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
     };//end componentDidMount
@@ -117,9 +118,7 @@ class ResultPage extends Component {
         return (
             <Box>
                 {/* Header */}
-                <Header history={this.props.history} />
-
-                <Box className={classes.header_margin_small} />
+                <Header history={this.props.history}/>
                 {/* section that holds the advanced search filters */}
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" spacing={2}>
