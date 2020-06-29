@@ -90,7 +90,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     let maxAttend = 2147483647
     let minSponsor = 0
     let maxSponsor = 2147483647
-    // console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
+    console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
     // TEST SEARCH USING IF STATEMENT
 
     
@@ -120,6 +120,8 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     }
     
     let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor];
+    console.log(`RESULTS:`, results);
+    
 
     let queryString = `
     SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
@@ -130,13 +132,13 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
     FULL JOIN event_type ON junction_event_type.type_id = event_type.id
     WHERE state ILIKE $1
-    AND start_date BETWEEN $2 AND $3
-    OR end_date BETWEEN $2 AND $3
-	AND type ILIKE $4
+   	AND type ILIKE $4
 	AND estimated_attendance >= $5
 	AND estimated_attendance <= $6
 	AND sponsor_price >= $7
 	AND sponsor_price <= $8
+	AND start_date BETWEEN $2 AND $3
+    AND end_date BETWEEN $2 AND $3
     GROUP BY "event".id, venues.city, venues.state, event_type.type
     ;`
         pool.query(queryString, results).then((result) => {

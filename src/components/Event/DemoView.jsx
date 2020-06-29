@@ -142,7 +142,7 @@ class DemoView extends Component {
                                                         y={y}
                                                         fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
-                                                        scaleToFit={true}
+                                                        scaletofit={true}
                                                         dominantBaseline="central"
                                                     >                                                        
                                                         {value > 4 && this.state.income[index].income_range}
