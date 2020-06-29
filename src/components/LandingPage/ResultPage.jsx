@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select, InputLabel, Card, CardContent, CardMedia, CardActionArea } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -199,8 +199,10 @@ class ResultPage extends Component {
                             <Grid item xs={4} md={4} key={events.id}>
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
+                                        <CardActionArea>
                                         <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
                                         <Typography variant="h6" style={{paddingTop: '12px'}}>{events.event_name}</Typography>
+                                        </CardActionArea>
                                     </CardContent>
                                 </Card>
                             </Grid>
