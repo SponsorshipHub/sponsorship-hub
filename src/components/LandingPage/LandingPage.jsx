@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Card, CardContent, InputLabel, CardMedia, FormControl, Select, MenuItem } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button, Card, CardContent, InputLabel, CardMedia, FormControl, Select, MenuItem, CardActionArea } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -10,6 +10,28 @@ import Header from '../Header/Header';
 // Sweetalert 2
 import Swal from 'sweetalert2';
 import '../Style/Swal.scss';
+//carousel set up
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 3000 },
+        items: 5
+    },
+    desktop: {
+        breakpoint: { max: 3000, min: 1024 },
+        items: 3
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 464 },
+        items: 2
+    },
+    mobile: {
+        breakpoint: { max: 464, min: 0 },
+        items: 1
+    },
+};
 
 class LandingPage extends Component {
 
@@ -194,19 +216,29 @@ class LandingPage extends Component {
                         <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Featured Events</Typography></Grid>
                     </Grid>
                     {/* BEGIN GRID */}
-                    <Grid container justify="center" spacing={2}>
+                    <Carousel responsive={responsive}
+                        swipeable={true}
+                        showDots={true}
+                        ssr={true}
+                        infinite={true}
+                        autoPlaySpeed={5000}
+                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                        slidesToSlide={3}
+                    >
                         {this.props.landing.map(events =>
-                            <Grid item xs={4} md={4}key={events.id}>
+                            <Grid item xs={12} sm={12} md={12} key={events.id}>
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
-                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                        <Typography variant="h6" style={{paddingTop: '12px'}}>{events.event_name}</Typography>
+                                        <CardActionArea>
+                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
+                                            <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
+                                        </CardActionArea>
                                     </CardContent>
                                 </Card>
                             </Grid>
                         )}
                         {/* end of mapping for landing page GET */}
-                    </Grid>
+                    </Carousel>
                 </Box>
                 {/* end of mapped data */}
             </Box>

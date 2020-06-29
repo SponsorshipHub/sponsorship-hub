@@ -6,17 +6,6 @@ const { rejectLevel0 } = require('../modules/auth_lvl_0'); // Rejects level 0 [U
 const { rejectLevel1 } = require('../modules/auth_lvl_1'); // Rejects level 1 and under [Brand]
 const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 and under [Researcher]
 
-/**
- * GET route template
- */
-router.get('/gender/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
-console.log('in demo GET req.params.id:', req.params.id);
-});
-
-//  This would be where i need to write the get route if I'm not using oneEvent
-// const queryText = `SELECT  FROM
-// junction_event_gender junction_event_income junction_event_age junction_event_residency 
-
 
 /**
  * POST routes gender, income, age, residency
@@ -81,8 +70,48 @@ router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
         })
 });
 
-
-    
-
+/**
+ * PUT routes gender, income, age, residency
+ */
+// gender PUT
+router.put(`/edit`, rejectUnauthenticated, rejectLevel1, async (req, res) => {
+let demo = req.body;
+console.log('in demo.router gender PUT, req.body:', demo);
+const sendDemo = await pool.connect();
+try{
+    await sendDemo.query('BEGIN');
+    let genderQuery = `UPDATE junction_event_gender SET percentage = $1 WHERE event_id=$2 AND gender_id = $3;`;
+    await sendDemo.query(genderQuery, [demo.female, demo.event_id, 1]);
+    await sendDemo.query(genderQuery, [demo.male, demo.event_id, 2]);
+    await sendDemo.query(genderQuery, [demo.other, demo.event_id, 3]);
+    let IncomeQuery = `UPDATE junction_event_income SET percentage = $1 WHERE event_id=$2 and income_range_id = $3;`;
+    await sendDemo.query(IncomeQuery, [demo.Income0_24999, demo.event_id, 1]);
+    await sendDemo.query(IncomeQuery, [demo.Income25000_49999, demo.event_id, 2]);
+    await sendDemo.query(IncomeQuery, [demo.Income50000_74999, demo.event_id, 3]);
+    await sendDemo.query(IncomeQuery, [demo.Income75000_99999, demo.event_id, 4]);
+    await sendDemo.query(IncomeQuery, [demo.Income100000_149999, demo.event_id, 5]);
+    await sendDemo.query(IncomeQuery, [demo.Income150000_199999, demo.event_id, 6]);
+    await sendDemo.query(IncomeQuery, [demo.Income200000, demo.event_id, 7]);
+    let ageQuery = `UPDATE junction_event_age SET percentage = $1 WHERE event_id=$2 and age_range_id = $3;`;
+    await sendDemo.query(ageQuery, [demo.Age0_17, demo.event_id, 1]);
+    await sendDemo.query(ageQuery, [demo.Age18_24, demo.event_id, 2]);
+    await sendDemo.query(ageQuery, [demo.Age25_34, demo.event_id, 3]);
+    await sendDemo.query(ageQuery, [demo.Age35_44, demo.event_id, 4]);
+    await sendDemo.query(ageQuery, [demo.Age45_54, demo.event_id, 5]);
+    await sendDemo.query(ageQuery, [demo.Age55_64, demo.event_id, 6]);
+    await sendDemo.query(ageQuery, [demo.Age65, demo.event_id, 7]);
+    let residentQuery = `UPDATE junction_event_residency SET percentage = $1 WHERE event_id=$2 and residency_id = $3;`;
+    await sendDemo.query(residentQuery, [demo.in_state, demo.event_id, 1]);
+    await sendDemo.query(residentQuery, [demo.out_of_state, demo.event_id, 2]);
+    await sendDemo.query('COMMIT');
+    res.sendStatus(200);
+} catch(error){
+    console.log(`ROLLBACK:`, error);
+    await sendDemo.query("ROLLBACK");
+    throw error;
+} finally {
+    sendDemo.release();
+}
+})
 
 module.exports = router;

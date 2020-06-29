@@ -51,7 +51,7 @@ const styles = {
     },
     footer: {
         backgroundPosition: 'center',
-        marginTop: '10px',
+        marginTop: '20px',
         backgroundSize: 'cover',
         height: '150px',
         backgroundPosition: 'center',
