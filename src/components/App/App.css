@@ -14,7 +14,7 @@ body {
 
 form {
     background-color: #dbd5d5;
-    width: 20%;
+    width: 30%;
     height: 250px;
     margin: 20px auto;
     padding: 25px;
@@ -23,7 +23,7 @@ form {
 
 .form {
     background-color: #dbd5d5;
-    width: 20%;
+    width: 30%;
     height: 500px;
     margin: 20px auto;
     padding: 25px;
@@ -61,7 +61,11 @@ input {
     cursor: pointer;
 }
 
-
 .DemoBackground{
     background: #d8d8d8; 
 }
+
+#search::placeholder {
+        color: #ffffff;
+        opacity: 0.50;
+    }

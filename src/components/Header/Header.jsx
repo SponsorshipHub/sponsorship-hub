@@ -43,24 +43,6 @@ class Header extends Component {
                         <Link className="nav-link" to="/home"><img id="hoverLogo" src='./images/logo_white_drop_shadow.png' height="80vh" alt="Sponsorship Hub" /></Link>
                         
                         <Box>
-                        <TextField
-                            onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                    this.submitSearch()
-                                }
-                            }}
-                            onChange={(event) => this.searchChange(event, 'search')}
-                            value={this.state.search} margin="dense" multiline
-                            color="primary" placeholder="Search Events"
-                            type="search" variant="outlined" id="filled-search" size="small"
-                            id="input-with-icon-textfield"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <SearchIcon className={classes.notification}/>
-                                    </InputAdornment>
-                                ),
-                            }}></TextField>
                         {/* Home & Login Button */}
                         {!this.props.user.id && <Link className="nav-link" to="/home/login"><Button className={classes.btn_create_event}>Login / Register</Button></Link>}
                         {/* Admin Button */}
@@ -86,6 +68,32 @@ class Header extends Component {
                     {this.props.user.access_level > 1 && page === 'home' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
                     {this.props.user.access_level > 1 && page === 'admin' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
                     {this.props.user.access_level > 1 && page === 'results' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                </Box>
+
+                <Box
+                    display="flex"
+                    flexDirection="row"
+                    justifyContent="center"
+                    className={classes.header_button_left_search}>
+                    <TextField
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                this.submitSearch()
+                            }
+                        }}
+                        onChange={(event) => this.searchChange(event, 'search')}
+                        value={this.state.search} margin="dense"
+                        color="secondary" placeholder="Search Events"
+                        type="search" variant="outlined" id="filled-search" size="small"
+                        id="search"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment className={classes.search} position="start">
+                                    <SearchIcon className={classes.notification} />
+                                </InputAdornment>
+                            ), 
+                            className: classes.searchTextField
+                        }}></TextField>
                 </Box>
                 
             </Box>
