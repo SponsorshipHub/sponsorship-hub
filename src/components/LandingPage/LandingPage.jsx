@@ -87,7 +87,6 @@ class LandingPage extends Component {
                 {/* Header */}
                 <Header history={this.props.history}/>
                 
-
                 {/* section to hold search inputs */}
                 <Box className={classes.box_grey}>
                     <Box className={classes.landMargin}>
