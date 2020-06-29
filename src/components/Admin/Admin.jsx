@@ -19,6 +19,7 @@ class Admin extends Component {
 
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_USER_LIST'});
+        document.title = `Sponsorship Hub - Admin`; // Sets browser's title
     }
     
     componentDidUpdate(prevProps){

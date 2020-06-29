@@ -19,7 +19,6 @@ import Header_Event from '../Header/Header_Event';
 class Event extends Component {
 
     componentDidMount() {
-        document.title = "Sponsorship Hub - Event Page"; // Sets browser's title
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id })
         window.scrollTo(0, 0);
     }
@@ -27,6 +26,7 @@ class Event extends Component {
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
+        document.title = `Sponsorship Hub - ${this.props.oneEvent.event_name}`; // Sets browser's title
         return (
             <Box>
                 <Box>
