@@ -26,6 +26,12 @@ const styles = {
         right: '5px',
         fontSize: '75%'
     },
+    footer_button_right: {
+        position: 'absolute',
+        top: '100%',
+        right: '5px',
+        fontSize: '75%'
+    },
     header_button_left: {
         position: 'absolute',
         top: '250px',
@@ -42,45 +48,50 @@ const styles = {
         backgroundSize: 'cover',
         height: '300px',
         backgroundPosition: 'center',
-        // boxShadow: '1px 1px 5px black'
     },
-    landHead: {
-        backgroundColor: '#DDE2EC',
+    footer: {
+        backgroundPosition: 'center',
+        marginTop: '10px',
+        backgroundSize: 'cover',
+        height: '150px',
+        backgroundPosition: 'center',
+        backgroundColor: '#505050',
     },
-    landSearchTitle: {
-        textAlign: 'center',
-        fontSize: '25px',
-        padding: '1%'
-    },
-    landMargin: {
-        marginLeft: '2%',
-        marginRight: '2%',
-        paddingBottom: '2%'
+    title: {
+        paddingBottom: '35px'
     },
     formControl: {
         minWidth: '15%',
         marginLeft: '1%'
     },
-    advSearch: {
-        minWidth: '15%',
-        marginTop: '2%',
-        marginBottom: '2%'
+    btn_search: {
+        marginTop: '20px',
+        color: 'black',
+        borderRadius: '0px',
+        letterSpacing: '1px',
+        fontWeight: '500',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255',
+        }
     },
-    filterBtn: {
-        paddingLeft: '8%',
-        paddingRight: '8%',
-        margin: '6%',
-        letterSpacing: '2px',
+    search_section: {
+        margin: '20px',
+        borderBottom: '1px solid #F4525580',
+        paddingBottom: '20px',
+        // opacity: '.05'
+        // marginBottom: '5px'
     },
     landMedia: {
         maxWidth: '30vw',
         maxHeight: '30vh'
     },
-    landCard: {
+    card: {
         display: 'inline-block',
         maxWidth: '31vw',
-        maxHeight: '45vh',
-        minHeight: '30vh'
+        height: '40vh',
+        textAlign: 'center',
+
     },
     btn_def: {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
@@ -177,7 +188,10 @@ const styles = {
     searchTextField: {
         color: 'white',
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
-    }
+    },
+    shadow: {
+        boxShadow: '0px 0px 8px black'
+    },
 }
 
 export default styles;
