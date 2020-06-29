@@ -7,6 +7,9 @@ import { Grid, Typography, TextField, Box, Button, Card, CardContent, InputLabel
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Header from '../Header/Header';
+// Sweetalert 2
+import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
 
 class LandingPage extends Component {
 
@@ -28,11 +31,23 @@ class LandingPage extends Component {
     handleSearch = () => {
         console.log('search on Landing Page has been clicked');
         //IF STATEMENT SO THAT THEY DO BOTH START AND END DATE IF SELECTED
-        if (this.state.startDate !== 'null' && this.state.endDate === 'null') {
-            alert('Please fill in both date inputs');
+        if (this.state.startDate !== null && this.state.endDate === null) {
+            Swal.fire({
+                title: `Please fill in both date inputs.`,
+                // text: `Accept all changes and continue?`,
+                icon: 'warning',
+                confirmButtonColor: '#F45255',
+                confirmButtonText: 'Ok'
+            });
             return
-        } else if (this.state.endDate !== 'null' && this.state.startDate === 'null'){
-            alert('Please fill in both date inputs');
+        } else if (this.state.endDate !== null && this.state.startDate === null){
+            Swal.fire({
+                title: `Please fill in both date inputs.`,
+                // text: `Accept all changes and continue?`,
+                icon: 'warning',
+                confirmButtonColor: '#F45255',
+                confirmButtonText: 'Ok'
+            });
             return
         };//end if statement
         // on click of the search button, the user will be taken to the results view page
