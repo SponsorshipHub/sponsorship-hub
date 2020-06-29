@@ -65,9 +65,9 @@ class Footer extends Component {
                     <Box className={classes.header_text} style={{ color: 'white' }}>Sponsorship Hub</Box>
                 </Box> */}
 
-                <Box className={classes.footer_button_right}>
+                {/* <Box className={classes.footer_button_right}>
                         <EmailIcon color="secondary" className={classes.header_social} style={{ margin: '8px' }} />
-                </Box>
+                </Box> */}
 
                 {/* <Box
                     display="flex"
