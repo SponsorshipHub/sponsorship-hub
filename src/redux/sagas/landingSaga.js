@@ -8,6 +8,7 @@ function* landingSaga(){
     yield takeLatest('FETCH_DEFAULT_RESULTS', getDefaultResults);
     yield takeLatest('FETCH_ADV_RESULTS', getAdvResults);
     yield takeLatest('FETCH_EVENT_TYPES', eventTypes);
+    yield takeLatest('FETCH_SEARCH_RESULTS', getSearch);
 };//end landingSaga
 
 // generator functions
@@ -82,6 +83,22 @@ function* getAdvResults(action){
         console.log('Error in getAdvResults saga')
     }
 };//end getAdvResults
+
+//this function gets the search results for the page
+function* getSearch(action) {
+    let event_name = action.payload.search
+    try {
+        const response = yield axios.get('/results/search', { params: {event_name}});
+        yield put({
+            type: 'GET_SEARCH_RESULTS',
+            payload: response.data
+        })
+        yield action.history.push(`/results`) // Pushes history using YIELD!
+    } catch (err) {
+        console.log('Error in defaultResults saga:', err)
+    }
+};//end getDefaultResults
+
 
 // this function gets our event types so we can map through our event type selectors
 function* eventTypes(){

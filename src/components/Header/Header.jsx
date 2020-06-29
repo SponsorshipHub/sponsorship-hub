@@ -3,14 +3,29 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { Paper, Grid, Box, Button } from '@material-ui/core';
+import { InputAdornment, TextField, Box, Button } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
 class Header extends Component {
+    state = {search: ''}
+
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_APPROVAL' });
+        this.setState({ search: '' })
     }
+
+    searchChange(event, property) {
+        this.setState ({[property]: event.target.value})
+    }
+
+    submitSearch() {
+        console.log('Searching for:', this.state)
+        this.props.dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: this.state, history: this.props.history})
+        this.setState({ search: '' })
+    }
+
     render() {
         const page = window.location.href.split('/')[4];
         const { classes } = this.props;
@@ -28,6 +43,24 @@ class Header extends Component {
                         <Link className="nav-link" to="/home"><img id="hoverLogo" src='./images/logo_white_drop_shadow.png' height="80vh" alt="Sponsorship Hub" /></Link>
                         
                         <Box>
+                        <TextField
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    this.submitSearch()
+                                }
+                            }}
+                            onChange={(event) => this.searchChange(event, 'search')}
+                            value={this.state.search} margin="dense" multiline
+                            color="primary" placeholder="Search Events"
+                            type="search" variant="outlined" id="filled-search" size="small"
+                            id="input-with-icon-textfield"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon className={classes.notification}/>
+                                    </InputAdornment>
+                                ),
+                            }}></TextField>
                         {/* Home & Login Button */}
                         {!this.props.user.id && <Link className="nav-link" to="/home/login"><Button className={classes.btn_create_event}>Login / Register</Button></Link>}
                         {/* Admin Button */}
