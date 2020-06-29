@@ -26,6 +26,12 @@ const styles = {
         right: '5px',
         fontSize: '75%'
     },
+    footer_button_right: {
+        position: 'absolute',
+        top: '100%',
+        right: '5px',
+        fontSize: '75%'
+    },
     header_button_left: {
         position: 'absolute',
         top: '250px',
@@ -42,7 +48,14 @@ const styles = {
         backgroundSize: 'cover',
         height: '300px',
         backgroundPosition: 'center',
-        // boxShadow: '1px 1px 5px black'
+    },
+    footer: {
+        backgroundPosition: 'center',
+        marginTop: '10px',
+        backgroundSize: 'cover',
+        height: '150px',
+        backgroundPosition: 'center',
+        backgroundColor: '#505050',
     },
     landHead: {
         backgroundColor: '#DDE2EC',
@@ -177,7 +190,10 @@ const styles = {
     searchTextField: {
         color: 'white',
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
-    }
+    },
+    shadow: {
+        boxShadow: '0px 0px 8px black'
+    },
 }
 
 export default styles;

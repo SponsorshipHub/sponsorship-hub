@@ -30,6 +30,7 @@ class Header extends Component {
         const page = window.location.href.split('/')[4];
         const { classes } = this.props;
         return (
+            <Box className={classes.shadow}>
             <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(./images/header_darker.jpg)` }}>
                 <Box 
                 display="flex"
@@ -96,7 +97,8 @@ class Header extends Component {
                         }}></TextField>
                 </Box>
                 
-            </Box>
+                </Box>
+                </Box>
         )
     }
 }
