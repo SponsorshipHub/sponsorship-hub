@@ -1,26 +1,65 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Box } from '@material-ui/core';
-import Header_small from '../../Header/Header_small';
+import { TextField, Button, Input } from '@material-ui/core';
+import Header from '../../Header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
+import Swal from 'sweetalert2'
+import '../../Style/Swal.scss';
 
 class RegisterPage extends Component {
   state = {
     username: '',
     password: '',
+    name: '',
+    title: '',
+    company: '',
+    phone: ''
   };
 
   registerUser = (event) => {
     event.preventDefault();
-
+    if (this.state.password !== this.state.password2) {
+      let timerInterval
+      Swal.fire({
+        title: 'The passwords did not match.',
+        html: 'Please re-enter your password.',
+        timer: 3500,
+        timerProgressBar: true,
+        onBeforeOpen: () => {
+          Swal.showLoading()
+          timerInterval = setInterval(() => {
+            const content = Swal.getContent()
+            if (content) {
+              const b = content.querySelector('b')
+              if (b) {
+                b.textContent = Swal.getTimerLeft()
+              }
+            }
+          }, 100)
+        },
+        onClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
+      return
+    }
     if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
           username: this.state.username,
           password: this.state.password,
+          name: this.state.name,
+          title: this.state.title,
+          company: this.state.company,
+          phone: this.state.phone
         },
       });
     } else {
@@ -38,7 +77,7 @@ class RegisterPage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Header_small /><Box className={classes.header_margin} />
+        <Header />
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -47,47 +86,99 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+        <form className="form" onSubmit={this.registerUser}>
+          <center><h1>New User</h1></center>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
+              <TextField
+              label="Name"
+              fullWidth
+                type="name"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleInputChangeFor('name')}
+              />
+          </div>
+          <div>
+              <TextField
+                label="Phone Number"
+                fullWidth
+                type="phone"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleInputChangeFor('phone')}
+              />
+          </div>
+          <div>
+              <TextField
+                label="Email Address"
+                fullWidth
+                placeholder="Case Sensitive"
                 type="text"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
+              <TextField
+              label="Job Title"
+              fullWidth
+                type="title"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleInputChangeFor('title')}
+              />
+          </div>
+          <div>
+              <TextField
+              label="Company"
+              fullWidth
+                type="company"
+                name="company"
+                value={this.state.company}
+                onChange={this.handleInputChangeFor('company')}
+              />
+          </div>
+          <div>
+              <TextField
+              label="Password"
+              fullWidth
                 type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
           <div>
-            <input
+              <TextField
+              label="Confirm Password"
+              fullWidth
+                type="password"
+                name="password2"
+                value={this.state.password2}
+                onChange={this.handleInputChangeFor('password2')}
+              />
+          </div><br/>
+          <center>
+          <div>
+            <Button color="primary"
+            variant="contained"
               className="register"
               type="submit"
               name="submit"
               value="Register"
-            />
-          </div>
+            >Submit</Button>
+            </div></center>
         </form>
         <center>
-          <button
+          <Button
+            variant="outlined"
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
-            Login
-          </button>
+            Return to Login
+          </Button>
         </center>
       </div>
     );

@@ -21,7 +21,8 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/create', (req, res) => {
+router.post('/create', rejectLevel1, (req, res) => {
+    // console.log('RECEIVING:', req.body)
     let query = `INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity) VALUES
     ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`;

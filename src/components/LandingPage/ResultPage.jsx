@@ -6,7 +6,7 @@ import { Grid, Typography, TextField, Box, Button, FormControl, MenuItem, Select
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
-import Header_small from '../Header/Header_small'
+import Header from '../Header/Header';
 
 class ResultPage extends Component {
 
@@ -23,8 +23,9 @@ class ResultPage extends Component {
     };//end state
 
     componentDidMount() {
+        let defaultState = ''
         document.title = "Sponsorship Hub - Results"; // Sets browser's title
-        console.log('ResultPage has been MOUNTED');
+        // console.log('ResultPage has been MOUNTED');
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
     };//end componentDidMount
@@ -116,8 +117,8 @@ class ResultPage extends Component {
         const { classes } = this.props;
         return (
             <Box>
-                <Header_small />
-                <Box className={classes.header_margin_small} />
+                {/* Header */}
+                <Header history={this.props.history}/>
                 {/* section that holds the advanced search filters */}
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" spacing={2}>

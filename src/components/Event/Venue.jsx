@@ -19,7 +19,7 @@ class Venue extends Component {
                 <Grid container justify="space-evenly">
                     <Grid item md={4}>
                         {/* Venue Name */}
-                        <h2>{this.props.oneEvent.name}</h2>
+                        <a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a>
                         {/* Capacity Need to fix spacing */}
                         {/* venue_capacity */}
                         <Typography>Capacity: {this.props.oneEvent.venue_capacity}</Typography>
@@ -27,8 +27,8 @@ class Venue extends Component {
                             <PlaceIcon />
                             <Typography display="inline">Address</Typography>
                             {/* Address */}
-                            <Typography>{this.props.oneEvent.address}</Typography>
-                            <Typography>{this.props.oneEvent.city}, {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography>
+                            <a style={{ textDecorationColor: '#f45255', color: 'black'}} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><Typography>{this.props.oneEvent.address}</Typography>
+                                <Typography>{this.props.oneEvent.city && this.props.oneEvent.city + ', '} {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography></a>
                         </Box>
                     </Grid>
                     <Grid item md={4}>

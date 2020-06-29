@@ -148,5 +148,21 @@ router.get('/filter', rejectUnauthenticated, (req, res) => {
         });//end pool query
 });//end GET router for Advanced Search
 
+//GET router for SEARCH results
+router.get('/search', rejectUnauthenticated, (req, res) => {
+    let search = req.query.event_name
+    console.log('in /results GET default');
+    let queryString = `
+        SELECT * FROM "event"
+        WHERE event_name ILIKE $1
+        ORDER BY "start_date" DESC;
+    `;
+    pool.query(queryString, [`%${search}%`]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('error in /results GET default:', error);
+        res.sendStatus(500);
+    });//end pool query 
+});// end SEARCH get ROUTER
 
 module.exports = router;

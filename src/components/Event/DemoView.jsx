@@ -22,12 +22,10 @@ class DemoView extends Component {
         COLORS: ['#F6CBCC', '#EFA1A2', '#F17A7C', '#f45255', '#D9373A', '#A01B1E', '#760E10'],
         COLORS2: ['#C5DFFF', '#A7CEFF', '#6EA7F1', '#3F7FD2', '#296EC8', '#20549A', '#0D366C'],
         COLORS3: ['#FFD3A1', '#FFAC4E', '#FF8700'],
-        COLORS4: ['#86F7A7', '#41F575'],
-        RADIAN: Math.PI / 180
+        COLORS4: ['#31D268', '#41F575'],
+        RADIAN: Math.PI / 180,
+        HOVER1: false
     }
-
-    // f45255 - CORRAL
-
 
     componentDidUpdate(prevProps){
         if(prevProps.oneEvent.age != this.props.oneEvent.age){
@@ -43,6 +41,7 @@ class DemoView extends Component {
     render() {        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
+
         return (
             <Box className='DemoBackground' my={2}>
                 <Box>
@@ -54,7 +53,7 @@ class DemoView extends Component {
                     </Grid>
                     <Grid container justify="center">
                         <Grid item md={10}>
-                            <Grid container>
+                            <Grid container> 
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- AGE ------------------- */}
                                     <h4>Age Ranges</h4>
@@ -62,7 +61,7 @@ class DemoView extends Component {
                                         <Pie data={this.state.age}
                                             cx={220}
                                             cy={150}
-                                            labelLine
+                                            labelLine={false}
                                             
                                             label={({
                                                 cx,
@@ -89,8 +88,12 @@ class DemoView extends Component {
                                                         textAnchor={x > cx ? "start" : "end"}
                                                         dominantBaseline="central"
                                                     >
-                                                        {this.state.age[index].age_range} ({value}%)
-                                                    </text>
+
+                                                        {value > 4 && this.state.age[index].age_range}
+                                                        {value > 4 && ' (' + value + '%)'}
+
+                                                        {/* {this.state.age[index].age_range} ({value}%)*/}
+                                                    </text> 
                                                 );
                                             }}
                                             outerRadius={80}
@@ -99,12 +102,13 @@ class DemoView extends Component {
                                             nameKey={this.state.age.age_range}>
                                             
                                             {this.state.age.map((entry, i) => 
-                                                <Cell key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
+                                                <Cell onClick={() => alert(entry.age_percentage + '%' + ' attendees are age: ' + entry.age_range)} key={i} fill={this.state.COLORS[i % this.state.COLORS.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
                                    
                                 </Grid>
+                                
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- INCOME ------------------- */}
                                     <h4>Household Income</h4>
@@ -112,7 +116,7 @@ class DemoView extends Component {
                                         <Pie data={this.state.income}
                                             cx={235}
                                             cy={150}
-                                            labelLine
+                                            labelLine={false}
                                             outerRadius={100}
                                             label={({
                                                 cx,
@@ -132,14 +136,20 @@ class DemoView extends Component {
                                                 const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
                                                 return (
+                                                    
                                                     <text
                                                         x={x}
                                                         y={y}
                                                         fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
+                                                        scaleToFit={true}
                                                         dominantBaseline="central"
-                                                    >
-                                                        {this.state.income[index].income_range} ({value}%)
+                                                    >                                                        
+                                                        {value > 4 && this.state.income[index].income_range}
+                                                        {value > 4 && ' (' + value + '%)'}
+                                                        
+                                                        {/* {this.state.income[index].income_range} ({value}%)
+                                                        </text> */}
                                                     </text>
                                                 );
                                             }}
@@ -148,7 +158,9 @@ class DemoView extends Component {
                                             dataKey='income_percentage'>
 
                                             {this.state.income.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS2[i % this.state.COLORS2.length]} />
+                                                <Cell 
+                                                    onClick={() => alert(entry.income_percentage+'%'+' households make: '+entry.income_range)}
+                                                key={i} fill={this.state.COLORS2[i % this.state.COLORS2.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -194,8 +206,8 @@ class DemoView extends Component {
                                             fill="#000000"
                                             dataKey='gender_percentage'>
 
-                                            {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
+                                            {this.state.gender.map((entry, i) =>
+                                                <Cell key={i} onClick={() => alert(entry.gender_percentage + '%' + ' attendees are ' + entry.gender)} fill={this.state.COLORS3[i % this.state.COLORS3.length]} />
                                             )}
                                         </Pie>
                                     </PieChart>
@@ -241,8 +253,8 @@ class DemoView extends Component {
                                             fill="#000000"
                                             dataKey='residency_percentage'>
 
-                                            {this.state.age.map((entry, i) =>
-                                                <Cell key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
+                                            {this.state.residency.map((entry, i) =>
+                                                <Cell onClick={() => alert(entry.residency_percentage + '%' + ' attendees are from ' + entry.residency)} key={i} fill={this.state.COLORS4[i % this.state.COLORS4.length]} />
                                             )}
                                             <Label value={this.state.residency.residency} position="outside" />
                                         </Pie>

@@ -14,11 +14,11 @@ import styles from '../Style/Style';
 import DemoView from './DemoView';
 import SponsorshipView from './SponsorshipView';
 import Venue from './Venue';
+import Header_Event from '../Header/Header_Event';
 
 class Event extends Component {
 
     componentDidMount() {
-        document.title = "Sponsorship Hub - Event Page"; // Sets browser's title
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id })
         window.scrollTo(0, 0);
     }
@@ -26,17 +26,18 @@ class Event extends Component {
     render() {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
+        document.title = `Sponsorship Hub - ${this.props.oneEvent.event_name}`; // Sets browser's title
         return (
             <Box>
                 <Box>
-                    <img className={classes.event_header} src={this.props.oneEvent.event_image_url}/>
-                    <Box className={classes.event_margin} />
+                    {/* Header */}
+                    <Header_Event history={this.props.history} match={this.props.match} />
+                    
+                    
                     <Box m={2}>
                         <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
                     </Box>
-                    {this.props.user.access_level > 1 && <Box m={2}>
-                        <Button onClick={() => this.props.history.push(`/event/edit/${this.props.match.params.id}`)} variant="outlined">Edit Event</Button>
-                    </Box>}
+                    
                 </Box>
 
                 <Grid container justify="center">
@@ -52,12 +53,13 @@ class Event extends Component {
                                 {this.props.oneEvent.event_description}
                             </Typography>
                         </Box>
-                        <Box textAlign="center" mt={1}>
-                            <CalendarTodayIcon mr={2} />
-                            {/* year_established */}
-                            <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
-                        </Box>
-
+                        {this.props.oneEvent.year_established &&
+                            <Box textAlign="center" mt={1}>
+                                <CalendarTodayIcon mr={2} />
+                                {/* year_established */}
+                                <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
+                            </Box>
+                        }
                     </Grid>
                     <Grid item md={4} sm={10}>
                         {/* Sponsorship link - Conditionally Rendered */}
@@ -66,12 +68,12 @@ class Event extends Component {
                         <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
                         <OpenInNewIcon />
                         {/* event_website */}
-                        <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website}</a> </Typography>
+                        <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website ? this.props.oneEvent.event_website : 'No Website Provided'}</a> </Typography>
                         <Box>
                             <PersonIcon />
                             <Typography display="inline">Contact Info</Typography>
                             {/* contact_name & contact_title */}
-                            <Typography>{this.props.oneEvent.contact_name}, {this.props.oneEvent.contact_title}</Typography>
+                            <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
                             {/* contact_email*/}
                             <Typography>{this.props.oneEvent.contact_email}</Typography>
                             {/* contact_phone*/}
@@ -82,6 +84,8 @@ class Event extends Component {
                 <DemoView />
                 <SponsorshipView />
                 <Venue />
+                {this.props.oneEvent.event_notes && 
+                <Box>
                 <Grid container justify="center">
                     <Grid item md={10}>
                         <h2>Additional Details</h2>
@@ -90,13 +94,14 @@ class Event extends Component {
                 <Grid container justify="center">
                     <Grid item md={8}>
                         <Box className="DemoBackground" p={2}>
-                            {/* event_notes */}
                             <Typography>
                                 {this.props.oneEvent.event_notes}
                             </Typography>
                         </Box>
                     </Grid>
                 </Grid>
+                </Box>
+                    }
             </Box>
         )//end return
     };//end render

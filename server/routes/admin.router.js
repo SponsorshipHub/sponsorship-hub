@@ -46,4 +46,36 @@ router.put('/access-level', rejectUnauthenticated, rejectLevel2, (req, res) => {
     })
 });
 
+// Shows a count of how many users need approval
+router.get('/users/approval', rejectUnauthenticated, rejectLevel2, (req, res) => {
+    let query = `
+    SELECT Count(access_level) as access_lvl_0 FROM "user"
+    WHERE access_level = 0;`
+    // console.log(`IN ADMIN!`);
+    pool.query(query).then(results => {
+        // console.log(results.rows);
+        res.send(results.rows[0])
+    }).catch(err => {
+        // console.log(`ERROR in ADMIN:`, err);
+        res.sendStatus(500);
+    })
+});
+
+/**
+ * DELETE SINGLE USER
+ */
+router.delete('/delete/:id', rejectUnauthenticated, rejectLevel2, (req, res) => {
+    let query = `DELETE FROM "user" WHERE id=$1;`;
+    let id = req.params.id;
+    pool.query(query, [id]).then(results => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(`ERROR DELETING USER:`, err);
+        res.sendStatus(500);
+    })
+});
+
+
+
+
 module.exports = router;
