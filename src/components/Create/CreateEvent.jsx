@@ -154,6 +154,9 @@ class CreateEvent extends Component {
     }  // SELECTOR EVENT TYPE END
 
     render() {
+        window.onbeforeunload = function () {
+            return "Data will be lost if you leave the page, are you sure?";
+        };
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);
@@ -176,7 +179,7 @@ class CreateEvent extends Component {
                                 <TextField fullWidth={true} inputProps={{ maxLength: 255 }} label={<><span>Event Name</span> <span className={classes.red}>*</span></>} placeholder="Name of the Event" onChange={(event)=>this.handleChange(event, 'event_name')}/>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                                <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')}/>
+                                <TextField type="number" label={<><span>Estimated Attendance</span> <span className={classes.red}>*</span></>} placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')} />
                         </Grid>
                     </Grid>
                     </Box>
@@ -388,7 +391,7 @@ class CreateEvent extends Component {
                             />No
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <TextField type="number" label={<><span>Estimated Attendance</span> <span className={classes.red}>*</span></>} placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'estimated_attendance')}/>
+                            <TextField inputProps={{ min: 1800, max: 2200 }} type="number" label="Year Established" placeholder="#" fullWidth={true} onChange={(event) => this.handleChange(event, 'year_established')} />
                         </Grid>
                     </Grid>
 
