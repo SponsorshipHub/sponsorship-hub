@@ -27,9 +27,6 @@ class DemoView extends Component {
         HOVER1: false
     }
 
-    // f45255 - CORRAL
-
-
     componentDidUpdate(prevProps){
         if(prevProps.oneEvent.age != this.props.oneEvent.age){
             this.setState({
@@ -56,7 +53,7 @@ class DemoView extends Component {
                     </Grid>
                     <Grid container justify="center">
                         <Grid item md={10}>
-                            <Grid container>
+                            <Grid container> 
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- AGE ------------------- */}
                                     <h4>Age Ranges</h4>
@@ -110,7 +107,8 @@ class DemoView extends Component {
                                         </Pie>
                                     </PieChart>
                                    
-                                </Grid>
+                                </Grid>}
+                                
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- INCOME ------------------- */}
                                     <h4>Household Income</h4>
