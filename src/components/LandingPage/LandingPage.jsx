@@ -107,75 +107,76 @@ class LandingPage extends Component {
                         <Grid container justify="center">
                             {/* location and month selector options */}
                             <Grid container justify="center" spacing={2}>
-                                <InputLabel>State</InputLabel>
-                                <FormControl>
-                                    <Select
-                                        open={this.state.state_open}
-                                        onClose={this.stateClose}
-                                        onOpen={this.stateOpen}
-                                        value={this.state.state}
-                                        onChange={(event) => this.handleState(event)}>
-                                        <MenuItem value='Alabama'>Alabama</MenuItem>
-                                        <MenuItem value='Alaska'>Alaska</MenuItem>
-                                        <MenuItem value='Arizona'>Arizona</MenuItem>
-                                        <MenuItem value='Arkansas'>Arkansas</MenuItem>
-                                        <MenuItem value='California'>California</MenuItem>
-                                        <MenuItem value='Colorado'>Colorado</MenuItem>
-                                        <MenuItem value='Connecticut'>Connecticut</MenuItem>
-                                        <MenuItem value='Delaware'>Delaware</MenuItem>
-                                        <MenuItem value='Florida'>Florida</MenuItem>
-                                        <MenuItem value='Georgia'>Georgia</MenuItem>
-                                        <MenuItem value='Hawaii'>Hawaii</MenuItem>
-                                        <MenuItem value='Idaho'>Idaho</MenuItem>
-                                        <MenuItem value='Illinois'>Illinois</MenuItem>
-                                        <MenuItem value='Indiana'>Indiana</MenuItem>
-                                        <MenuItem value='Iowa'>Iowa</MenuItem>
-                                        <MenuItem value='Kansas'>Kansas</MenuItem>
-                                        <MenuItem value='Kentucky'>Kentucky</MenuItem>
-                                        <MenuItem value='Louisiana'>Louisiana</MenuItem>
-                                        <MenuItem value='Maine'>Maine</MenuItem>
-                                        <MenuItem value='Maryland'>Maryland</MenuItem>
-                                        <MenuItem value='Massachusetts'>Massachusetts</MenuItem>
-                                        <MenuItem value='Michigan'>Michigan</MenuItem>
-                                        <MenuItem value='Minnesota'>Minnesota</MenuItem>
-                                        <MenuItem value='Mississippi'>Mississippi</MenuItem>
-                                        <MenuItem value='Missouri'>Missouri</MenuItem>
-                                        <MenuItem value='Montana'>Montana</MenuItem>
-                                        <MenuItem value='Nebraska'>Nebraska</MenuItem>
-                                        <MenuItem value='Nevada'>Nevada</MenuItem>
-                                        <MenuItem value='New Hampshire'>New Hampshire</MenuItem>
-                                        <MenuItem value='New Jersey'>New Jersey</MenuItem>
-                                        <MenuItem value='New Mexico'>New Mexico</MenuItem>
-                                        <MenuItem value='New York'>New York</MenuItem>
-                                        <MenuItem value='North Carolina'>North Carolina</MenuItem>
-                                        <MenuItem value='North Dakota'>North Dakota</MenuItem>
-                                        <MenuItem value='Ohio'> Ohio </MenuItem>
-                                        <MenuItem value='Oklahoma'> Oklahoma </MenuItem>
-                                        <MenuItem value='Oregon'> Oregon </MenuItem>
-                                        <MenuItem value='Pennsylvania'> Pennsylvania </MenuItem>
-                                        <MenuItem value='Rhode Island'> Rhode Island </MenuItem>
-                                        <MenuItem value='South Carolina'> South Carolina </MenuItem>
-                                        <MenuItem value='South Dakota'> South Dakota </MenuItem>
-                                        <MenuItem value='Tennessee'> Tennessee </MenuItem>
-                                        <MenuItem value='Texas'> Texas </MenuItem>
-                                        <MenuItem value='Utah'> Utah </MenuItem>
-                                        <MenuItem value='Vermont'> Vermont </MenuItem>
-                                        <MenuItem value='Virginia'> Virginia </MenuItem>
-                                        <MenuItem value='Washington'> Washington </MenuItem>
-                                        <MenuItem value='West Virginia'> West Virginia </MenuItem>
-                                        <MenuItem value='Wisconsin'> Wisconsin </MenuItem>
-                                        <MenuItem value='Wyoming'> Wyoming </MenuItem>
-                                    </Select>
-                                </FormControl>
-
+                                <Grid item xs={12} md={4}>
+                                    <InputLabel>State</InputLabel>
+                                    <FormControl fullWidth={true}>
+                                        <Select
+                                            open={this.state.state_open}
+                                            onClose={this.stateClose}
+                                            onOpen={this.stateOpen}
+                                            value={this.state.state}
+                                            onChange={(event) => this.handleState(event)}>
+                                            <MenuItem value='Alabama'>Alabama</MenuItem>
+                                            <MenuItem value='Alaska'>Alaska</MenuItem>
+                                            <MenuItem value='Arizona'>Arizona</MenuItem>
+                                            <MenuItem value='Arkansas'>Arkansas</MenuItem>
+                                            <MenuItem value='California'>California</MenuItem>
+                                            <MenuItem value='Colorado'>Colorado</MenuItem>
+                                            <MenuItem value='Connecticut'>Connecticut</MenuItem>
+                                            <MenuItem value='Delaware'>Delaware</MenuItem>
+                                            <MenuItem value='Florida'>Florida</MenuItem>
+                                            <MenuItem value='Georgia'>Georgia</MenuItem>
+                                            <MenuItem value='Hawaii'>Hawaii</MenuItem>
+                                            <MenuItem value='Idaho'>Idaho</MenuItem>
+                                            <MenuItem value='Illinois'>Illinois</MenuItem>
+                                            <MenuItem value='Indiana'>Indiana</MenuItem>
+                                            <MenuItem value='Iowa'>Iowa</MenuItem>
+                                            <MenuItem value='Kansas'>Kansas</MenuItem>
+                                            <MenuItem value='Kentucky'>Kentucky</MenuItem>
+                                            <MenuItem value='Louisiana'>Louisiana</MenuItem>
+                                            <MenuItem value='Maine'>Maine</MenuItem>
+                                            <MenuItem value='Maryland'>Maryland</MenuItem>
+                                            <MenuItem value='Massachusetts'>Massachusetts</MenuItem>
+                                            <MenuItem value='Michigan'>Michigan</MenuItem>
+                                            <MenuItem value='Minnesota'>Minnesota</MenuItem>
+                                            <MenuItem value='Mississippi'>Mississippi</MenuItem>
+                                            <MenuItem value='Missouri'>Missouri</MenuItem>
+                                            <MenuItem value='Montana'>Montana</MenuItem>
+                                            <MenuItem value='Nebraska'>Nebraska</MenuItem>
+                                            <MenuItem value='Nevada'>Nevada</MenuItem>
+                                            <MenuItem value='New Hampshire'>New Hampshire</MenuItem>
+                                            <MenuItem value='New Jersey'>New Jersey</MenuItem>
+                                            <MenuItem value='New Mexico'>New Mexico</MenuItem>
+                                            <MenuItem value='New York'>New York</MenuItem>
+                                            <MenuItem value='North Carolina'>North Carolina</MenuItem>
+                                            <MenuItem value='North Dakota'>North Dakota</MenuItem>
+                                            <MenuItem value='Ohio'> Ohio </MenuItem>
+                                            <MenuItem value='Oklahoma'> Oklahoma </MenuItem>
+                                            <MenuItem value='Oregon'> Oregon </MenuItem>
+                                            <MenuItem value='Pennsylvania'> Pennsylvania </MenuItem>
+                                            <MenuItem value='Rhode Island'> Rhode Island </MenuItem>
+                                            <MenuItem value='South Carolina'> South Carolina </MenuItem>
+                                            <MenuItem value='South Dakota'> South Dakota </MenuItem>
+                                            <MenuItem value='Tennessee'> Tennessee </MenuItem>
+                                            <MenuItem value='Texas'> Texas </MenuItem>
+                                            <MenuItem value='Utah'> Utah </MenuItem>
+                                            <MenuItem value='Vermont'> Vermont </MenuItem>
+                                            <MenuItem value='Virginia'> Virginia </MenuItem>
+                                            <MenuItem value='Washington'> Washington </MenuItem>
+                                            <MenuItem value='West Virginia'> West Virginia </MenuItem>
+                                            <MenuItem value='Wisconsin'> Wisconsin </MenuItem>
+                                            <MenuItem value='Wyoming'> Wyoming </MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
                                 {/* month selector with date text fields */}
                                 <Grid item xs={12} md={2}>
                                     <InputLabel>start date</InputLabel>
-                                    <TextField type="date" onChange={(event) => this.handleStart(event)} />
+                                    <TextField fullWidth={true} type="date" onChange={(event) => this.handleStart(event)} />
                                 </Grid>
                                 <Grid item xs={12} md={2}>
                                     <InputLabel>end date</InputLabel>
-                                    <TextField type="date" onChange={(event) => this.handleEnd(event)} />
+                                    <TextField fullWidth={true} type="date" onChange={(event) => this.handleEnd(event)} />
                                 </Grid>
                             </Grid>
                             {/* end location and month selector */}

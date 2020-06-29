@@ -109,7 +109,7 @@ class ResultPage extends Component {
     //handleFilter will filter the adv search
     handleFilter = () => {
         console.log('clicked on filter for advanced search');
-        this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state});
+        this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state });
     };//end handleFilter
 
     render() {
@@ -118,67 +118,72 @@ class ResultPage extends Component {
         return (
             <Box>
                 {/* Header */}
-                <Header history={this.props.history}/>
+                <Header history={this.props.history} />
                 {/* section that holds the advanced search filters */}
-                <Box className={classes.box_grey}>
+                <Box className={classes.margin}>
+                    {/* section that holds search events */}
+                    <Grid container justify="center">
+                    <Grid item xs={12} md={8}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
+                    </Grid>
+
+                    {/* state and month selector options */}
                     <Grid container justify="center" spacing={2}>
-                        <Grid item xs={12} md={10}><Typography className={classes.landSearchTitle}>Advanced Search</Typography></Grid>
-                        {/* state and month selector options */}
-                        <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" /></Grid>
-                            {/* month selector with date text fields */}
-                            <Grid item xs={12} md={2}>
-                                <InputLabel>search start date</InputLabel>
-                                <TextField onChange={(event) => this.handleStartD(event)} defaultValue={this.props.match.params.startDate} type="date" />
-                            </Grid>
-                            <Grid item xs={12} md={2}>
-                                <InputLabel>search end date</InputLabel>
-                                <TextField onChange={(event) => this.handleEndD(event)} defaultValue={this.props.match.params.endDate} type="date" />
-                            </Grid>
+                        <Grid item xs={12} md={4}><TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" /></Grid>
+                        {/* month selector with date text fields */}
+                        <Grid item xs={12} md={2}>
+                            <InputLabel>search start date</InputLabel>
+                            <TextField onChange={(event) => this.handleStartD(event)} defaultValue={this.props.match.params.startDate} type="date" />
                         </Grid>
-
-                        {/* type and attendance selector options*/}
-                        <Grid container justify="center">
-                            {/* begin TYPE selector option */}
-                            <Grid item xs={12} md={4}>
-                                <InputLabel>Type</InputLabel>
-                                <FormControl className={classes.advSearch} fullWidth={true}>
-                                    <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
-                                    {this.props.types.map(types => 
-                                            <MenuItem key={types.id} value={types.type}><em>{types.type}</em></MenuItem>
-                                    )}
-                                    </Select>
-                                </FormControl>
-                            </Grid> {/* END TYPE SELECTOR */}
-                            {/* begin ATTENDANCE selector */}
-                            <Grid item xs={12} md={2} className={classes.advSearch}>
-                                <TextField onChange={(event) => this.handleMinAttend(event)} label="Min Attendees" />
-                            </Grid>
-                            <Grid item xs={12} md={2} className={classes.advSearch}>
-                                <TextField onChange={(event) => this.handleMaxAttend(event)} label="Max Attendees" />
-                            </Grid>
-                            {/* END ATTENDANCE SELECTOR */}
-                        </Grid>
-
-                        {/* sponsorship cost and household income options */}
-                        <Grid container justify="center" spacing={2}>
-                            {/* begin SPONSORSHIP PRICE selector */}
-                            <Grid item xs={12} md={2}>
-                                <TextField onChange={(event) => this.handleMinSponsorPrice(event)} fullWidth={true} label="Min Sponsorship Price" />
-                            </Grid>
-                            <Grid item xs={12} md={2}>
-                                <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} fullWidth={true} label="Max Sponsorship Price" />
-                            </Grid>
-                            {/* END SPONSORSHIP PRICE SELECTOR */}
-                            <Grid item xs={12} md={4}><TextField fullWidth={true} label="Household Income" /></Grid>
-                        </Grid>
-                        {/* button grid that centers it */}
-                        <Grid container justify="center" spacing={2}>
-                            <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
+                        <Grid item xs={12} md={2}>
+                            <InputLabel>search end date</InputLabel>
+                            <TextField onChange={(event) => this.handleEndD(event)} defaultValue={this.props.match.params.endDate} type="date" />
+                            {/* </Grid> */}
                         </Grid>
                     </Grid>
+
+                    {/* type and attendance selector options*/}
+                    <Grid container justify="center" spacing={2}>
+                        {/* begin TYPE selector option */}
+                        <Grid item xs={12} md={4}>
+                            <InputLabel>Type</InputLabel>
+                            <FormControl className={classes.advSearch} fullWidth={true}>
+                                <Select variant="outlined" open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
+                                    {this.props.types.map(types =>
+                                        <MenuItem key={types.id} value={types.type}><em>{types.type}</em></MenuItem>
+                                    )}
+                                </Select>
+                            </FormControl>
+                        </Grid> {/* END TYPE SELECTOR */}
+                        {/* begin ATTENDANCE selector */}
+                        <Grid item xs={12} md={2} className={classes.advSearch}>
+                            <TextField onChange={(event) => this.handleMinAttend(event)} label="Min Attendees" />
+                        </Grid>
+                        <Grid item xs={12} md={2} className={classes.advSearch}>
+                            <TextField onChange={(event) => this.handleMaxAttend(event)} label="Max Attendees" />
+                        </Grid>
+                        {/* END ATTENDANCE SELECTOR */}
+                    </Grid>
+
+                    {/* sponsorship cost and household income options */}
+                    <Grid container justify="center" spacing={2}>
+                        {/* begin SPONSORSHIP PRICE selector */}
+                        <Grid item xs={12} md={2}>
+                            <TextField onChange={(event) => this.handleMinSponsorPrice(event)} fullWidth={true} label="Min Sponsorship Price" />
+                        </Grid>
+                        <Grid item xs={12} md={2}>
+                            <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} fullWidth={true} label="Max Sponsorship Price" />
+                        </Grid>
+                        {/* END SPONSORSHIP PRICE SELECTOR */}
+                        <Grid item xs={12} md={4}><TextField fullWidth={true} label="Household Income" /></Grid>
+                    </Grid>
+                    {/* button grid that centers it */}
+                    <Grid container justify="center" spacing={2}>
+                        <Grid item xs={12} md={1}><Button onClick={this.handleFilter} className={classes.filterBtn} variant="outlined">Filter</Button></Grid>
+                    </Grid>
+                    {/* </Grid> */}
                     {/* END ADVANCED FILTER */}
                 </Box>
+
                 {/* BEGIN RESULTS VIEW */}
                 {/* section that holds mapped EVENTS */}
                 <Box bm={2}>
