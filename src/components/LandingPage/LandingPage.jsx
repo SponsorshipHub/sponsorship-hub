@@ -100,15 +100,19 @@ class LandingPage extends Component {
                 <Header history={this.props.history} />
 
                 {/* section to hold search inputs */}
-                <Box className={classes.box_grey}>
-                    <Box className={classes.landMargin}>
-                        <Grid item xs={12} md={12}><Typography className={classes.landSearchTitle}>Search Events</Typography></Grid>
-                        {/* grid that wraps location and selector */}
-                        <Grid container justify="center">
-                            {/* location and month selector options */}
-                            <Grid container justify="center" spacing={2}>
+
+                <Box className={classes.search_section}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Search for Events</Typography></Grid>
+                    </Grid>
+
+                    {/* grid that wraps location and selector */}
+                    <Grid container justify="center">
+                        {/* location and month selector options */}
+                        <Grid container justify="center" spacing={2}>
+                            <Grid item xs={12} md={4}>
                                 <InputLabel>State</InputLabel>
-                                <FormControl>
+                                <FormControl fullWidth={true}>
                                     <Select
                                         open={this.state.state_open}
                                         onClose={this.stateClose}
@@ -167,40 +171,39 @@ class LandingPage extends Component {
                                         <MenuItem value='Wyoming'> Wyoming </MenuItem>
                                     </Select>
                                 </FormControl>
-
-                                {/* month selector with date text fields */}
-                                <Grid item xs={12} md={2}>
-                                    <InputLabel>start date</InputLabel>
-                                    <TextField type="date" onChange={(event) => this.handleStart(event)} />
-                                </Grid>
-                                <Grid item xs={12} md={2}>
-                                    <InputLabel>end date</InputLabel>
-                                    <TextField type="date" onChange={(event) => this.handleEnd(event)} />
-                                </Grid>
                             </Grid>
-                            {/* end location and month selector */}
-                            {/* button search grid */}
-                            <Grid item xs={12} md={1}><Button className={classes.advSearch} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                            {/* month selector with date text fields */}
+                            <Grid item xs={12} md={2}>
+                                <InputLabel>start date</InputLabel>
+                                <TextField fullWidth={true} type="date" onChange={(event) => this.handleStart(event)} />
+                            </Grid>
+                            <Grid item xs={12} md={2}>
+                                <InputLabel>end date</InputLabel>
+                                <TextField fullWidth={true} type="date" onChange={(event) => this.handleEnd(event)} />
+                            </Grid>
                         </Grid>
-                    </Box>
+                        {/* end location and month selector */}
+                        {/* button search grid */}
+                        <Grid item xs={12} md={1}><Button className={classes.btn_search} variant="outlined" onClick={this.handleSearch}>Search</Button></Grid>
+                    </Grid>
                 </Box>
 
                 {/* section that holds mapped EVENTS */}
-                <Box bm={2}>
-                    <Typography variant="h4" align="center">Featured Events</Typography>
+                <Box className={classes.margin}>
+                    <Grid container justify="center">
+                        <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Featured Events</Typography></Grid>
+                    </Grid>
                     {/* BEGIN GRID */}
-                    <Grid container justify="space-evenly">
+                    <Grid container justify="center" spacing={2}>
                         {this.props.landing.map(events =>
-                            <Box key={events.id}>
-                                <Card variant="outlined" className={classes.landCard} onClick={(event) => this.handleEvent(events)}>
+                            <Grid item xs={4} md={4}key={events.id}>
+                                <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                    </CardContent>
-                                    <CardContent>
-                                        <Typography>{events.event_name}</Typography>
+                                        <Typography variant="h6" style={{paddingTop: '12px'}}>{events.event_name}</Typography>
                                     </CardContent>
                                 </Card>
-                            </Box>
+                            </Grid>
                         )}
                         {/* end of mapping for landing page GET */}
                     </Grid>
