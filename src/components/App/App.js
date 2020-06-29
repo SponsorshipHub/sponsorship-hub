@@ -57,7 +57,7 @@ class App extends Component {
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
             <ProtectedRoute exact path="/sponsor/edit/:id" component={CreateSponsor} />
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />
-              <ProtectedRoute exact path="/demo/edit/:id" component={EditDemo} />
+            <ProtectedRoute exact path="/demo/edit/:id" component={EditDemo} />
             <ProtectedRoute exact path="/event/:id" component={Event} />
             <ProtectedRoute exact path="/event/edit/:id" component={EditEvent} />
             <ProtectedRoute path="/create-event" component={CreateEvent} />

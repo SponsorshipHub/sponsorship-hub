@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header_Event from '../Header/Header_Event'
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
-import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
+import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Box, Button } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -110,6 +110,33 @@ class CreateEvent extends Component {
             if (result.value) {
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
                 this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
+            }
+        })
+    }
+
+    nextClick2 = () => {
+        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
+        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
+        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
+        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
+        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+        if (this.state.venue_capacity === '') { this.setState({ venue_capacity: null }) }
+        if (this.state.event_type === '') { this.setState({ event_type: null }) }
+        if (this.state.year_established === '') { this.setState({ year_established: null }) }
+        // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
+
+        Swal.fire({
+            title: `${this.props.oneEvent.event_name}`,
+            text: `Copy this event as a new event?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Make More Changes'
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
             }
         })
     }
@@ -488,11 +515,10 @@ class CreateEvent extends Component {
                     </Grid></Box>
                 </Box>
 
-                <Grid justify="center" container>
-                    <Grid item xs={12} md={3}></Grid>
-                    <Grid item xs={12} md={3}><Button fullWidth={true} variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
-                    <Grid item xs={12} md={3}>
-                    </Grid>
+                <Grid justify="center" spacing={2} container>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick2}>Duplicate Event</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
+                    
                 </Grid>
 
             </>

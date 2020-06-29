@@ -61,5 +61,21 @@ router.get('/users/approval', rejectUnauthenticated, rejectLevel2, (req, res) =>
     })
 });
 
+/**
+ * DELETE SINGLE USER
+ */
+router.delete('/delete/:id', rejectUnauthenticated, rejectLevel2, (req, res) => {
+    let query = `DELETE FROM "user" WHERE id=$1;`;
+    let id = req.params.id;
+    pool.query(query, [id]).then(results => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(`ERROR DELETING USER:`, err);
+        res.sendStatus(500);
+    })
+});
+
+
+
 
 module.exports = router;

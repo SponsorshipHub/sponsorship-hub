@@ -1,16 +1,46 @@
 const styles = {
+    header_social: {
+        fontSize: '275%',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255'
+        },
+    },
     header_text: {
         fontSize: '45px',
-        textAlign: 'center',
-        marginTop: '16vh',
         textShadow: '0px 1px 5px black',
+        position: 'absolute',
+        top: '125px',
+    },
+    header_text_event: {
+        fontSize: '45px',
+        textShadow: '0px 1px 5px black',
+        position: 'absolute',
+        top: '110px',
+        textAlign: 'center'
+    },
+    header_button_right: {
+        position: 'absolute',
+        top: '260px',
+        right: '5px',
+        fontSize: '75%'
+    },
+    header_button_left: {
+        position: 'absolute',
+        top: '250px',
+        left: '5px',
+    },
+    header_button_left_search: {
+        position: 'absolute',
+        top: '247px',
+        left: '5px',
     },
     header: {
-        backgroundColor: '#EAECED',
         backgroundPosition: 'center',
         marginBottom: '5px',
         backgroundSize: 'cover',
-        height: '40vh',
+        height: '300px',
         backgroundPosition: 'center',
         // boxShadow: '1px 1px 5px black'
     },
@@ -83,7 +113,6 @@ const styles = {
     },
     box_grey: {
         background: '#EAECED', // Color that Karl submitted *GREY*
-        // background: '#ECECEC', // Adds a grey box to the background
         margin: '0px'
     },
     margin: {
@@ -98,7 +127,6 @@ const styles = {
     sponsorshipIconSmall: {
         maxWidth: '75px'
     },
-
     goodPercent: {
         color: 'green'
     },
@@ -141,6 +169,14 @@ const styles = {
     },
     coral: {
         color: '#F45255' // Karl coral
+    },
+    search: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+    },
+    searchTextField: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
     }
 }
 

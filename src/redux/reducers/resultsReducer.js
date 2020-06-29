@@ -13,6 +13,10 @@ const results = (state = [], action) => {
         console.log('YOU HAVE GOTTEN ADVANCED RESULTS', action.payload);
         return action.payload;
     }
+    else if (action.type === 'GET_SEARCH_RESULTS'){
+        console.log('YOU HAVE GOTTEN SEARCH RESULTS', action.payload);
+        return action.payload;
+    }
     return state;
 };//end results
 
