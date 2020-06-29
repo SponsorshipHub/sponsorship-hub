@@ -47,19 +47,28 @@ class Event extends Component {
                 </Grid>
                 <Grid container justify="space-evenly">
                     <Grid item md={4} sm={10}>
-                        <Box className={classes.eventTextBoxes} p={2}>
-                            {/* event_description */}
-                            <Typography>
-                                {this.props.oneEvent.event_description}
-                            </Typography>
-                        </Box>
-                        {this.props.oneEvent.year_established &&
-                            <Box textAlign="center" mt={1}>
-                                <CalendarTodayIcon mr={2} />
-                                {/* year_established */}
-                                <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
-                            </Box>
-                        }
+                        <Grid container>
+                            <Grid item md={12} sm={12} xs={12}>
+                                <Box className={classes.eventTextBoxes} p={2}>
+                                    {/* event_description */}
+                                    <Typography>
+                                        {this.props.oneEvent.event_description}
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                            <Grid container justify='space-evenly'>
+                                <Grid item md={6} sm={12} mt={2}>
+                                    <Typography>Type: {this.props.oneEvent.type}</Typography>
+                                </Grid>
+                                <Grid item md={6} sm={12}>
+                                    <Box textAlign="center" mt={1}>
+                                        <CalendarTodayIcon mr={2} />
+                                        {/* year_established */}
+                                        <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
+                                    </Box>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid item md={4} sm={10}>
                         {/* Sponsorship link - Conditionally Rendered */}
