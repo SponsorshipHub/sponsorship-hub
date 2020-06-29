@@ -54,6 +54,7 @@ class App extends Component {
             <Route exact path="/home" component={LandingPage}/>
             <ProtectedRoute exact path="/home/login" component={LandingPage}/>
             <ProtectedRoute exact path={["/results/:state/:startDate/:endDate", "/results"]} component={ResultPage}/>
+              <Redirect exact from="/results//:startDate/:endDate" to="/results" />
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
             <ProtectedRoute exact path="/sponsor/edit/:id" component={CreateSponsor} />
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />

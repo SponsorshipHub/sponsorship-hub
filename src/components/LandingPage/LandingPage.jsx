@@ -16,7 +16,7 @@ class LandingPage extends Component {
     state = {
         startDate: null,
         endDate: null,
-        state: '',
+        state: null,
         state_open: false
     };//end state
 
