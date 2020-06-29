@@ -9,8 +9,8 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-
+router.get('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+console.log('in demo GET req.params.id:', req.params.id);
 });
 
 /**

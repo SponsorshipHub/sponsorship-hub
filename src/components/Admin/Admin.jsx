@@ -8,6 +8,7 @@ import { Grid, Typography, TextField, Box, Button, Table, TableContainer, TableH
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import UserList from './UserList';
+import Header from '../Header/Header';
 
 class Admin extends Component {
 
@@ -41,6 +42,9 @@ class Admin extends Component {
         const { classes } = this.props;
         return (
             <Box>
+                {/* Header */}
+                <Header history={this.props.history} />
+
                 <Grid container justify="space-evenly">
                     <Grid item md={8} xs={11}>
 
@@ -63,7 +67,7 @@ class Admin extends Component {
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.title}</TableCell>
                                     <TableCell>{user.company}</TableCell>
-                                    <TableCell>{user.username}</TableCell>
+                                    <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
                                 </TableRow>

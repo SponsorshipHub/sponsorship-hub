@@ -10,6 +10,7 @@ import ResultPage from '../LandingPage/ResultPage';
 import CreateSponsor from '../Create/CreateSponsor';
 import CreateEvent from '../Create/CreateEvent';
 import CreateDemo from '../Create/CreateDemo';
+import EditDemo from '../Create/EditDemo';
 import EditEvent from '../Create/EditEvent';
 import Event from '../Event/Event';
 //style for app
@@ -40,7 +41,7 @@ class App extends Component {
       <MuiThemeProvider theme={mainTheme}>
       <Router>
         <div>
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -54,7 +55,9 @@ class App extends Component {
             <ProtectedRoute exact path="/home/login" component={LandingPage}/>
             <ProtectedRoute exact path={["/results/:state/:startDate/:endDate", "/results"]} component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
+            <ProtectedRoute exact path="/sponsor/edit/:id" component={CreateSponsor} />
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />
+            <ProtectedRoute exact path="/demo/edit/:id" component={EditDemo} />
             <ProtectedRoute exact path="/event/:id" component={Event} />
             <ProtectedRoute exact path="/event/edit/:id" component={EditEvent} />
             <ProtectedRoute path="/create-event" component={CreateEvent} />

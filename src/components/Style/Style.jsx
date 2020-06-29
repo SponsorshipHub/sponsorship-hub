@@ -1,71 +1,43 @@
 const styles = {
+    header_social: {
+        fontSize: '275%',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255'
+        },
+    },
     header_text: {
         fontSize: '45px',
-        textAlign: 'center',
-        marginTop: '16vh',
         textShadow: '0px 1px 5px black',
+        position: 'absolute',
+        top: '125px',
     },
-    header_text_small: {
-        fontSize: '42px',
-        textAlign: 'center',
-        marginTop: '10vh',
+        header_text_event: {
+        fontSize: '45px',
         textShadow: '0px 1px 5px black',
-    },
-    header_small: {
-        backgroundImage: `url(./images/header_darker_small.png)`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '25vh',
-        width: '100%',
         position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
+        top: '110px',
+        textAlign: 'center'
     },
-    header_small_spacing: {
-        color: 'black',
-        minHeight: '25vh',
+    header_button_right: {
         position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50 %, -50 %)',
+        top: '260px',
+        right: '5px',
+        fontSize: '75%'
+    },
+        header_button_left: {
+        position: 'absolute',
+        top: '250px',
+        left: '5px',
     },
     header: {
-        backgroundImage: `url(./images/header_darker.jpg)`,
-        backgroundSize: 'cover',
         backgroundPosition: 'center',
-        height: '50vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
-        objectFit: 'cover',
-        objectPosition: '50% 50%',
-    },
-    header_margin_small: {
-        marginTop: '20vh',
-    },
-    header_margin: {
-        marginTop: '27vh',
-        // boxShadow: '2px 2px 2px 2px'
-    },
-    event_header: {
-        backgroundImage: `url(./images/header_darker.jpg)`,
+        marginBottom: '5px',
         backgroundSize: 'cover',
+        height: '300px',
         backgroundPosition: 'center',
-        height: '38vh',
-        width: '100%',
-        position: 'absolute',
-        top: '0px',
-        zIndex: '-1',
-        color: 'white',
-        objectFit: 'cover',
-        objectPosition: '50% 50%',
-    },
-    event_margin: {
-        marginTop: '30vh',
-        // boxShadow: '2px 2px 2px 2px'
+        // boxShadow: '1px 1px 5px black'
     },
     landHead: {
         backgroundColor: '#DDE2EC',
@@ -128,6 +100,7 @@ const styles = {
         borderColor: '#EAECED',
         borderRadius: '0px',
         fontWeight: '600',
+        fontSize: '125%',
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
         color: '#F45255',

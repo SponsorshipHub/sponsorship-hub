@@ -4,6 +4,18 @@ import axios from 'axios';
 function* adminSaga(){
     yield takeLatest('FETCH_USER_LIST', fetchUserList);
     yield takeLatest('CHANGE_ACCESS_LEVEL', changeAccessLevel);
+    yield takeLatest('FETCH_APPROVAL', fetchApproval);
+}
+
+// Used for getting a count of who needs approval
+function* fetchApproval(action){
+    try{
+        const response = yield axios.get('/admin/users/approval');
+        yield put({ type: 'SET_APPROVAL', payload: response.data });
+    }
+    catch(error){
+        console.log(`ERROR in ADMIN SAGA:`, error);
+    }
 }
 
 function* fetchUserList(action){
@@ -20,6 +32,7 @@ function* fetchUserList(action){
 function* changeAccessLevel(action){
     try{
        yield axios.put('/admin/access-level', action.payload);
+        yield put({type: 'FETCH_APPROVAL'})
     }catch(err){
         console.log(`ERROR in ChangeAccessLevel:`, err);
         

@@ -9,6 +9,7 @@ import postEventSaga from './postEventSaga';
 import sponsorSaga from './sponsorSaga';
 import demoSaga from './demoSaga';
 import adminSaga from './adminSaga';
+import updateEvent from './updateEventSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -29,5 +30,6 @@ export default function* rootSaga() {
     sponsorSaga(),
     demoSaga(),
     adminSaga(),
+    updateEvent(),
   ]);
 }

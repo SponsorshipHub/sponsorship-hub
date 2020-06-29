@@ -10,7 +10,10 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
-import Header_small from '../Header/Header_small';
+import Header from '../Header/Header';
+// Sweetalert 2
+import Swal from 'sweetalert2';
+import '../Style/Swal.scss';
 
 class CreateEvent extends Component {
     state = { 
@@ -44,7 +47,7 @@ class CreateEvent extends Component {
         venue_state: '',
         venue_zipcode: null,
         venue_notes: null,
-        venue_capacity: null,   
+        venue_capacity: null, 
     }
 
     cancelSelect = (event) => {
@@ -53,14 +56,14 @@ class CreateEvent extends Component {
 
     componentDidMount = () => {
         document.title = "Sponsorship Hub - Create Event"; // Sets browser's title
-        console.log('componentDidMount: FETCH_VENUES');
+        // console.log('componentDidMount: FETCH_VENUES');
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });// get our event types
     }
 
     handleChange = (event, property) => {
         this.setState({ ...this.state, [property]: event.target.value})
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     nextClick = () => {
@@ -69,16 +72,25 @@ class CreateEvent extends Component {
         else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
         else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
         else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+        if (this.state.venue_capacity === '') {this.setState ({venue_capacity: null})}
+        if (this.state.event_type === '') {this.setState ({event_type: null})}
+        if (this.state.year_established === '') {this.setState ({year_established: null})}
             // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-            this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
-            console.log('Receiving event ID of:', this.props.currentEvent) // Shows undefined
-            // PUSHES TO the NEW ID
-            // this.props.history.push(`/create-sponsor/${this.props.currentEvent.id}`)
-    }
 
-    venueSelect(event) {
-        console.log(event.target.value)
-        // this.setState({ venue: event.target.value })
+        Swal.fire({
+            title: `${this.state.event_name}`,
+            text: `Create this new event?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Make More Changes'
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
+            }
+        })
     }
 
     // SELECTOR EVENT TYPE START
@@ -148,8 +160,7 @@ class CreateEvent extends Component {
 
         return (
             <>
-            <Header_small />
-            <Box className={classes.header_margin_small} />
+                <Header history={this.props.history} />
             
                 <Box className={classes.margin}>
                     <Grid justify="center" container>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SponsorItem from './SponsorItem';
+import Header from '../Header/Header'
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
@@ -33,7 +34,14 @@ class CreateSponsor extends Component {
     }
 
     forwardClick = () => {
+        //this conditional sends to either CreateDemo or EditDemo depending on 
+        if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`){
+            this.props.dispatch({ type: "FETCH_DEMOGRAPHICS", payload: this.state.id, history: this.props.history})
+            // I moved thi push to the demoSaga
+            // this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
+        } else {
         this.props.history.push(`/create-demo/${this.props.match.params.id}`)
+        }
     }
 
     handleChange = (event, property) => {
@@ -68,6 +76,9 @@ class CreateSponsor extends Component {
         const { classes } = this.props;
         return (
             <Box>
+                {/* Header */}
+                <Header history={this.props.history} />
+                
                 {/* Breadcrumbs go up here */}
                 <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
                 <Box mx={10} spacing={3}>
@@ -104,6 +115,7 @@ class CreateSponsor extends Component {
                     <Box mx={10} spacing={3}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>
+                                {/* I need to get rid of this button in create mode or it will switch the user to edit mode */}
                                 <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.backClick}>Back</Button>
                             </Grid>
                             <Grid item md={3}></Grid>
