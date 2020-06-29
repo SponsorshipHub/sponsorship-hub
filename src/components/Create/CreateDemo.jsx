@@ -100,11 +100,7 @@ class CreateDemo extends Component {
                             <Typography align="center" variant="h3">Gender</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
-                            {/* {this.props.oneEvent.gender.map(gender => 
-                                <Grid item md={3} sm={12}>
-                                    <TextField label={gender.gender} type="number" placeholder="%" defaultValue={gender.gender_percentage} onChange={(event) => this.handleChange(event, 'gender.gender')}></TextField>
-                                </Grid>
-                                )}; */}
+
 
                             <Grid item md={3} sm={12}>
                                 <TextField label="Female %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'female')}></TextField>

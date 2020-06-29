@@ -42,12 +42,14 @@ function* fetchSponsor(action) {
 
     }
 }
+//The re-GET ROUTE
+
 // the POST ROUTE
 function* sendSponsor(action){
     console.log('in sendSponsor', action.payload);
     try{
         yield axios.post('/sponsor', action.payload);
-        yield put ({ type: 'FETCH_SPONSORS', payload: action.payload.id});
+        yield put ({ type: 'FETCH_SPONSORS', payload: action.payload.event_id});
     }catch(error){
         console.log('add sponsor failed', error);
         

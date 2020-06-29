@@ -26,7 +26,7 @@ console.log('in sponsor POST req.body:', req.body);
 const queryText = `INSERT INTO sponsorships 
 (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id ) 
 VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(queryText, [req.body.sponsor_name, req.body.sponsor_price, req.body.sponsor_image_url, req.body.sponsor_description, req.body.id])
+    pool.query(queryText, [req.body.sponsor_name, req.body.sponsor_price, req.body.sponsor_image_url, req.body.sponsor_description, req.body.event_id])
     .then( result => {
         res.sendStatus(200);
     }).catch (error => {
