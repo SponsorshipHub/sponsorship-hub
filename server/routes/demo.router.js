@@ -80,36 +80,36 @@ console.log('in demo.router gender PUT, req.body:', demo);
 const sendDemo = await pool.connect();
 try{
     await sendDemo.query('BEGIN');
-    let query = `UPDATE junction_event_gender SET percentage = $1 WHERE event_id=$2 AND gender_id = $3;`;
-    await sendDemo.query(query, [demo.female, demo.event_id, 1]);
-    await sendDemo.query(query, [demo.male, demo.event_id, 2]);
-    await sendDemo.query(query, [demo.other, demo.event_id, 2]);
-    let query = `UPDATE junction_event_income SET percentage = $1 WHERE event_id=$2 and income_range_id = $3;`;
-    await sendDemo.query(query, [demo.Income0_24999, demo.event_id, 1]);
-    await sendDemo.query(query, [demo.Income25000_49999, demo.event_id, 2]);
-    await sendDemo.query(query, [demo.Income50000_74999, demo.event_id, 3]);
-    await sendDemo.query(query, [demo.Income75000_99999, demo.event_id, 4]);
-    await sendDemo.query(query, [demo.Income100000_149999, demo.event_id, 5]);
-    await sendDemo.query(query, [demo.Income150000_199999, demo.event_id, 6]);
-    await sendDemo.query(query, [demo.Income200000, demo.event_id, 7]);
-    let query = `UPDATE junction_event_age SET percentage = $1 WHERE event_id=$2 and age_range_id = $3;`;
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 1]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 2]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 3]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 4]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 5]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 6]);
-    await sendDemo.query(query, [demo.Age0_17, demo.event_id, 7]);
-    let query = `UPDATE junction_event_age SET percentage = $1 WHERE event_id=$2 and residency_id = $3;`;
-    await sendDemo.query(query, [demo.in_state, demo.event_id, 1]);
-    await sendDemo.query(query, [demo.out_of_state, demo.event_id, 2]);
+    let genderQuery = `UPDATE junction_event_gender SET percentage = $1 WHERE event_id=$2 AND gender_id = $3;`;
+    await sendDemo.query(genderQuery, [demo.female, demo.event_id, 1]);
+    await sendDemo.query(genderQuery, [demo.male, demo.event_id, 2]);
+    await sendDemo.query(genderQuery, [demo.other, demo.event_id, 3]);
+    let IncomeQuery = `UPDATE junction_event_income SET percentage = $1 WHERE event_id=$2 and income_range_id = $3;`;
+    await sendDemo.query(IncomeQuery, [demo.Income0_24999, demo.event_id, 1]);
+    await sendDemo.query(IncomeQuery, [demo.Income25000_49999, demo.event_id, 2]);
+    await sendDemo.query(IncomeQuery, [demo.Income50000_74999, demo.event_id, 3]);
+    await sendDemo.query(IncomeQuery, [demo.Income75000_99999, demo.event_id, 4]);
+    await sendDemo.query(IncomeQuery, [demo.Income100000_149999, demo.event_id, 5]);
+    await sendDemo.query(IncomeQuery, [demo.Income150000_199999, demo.event_id, 6]);
+    await sendDemo.query(IncomeQuery, [demo.Income200000, demo.event_id, 7]);
+    let ageQuery = `UPDATE junction_event_age SET percentage = $1 WHERE event_id=$2 and age_range_id = $3;`;
+    await sendDemo.query(ageQuery, [demo.Age0_17, demo.event_id, 1]);
+    await sendDemo.query(ageQuery, [demo.Age18_24, demo.event_id, 2]);
+    await sendDemo.query(ageQuery, [demo.Age25_34, demo.event_id, 3]);
+    await sendDemo.query(ageQuery, [demo.Age35_44, demo.event_id, 4]);
+    await sendDemo.query(ageQuery, [demo.Age45_54, demo.event_id, 5]);
+    await sendDemo.query(ageQuery, [demo.Age55_64, demo.event_id, 6]);
+    await sendDemo.query(ageQuery, [demo.Age65, demo.event_id, 7]);
+    let residentQuery = `UPDATE junction_event_residency SET percentage = $1 WHERE event_id=$2 and residency_id = $3;`;
+    await sendDemo.query(residentQuery, [demo.in_state, demo.event_id, 1]);
+    await sendDemo.query(residentQuery, [demo.out_of_state, demo.event_id, 2]);
     await sendDemo.query('COMMIT');
     res.sendStatus(200);
-} catch {
-    console.log(`ROLLBACK:`, err);
+} catch(error){
+    console.log(`ROLLBACK:`, error);
     await sendDemo.query("ROLLBACK");
-    throw err;
-}finally{
+    throw error;
+} finally {
     sendDemo.release();
 }
 })

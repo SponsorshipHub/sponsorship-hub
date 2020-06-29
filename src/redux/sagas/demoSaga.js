@@ -24,7 +24,6 @@ function* sendDemo(action){
         yield axios.post(`/demo/income`, action.payload);
         yield axios.post(`/demo/age`, action.payload);
         yield axios.post(`/demo/resident`, action.payload);
-        yield action.history.push(`/event/${action.payload.event_id}`)
     }catch(error){
         console.log('add demo failed', error);
         
