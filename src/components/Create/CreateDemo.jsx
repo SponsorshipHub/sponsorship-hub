@@ -15,27 +15,27 @@ import Header from '../Header/Header';
 class CreateDemo extends Component {
 
     state = {
-        id: this.props.match.params.id,
+        event_id: this.props.match.params.id,
         //the id needs to come over from the origin page to identify the event
-        gender1: 0,
-        gender2: 0,
-        gender3: 0,
-        income1: 0,
-        income2: 0,
-        income3: 0,
-        income4: 0,
-        income5: 0,
-        income6: 0,
-        income7: 0,
-        age1: 0,
-        age2: 0,
-        age3: 0,
-        age4: 0,
-        age5: 0,
-        age6: 0,
-        age7: 0,
-        resident1: 0,
-        resident2: 0,
+        female: 0,
+        male: 0,
+        other: 0,
+        Income0_24999: 0,
+        Income25000_49999: 0,
+        Income50000_74999: 0,
+        Income75000_99999: 0,
+        Income100000_149999: 0,
+        Income150000_199999: 0,
+        Income200000: 0,
+        Age0_17: 0,
+        Age18_24: 0,
+        Age25_34: 0,
+        Age35_44: 0,
+        Age45_54: 0,
+        Age55_64: 0,
+        Age65: 0,
+        in_state: 0,
+        out_of_state: 0,
     }
 
     backClick = () => {
@@ -50,17 +50,17 @@ class CreateDemo extends Component {
         this.setState({
             ...this.state,
             [property]: Number(event.target.value),
-        }); 
+        });
     }
 
     handleSubmit = () => {
-        if (this.state.gender1 + this.state.gender2 + this.state.gender3 === 100 || 0 &&
-            this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7 === 100 || 0 &&
-            this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7 === 100 || 0 &&
-            this.state.resident1 + this.state.resident2 === 100 || 0
-        ){
+        if (this.state.female + this.state.male + this.state.other === 100 || 0 &&
+            this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001 === 100 || 0 &&
+            this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65 === 100 || 0 &&
+            this.state.in_state + this.state.in_state === 100 || 0)
+        {
             console.log("ALL 100");
-            this.props.dispatch({ type: 'ADD_DEMO', payload:this.state, history:this.props.history })
+            this.props.dispatch({ type: 'ADD_DEMO', payload: this.state, history: this.props.history })
             // this.props.history.push(`/event/${this.props.match.params.id}`)
             //this push is happening too fast, only some information is ready to render and a refresh is necessary
         } else {
@@ -68,30 +68,29 @@ class CreateDemo extends Component {
             Swal.fire({
                 icon: 'error',
                 title: 'Cannot Submit Incomplete Data',
-                text: 'All categories must total 100% to be submitted',
-                footer: '<a href>Exit without submitting any demographic data</a>',
+                text: 'All categories must total 100% or 0% to be submitted',
                 timer: 5000
             });
-            
+
         }
-      
+
         // this will need to be also send the user to the created events page on a succesful post
     }
 
 
     render() {
-        let genderPercent = this.state.gender1 + this.state.gender2 + this.state.gender3;
-        let incomePercent = this.state.income1 + this.state.income2 + this.state.income3 + this.state.income4 + this.state.income5 + this.state.income6 + this.state.income7;
-        let agePercent = this.state.age1 + this.state.age2 + this.state.age3 + this.state.age4 + this.state.age5 + this.state.age6 + this.state.age7;
-        let residentPercent = this.state.resident1 + this.state.resident2;
-        
+        let genderPercent = this.state.female + this.state.male + this.state.other;
+        let incomePercent = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
+        let agePercent = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
+        let residentPercent = this.state.in_state + this.state.out_of_state;
+
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
 
             <Box>
                 {/* Header */}
-                <Header history={this.props.history}/>
+                <Header history={this.props.history} />
 
                 <Typography align="center" variant="h2">Enter Demographics</Typography>
                 {/* Begin Gender Demographic Inputs */}
@@ -108,16 +107,16 @@ class CreateDemo extends Component {
                                 )}; */}
 
                             <Grid item md={3} sm={12}>
-                                <TextField label="Female %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender1')}></TextField>
+                                <TextField label="Female %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'female')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Male %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender2')}></TextField>
+                                <TextField label="Male %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'male')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Other %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'gender3')}></TextField>
+                                <TextField label="Other %" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'other')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
-                                <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent }>Total: {genderPercent}%</Typography>
+                                <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {genderPercent}%</Typography>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -131,25 +130,25 @@ class CreateDemo extends Component {
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={12}>
-                                <TextField label="Less than $25,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income1')}></TextField>
+                                <TextField label="Less than $25,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income0_24999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$25,000-49,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income2')}></TextField>
+                                <TextField label="$25,000-49,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income25000_49999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$50,000-75,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income3')}></TextField>
+                                <TextField label="$50,000-75,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income50000_74999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$76,000-99,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income4')}></TextField>
+                                <TextField label="$76,000-99,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income75000_99999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$100,000-149,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income5')}></TextField>
+                                <TextField label="$100,000-149,999" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income100000_149999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$150,000-200,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income6')}></TextField>
+                                <TextField label="$150,000-200,000" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income150000_199999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="$200,001 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'income7')}></TextField>
+                                <TextField label="$200,001 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Income200000')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
                                 <Typography className={incomePercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {incomePercent}%</Typography>
@@ -166,25 +165,25 @@ class CreateDemo extends Component {
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={12}>
-                                <TextField label="17 and Under" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age1')}></TextField>
+                                <TextField label="17 and Under" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age0_17')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="18-24" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age2')}></TextField>
+                                <TextField label="18-24" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age18_24')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="25-34" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age3')}></TextField>
+                                <TextField label="25-34" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age25_34')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="35-44" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age4')}></TextField>
+                                <TextField label="35-44" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age35_44')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="45-54" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age5')}></TextField>
+                                <TextField label="45-54" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age45_54')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="55-64" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age6')}></TextField>
+                                <TextField label="55-64" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age55_64')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={12}>
-                                <TextField label="65 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'age7')}></TextField>
+                                <TextField label="65 or Greater" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'Age65')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={12}>
                                 <Typography className={agePercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {agePercent}%</Typography>
@@ -201,10 +200,10 @@ class CreateDemo extends Component {
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={5} sm={12}>
-                                <TextField label="Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'resident1')}></TextField>
+                                <TextField label="Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'in_state')}></TextField>
                             </Grid>
                             <Grid item md={5} sm={12}>
-                                <TextField label="Non-Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'resident2')}></TextField>
+                                <TextField label="Non-Resident" type="number" placeholder="%" onChange={(event) => this.handleChange(event, 'out_of_state')}></TextField>
                             </Grid>
                             <Grid item md={1} sm={12}>
                                 <Typography className={residentPercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {residentPercent}%</Typography>
