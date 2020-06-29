@@ -16,7 +16,6 @@ import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
     superLargeDesktop: {
-        // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
         items: 5
     },
@@ -31,7 +30,7 @@ const responsive = {
     mobile: {
         breakpoint: { max: 464, min: 0 },
         items: 1
-    }
+    },
 };
 
 class LandingPage extends Component {
@@ -217,21 +216,29 @@ class LandingPage extends Component {
                         <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Featured Events</Typography></Grid>
                     </Grid>
                     {/* BEGIN GRID */}
-                        <Carousel responsive={responsive}>
-                            {this.props.landing.map(events =>
-                                <Grid item xs={4} md={12} key={events.id} spacing={2}>
-                                    <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
-                                        <CardContent>
-                                            <CardActionArea>
-                                                <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                                <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
-                                            </CardActionArea>
-                                        </CardContent>
-                                    </Card>
-                                 </Grid>
-                            )}
-                            {/* end of mapping for landing page GET */}
-                        </Carousel>
+                    <Carousel responsive={responsive}
+                        swipeable={true}
+                        showDots={true}
+                        ssr={true}
+                        infinite={true}
+                        autoPlaySpeed={5000}
+                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                        slidesToSlide={3}
+                    >
+                        {this.props.landing.map(events =>
+                            <Grid item xs={12} sm={12} md={12} key={events.id}>
+                                <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
+                                    <CardContent>
+                                        <CardActionArea>
+                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
+                                            <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
+                                        </CardActionArea>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        )}
+                        {/* end of mapping for landing page GET */}
+                    </Carousel>
                 </Box>
                 {/* end of mapped data */}
             </Box>
