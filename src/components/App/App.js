@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 //components
 import Nav from '../Structure/Nav/Nav';
-import Footer from '../Structure/Footer/Footer';
+import Footer from '../Footer/Footer';
 import ProtectedRoute from '../Structure/ProtectedRoute/ProtectedRoute';
 import LandingPage from '../LandingPage/LandingPage';
 import ResultPage from '../LandingPage/ResultPage';

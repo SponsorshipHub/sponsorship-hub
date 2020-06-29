@@ -23,7 +23,7 @@ class Header_Event extends Component {
         const { classes } = this.props;
         return (
             <div>
-
+                <Box className={classes.shadow}>
                 <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(${this.props.oneEvent.event_image_url})` }}>
                     <Box
                         display="flex"
@@ -77,7 +77,7 @@ class Header_Event extends Component {
                     </Box>
 
                 </Box>
-
+                </Box>
             </div>
         )
     }
