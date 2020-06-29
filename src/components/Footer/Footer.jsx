@@ -8,26 +8,26 @@ import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
-class Header extends Component {
+class Footer extends Component {
     state = {search: ''}
 
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_APPROVAL' });
-        this.setState({ search: '' })
+        // this.props.dispatch({ type: 'FETCH_APPROVAL' });
+        // this.setState({ search: '' })
     }
 
     searchChange(event, property) {
-        this.setState ({[property]: event.target.value})
+        // this.setState ({[property]: event.target.value})
     }
 
     submitSearch() {
         // console.log('Searching for:', this.state)
-        this.props.dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: this.state, history: this.props.history})
-        this.setState({ search: '' })
+        // this.props.dispatch({ type: 'FETCH_SEARCH_RESULTS', payload: this.state, history: this.props.history})
+        // this.setState({ search: '' })
     }
 
     render() {
-        const page = window.location.href.split('/')[4];
+        // const page = window.location.href.split('/')[4];
         const { classes } = this.props;
         return (
             <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(./images/header_darker.jpg)` }}>
@@ -52,25 +52,25 @@ class Header extends Component {
                         </Box>
                 </Box>
 
-                <Box 
+                {/* <Box 
                 display="flex"
                 flexDirection="row"
                 justifyContent="center"
                 className={classes.header} >
                     <Box className={classes.header_text} style={{ color: 'white' }}>Sponsorship Hub</Box>
-                </Box>
+                </Box> */}
 
                 <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="center"
                     className={classes.header_button_right}>
-                    {this.props.user.access_level > 1 && page === 'home' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                    {/* {this.props.user.access_level > 1 && page === 'home' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
                     {this.props.user.access_level > 1 && page === 'admin' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
-                    {this.props.user.access_level > 1 && page === 'results' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                    {this.props.user.access_level > 1 && page === 'results' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>} */}
                 </Box>
 
-                <Box
+                {/* <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="center"
@@ -94,13 +94,12 @@ class Header extends Component {
                             ), 
                             className: classes.searchTextField
                         }}></TextField>
-                </Box>
-                
+                </Box> */}
             </Box>
         )
     }
 }
 
-Header.propTypes = { classes: PropTypes.object.isRequired };
+Footer.propTypes = { classes: PropTypes.object.isRequired };
 const putStateOnProps = reduxState => ({ user: reduxState.user, oneEvent: reduxState.oneEvent, approval: reduxState.approval, });
-export default connect(putStateOnProps)(withStyles(styles)(Header));
+export default connect(putStateOnProps)(withStyles(styles)(Footer));
