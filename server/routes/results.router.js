@@ -65,8 +65,8 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
         console.log('state has not been defined but start and end has for RESULTS');
         let queryString = `
             SELECT * FROM "event"
-            WHERE "start_date" >= $1 
-            AND "end_date" <= $2;
+            WHERE start_date BETWEEN $1 AND $2
+            OR end_date BETWEEN $1 AND $2;
         `;
         pool.query(queryString, [`%${start}%`, `%${end}%`]).then((result) => {
             res.send(result.rows);
@@ -130,7 +130,8 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
     FULL JOIN event_type ON junction_event_type.type_id = event_type.id
     WHERE state ILIKE $1
-    AND (start_date, end_date) OVERLAPS ($2::DATE, $3::DATE)
+    AND start_date BETWEEN $2 AND $3
+    OR end_date BETWEEN $2 AND $3
 	AND type ILIKE $4
 	AND estimated_attendance >= $5
 	AND estimated_attendance <= $6
