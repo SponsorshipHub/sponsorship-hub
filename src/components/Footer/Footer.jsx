@@ -30,7 +30,7 @@ class Footer extends Component {
         // const page = window.location.href.split('/')[4];
         const { classes } = this.props;
         return (
-            <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(./images/header_darker.jpg)` }}>
+            <Box className={classes.header} maxHeight="300px">
                 <Box 
                 display="flex"
                 flexDirection="row"
