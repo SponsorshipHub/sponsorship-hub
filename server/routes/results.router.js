@@ -54,6 +54,7 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
         WHERE state ILIKE $1
         AND start_date >= $2
         AND end_date <= $3
+        ORDER BY start_date DESC;
         `;
         pool.query(queryString, [`%${state}%`, `%${start}%`, `%${end}%`]).then((result) => {
             res.send(result.rows);
@@ -68,7 +69,8 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
         let queryString = `
             SELECT * FROM "event"
             JOIN venues ON venues.id = event.venue_id
-            WHERE state ILIKE $1;
+            WHERE state ILIKE $1
+            ORDER BY start_date DESC;
         `;
         pool.query(queryString, [`%${state}%`]).then((result) => {
             res.send(result.rows);
@@ -83,7 +85,8 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
         let queryString = `
             SELECT * FROM "event"
             WHERE start_date BETWEEN $1 AND $2
-            OR end_date BETWEEN $1 AND $2;
+            OR end_date BETWEEN $1 AND $2
+            ORDER BY start_date DESC;
         `;
         pool.query(queryString, [`%${start}%`, `%${end}%`]).then((result) => {
             res.send(result.rows);
@@ -161,6 +164,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     ${minSponsorshipPrice}
     ${maxSponsorshipPrice}
     GROUP BY "event".id, venues.city, venues.state, event_type.type
+    ORDER BY start_date DESC
     ;`
 
     // console.log(`QUERY:`, queryString);

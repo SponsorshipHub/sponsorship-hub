@@ -84,6 +84,9 @@ class CreateEvent extends Component {
             event_sponsorship_kit: this.props.oneEvent.event_sponsorship_kit,
             event_id: this.props.match.params.id,
         });
+        window.onbeforeunload = function () {
+            return "Data will be lost if you leave the page, are you sure?";
+        };
     }
 
     handleChange = (event, property) => {
@@ -109,7 +112,7 @@ class CreateEvent extends Component {
         }).then(result => {
             if (result.value) {
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
-                this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
+                this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
             }
         })
     }
@@ -210,9 +213,6 @@ class CreateEvent extends Component {
     }  // SELECTOR EVENT TYPE END
 
     render() {
-        window.onbeforeunload = function () {
-            return "Data will be lost if you leave the page, are you sure?";
-        };
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);

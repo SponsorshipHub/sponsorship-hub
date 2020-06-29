@@ -35,7 +35,7 @@ class Event extends Component {
                     
                     
                     <Box m={2}>
-                        <Button onClick={() => this.props.history.push(`/results`)} variant="outlined">Back to Results</Button>
+                        <Button onClick={() => this.props.history.push(`/results`)} variant="outlined" className={classes.btn_search}>Back to Results</Button>
                     </Box>
                     
                 </Box>
