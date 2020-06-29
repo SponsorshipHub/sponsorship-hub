@@ -107,7 +107,7 @@ class DemoView extends Component {
                                         </Pie>
                                     </PieChart>
                                    
-                                </Grid>}
+                                </Grid>
                                 
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- INCOME ------------------- */}
