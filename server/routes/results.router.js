@@ -99,17 +99,19 @@ router.get('/:state/:start/:end', rejectUnauthenticated, (req, res) => {
 router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('TEST MEEEEEE', req.query)
 
-    let state = ''
-    let start = '1753-01-01'
-    let end = '3000-12-31'
-    let type = ''
-    let minAttend = 0
-    let maxAttend = 2147483647
-    let minSponsor = 0
-    let maxSponsor = 2147483647
+    let state = '';
+    let start = '1753-01-01';
+    let end = '3000-12-31';
+    let type = '';
+    let minAttend = 0;
+    let maxAttend = 2147483647;
+    let minSponsor = 0;
+    let maxSponsor = 2147483647;
     console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
     // TEST SEARCH USING IF STATEMENT
-
+    let minSponsorshipPrice = `AND (sponsor_price >= $7 OR sponsor_price ISNULL)`;
+    let maxSponsorshipPrice = `AND (sponsor_price <= $8 OR sponsor_price ISNULL)`;
+    let eventType = `AND (event_type.type ILIKE $4 OR event_type.type ISNULL)`;
 
     if (req.query.state) {
         state = req.query.state;
@@ -122,6 +124,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     }
     if (req.query.type != '') {
         type = req.query.type;
+        eventType = `AND event_type.type ILIKE $4`;
     }
     if (req.query.minAttend) {
         minAttend = req.query.minAttend;
@@ -129,15 +132,17 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     if (req.query.maxAttend) {
         maxAttend = req.query.maxAttend;
     }
-    if (req.query.minSponsorPrice) {
+    if (req.query.minSponsorPrice && req.query.minSponsorPrice != 0) {
         minSponsor = req.query.minSponsorPrice;
+        minSponsorshipPrice = `AND sponsor_price >= $7`;
     }
     if (req.query.maxSponsorPrice) {
         maxSponsor = req.query.maxSponsorPrice;
+        maxSponsorshipPrice = `AND sponsor_price <= $8`;
     }
 
     let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor];
-    console.log(`RESULTS:`, results);
+    // console.log(`RESULTS:`, results);
     
 
     let queryString = `
@@ -149,15 +154,17 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
     FULL JOIN event_type ON junction_event_type.type_id = event_type.id
     WHERE state ILIKE $1
-   	AND type ILIKE $4
+    AND (start_date BETWEEN $2 AND $3 OR $2 BETWEEN start_date AND end_date)
+    ${eventType}
 	AND estimated_attendance >= $5
-	AND estimated_attendance <= $6
-	AND sponsor_price >= $7
-	AND sponsor_price <= $8
-	AND start_date BETWEEN $2 AND $3
-    AND end_date BETWEEN $2 AND $3
+    AND estimated_attendance <= $6
+    ${minSponsorshipPrice}
+    ${maxSponsorshipPrice}
     GROUP BY "event".id, venues.city, venues.state, event_type.type
     ;`
+
+    // console.log(`QUERY:`, queryString);
+    
     pool.query(queryString, results).then((result) => {
         // console.log('HELLOOOOO', result.rows)
         res.send(result.rows);
