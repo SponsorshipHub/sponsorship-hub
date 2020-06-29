@@ -15,7 +15,6 @@ class SponsorshipPackage extends Component {
         openModal: false
     }
 
-
     handleOpen = (id, classes) => {
         // console.log('HERE IS OUR SPONSOR:', this.props.oneEvent.sponsorship[this.state.sponsorshipId]);
         this.setState({
