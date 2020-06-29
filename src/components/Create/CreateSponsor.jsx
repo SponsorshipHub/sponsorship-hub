@@ -16,7 +16,7 @@ import StarsIcon from '@material-ui/icons/Stars';
 class CreateSponsor extends Component {
 
     state = {
-        id: this.props.match.params.id,
+        event_id: this.props.match.params.id,
         // hardcoded or MN State Fair, will need to change to the just created event in create or the selected event in edit
         sponsor_name: "",
         sponsor_price: "",
@@ -37,8 +37,7 @@ class CreateSponsor extends Component {
         //this conditional sends to either CreateDemo or EditDemo depending on 
         if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`){
             this.props.dispatch({ type: "FETCH_DEMOGRAPHICS", payload: this.state.id, history: this.props.history})
-            // I moved thi push to the demoSaga
-            // this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
+            this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
         } else {
         this.props.history.push(`/create-demo/${this.props.match.params.id}`)
         }

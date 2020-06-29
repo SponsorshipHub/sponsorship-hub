@@ -109,7 +109,7 @@ class CreateEvent extends Component {
         }).then(result => {
             if (result.value) {
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
-                this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
+                this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
             }
         })
     }
