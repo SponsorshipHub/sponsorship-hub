@@ -148,7 +148,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     FULL JOIN event_type ON junction_event_type.type_id = event_type.id
     WHERE state ILIKE $1
     AND start_date BETWEEN $2 AND $3
-    OR end_date BETWEEN $2 AND $3
+    AND end_date BETWEEN $2 AND $3
 	AND type ILIKE $4
 	AND estimated_attendance >= $5
 	AND estimated_attendance <= $6
