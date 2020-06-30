@@ -27,7 +27,7 @@ const responsive = {
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3, 
+        items: 3,
         swipeable: true,
         showDots: true,
         ssr: true,
@@ -62,7 +62,7 @@ class LandingPage extends Component {
     state = {
         startDate: null,
         endDate: null,
-        state: null,
+        state: '',
         state_open: false
     };//end state
 
@@ -98,8 +98,14 @@ class LandingPage extends Component {
             });
             return
         };//end if statement
+        // if statement if default is set to All States
+        if (this.state.state === 'All States'){
+            this.setState({
+                state: ''
+            })
+        }
         // on click of the search button, the user will be taken to the results view page
-        this.props.history.push(`/results/${this.state.state}/${this.state.startDate}/${this.state.endDate}`);
+        this.props.history.push(`/results/`);
         // send our inputs to our results view page
         this.props.dispatch({ type: 'FETCH_RESULTS', payload: this.state })
     };//end handleSearch
@@ -142,7 +148,7 @@ class LandingPage extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Box style={{ overflow: 'hidden'}}>
+            <Box style={{ overflow: 'hidden' }}>
                 {/* Header */}
                 <Header history={this.props.history} />
 
@@ -164,8 +170,9 @@ class LandingPage extends Component {
                                         open={this.state.state_open}
                                         onClose={this.stateClose}
                                         onOpen={this.stateOpen}
-                                        value={this.state.state}
+                                        defaultValue="All States"
                                         onChange={(event) => this.handleState(event)}>
+                                        <MenuItem value="All States">All States</MenuItem>
                                         <MenuItem value='Alabama'>Alabama</MenuItem>
                                         <MenuItem value='Alaska'>Alaska</MenuItem>
                                         <MenuItem value='Arizona'>Arizona</MenuItem>
