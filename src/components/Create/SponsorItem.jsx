@@ -104,10 +104,10 @@ class SponsorItem extends Component {
         if (this.state.editMode) {
             viewOrEdit =
 
-                <Grid container spacing={3}>
+                <Grid container item spacing={3}>
                     {/* input fields go here */}
 
-                    <Grid justify="center" container item md={12}>
+                <Grid justify="center" container item md={12}>
                     <Grid item md={1}>{this.props.sponsorItem.sponsor_image_url ?
                         <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
                         <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
@@ -129,7 +129,9 @@ class SponsorItem extends Component {
                         <Grid item md={1} sm={9}>
                             <Button fullWidth className={classes.btn_def} onClick={this.handleSubmitClick}>Submit</Button>
                         </Grid>
+                    
                     </Grid>
+                <Divider />
                 </Grid>
         }
 

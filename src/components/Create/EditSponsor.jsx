@@ -54,7 +54,7 @@ class EditSponsor extends Component {
         this.setState({
             sponsor_name: "",
             sponsor_price: "",
-            sponsor_image_url: "",
+            sponsor_image_url: "./images/sponsor_icon.png",
             sponsor_description: ""
         });
 

@@ -60,9 +60,9 @@ class EditDemo extends Component {
 
     handleSubmit = () => {
         let genderTotal = this.state.female + this.state.male + this.state.other;
-        let incomeTotal = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001;
+        let incomeTotal = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
         let ageTotal = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
-        let residentTotal = this.state.in_state + this.state.in_state;
+        let residentTotal = this.state.in_state + this.state.out_of_state;
         if ((genderTotal === 100 || genderTotal === 0) &&
             (incomeTotal === 100 || incomeTotal === 0) &&
             (ageTotal === 100 || ageTotal === 0) &&
@@ -101,7 +101,7 @@ class EditDemo extends Component {
 
                 <Typography align="center" variant="h2">Enter Demographics</Typography>
                 {/* Begin Gender Demographic Inputs */}
-                <Box className={classes.box_grey}>
+                <Box className={classes.box_grey} margin={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Gender</Typography>
@@ -124,7 +124,7 @@ class EditDemo extends Component {
                 </Box>
                 {/* End Gender Demographic Inputs */}
                 {/* Begin Household Income Inputs */}
-                <Box>
+                <Box margin={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Household Income</Typography>
@@ -159,7 +159,7 @@ class EditDemo extends Component {
                 </Box>
                 {/* End Household Income Inputs*/}
                 {/* Begin Age Inputs */}
-                <Box className={classes.box_grey}>
+                <Box className={classes.box_grey} margin={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Age Range</Typography>
@@ -194,7 +194,7 @@ class EditDemo extends Component {
                 </Box>
                 {/* End Age Inputs */}
                 {/* Begin Residency Inputs */}
-                <Box spacing={3}>
+                <Box spacing={3} margin={3}>
                     <Grid container justify="center" spacing={3}>
                         <Grid item md={9} sm={12}>
                             <Typography align="center" variant="h3">Residency</Typography>

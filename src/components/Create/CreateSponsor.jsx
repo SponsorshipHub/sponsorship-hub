@@ -66,15 +66,15 @@ class CreateSponsor extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
-            <Box>
+            <Box className={classes.margin}>
                 {/* Header */}
                 <Header history={this.props.history} />
                 
                 {/* Breadcrumbs go up here */}
                 <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
-                <Box mx={10} spacing={3}>
+                <Box mx={10}>
                     {/* input fields */}
-                    <Grid justify="center" container spacing={3}>
+                    <Grid justify="center" container>
                         <Grid item md={3} sm={9}>
                             <TextField fullWidth label="Package Name" placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
                         </Grid>
@@ -103,7 +103,7 @@ class CreateSponsor extends Component {
                        
                     </Grid>
           
-                    <Box mx={10} spacing={3}>
+                    <Box mx={10} >
                         <Grid justify="center" container>
                             <Grid item md={3} sm={6}>
                                 {/* I need to get rid of this button in create mode or it will switch the user to edit mode */}
