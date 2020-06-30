@@ -46,9 +46,10 @@ class UserList extends Component {
             text: `You want to change ${this.props.user.name} to access level ${level}`,
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor:'#296EC8',
+            confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
-            confirmButtonText: 'Confirm change'
+            confirmButtonText: 'CONFIRM',
+            cancelButtonText: 'CANCEL',
         }).then(result => {
             if(result.value){
                 this.props.dispatch({ type:'CHANGE_ACCESS_LEVEL', payload: payload});
