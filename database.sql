@@ -26,7 +26,7 @@ CREATE TABLE "event"
     "year_established" int,
     "start_date" TIMESTAMP NOT NULL,
     "end_date" TIMESTAMP NOT NULL,
-    "event_image_url" varchar DEFAULT 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
+    "event_image_url" varchar DEFAULT 'https://unsplash.com/photos/ZhQCZjr9fHo/download?force=true&w=1920',
     "event_website" varchar(2000),
     "event_status" BOOLEAN,
     -- Stretch
@@ -144,13 +144,13 @@ CREATE TABLE "junction_event_income"
 INSERT INTO income_range
     (income_range)
 VALUES
-    ('0-25000'),
-    ('25001-49999'),
-    ('50000-75999'),
-    ('76000-99999'),
+    ('0-24999'),
+    ('25000-49999'),
+    ('50000-74999'),
+    ('75000-99999'),
     ('100000-149999'),
-    ('150000-200000'),
-    ('200001+');
+    ('150000-199999'),
+    ('200000+');
 
 -- DEMOGRAPHIC RESIDENCY --
 CREATE TABLE "residency"
@@ -249,13 +249,13 @@ VALUES
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id)
 VALUES
-    ('Minnesota Craft Beef Festival', '2020', '2020-09-19 13:00:09.250411+00', '2021-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
+    ('Minnesota Craft Beer Festival', '2020', '2020-09-19 13:00:09.250411+00', '2020-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
     ('Boca Fest', '1986', '2021-01-09 10:00:09.250411+00', '2021-01-10 17:00:09.250411+00', 'https://unsplash.com/photos/5MTf9XyVVgM/download?force=true&w=1920', 'https://http://www.artfestival.com/festivals/annual-boca-fest/artist/', TRUE, '1000', 'Boca Fest will be located in the lot at the intersection of St. Andrews Boulevard and Glades Road at The Town Center Mall. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.', 'Howard Alan', 'Event Planner', 'info@artfestival.com', '561-746-6615', 'HowardAlanEvents', 'artfestivals', 'artfestivals', 'Howard Alan Events is excited to announce that Boca Fest will now take place at The Town Center Mall at Boca Raton. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. The show will be located in the parking lot of The Terrace, a recent expansion near Bloomingdale''s, Pinon Grill, and The Gap. The Town Center is located right off I-95 and Glades Road.  The show offers a convenient location with over 150 national artists and plenty of parking, including valet! This outdoor gallery style juried event will present a variety of handmade art and unique gift items, as well as functional pieces. The eclectic displays, appealing to all tastes and budgets, will offer a wide array of artistic mediums including paintings, sculptures, photography, ceramics, glass, wood, handmade jewelry, and mixed media.', 6, 'https://www.zapplication.org/event-info.php?ID=8564');
-    
+
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
@@ -292,11 +292,11 @@ INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity)
 VALUES
     ('Town Center Mall', '5590 Glades Road', 'Boca Raton', 'Florida', '33431', 'The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.  The Town Center features over 200 stores including Tory Burch, Tiffany & Co, Louis Vuitton, The Apple Store and many more.', '3000');
-    
+
 INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity)
 VALUES
-('San Diego Convention Center', '111 W Harbor Dr', 'San Diego', 'California', '92101', 'The San Diego Convention Center is the primary convention center in San Diego, California. It is located in the Marina district of downtown San Diego near the Gaslamp Quarter, at 111 West Harbor Drive. The center is managed by the San Diego Convention Center Corporation, a non-profit public benefit corporation created by the City of San Diego.', '125000');
+    ('San Diego Convention Center', '111 W Harbor Dr', 'San Diego', 'California', '92101', 'The San Diego Convention Center is the primary convention center in San Diego, California. It is located in the Marina district of downtown San Diego near the Gaslamp Quarter, at 111 West Harbor Drive. The center is managed by the San Diego Convention Center Corporation, a non-profit public benefit corporation created by the City of San Diego.', '125000');
 
 -- SPONSORSHIP PACKAGES --   
 INSERT INTO "sponsorships"
@@ -384,7 +384,7 @@ VALUES
     (5, 2, 15),
     (6, 1, 75),
     (6, 2, 25),
-	(7, 1, 49),
+    (7, 1, 49),
     (7, 2, 51);
 
 -- DEMO INCOME JUNCTION --
@@ -668,5 +668,29 @@ WHERE e.id = 1
 GROUP BY e.id, v.id, et.type, et.id;
 
 -- Gets the count of users that need approval
-SELECT Count(access_level) as access_lvl_0 FROM "user"
+SELECT Count(access_level) as access_lvl_0
+FROM "user"
 WHERE access_level = 0;
+
+SELECT gender.gender, percentage
+FROM junction_event_gender
+    JOIN gender on gender_id = gender.id
+WHERE event_id = 1;
+
+SELECT junction_event_gender.percentage, gender.gender
+from event
+    JOIN junction_event_gender
+    on junction_event_gender.event_id = event.id
+    JOIN gender
+    on gender.id = junction_event_gender.gender_id
+WHERE event.id = 2;
+
+--INSERT INTO venues
+--    (name, address, city, state, zipcode, venue_notes, venue_capacity) VALUES
+--    ('Disney World', '1 Mickey', 'Orlando', 'Florida', null, null, null) RETURNING id;
+
+SELECT *
+FROM "event"
+WHERE event_name
+ILIKE '%Minnesota%'
+ORDER BY "start_date" DESC;

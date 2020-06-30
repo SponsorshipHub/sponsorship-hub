@@ -196,7 +196,6 @@ const styles = {
     sponsorBorder: {
         borderBottom: "1px solid black",
         margin: "100px" 
-    }
-
+    },
 }
 export default styles;
