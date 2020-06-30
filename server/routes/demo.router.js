@@ -41,6 +41,7 @@ router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
 // });
 
 //income
+//original post route
 router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in income demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_income
@@ -54,8 +55,23 @@ router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
             res.sendStatus(500);
         })
 });
+//attempt to move demo create into event create
+// router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
+//     console.log('in income demo POST req.body:', req.body);
+//     const queryText = `INSERT INTO junction_event_income
+//     (event_id, income_range_id, percentage)
+//     VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0), ($1, 4, 0), ($1, 5, 0), ($1, 6, 0), ($1, 7, 0);`;
+//     pool.query(queryText, [req.body.event_id])
+//         .then(result => {
+//             res.sendStatus(200);
+//         }).catch(error => {
+//             console.log('post gender Demo route has error', error);
+//             res.sendStatus(500);
+//         })
+// });
 
 //age
+//original post route
 router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in age demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_age
@@ -69,6 +85,21 @@ router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
             res.sendStatus(500);
         })
 });
+
+//attempt to move demo create into event create
+// router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
+//     console.log('in age demo POST req.body:', req.body);
+//     const queryText = `INSERT INTO junction_event_age
+//     (event_id, age_range_id, percentage)
+//      VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0), ($1, 4, 0), ($1, 5, 0), ($1, 6, 0), ($1, 7, 0);`;
+//     pool.query(queryText, [req.body.event_id])
+//         .then(result => {
+//             res.sendStatus(200);
+//         }).catch(error => {
+//             console.log('post gender Demo route has error', error);
+//             res.sendStatus(500);
+//         })
+// });
 
 //residency
 router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
