@@ -52,13 +52,7 @@ class SponsorItem extends Component {
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem });
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success',
-                    500
-                    
-                )
+
             }
         })
         
@@ -87,7 +81,7 @@ class SponsorItem extends Component {
             <Grid justify="center" container item md={12}>
                 <Grid item md={2}>{this.props.sponsorItem.sponsor_image_url ?
                     <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                    <img className={classes.sponsorshipIconSmall} src="./images/sponsor_icon.png"></img>
+                    <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                     }
                 </Grid>
                 <Grid container item md={7}>
@@ -114,7 +108,7 @@ class SponsorItem extends Component {
                     <Grid justify="center" container item md={12}>
                     <Grid item md={1}>{this.props.sponsorItem.sponsor_image_url ?
                         <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                        <img className={classes.sponsorshipIconSmall} src="./images/sponsor_icon.png"></img>
+                        <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                         }
                     </Grid>
                     <Grid container item md={10}>
