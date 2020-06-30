@@ -224,6 +224,7 @@ class LandingPage extends Component {
                         autoPlaySpeed={5000}
                         autoPlay={this.props.deviceType !== "mobile" ? true : false}
                         slidesToSlide={3}
+                       
                     >
                         {this.props.landing.map(events =>
                             <Grid item xs={12} sm={12} md={12} key={events.id}>
