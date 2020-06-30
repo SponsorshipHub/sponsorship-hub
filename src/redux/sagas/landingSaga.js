@@ -69,11 +69,12 @@ function* getAdvResults(action){
     let maxAttend = action.payload.maxAttend;
     let minSponsorPrice = action.payload.minSponsorPrice;
     let maxSponsorPrice = action.payload.maxSponsorPrice;
+    let income = action.payload.income;
     console.log('----------> in getAdvResults', action.payload);
     try{   
         // const response = yield axios.get(`/results/${state}/${startD}/${endD}/${type}/${minAttend}/${maxAttend}/${minSponsorPrice}/${maxSponsorPrice}`);
         const response = yield axios.get(`/results/filter`, { params: {
-            state, startD, endD, type, minAttend, maxAttend, minSponsorPrice, maxSponsorPrice
+            state, startD, endD, type, minAttend, maxAttend, minSponsorPrice, maxSponsorPrice, income
         }})
         yield put({
             type: 'GET_ADV_RESULTS',

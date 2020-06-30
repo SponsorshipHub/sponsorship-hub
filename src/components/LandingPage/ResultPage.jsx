@@ -119,6 +119,12 @@ class ResultPage extends Component {
                 type: ''
             });
         };
+        if (this.state.income === 'All Income'){
+            this.setState({
+                income: ''
+            })
+        }
+        console.log(this.state);
         this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state });
     };//end handleFilter
 
