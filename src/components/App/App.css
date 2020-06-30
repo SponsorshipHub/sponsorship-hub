@@ -6,9 +6,9 @@ body {
     margin: 0px;
     background-color: rgba(245, 245, 245, 0.539);
     overflow: auto;
-    overscroll-behavior-y: none;
+    /* overscroll-behavior-y: none; */
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
 }
 
 html {
