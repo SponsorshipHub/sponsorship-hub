@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
+    "@sweetalert2/theme-bootstrap-4": "^3.2.0",
     "@sweetalert2/theme-borderless": "^3.2.0",
     "@sweetalert2/theme-bulma": "^3.2.0",
     "@sweetalert2/theme-default": "^3.2.0",
