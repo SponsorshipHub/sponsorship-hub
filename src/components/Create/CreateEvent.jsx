@@ -23,7 +23,7 @@ class CreateEvent extends Component {
         year_established: null,
         start_date: '',
         end_date: '',
-        event_image_url: 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
+        event_image_url: 'https://unsplash.com/photos/ZhQCZjr9fHo/download?force=true&w=1920',
         event_website: null,
         event_status: 'false',
         event_type: '',
