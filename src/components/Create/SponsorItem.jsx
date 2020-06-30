@@ -52,13 +52,7 @@ class SponsorItem extends Component {
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem });
-                // Swal.fire(
-                    // 'Deleted!',
-                    // 'Your file has been deleted.',
-                    // 'success',
-                    // 500
-                    
-               
+
             }
         })
         

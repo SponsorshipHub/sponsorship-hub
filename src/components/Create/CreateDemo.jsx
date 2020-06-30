@@ -54,11 +54,20 @@ class CreateDemo extends Component {
     }
 
     handleSubmit = () => {
-        if (this.state.female + this.state.male + this.state.other === 100 || 0 &&
-            this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001 === 100 || 0 &&
-            this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65 === 100 || 0 &&
-            this.state.in_state + this.state.in_state === 100 || 0)
-        {
+        // if (this.state.female + this.state.male + this.state.other === 100 || 0 &&
+        //     this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001 === 100 || 0 &&
+        //     this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65 === 100 || 0 &&
+        //     this.state.in_state + this.state.in_state === 100 || 0)
+        // {
+            genderTotal = this.state.female + this.state.male + this.state.other;
+            incomeTotal = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001;
+            ageTotal = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
+            residentTotal = this.state.in_state + this.state.in_state;
+            if ((genderTotal === 100 || genderTotal === 0) &&
+                (incomeTotal === 100 || incomeTotal === 0) &&
+                (ageTotal === 100 || ageTotal === 0) &&
+                (residentTotal === 100 || residentTotal === 0)
+            ){
             console.log("ALL 100");
             this.props.dispatch({ type: 'ADD_DEMO', payload: this.state, history: this.props.history })
             // this.props.history.push(`/event/${this.props.match.params.id}`)
