@@ -251,7 +251,7 @@ class LandingPage extends Component {
                         slidesToSlide={3}
                     >
                         {this.props.landing.map(events =>
-                            <Grid item key={events.id} spacing={4}>
+                            <Grid item key={events.id} >
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardActionArea>

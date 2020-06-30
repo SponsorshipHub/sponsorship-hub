@@ -143,6 +143,9 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
         maxSponsor = req.query.maxSponsorPrice;
         maxSponsorshipPrice = `AND sponsor_price <= $8`;
     }
+    if(req.query){
+        
+    }
 
     let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor];
     // console.log(`RESULTS:`, results);
