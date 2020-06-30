@@ -38,6 +38,11 @@ class CreateDemo extends Component {
         out_of_state: 0,
     }
 
+    componentDidMount(){
+        // console.log('CREATE DEMO MOUNTED');
+        window.scrollTo(0, 0);
+    };//end componentDidMount
+
     backClick = () => {
         this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }

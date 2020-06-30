@@ -36,6 +36,8 @@ class DemoView extends Component {
                 residency: this.props.oneEvent.residency
             })
         }
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     render() {        

@@ -28,6 +28,7 @@ class ResultPage extends Component {
         // console.log('ResultPage has been MOUNTED');
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
+        window.scrollTo(0, 0);
     };//end componentDidMount
 
     handleOpen = () => {

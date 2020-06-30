@@ -38,6 +38,11 @@ class EditDemo extends Component {
         out_of_state: this.props.oneEvent.residency[1].residency_percentage,
     }
 
+    componentDidMount(){
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
+    };//end componentDidMount
+
     backClick = () => {
         this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
     }

@@ -73,6 +73,7 @@ class LandingPage extends Component {
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
         this.props.dispatch({ type: 'FETCH_DEFAULT_RESULTS' });
+        window.scrollTo(0, 0);
     };//end componentDidMount
 
     handleSearch = () => {
