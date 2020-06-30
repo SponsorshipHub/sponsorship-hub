@@ -89,7 +89,7 @@ const styles = {
     card: {
         height: '40vh',
         textAlign: 'center',
-        width: '100%'
+        width: '100%',
     },
     btn_def: {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
