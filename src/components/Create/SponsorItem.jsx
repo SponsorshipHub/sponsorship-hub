@@ -28,6 +28,8 @@ class SponsorItem extends Component {
             event_id: this.props.match.params.id
 
         })
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     handleChange = (event, property) => {
@@ -52,13 +54,7 @@ class SponsorItem extends Component {
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem });
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success',
-                    500
-                    
-                )
+
             }
         })
         
@@ -87,7 +83,7 @@ class SponsorItem extends Component {
             <Grid justify="center" container item md={12}>
                 <Grid item md={2}>{this.props.sponsorItem.sponsor_image_url ?
                     <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                    <img className={classes.sponsorshipIconSmall} src="./images/sponsor_icon.png"></img>
+                    <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                     }
                 </Grid>
                 <Grid container item md={7}>
@@ -108,13 +104,13 @@ class SponsorItem extends Component {
         if (this.state.editMode) {
             viewOrEdit =
 
-                <Grid container spacing={3}>
+                <Grid container item spacing={3}>
                     {/* input fields go here */}
 
-                    <Grid justify="center" container item md={12}>
+                <Grid justify="center" container item md={12}>
                     <Grid item md={1}>{this.props.sponsorItem.sponsor_image_url ?
                         <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                        <img className={classes.sponsorshipIconSmall} src="./images/sponsor_icon.png"></img>
+                        <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                         }
                     </Grid>
                     <Grid container item md={10}>
@@ -133,7 +129,9 @@ class SponsorItem extends Component {
                         <Grid item md={1} sm={9}>
                             <Button fullWidth className={classes.btn_def} onClick={this.handleSubmitClick}>Submit</Button>
                         </Grid>
+                    
                     </Grid>
+                <Divider />
                 </Grid>
         }
 

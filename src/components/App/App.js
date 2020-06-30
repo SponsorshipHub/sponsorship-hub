@@ -12,6 +12,7 @@ import CreateEvent from '../Create/CreateEvent';
 import CreateDemo from '../Create/CreateDemo';
 import EditDemo from '../Create/EditDemo';
 import EditEvent from '../Create/EditEvent';
+import EditSponsor from '../Create/EditSponsor';
 import Event from '../Event/Event';
 //style for app
 import './App.css';
@@ -56,7 +57,7 @@ class App extends Component {
             <ProtectedRoute exact path={["/results/:state/:startDate/:endDate", "/results"]} component={ResultPage}/>
               {/* <Redirect exact from="/results//:startDate/:endDate" to="/results" /> */}
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
-            <ProtectedRoute exact path="/sponsor/edit/:id" component={CreateSponsor} />
+            <ProtectedRoute exact path="/sponsor/edit/:id" component={EditSponsor} />
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />
             <ProtectedRoute exact path="/demo/edit/:id" component={EditDemo} />
             <ProtectedRoute exact path="/event/:id" component={Event} />

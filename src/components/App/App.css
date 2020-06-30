@@ -5,6 +5,13 @@ body {
     font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     background-color: rgba(245, 245, 245, 0.539);
+    /* overflow: auto; */
+    /* height: 100%; */
+}
+
+html {
+    /* overflow: hidden; */
+    /* height: 100%; */
 }
 
 .alert {
@@ -67,5 +74,9 @@ input {
 
 #search::placeholder {
         color: #ffffff;
-        opacity: 0.50;
+        opacity: 0.55;
     }
+
+.searchOutline::notchedOutline {
+    color: white;
+}

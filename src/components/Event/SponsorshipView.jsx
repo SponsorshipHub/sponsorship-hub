@@ -22,6 +22,8 @@ class SponsorshipView extends Component {
                 sponsorship: this.props.oneEvent.sponsorship
             })
         }
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     render() {

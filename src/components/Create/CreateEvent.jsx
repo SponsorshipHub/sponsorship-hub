@@ -59,6 +59,7 @@ class CreateEvent extends Component {
         // console.log('componentDidMount: FETCH_VENUES');
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });// get our event types
+        window.scrollTo(0, 0);
     }
 
     handleChange = (event, property) => {
@@ -154,9 +155,9 @@ class CreateEvent extends Component {
     }  // SELECTOR EVENT TYPE END
 
     render() {
-        window.onbeforeunload = function () {
-            return "Data will be lost if you leave the page, are you sure?";
-        };
+        // window.onbeforeunload = function () {
+        //     return "Data will be lost if you leave the page, are you sure?";
+        // };
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);

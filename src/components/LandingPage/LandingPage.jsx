@@ -16,22 +16,45 @@ import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
     superLargeDesktop: {
-        // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
-        items: 5
+        items: 5,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 3,
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 3, 
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 3,
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2
+        items: 2,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 2,
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
-        items: 1
-    }
+        items: 1,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 1,
+    },
 };
 
 class LandingPage extends Component {
@@ -50,6 +73,7 @@ class LandingPage extends Component {
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
         this.props.dispatch({ type: 'FETCH_DEFAULT_RESULTS' });
+        window.scrollTo(0, 0);
     };//end componentDidMount
 
     handleSearch = () => {
@@ -118,7 +142,7 @@ class LandingPage extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Box>
+            <Box style={{ overflow: 'hidden'}}>
                 {/* Header */}
                 <Header history={this.props.history} />
 
@@ -216,22 +240,30 @@ class LandingPage extends Component {
                     <Grid container justify="center">
                         <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Featured Events</Typography></Grid>
                     </Grid>
-                    {/* BEGIN GRID */}
-                        <Carousel responsive={responsive}>
-                            {this.props.landing.map(events =>
-                                <Grid item xs={4} md={12} key={events.id} spacing={2}>
-                                    <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
-                                        <CardContent>
-                                            <CardActionArea>
-                                                <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                                <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
-                                            </CardActionArea>
-                                        </CardContent>
-                                    </Card>
-                                 </Grid>
-                            )}
-                            {/* end of mapping for landing page GET */}
-                        </Carousel>
+                    {/* BEGIN CAROUSEL */}
+                    <Carousel responsive={responsive}
+                        swipeable={true}
+                        showDots={true}
+                        ssr={true}
+                        infinite={true}
+                        autoPlaySpeed={5000}
+                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                        slidesToSlide={3}
+                    >
+                        {this.props.landing.map(events =>
+                            <Grid item key={events.id} >
+                                <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
+                                    <CardContent>
+                                        <CardActionArea>
+                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
+                                            <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
+                                        </CardActionArea>
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        )}
+                        {/* end of mapping for landing page GET */}
+                    </Carousel>
                 </Box>
                 {/* end of mapped data */}
             </Box>

@@ -36,6 +36,8 @@ class DemoView extends Component {
                 residency: this.props.oneEvent.residency
             })
         }
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     render() {        
@@ -142,7 +144,7 @@ class DemoView extends Component {
                                                         y={y}
                                                         fill="#000000"
                                                         textAnchor={x > cx ? "start" : "end"}
-                                                        scaletofit={true}
+                                                        
                                                         dominantBaseline="central"
                                                     >                                                        
                                                         {value > 4 && this.state.income[index].income_range}
@@ -172,7 +174,7 @@ class DemoView extends Component {
                                         <Pie data={this.state.gender}
                                             cx={240}
                                             cy={130}
-                                            labelLine
+                                            labelLine={false}
                                             label={({
                                                 cx,
                                                 cy,
@@ -219,7 +221,7 @@ class DemoView extends Component {
                                         <Pie data={this.state.residency}
                                             cx={250}
                                             cy={120}
-                                            labelLine
+                                            labelLine={false}
                                             label={({
                                                 cx,
                                                 cy,
