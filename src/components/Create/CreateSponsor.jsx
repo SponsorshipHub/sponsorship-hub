@@ -79,19 +79,19 @@ class CreateSponsor extends Component {
                 <Box mx={10}>
                     {/* input fields */}
                     <Grid justify="center" container className={classes.formMargin}>
-                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                        <Grid item md={3} sm={9} xs={9} className={classes.formMargin}>
                             <TextField fullWidth label="Package Name" value={this.state.sponsor_name} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_name')}></TextField>
                         </Grid>
-                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                        <Grid item md={3} sm={9} xs={9} className={classes.formMargin}>
                             <TextField fullWidth label="Package Price" type="number" value={this.state.sponsor_price} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_price')}></TextField>
                         </Grid>
-                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                        <Grid item md={3} sm={9} xs={9} className={classes.formMargin}>
                             <TextField fullWidth label="Image URL" defaultValue={this.state.sponsor_image_url} placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
                         </Grid>
-                        <Grid item md={8} sm={9} className={classes.formMargin}>
+                        <Grid item md={8} sm={9} xs={9} className={classes.formMargin}>
                             <TextField fullWidth multiline variant="outlined" label="Package Description" value={this.state.sponsor_description} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_description')}></TextField>
                         </Grid>
-                        <Grid item md={1} sm={9} className={classes.formMargin}>
+                        <Grid item md={1} sm={9} xs={9} className={classes.formMargin}>
                             <Button className={classes.btn_def} onClick={this.handleClick}>Submit</Button>
                         </Grid>
                     </Grid>
@@ -107,14 +107,14 @@ class CreateSponsor extends Component {
                        
                     </Grid>
           
-                    <Box mx={10} >
+                    <Box mx={10} className={classes.margin}>
                         <Grid justify="center" container>
-                            <Grid item md={3} sm={6}>
+                            <Grid item md={3} sm={4} xs={4} className={classes.formMargin}>
                                 {/* I need to get rid of this button in create mode or it will switch the user to edit mode */}
                                 <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.backClick}>Back</Button>
                             </Grid>
-                            <Grid item md={3}></Grid>
-                            <Grid item md={3} sm={6}>
+                            <Grid item md={3} sm={2} xs={2} className={classes.formMargin}></Grid>
+                            <Grid item md={3} sm={4} xs={4} className={classes.formMargin}>
                                 <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.forwardClick}>Next</Button>
                             </Grid>
                         </Grid>

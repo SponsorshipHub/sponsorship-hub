@@ -54,11 +54,6 @@ class CreateDemo extends Component {
     }
 
     handleSubmit = () => {
-        // if (this.state.female + this.state.male + this.state.other === 100 || 0 &&
-        //     this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200001 === 100 || 0 &&
-        //     this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65 === 100 || 0 &&
-        //     this.state.in_state + this.state.in_state === 100 || 0)
-        // {
             let genderTotal = this.state.female + this.state.male + this.state.other;
             let incomeTotal = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
             let ageTotal = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
@@ -70,8 +65,7 @@ class CreateDemo extends Component {
             ){
             console.log("ALL 100");
                 this.props.dispatch({ type: "UPDATE_DEMO", payload: this.state, history: this.props.history })
-            // this.props.history.push(`/event/${this.props.match.params.id}`)
-            //this push is happening too fast, only some information is ready to render and a refresh is necessary
+                // this is an Update because zero value placeholders were already Posted from CreateEvent
         } else {
             console.log('not ALL 100');
             Swal.fire({
@@ -80,10 +74,7 @@ class CreateDemo extends Component {
                 text: 'All categories must total 100% or 0% to be submitted',
                 timer: 5000
             });
-
         }
-
-        // this will need to be also send the user to the created events page on a succesful post
     }
 
 
@@ -92,7 +83,6 @@ class CreateDemo extends Component {
         let incomePercent = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
         let agePercent = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
         let residentPercent = this.state.in_state + this.state.out_of_state;
-
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
