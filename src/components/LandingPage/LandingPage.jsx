@@ -17,19 +17,43 @@ import 'react-multi-carousel/lib/styles.css';
 const responsive = {
     superLargeDesktop: {
         breakpoint: { max: 4000, min: 3000 },
-        items: 5
+        items: 5,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 3,
     },
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 3
+        items: 3, 
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 3,
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2
+        items: 2,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 2,
     },
     mobile: {
         breakpoint: { max: 464, min: 0 },
-        items: 1
+        items: 1,
+        swipeable: true,
+        showDots: true,
+        ssr: true,
+        infinite: true,
+        autoPlaySpeed: 5000,
+        slidesToSlide: 1,
     },
 };
 
@@ -117,7 +141,7 @@ class LandingPage extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Box>
+            <Box style={{ overflow: 'hidden'}}>
                 {/* Header */}
                 <Header history={this.props.history} />
 
@@ -215,7 +239,7 @@ class LandingPage extends Component {
                     <Grid container justify="center">
                         <Grid item xs={12} md={10}><Typography variant="h4" className={classes.title}>Featured Events</Typography></Grid>
                     </Grid>
-                    {/* BEGIN GRID */}
+                    {/* BEGIN CAROUSEL */}
                     <Carousel responsive={responsive}
                         swipeable={true}
                         showDots={true}
@@ -226,7 +250,7 @@ class LandingPage extends Component {
                         slidesToSlide={3}
                     >
                         {this.props.landing.map(events =>
-                            <Grid item xs={12} sm={12} md={12} key={events.id}>
+                            <Grid item key={events.id} spacing={4}>
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardActionArea>

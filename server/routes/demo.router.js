@@ -11,6 +11,7 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
  * POST routes gender, income, age, residency
  */
 //gender
+//original post route
 router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in gender demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_gender 
@@ -24,6 +25,20 @@ router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
          res.sendStatus(500);
      })
 });
+//attempt to move demo create into event create
+// router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
+//     console.log('in gender demo POST req.body:', req.body);
+//     const queryText = `INSERT INTO junction_event_gender 
+//     (event_id, gender_id, percentage) 
+//     VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0;`;
+//     pool.query(queryText, [req.body.event_id])
+//         .then(result => {
+//             res.sendStatus(200);
+//         }).catch(error => {
+//             console.log('post gender Demo route has error', error);
+//             res.sendStatus(500);
+//         })
+// });
 
 //income
 router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {

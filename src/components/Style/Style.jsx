@@ -4,7 +4,7 @@ const styles = {
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
-            color: '#F45255'
+        color: '#F45255'
         },
     },
     header_text: {
@@ -72,8 +72,8 @@ const styles = {
         fontWeight: '500',
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
-            color: '#F45255',
-        }
+        color: '#F45255',
+    }
     },
     search_section: {
         margin: '20px',
@@ -83,32 +83,30 @@ const styles = {
         // marginBottom: '5px'
     },
     landMedia: {
-        maxWidth: '30vw',
+        maxWidth: '100%',
         maxHeight: '30vh'
     },
     card: {
-        display: 'inline-block',
-        maxWidth: '31vw',
         height: '40vh',
         textAlign: 'center',
-
+        width: '100%',
     },
     btn_def: {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
         color: 'white', // Button's text color
         fontWeight: '900', // Font's boldness from 100-900
-            // transition: 'all 0.3s', // Optional Hover Effect
-            // '&:hover': {
-            //     boxShadow: '1px 1px 5px black',
-            // }
+        // transition: 'all 0.3s', // Optional Hover Effect
+        // '&:hover': {
+        // boxShadow: '1px 1px 5px black',
+        // }
     },
     btn_submit: {
         background: 'linear-gradient(200deg, #DEDEDE, #CCCCCC)', // Extremely subtle gradient
         color: 'black', // Button's text color
         // transition: 'all 0.3s', // Optional Hover Effect
         // '&:hover': {
-        //     boxShadow: '1px 1px 5px black',
-        // }
+        // boxShadow: '1px 1px 5px black',
+    // }
     },
     btn_create_event: {
         color: 'white',
@@ -120,7 +118,7 @@ const styles = {
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
         color: '#F45255',
-        }
+    }
     },
     box_grey: {
         background: '#EAECED', // Color that Karl submitted *GREY*
@@ -192,6 +190,8 @@ const styles = {
     shadow: {
         boxShadow: '0px 0px 8px black'
     },
+    searchOutline: {
+        borderColor: 'white !important'
+    },
 }
-
 export default styles;

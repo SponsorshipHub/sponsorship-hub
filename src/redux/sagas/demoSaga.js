@@ -10,7 +10,7 @@ function* editDemo(action) {
     console.log('in editDemo', action.payload);
     try{
         yield axios.put(`/demo/edit`, action.payload);
-        yield action.history.push(`/event/${this.props.match.params.id}`)
+        yield action.history.push(`/event/${action.payload.event_id}`)
     }catch(error){
         console.log('edit demo failed', error); 
     }  
@@ -24,6 +24,7 @@ function* sendDemo(action){
         yield axios.post(`/demo/income`, action.payload);
         yield axios.post(`/demo/age`, action.payload);
         yield axios.post(`/demo/resident`, action.payload);
+        yield action.history.push(`/event/${action.payload.event_id}`)
     }catch(error){
         console.log('add demo failed', error);
         
