@@ -19,7 +19,8 @@ class ResultPage extends Component {
         minAttend: null,
         maxAttend: null,
         minSponsorPrice: null,
-        maxSponsorPrice: null
+        maxSponsorPrice: null,
+        income: ''
     };//end state
 
     componentDidMount() {
@@ -104,11 +105,20 @@ class ResultPage extends Component {
     };//end handleMaxSponsorPrice
 
     /// waiting for karl /// HOUSE HOLD INCOME SEARCH
-
+    handleHouseholdIncome = (event) => {
+        this.setState({
+            income: event.target.value
+        })
+    }
 
     //handleFilter will filter the adv search
     handleFilter = () => {
         console.log('clicked on filter for advanced search');
+        if (this.state.type === 'Select All'){
+            this.setState({
+                type: ''
+            });
+        };
         this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state });
     };//end handleFilter
 
@@ -149,7 +159,8 @@ class ResultPage extends Component {
                         <Grid item xs={12} md={4}>
                             <InputLabel>Event Type</InputLabel>
                             <FormControl className={classes.advSearch} fullWidth={true}>
-                                <Select open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} value={this.state.type} onChange={(event) => this.handleType(event)}>
+                                <Select open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} defaultValue='Select All' onChange={(event) => this.handleType(event)}>
+                                    <MenuItem value='Select All'><em>Select All</em></MenuItem>
                                     {this.props.types.map(types =>
                                         <MenuItem key={types.id} value={types.type}><em>{types.type}</em></MenuItem>
                                     )}
@@ -176,7 +187,19 @@ class ResultPage extends Component {
                             <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} fullWidth={true} label="Max Sponsorship Price" />
                         </Grid>
                         {/* END SPONSORSHIP PRICE SELECTOR */}
-                        <Grid item xs={12} md={4}><TextField fullWidth={true} label="Household Income" /></Grid>
+                        <Grid item xs={12} md={4}>
+                            <InputLabel>Household Income 20% and Up</InputLabel>
+                            <Select open={this.state.open} onClose={this.handleClose} onOpen={this.handleOpen} defaultValue="All Income" fullWidth onChange={event => this.handleHouseholdIncome(event)}>
+                                <MenuItem value='All Income'>All Income</MenuItem>
+                                <MenuItem value={1}>$0-$24,999</MenuItem>
+                                <MenuItem value={2}>$25,000-$49,999</MenuItem>
+                                <MenuItem value={3}>$50,000-$74,999</MenuItem>
+                                <MenuItem value={4}>$75,000-$99,999</MenuItem>
+                                <MenuItem value={5}>$100,000-$149,999</MenuItem>
+                                <MenuItem value={6}>$150,000-$199,999</MenuItem>
+                                <MenuItem value={7}>$200,000+</MenuItem>
+                            </Select>
+                        </Grid>
                     </Grid>
                     {/* button grid that centers it */}
                     <Grid container justify="center" spacing={2}>
