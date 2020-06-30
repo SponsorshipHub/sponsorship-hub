@@ -47,7 +47,7 @@ class Footer extends Component {
                         <Box style={{ margin: '12px', wordWrap: 'break-word', maxWidth: '30%'}}>
                             <Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">
                                 About Sponsorship Hub</Typography>
-                            <Typography variant="span" style={{ color: 'white', fontWeight: '300', fontSize: '14px' }} color="secondary">
+                            <Typography style={{ color: 'white', fontWeight: '300', fontSize: '14px' }} color="secondary">
                                 We allow brands to search events and find sponsorship opportunities.
                             </Typography>
                         </Box>
