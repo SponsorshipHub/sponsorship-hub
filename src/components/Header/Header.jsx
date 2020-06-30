@@ -76,14 +76,15 @@ class Header extends Component {
                             value={this.state.search} margin="dense"
                             color="secondary" placeholder="Search Events"
                             type="search" variant="outlined" id="filled-search" size="small"
-                            id="search"
+                            placeholderTextColor={'red'}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment className={classes.search} position="start">
                                         <SearchIcon className={classes.notification} />
                                     </InputAdornment>
                                 ),
-                                classes: { notchedOutline: classes.searchOutline, class: classes.searchTextField },
+                                // classes: notchedOutline: classes.searchOutline, 
+                                classes: {class: classes.searchText}
                             }}></TextField>
                     </Box>
                 </Box>

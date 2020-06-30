@@ -190,8 +190,5 @@ const styles = {
     shadow: {
         boxShadow: '0px 0px 8px black'
     },
-    searchOutline: {
-        borderColor: 'white !important'
-    },
 }
 export default styles;
