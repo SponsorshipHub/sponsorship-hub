@@ -18,9 +18,7 @@ const venue = require('./routes/venue.router');
 const sponsors = require('./routes/sponsor.router');
 const demo = require('./routes/demo.router');
 const admin = require('./routes/admin.router')
-
 // landing router contains routes for landing & result page data
-// landing and results router
 const landing = require('./routes/landing.router');
 const results = require('./routes/results.router');
 

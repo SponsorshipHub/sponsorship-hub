@@ -28,6 +28,8 @@ class SponsorItem extends Component {
             event_id: this.props.match.params.id
 
         })
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     handleChange = (event, property) => {

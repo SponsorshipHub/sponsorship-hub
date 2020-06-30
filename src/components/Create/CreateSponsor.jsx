@@ -22,7 +22,8 @@ class CreateSponsor extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch({ type: "FETCH_SPONSORS", payload: this.state.event_id })
+        this.props.dispatch({ type: "FETCH_SPONSORS", payload: this.state.event_id });
+        window.scrollTo(0, 0);
     }
 
     backClick = () => {

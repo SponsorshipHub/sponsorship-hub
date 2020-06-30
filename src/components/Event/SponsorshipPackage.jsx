@@ -14,6 +14,11 @@ class SponsorshipPackage extends Component {
         openModal: false
     }
 
+    componentDidMount(){
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
+    };//end componentDidMount
+
     handleOpen = (id, classes) => {
         // console.log('HERE IS OUR SPONSOR:', this.props.oneEvent.sponsorship[this.state.sponsorshipId]);
         this.setState({

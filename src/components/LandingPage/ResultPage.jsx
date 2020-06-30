@@ -29,6 +29,7 @@ class ResultPage extends Component {
         // console.log('ResultPage has been MOUNTED');
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
+        window.scrollTo(0, 0);
     };//end componentDidMount
 
     handleOpen = () => {
@@ -119,6 +120,12 @@ class ResultPage extends Component {
                 type: ''
             });
         };
+        if (this.state.income === 'All Income'){
+            this.setState({
+                income: ''
+            })
+        }
+        console.log(this.state);
         this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state });
     };//end handleFilter
 
