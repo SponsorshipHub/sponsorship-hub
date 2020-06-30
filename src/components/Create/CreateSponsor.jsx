@@ -47,6 +47,11 @@ class CreateSponsor extends Component {
         console.log(this.state);
 
     }
+    handleInputChangeFor = propertyName => (event) => {
+        this.setState({
+            [propertyName]: event.target.value,
+        });
+    }
 
     handleClick = () => {
         this.props.dispatch({ type: 'ADD_SPONSOR', payload: this.state })
@@ -73,20 +78,20 @@ class CreateSponsor extends Component {
                 <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
                 <Box mx={10}>
                     {/* input fields */}
-                    <Grid justify="center" container>
-                        <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Package Name" placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
+                    <Grid justify="center" container className={classes.formMargin}>
+                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                            <TextField fullWidth label="Package Name" value={this.state.sponsor_name} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_name')}></TextField>
                         </Grid>
-                        <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Package Price" type="number" placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
+                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                            <TextField fullWidth label="Package Price" type="number" value={this.state.sponsor_price} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_price')}></TextField>
                         </Grid>
-                        <Grid item md={3} sm={9}>
-                            <TextField fullWidth label="Image URL" defaultValue="./images/sponsor_icon.png" placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
+                        <Grid item md={3} sm={9} className={classes.formMargin}>
+                            <TextField fullWidth label="Image URL" defaultValue={this.state.sponsor_image_url} placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
                         </Grid>
-                        <Grid item md={8} sm={9}>
-                            <TextField fullWidth multiline variant="outlined" label="Package Description" placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField>
+                        <Grid item md={8} sm={9} className={classes.formMargin}>
+                            <TextField fullWidth multiline variant="outlined" label="Package Description" value={this.state.sponsor_description} placeholder="Package Name" onChange={this.handleInputChangeFor('sponsor_description')}></TextField>
                         </Grid>
-                        <Grid item md={1} sm={9}>
+                        <Grid item md={1} sm={9} className={classes.formMargin}>
                             <Button className={classes.btn_def} onClick={this.handleClick}>Submit</Button>
                         </Grid>
                     </Grid>

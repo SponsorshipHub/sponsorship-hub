@@ -196,7 +196,10 @@ const styles = {
     sponsorBorder: {
         borderBottom: "1px solid black",
         margin: "100px" 
-    }
+    },
+    formMargin: {
+        margin: '3px' // Adds a small margin between form fields
+    },
 
 }
 export default styles;

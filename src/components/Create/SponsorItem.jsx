@@ -97,7 +97,7 @@ class SponsorItem extends Component {
                     <EditIcon onClick={this.handleEditClick}></EditIcon>
                     <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
                 </Grid>
-                <Divider/>
+                <Divider className={classes.margin}/>
             </Grid>
         if (this.state.editMode) {
             viewOrEdit =
@@ -129,7 +129,7 @@ class SponsorItem extends Component {
                         </Grid>
                     
                     </Grid>
-                <Divider />
+                <Divider className={classes.margin}/>
                 </Grid>
         }
 
