@@ -84,7 +84,7 @@ class Event extends Component {
                             {/* contact_name & contact_title */}
                             <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
                             {/* contact_email*/}
-                            <Typography>{this.props.oneEvent.contact_email}</Typography>
+                            <Typography><a href={ 'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
                             {/* contact_phone*/}
                             <Typography>{this.props.oneEvent.contact_phone}</Typography>
                         </Box>
