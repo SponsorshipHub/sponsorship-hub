@@ -62,6 +62,14 @@ class RegisterPage extends Component {
           phone: this.state.phone
         },
       });
+      //on success of registration please send an email to Karl and to the new User 
+      this.props.dispatch({
+        type: 'SEND_EMAIL',
+        payload: {
+          email: this.state.username,
+          name: this.state.name
+        }
+      })
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
     }
