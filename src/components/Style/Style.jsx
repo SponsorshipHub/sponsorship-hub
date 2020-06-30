@@ -1,4 +1,6 @@
 const styles = {
+    
+    /* HEADER */
     header_social: {
         fontSize: '275%',
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
@@ -49,6 +51,21 @@ const styles = {
         height: '300px',
         backgroundPosition: 'center',
     },
+
+    /* HEADER SEARCH */
+    search: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+    },
+    searchTextField: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+    },
+    searchOutline: {
+        borderColor: 'white !important'
+    },
+
+    /* FOOTER */
     footer: {
         backgroundPosition: 'center',
         marginTop: '20px',
@@ -57,40 +74,8 @@ const styles = {
         backgroundPosition: 'center',
         backgroundColor: '#505050',
     },
-    title: {
-        paddingBottom: '35px'
-    },
-    formControl: {
-        minWidth: '15%',
-        marginLeft: '1%'
-    },
-    btn_search: {
-        marginTop: '20px',
-        color: 'black',
-        borderRadius: '0px',
-        letterSpacing: '1px',
-        fontWeight: '500',
-        transition: 'all 0.2s', // Optional Hover Effect
-        '&:hover': {
-        color: '#F45255',
-    }
-    },
-    search_section: {
-        margin: '20px',
-        borderBottom: '1px solid #F4525580',
-        paddingBottom: '20px',
-        // opacity: '.05'
-        // marginBottom: '5px'
-    },
-    landMedia: {
-        maxWidth: '100%',
-        maxHeight: '30vh'
-    },
-    card: {
-        height: '40vh',
-        textAlign: 'center',
-        width: '100%',
-    },
+
+    /* BUTTONS */
     btn_def: {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
         color: 'white', // Button's text color
@@ -106,7 +91,7 @@ const styles = {
         // transition: 'all 0.3s', // Optional Hover Effect
         // '&:hover': {
         // boxShadow: '1px 1px 5px black',
-    // }
+        // }
     },
     btn_create_event: {
         color: 'white',
@@ -117,8 +102,43 @@ const styles = {
         fontSize: '125%',
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
-        color: '#F45255',
-    }
+            color: '#F45255',
+        }
+    },
+    btn_search: {
+        marginTop: '20px',
+        color: 'black',
+        borderRadius: '0px',
+        letterSpacing: '1px',
+        fontWeight: '500',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255',
+        }
+    },
+
+
+    /* SECTION */
+    title: {
+        paddingBottom: '35px'
+    },
+    formControl: {
+        minWidth: '15%',
+        marginLeft: '1%'
+    },
+    search_section: {
+        margin: '20px',
+        borderBottom: '1px solid #F4525580',
+        paddingBottom: '20px',
+    },
+    landMedia: {
+        maxWidth: '100%',
+        maxHeight: '30vh'
+    },
+    card: {
+        height: '40vh',
+        textAlign: 'center',
+        width: '100%',
     },
     box_grey: {
         background: '#EAECED', // Color that Karl submitted *GREY*
@@ -157,7 +177,6 @@ const styles = {
     modalTitle: {
         color: '#F45255',
         display: 'flex',
-        // paddingTop: '10%',
     },
     icon: {
         cursor: 'pointer',
@@ -176,26 +195,15 @@ const styles = {
         borderRadius: '.8em',
         backgroundColor: '#eaeced', // Karl grey
     },
-    coral: {
-        color: '#F45255' // Karl coral
-    },
-    search: {
-        color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
-    },
-    searchTextField: {
-        color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
-    },
-    searchOutline: {
-        borderColor: 'white !important'
-    },
     shadow: {
         boxShadow: '0px 0px 8px black'
     },
     sponsorBorder: {
         borderBottom: "1px solid black",
         margin: "100px" 
+    },
+    coral: {
+        color: '#F45255' // Karl coral
     },
 }
 export default styles;
