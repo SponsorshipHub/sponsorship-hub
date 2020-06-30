@@ -68,6 +68,7 @@ router.delete('/delete/:id', rejectUnauthenticated, rejectLevel2, (req, res) => 
     let query = `DELETE FROM "user" WHERE id=$1;`;
     let id = req.params.id;
     pool.query(query, [id]).then(results => {
+        console.log('User deleted:', req.params.id)
         res.sendStatus(200);
     }).catch(err => {
         console.log(`ERROR DELETING USER:`, err);

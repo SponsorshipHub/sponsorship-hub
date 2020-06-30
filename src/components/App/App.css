@@ -8,11 +8,11 @@ body {
     /* overflow: auto; */
     /* height: 100%; */
 }
-
+/* 
 html {
-    /* overflow: hidden; */
-    /* height: 100%; */
-}
+    overflow: hidden;
+    height: 100%;
+} */
 
 .alert {
     background-color: #ff4545;
@@ -74,9 +74,10 @@ input {
 
 #search::placeholder {
         color: #ffffff;
-        opacity: 0.55;
-    }
+        opacity: 0.5;
+}
 
-.searchOutline::notchedOutline {
-    color: white;
+#search {
+        color: #ffffff;
+        opacity: 1;
 }
