@@ -45,7 +45,7 @@ class Admin extends Component {
             <Box>
                 {/* Header */}
                 <Header history={this.props.history} />
-                Test - Why is there a huge gap here?
+
                 <Grid container justify="space-evenly">
                     <Grid item md={8} xs={11}>
 
