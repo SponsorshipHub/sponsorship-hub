@@ -84,6 +84,8 @@ class CreateEvent extends Component {
             event_sponsorship_kit: this.props.oneEvent.event_sponsorship_kit,
             event_id: this.props.match.params.id,
         });
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
         // window.onbeforeunload = function () {
         //     return "Data will be lost if you leave the page, are you sure?";
         // };

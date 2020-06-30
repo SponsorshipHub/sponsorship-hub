@@ -110,6 +110,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     let maxAttend = 2147483647;
     let minSponsor = 0;
     let maxSponsor = 2147483647;
+    let income = 0;
     console.log('in /results for advanced search GET', state, start, end, type, minAttend, maxAttend, minSponsor, maxSponsor);
     // TEST SEARCH USING IF STATEMENT
     let minSponsorshipPrice = `AND (sponsor_price >= $7 OR sponsor_price ISNULL)`;
@@ -143,8 +144,11 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
         maxSponsor = req.query.maxSponsorPrice;
         maxSponsorshipPrice = `AND sponsor_price <= $8`;
     }
+    if(req.query.income != ''){
+        income = req.query.income;
+    }
 
-    let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor];
+    let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor, income];
     // console.log(`RESULTS:`, results);
     
 
@@ -163,7 +167,9 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     AND estimated_attendance <= $6
     ${minSponsorshipPrice}
     ${maxSponsorshipPrice}
+    AND income_range_id >= $9
     GROUP BY "event".id, venues.city, venues.state, event_type.type
+    HAVING SUM(percentage) >= 20
     ORDER BY start_date DESC
     ;`
 

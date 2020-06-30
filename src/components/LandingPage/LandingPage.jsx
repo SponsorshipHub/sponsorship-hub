@@ -73,6 +73,7 @@ class LandingPage extends Component {
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
         this.props.dispatch({ type: 'FETCH_DEFAULT_RESULTS' });
+        window.scrollTo(0, 0);
     };//end componentDidMount
 
     handleSearch = () => {
@@ -250,7 +251,7 @@ class LandingPage extends Component {
                         slidesToSlide={3}
                     >
                         {this.props.landing.map(events =>
-                            <Grid item key={events.id} spacing={4}>
+                            <Grid item key={events.id} >
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardActionArea>

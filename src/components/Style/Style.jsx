@@ -50,6 +50,7 @@ const styles = {
         backgroundSize: 'cover',
         height: '300px',
         backgroundPosition: 'center',
+        // backgroundAttachment: 'fixed', Scroll effect
     },
 
     /* HEADER SEARCH */
