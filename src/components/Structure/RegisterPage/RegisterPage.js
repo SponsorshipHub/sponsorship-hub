@@ -10,7 +10,7 @@ import '../../Style/Swal.scss';
 
 class RegisterPage extends Component {
   state = {
-    username: '',
+    username: '', //this is the email as well
     password: '',
     name: '',
     title: '',
