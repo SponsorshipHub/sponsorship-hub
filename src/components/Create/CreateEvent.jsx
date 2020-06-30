@@ -59,6 +59,7 @@ class CreateEvent extends Component {
         // console.log('componentDidMount: FETCH_VENUES');
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });// get our event types
+        window.scrollTo(0, 0);
     }
 
     handleChange = (event, property) => {

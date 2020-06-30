@@ -22,7 +22,9 @@ class EditSponsor extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch({ type: "FETCH_SPONSORS", payload: this.state.event_id })
+        this.props.dispatch({ type: "FETCH_SPONSORS", payload: this.state.event_id });
+        //scroll to top of page on load
+        window.scrollTo(0, 0);
     }
 
     backClick = () => {
