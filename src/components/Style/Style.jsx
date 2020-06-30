@@ -187,11 +187,11 @@ const styles = {
         color: 'white',
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
     },
-    shadow: {
-        boxShadow: '0px 0px 8px black'
-    },
     searchOutline: {
         borderColor: 'white !important'
+    },
+    shadow: {
+        boxShadow: '0px 0px 8px black'
     },
     sponsorBorder: {
         borderBottom: "1px solid black",

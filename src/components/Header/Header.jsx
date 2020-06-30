@@ -67,24 +67,19 @@ class Header extends Component {
                         justifyContent="center"
                         className={classes.header_button_left_search}>
                         <TextField
-                            onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                    this.submitSearch()
-                                }
-                            }}
+                            onKeyDown={(e) => {if (e.key === "Enter") {this.submitSearch()}}}
                             onChange={(event) => this.searchChange(event, 'search')}
                             value={this.state.search} margin="dense"
                             color="secondary" placeholder="Search Events"
-                            type="search" variant="outlined" id="filled-search" size="small"
-                            placeholderTextColor={'red'}
+                            type="search" variant="outlined" size="small"
+                            id="search" className={classes.searchTextField}
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment className={classes.search} position="start">
                                         <SearchIcon className={classes.notification} />
                                     </InputAdornment>
                                 ),
-                                // classes: notchedOutline: classes.searchOutline, 
-                                classes: {class: classes.searchText}
+                                classes: { notchedOutline: classes.searchOutline, class: "search" },
                             }}></TextField>
                     </Box>
                 </Box>
