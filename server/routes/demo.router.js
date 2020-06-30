@@ -102,6 +102,7 @@ router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
 // });
 
 //residency
+//original post route
 router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
     console.log('in resident demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_residency 
@@ -115,6 +116,21 @@ router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
             res.sendStatus(500);
         })
 });
+
+//attempt to move demo create into event create
+// router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
+//     console.log('in resident demo POST req.body:', req.body);
+//     const queryText = `INSERT INTO junction_event_residency 
+//     (event_id, residency_id, percentage) 
+//     VALUES ($1, 1, 0), ($1, 2, 0);`;
+//     pool.query(queryText, [req.body.event_id])
+//         .then(result => {
+//             res.sendStatus(200);
+//         }).catch(error => {
+//             console.log('post gender Demo route has error', error);
+//             res.sendStatus(500);
+//         })
+// });
 
 /**
  * PUT routes gender, income, age, residency

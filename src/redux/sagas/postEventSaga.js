@@ -22,6 +22,7 @@ function* postEvent(action) {
         // Create Event Next using venue id as :id
         const responseEvent = yield axios.post(`/event/create/${venue_id}`, action.payload)
         let event_id = responseEvent.data.id;
+        yield put({ type: 'ADD_DEMO', payload: action.event_id });
         yield action.history.push(`/create-sponsor/${event_id}`) // Pushes history using YIELD!
     } catch (err) {
         console.log(`ERROR in FETCH ONE EVENT saga:`, err);
