@@ -83,14 +83,13 @@ const styles = {
         // marginBottom: '5px'
     },
     landMedia: {
-        maxWidth: '30vw',
+        maxWidth: '100%',
         maxHeight: '30vh'
     },
     card: {
-        display: 'inline-block',
-        maxWidth: '31vw',
         height: '40vh',
         textAlign: 'center',
+        width: '100%',
     },
     btn_def: {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
