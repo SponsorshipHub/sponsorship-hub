@@ -193,5 +193,10 @@ const styles = {
     searchOutline: {
         borderColor: 'white !important'
     },
+    sponsorBorder: {
+        borderBottom: "1px solid black",
+        margin: "100px" 
+    }
+
 }
 export default styles;
