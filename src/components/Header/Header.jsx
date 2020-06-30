@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { InputAdornment, TextField, Box, Button } from '@material-ui/core';
+import { Paper, InputAdornment, TextField, Box, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -61,15 +61,15 @@ class Header extends Component {
                     <Box className={classes.header_text} style={{ color: 'white' }}>Sponsorship Hub</Box>
                 </Box>
 
+                
                 <Box
                     display="flex"
-                    flexDirection="row"
-                    justifyContent="center"
                     className={classes.header_button_right}>
-                    {this.props.user.access_level > 1 && page === 'home' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
-                    {this.props.user.access_level > 1 && page === 'admin' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
-                    {this.props.user.access_level > 1 && page === 'results' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                        {this.props.user.access_level > 1 && page === 'home' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                        {this.props.user.access_level > 1 && page === 'admin' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
+                        {this.props.user.access_level > 1 && page === 'results' && <Button className={classes.btn_create_event} onClick={() => this.props.history.push('/create-event')} variant="outlined">Create Event</Button>}
                 </Box>
+                
 
                 <Box
                     display="flex"
@@ -84,16 +84,16 @@ class Header extends Component {
                         }}
                         onChange={(event) => this.searchChange(event, 'search')}
                         value={this.state.search} margin="dense"
-                        color="secondary" placeholder="Search Events"
+                        color="primary" placeholder="Search Events"
                         type="search" variant="outlined" id="filled-search" size="small"
-                        id="search"
+                        id="search" autoComplete='off'
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment className={classes.search} position="start">
                                     <SearchIcon className={classes.notification} />
                                 </InputAdornment>
                             ), 
-                            className: classes.searchTextField
+                            classes: { notchedOutline: classes.searchOutline, class: classes.searchTextField},
                         }}></TextField>
                 </Box>
                 

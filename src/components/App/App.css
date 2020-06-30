@@ -5,13 +5,16 @@ body {
     font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
     background-color: rgba(245, 245, 245, 0.539);
-    /* overflow: auto; */
+    overflow: auto;
+    overscroll-behavior-y: none;
     height: 100%;
+    width: 100%;
 }
 
 html {
-    /* overflow: hidden; */
+    overflow: hidden;
     height: 100%;
+    width: 100%;
 }
 
 .alert {

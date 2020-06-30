@@ -1,4 +1,6 @@
 const styles = {
+    
+    /* HEADER */
     header_social: {
         fontSize: '275%',
         filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
@@ -10,37 +12,38 @@ const styles = {
     header_text: {
         fontSize: '45px',
         textShadow: '0px 1px 5px black',
-        position: 'absolute',
-        top: '125px',
+        position: 'relative',
+        top: '-180px',
     },
     header_text_event: {
         fontSize: '45px',
         textShadow: '0px 1px 5px black',
-        position: 'absolute',
-        top: '110px',
+        position: 'relative',
+        top: '-190px',
         textAlign: 'center'
     },
     header_button_right: {
-        position: 'absolute',
-        top: '260px',
+        position: 'relative',
+        top: '-352px',
         right: '5px',
-        fontSize: '75%'
-    },
-    footer_button_right: {
-        position: 'absolute',
-        top: '100%',
-        right: '5px',
-        fontSize: '75%'
+        float: 'right',
+        fontSize: '75%',
+        marginLeft: '5px',
     },
     header_button_left: {
-        position: 'absolute',
-        top: '250px',
-        left: '5px',
+        position: 'relative',
+        top: '-352px',
+        right: '5px',
+        float: 'left',
+        marginLeft: '15px',
+        fontSize: '75%'
     },
     header_button_left_search: {
-        position: 'absolute',
-        top: '247px',
-        left: '5px',
+        position: 'relative',
+        top: '-360px',
+        right: '5px',
+        float: 'right',
+        fontSize: '75%',
     },
     header: {
         backgroundPosition: 'center',
@@ -49,20 +52,55 @@ const styles = {
         height: '300px',
         backgroundPosition: 'center',
     },
+    search: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+    },
+    searchTextField: {
+        color: 'white',
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+    },
+    searchOutline: {
+        borderColor: 'white !important'
+    },
+
+    /* FOOTER */
     footer: {
         backgroundPosition: 'center',
-        marginTop: '20px',
+        marginTop: '30px',
         backgroundSize: 'cover',
-        height: '150px',
+        height: '120px',
         backgroundPosition: 'center',
         backgroundColor: '#505050',
     },
-    title: {
-        paddingBottom: '35px'
+    footer_button_right: {
+        position: 'absolute',
+        top: '100%',
+        right: '5px',
+        fontSize: '75%'
     },
-    formControl: {
-        minWidth: '15%',
-        marginLeft: '1%'
+
+    /* BUTTONS */
+    btn_def: {
+        background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
+        color: 'white', // Button's text color
+        fontWeight: '900', // Font's boldness from 100-900
+    },
+    btn_submit: {
+        background: 'linear-gradient(200deg, #DEDEDE, #CCCCCC)', // Extremely subtle gradient
+        color: 'black', // Button's text color
+    },
+    btn_create_event: {
+        color: 'white',
+        textShadow: '0px 1px 2px black',
+        borderColor: '#EAECED',
+        borderRadius: '0px',
+        fontWeight: '600',
+        fontSize: '125%',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255',
+        }
     },
     btn_search: {
         marginTop: '20px',
@@ -75,12 +113,17 @@ const styles = {
             color: '#F45255',
         }
     },
+    title: {
+        paddingBottom: '35px'
+    },
+    formControl: {
+        minWidth: '15%',
+        marginLeft: '1%'
+    },
     search_section: {
         margin: '20px',
         borderBottom: '1px solid #F4525580',
         paddingBottom: '20px',
-        // opacity: '.05'
-        // marginBottom: '5px'
     },
     landMedia: {
         maxWidth: '30vw',
@@ -91,36 +134,6 @@ const styles = {
         maxWidth: '31vw',
         height: '40vh',
         textAlign: 'center',
-
-    },
-    btn_def: {
-        background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
-        color: 'white', // Button's text color
-        fontWeight: '900', // Font's boldness from 100-900
-            // transition: 'all 0.3s', // Optional Hover Effect
-            // '&:hover': {
-            //     boxShadow: '1px 1px 5px black',
-            // }
-    },
-    btn_submit: {
-        background: 'linear-gradient(200deg, #DEDEDE, #CCCCCC)', // Extremely subtle gradient
-        color: 'black', // Button's text color
-        // transition: 'all 0.3s', // Optional Hover Effect
-        // '&:hover': {
-        //     boxShadow: '1px 1px 5px black',
-        // }
-    },
-    btn_create_event: {
-        color: 'white',
-        textShadow: '0px 1px 2px black',
-        borderColor: '#EAECED',
-        borderRadius: '0px',
-        fontWeight: '600',
-        fontSize: '125%',
-        transition: 'all 0.2s', // Optional Hover Effect
-        '&:hover': {
-        color: '#F45255',
-        }
     },
     box_grey: {
         background: '#EAECED', // Color that Karl submitted *GREY*
@@ -180,14 +193,6 @@ const styles = {
     },
     coral: {
         color: '#F45255' // Karl coral
-    },
-    search: {
-        color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
-    },
-    searchTextField: {
-        color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
     },
     shadow: {
         boxShadow: '0px 0px 8px black'

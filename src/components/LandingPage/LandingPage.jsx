@@ -117,7 +117,7 @@ class LandingPage extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Box>
+            <Box style={{ overflow: 'hidden'}}>
                 {/* Header */}
                 <Header history={this.props.history} />
 
