@@ -32,11 +32,11 @@ const styles = {
     },
     header_button_left: {
         position: 'relative',
-        top: '-352px',
+        top: '-370px',
         right: '5px',
         float: 'left',
         marginLeft: '15px',
-        fontSize: '75%'
+        fontSize: '125%'
     },
     header_button_left_search: {
         position: 'relative',
