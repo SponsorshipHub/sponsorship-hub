@@ -204,6 +204,10 @@ const styles = {
         borderBottom: "1px solid black",
         margin: "100px" 
     },
+    formMargin: {
+        margin: '3px' // Adds a small margin between form fields
+    },
+
     coral: {
         color: '#F45255' // Karl coral
     },
