@@ -29,19 +29,19 @@ class Footer extends Component {
                     >
                         <Box style={{ margin: '12px', wordWrap: 'break-word', maxWidth: '35%'}}>
                             <Typography style={{ fontWeight: '600' }} color="primary">
-                                About Sponsorship Hub</Typography>
+                                Sponsorship Hub</Typography>
                             <Typography style={{ color: 'white', fontWeight: '300', fontSize: '14px' }} color="secondary">
                                 We allow brands to search events and find sponsorship opportunities.
                             </Typography>
                         </Box>
                             
                         <Box fontWeight={800} textAlign="center" style={{ margin: '10px', position: 'relative', float: 'right' }}>
-                            <Typography style={{fontWeight: '600'}} color="primary">Sponsorship Hub Social</Typography>
+                            <Typography style={{fontWeight: '600'}} color="primary">Connect With Us</Typography>
                                 <a href={`https://www.facebook.com/`} target="_blank"><FacebookIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`https://www.instagram.com/`} target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`https://www.twitter.com/`} target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`mailto:karl.nauman@gmail.com`} target="_blank"><EmailIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
-                            <Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">612-100-1000</Typography>
+                            <a href={`tel:612-100-1000`} target="_blank" style={{ textDecoration: 'none', }}><Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">612-100-1000</Typography></a>
                         </Box>
                     </Box>
                 </Box>
