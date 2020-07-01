@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 
 
 class SponsorItem extends Component {

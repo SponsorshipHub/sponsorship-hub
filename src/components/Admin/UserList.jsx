@@ -8,7 +8,7 @@ import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, Select, 
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 
 class UserList extends Component {

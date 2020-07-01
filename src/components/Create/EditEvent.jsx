@@ -11,7 +11,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 // Sweetalert 2
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 
 const moment = require('moment');

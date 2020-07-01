@@ -10,7 +10,7 @@ import styles from '../Style/Style';
 import UserList from './UserList';
 import Header from '../Header/Header';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 
 class Admin extends Component {
