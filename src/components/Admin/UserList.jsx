@@ -50,9 +50,25 @@ class UserList extends Component {
             cancelButtonColor: '#F45255',
             confirmButtonText: 'CONFIRM',
             cancelButtonText: 'CANCEL',
+            reverseButtons: true,
         }).then(result => {
             if(result.value){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom',
+                    showConfirmButton: false,
+                    timer: 2500,
+                    timerProgressBar: true,
+                    onOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
                 this.props.dispatch({ type:'CHANGE_ACCESS_LEVEL', payload: payload});
+                Toast.fire({
+                    icon: 'success',
+                    title: `${this.props.user.name} changed to ${level}`
+                });
             }
         })
     }

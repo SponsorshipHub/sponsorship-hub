@@ -81,10 +81,10 @@ const styles = {
         background: 'linear-gradient(200deg, #F45255, #F45255)', // Extremely subtle gradient
         color: 'white', // Button's text color
         fontWeight: '900', // Font's boldness from 100-900
-        // transition: 'all 0.3s', // Optional Hover Effect
-        // '&:hover': {
-        // boxShadow: '1px 1px 5px black',
-        // }
+        transition: 'all 0.3s', // Optional Hover Effect
+        '&:hover': {
+            background: 'linear-gradient(200deg, #ED585B, #EC4B4E)', // Extremely subtle gradient
+        }
     },
     btn_submit: {
         background: 'linear-gradient(200deg, #DEDEDE, #CCCCCC)', // Extremely subtle gradient

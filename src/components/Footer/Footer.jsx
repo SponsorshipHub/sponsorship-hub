@@ -27,8 +27,8 @@ class Footer extends Component {
                         width="100%"
                         className={classes.footer}
                     >
-                        <Box style={{ margin: '12px', wordWrap: 'break-word', maxWidth: '30%'}}>
-                            <Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">
+                        <Box style={{ margin: '12px', wordWrap: 'break-word', maxWidth: '35%'}}>
+                            <Typography style={{ fontWeight: '600' }} color="primary">
                                 About Sponsorship Hub</Typography>
                             <Typography style={{ color: 'white', fontWeight: '300', fontSize: '14px' }} color="secondary">
                                 We allow brands to search events and find sponsorship opportunities.
@@ -36,12 +36,12 @@ class Footer extends Component {
                         </Box>
                             
                         <Box fontWeight={800} textAlign="center" style={{ margin: '10px', position: 'relative', float: 'right' }}>
-                            <Typography style={{color: 'white', fontWeight: '600'}} color="secondary">Sponsorship Hub Social</Typography>
+                            <Typography style={{fontWeight: '600'}} color="primary">Sponsorship Hub Social</Typography>
                                 <a href={`https://www.facebook.com/`} target="_blank"><FacebookIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`https://www.instagram.com/`} target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`https://www.twitter.com/`} target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                                 <a href={`mailto:karl.nauman@gmail.com`} target="_blank"><EmailIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
-                            <Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">Sponsorship Hub Social</Typography>
+                            <Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">612-100-1000</Typography>
                         </Box>
                     </Box>
                 </Box>

@@ -34,6 +34,17 @@ class Admin extends Component {
     }
 
     handleDelete = (event, user) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
         Swal.fire({
             title: `Are you sure?`,
             text: `Remove ${user.name} from ${user.company} permanently?`,
@@ -43,9 +54,14 @@ class Admin extends Component {
             cancelButtonColor: '#F45255',
             confirmButtonText: 'DELETE',
             cancelButtonText: 'CANCEL',
+            reverseButtons: true,
         }).then(result => {
             if (result.value) {
                 this.props.dispatch({ type: 'DELETE_USER', payload: user.id });
+                Toast.fire({
+                    icon: 'success',
+                    title: `${user.name} has been deleted`
+                });
             }
         })
 
