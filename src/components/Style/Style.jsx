@@ -39,11 +39,6 @@ const styles = {
         top: '250px',
         left: '5px',
     },
-    header_button_left_search: {
-        position: 'absolute',
-        top: '247px',
-        left: '5px',
-    },
     header: {
         backgroundPosition: 'center',
         marginBottom: '5px',
@@ -54,13 +49,19 @@ const styles = {
     },
 
     /* HEADER SEARCH */
+    header_button_left_search: {
+        position: 'absolute',
+        top: '250px',
+        left: '4px',
+    },
     search: {
         color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
     },
     searchTextField: {
         color: 'white',
-        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`
+        filter: `drop-shadow(0px 1px 2px rgba(0, 0, 0, 1))`,
+        width: '180px',
     },
     searchOutline: {
         borderColor: 'white !important'
