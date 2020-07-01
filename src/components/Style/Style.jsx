@@ -166,6 +166,7 @@ const styles = {
         background: '#EAECED', // Color that Karl submitted *GREY*
         margin: '0px'
     },
+
     margin: {
         margin: '20px' // Adds a small margin to the page
     },
@@ -222,7 +223,7 @@ const styles = {
     },
     sponsorBorder: {
         borderBottom: "1px solid black",
-        margin: "100px" 
+        margin: "10px" 
     },
     tableOfContents: {
         textDecoration: 'none',
