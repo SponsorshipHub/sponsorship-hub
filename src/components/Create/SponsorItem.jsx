@@ -80,55 +80,70 @@ class SponsorItem extends Component {
 
 
         let viewOrEdit =
-            <Grid justify="center" container item md={12}>
-                <Paper elevation={2}>
-                <Grid item md={2} sm={2} xs={12}>{this.props.sponsorItem.sponsor_image_url ?
-                    <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
-                    <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>}
-                    {/* provides placeholder if icon if there isn't an image*/}
-                </Grid>
-                <Grid container item md={7} xs={7}>
-
-                    <Grid container item md={4} xs={7}>
-                        <Grid item md={12} xs={7}><Typography>{this.props.sponsorItem.sponsor_name}</Typography></Grid>
-                        <Grid item md={12} xs={7}><Typography>${this.props.sponsorItem.sponsor_price}</Typography></Grid>
+            <Grid container>
+                <Grid item md={1}></Grid>
+                <Grid justify="center" container item md={10} className={classes.sponsorBorder}>
+                    <Grid item md={2} sm={2} xs={12} className={classes.formMargin}>{this.props.sponsorItem.sponsor_image_url ?
+                        <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
+                        <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>}
+                        {/* provides placeholder if icon if there isn't an image*/}
                     </Grid>
+                    <Grid container item md={7} xs={7}>
 
-                    <Grid item md={8} xs={7}><Typography>{this.props.sponsorItem.sponsor_description}</Typography></Grid>
+                        <Grid container item md={3} xs={7}>
+                            <Grid item md={12} xs={7} className={classes.formMargin}><Typography>{this.props.sponsorItem.sponsor_name}</Typography></Grid>
+                            <Grid item md={12} xs={7} className={classes.formMargin}><Typography>${this.props.sponsorItem.sponsor_price}</Typography></Grid>
+                        </Grid>
+
+                        <Grid item md={8} xs={7} className={classes.formMargin}><Typography>{this.props.sponsorItem.sponsor_description}</Typography></Grid>
+                    </Grid>
+                    <Grid item md={2} xs={7}>
+                        <EditIcon onClick={this.handleEditClick}></EditIcon>
+                        <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
+                    </Grid>
+                    <Grid item md={9} xs={7}></Grid>
                 </Grid>
-                <Grid item md={2} xs={7}>
-                    <EditIcon onClick={this.handleEditClick}></EditIcon>
-                    <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
-                </Grid>
-                <Grid item md={9} xs={7}></Grid>
-                </Paper>
             </Grid>
-           
+
 
         if (this.state.editMode) {
             viewOrEdit =
-                <Grid container item spacing={3} className={classes.box_grey}>
+                <Grid container>
+                    <Grid item md={1}></Grid>
+                    <Grid justify="center" container item md={10} className={classes.margin}>
                         {/* input fields go here */}
 
-                        <Grid justify="center" container item md={12}>
-                            <Grid item md={1}>{this.props.sponsorItem.sponsor_image_url ?
+                        <Grid justify="center" container item md={11}>
+                            {/* image */}
+                            <Grid item md={1} className={classes.formMargin}>{this.props.sponsorItem.sponsor_image_url ?
                                 <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
                                 <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                             }
                             </Grid>
-                            <Grid container item md={10}>
+                            {/* input fields */}
+                            <Grid container item md={9}>
+                                <Grid container item md={11}>
+                                    <Grid item md={5} xs={9} className={classes.formMargin}>
+                                        <TextField fullWidth label="Package Name" defaultValue={this.props.sponsorItem.sponsor_name} placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
+                                    </Grid>
+                                    <Grid item md={5} xs={9} className={classes.formMargin}>
+                                        <TextField fullWidth label="Package Price" type="number" defaultValue={this.props.sponsorItem.sponsor_price} placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
+                                    </Grid>
 
-                                <Grid container item md={4}>
-                                    <Grid item md={12} xs={9}><TextField fullWidth label="Package Name" defaultValue={this.props.sponsorItem.sponsor_name} placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField></Grid>
-                                    <Grid item md={12} xs={9}><TextField fullWidth label="Package Price" type="number" defaultValue={this.props.sponsorItem.sponsor_price} placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField></Grid>
                                 </Grid>
+                                <Grid container item md={11}>
+                                    <Grid item md={10} xs={9} className={classes.formMargin}>
+                                        <TextField fullWidth label="Image URL" defaultValue={this.props.sponsorItem.sponsor_image_url} placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid container item md={11}>
+                                <Grid md={1}></Grid>
+                                <Grid item md={9} xs={9} className={classes.formMargin}>
+                                    <TextField fullWidth multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField>
+                                </Grid>
+                            </Grid>
 
-                                <Grid item md={8} xs={9}><TextField fullWidth multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField></Grid>
-                            </Grid>
-                            <Grid item md={1} xs={9}></Grid>
-                            <Grid item md={9} xs={9}>
-                                <TextField fullWidth label="Image URL" defaultValue={this.props.sponsorItem.sponsor_image_url} placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
-                            </Grid>
                             <Grid item md={1} sm={9} xs={9}>
                                 <Button fullWidth className={classes.btn_def} onClick={this.handleSubmitClick}>Submit</Button>
                             </Grid>
@@ -136,7 +151,8 @@ class SponsorItem extends Component {
                         </Grid>
                         <Grid item md={9} xs={9}></Grid>
                     </Grid>
-            
+
+                </Grid>
         }
 
 
