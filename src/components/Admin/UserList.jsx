@@ -8,7 +8,7 @@ import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, Select, 
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 
 class UserList extends Component {
@@ -27,13 +27,13 @@ class UserList extends Component {
         let level;
         let levelNumber = event.target.value;
         if(levelNumber === 0){
-            level = 'unapproved'
+            level = 'Unapproved'
         }else if(levelNumber === 1){
-            level = 'brand';
+            level = 'Brand';
         }else if(levelNumber === 2){
-            level = 'researcher';
+            level = 'Researcher';
         }else if(levelNumber === 3){
-            level = 'admin';
+            level = 'Admin';
         }
 
         let payload = {
@@ -46,12 +46,29 @@ class UserList extends Component {
             text: `You want to change ${this.props.user.name} to access level ${level}`,
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor:'#296EC8',
+            confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
-            confirmButtonText: 'Confirm change'
+            confirmButtonText: 'CONFIRM',
+            cancelButtonText: 'CANCEL',
+            reverseButtons: true,
         }).then(result => {
             if(result.value){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'bottom',
+                    showConfirmButton: false,
+                    timer: 2500,
+                    timerProgressBar: true,
+                    onOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
                 this.props.dispatch({ type:'CHANGE_ACCESS_LEVEL', payload: payload});
+                Toast.fire({
+                    icon: 'success',
+                    title: `${this.props.user.name} changed to ${level}`
+                });
             }
         })
     }

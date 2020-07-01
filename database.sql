@@ -1,3 +1,5 @@
+-- LAST UPDATED: Jun 30, 2020
+
 -- Database Name: sponsorship_hub
 
 ------------------------------
@@ -237,9 +239,21 @@ VALUES
 
 INSERT INTO "event"
     -- Testing Null Data --
-    (event_name, start_date, end_date, estimated_attendance, venue_id)
+    (event_name, year_established, start_date, end_date, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('Spring Jam 2021', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', '13000', 3);
+    ('Spring Jam 2021', '1999', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', 'https://springjam.umn.edu/', true, '15000', 'Spring Jam is a one day music festival that brings the University of Minnesota and greater Twin-Cities communities together with live music, carnival rides, food, games and more!', 'Katie Alvino', 'Marketing Director', 'umn-sua-sponsor@umn.edu', 'umnSUA', 'umnsua', 'umnsua', 'EVENT INFO - Spring Jam brings University of Minnesota students together for a festival experience. Complete with free carnival rides, live music, and food, Spring Jam is the perfect welcome party for warm weather!
+
+WHAT’S IN IT FOR YOU?
+The University of Minnesota’s Spring Jam experience offers companies an exclusive opportunity to connect with the University population at one of the largest social events on campus!
+
+OUR CAMPUS AUDIENCE
+Total Enrollment: 52,000
+Possible Overall Reach: 2,600,000
+
+SPRING JAM REACH
+Opportunity to interact with up to 7,000 students at Spring Jam.
+Over 198,000 Spring Jam webpage views annually.
+30,000 followers across Instagram, Twitter, Facebook, and Snapchat.', 3, 'https://springjam.umn.edu/sponsors/opportunities');
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id)
@@ -694,3 +708,28 @@ FROM "event"
 WHERE event_name
 ILIKE '%Minnesota%'
 ORDER BY "start_date" DESC;
+
+SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
+FROM "event"
+    FULL JOIN venues ON venues.id=event.venue_id
+    FULL JOIN sponsorships ON event.id=sponsorships.event_id
+    FULL JOIN junction_event_income ON "event".id = junction_event_income.event_id
+    FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
+    FULL JOIN event_type ON junction_event_type.type_id = event_type.id
+WHERE state
+ILIKE '%%'
+    AND
+(start_date BETWEEN '2021-01-01' AND '2021-12-31'
+    OR '2021-01-01' BETWEEN start_date AND end_date)
+    AND estimated_attendance >= 0
+    AND estimated_attendance <= 2147483647
+    AND
+(sponsor_price >= 0 OR sponsor_price ISNULL)
+    AND
+(sponsor_price <= 2147483647 OR sponsor_price ISNULL)
+    AND income_range_id >= 5
+    GROUP BY "event".id, venues.city, venues.state, event_type.type
+    HAVING SUM
+(percentage) >= 20
+    ORDER BY start_date DESC
+    ;

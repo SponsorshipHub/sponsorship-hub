@@ -54,8 +54,7 @@ class App extends Component {
             Even though it seems like they are different pages, the user is always on localhost:3000/home */}
             <Route exact path="/home" component={LandingPage}/>
             <ProtectedRoute exact path="/home/login" component={LandingPage}/>
-            <ProtectedRoute exact path={["/results/:state/:startDate/:endDate", "/results"]} component={ResultPage}/>
-              {/* <Redirect exact from="/results//:startDate/:endDate" to="/results" /> */}
+            <ProtectedRoute exact path={"/results"} component={ResultPage}/>
             <ProtectedRoute exact path="/create-sponsor/:id" component={CreateSponsor}/>
             <ProtectedRoute exact path="/sponsor/edit/:id" component={EditSponsor} />
             <ProtectedRoute exact path="/create-demo/:id" component={CreateDemo} />

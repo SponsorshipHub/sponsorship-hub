@@ -9,6 +9,9 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import UserList from './UserList';
 import Header from '../Header/Header';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../Style/Swal.scss';
 
 class Admin extends Component {
 
@@ -28,6 +31,41 @@ class Admin extends Component {
                 users: this.props.userList
             })
         }
+    }
+
+    handleDelete = (event, user) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Swal.fire({
+            title: `Are you sure?`,
+            text: `Remove ${user.name} from ${user.company} permanently?`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'DELETE',
+            cancelButtonText: 'CANCEL',
+            reverseButtons: true,
+        }).then(result => {
+            if (result.value) {
+                this.props.dispatch({ type: 'DELETE_USER', payload: user.id });
+                Toast.fire({
+                    icon: 'success',
+                    title: `${user.name} has been deleted`
+                });
+            }
+        })
+
+        console.log('Deleting user:', user)
     }
 
     accessLevelOpen = () => {
@@ -60,6 +98,7 @@ class Admin extends Component {
                                     <TableCell>Email</TableCell>
                                     <TableCell>Phone</TableCell>
                                     <TableCell>Access Level</TableCell>
+                                    <TableCell>Remove</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -71,6 +110,7 @@ class Admin extends Component {
                                     <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
+                                    <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon/></TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
