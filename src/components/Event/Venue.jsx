@@ -15,31 +15,36 @@ class Venue extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
-            <Box className="DemoBackground" my={2}>
-                <Grid container justify="space-evenly">
-                    <Grid item md={4}>
-                        {/* Venue Name */}
-                        <a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a>
-                        {/* Capacity Need to fix spacing */}
-                        {/* venue_capacity */}
-                        <Typography>Capacity: {this.props.oneEvent.venue_capacity}</Typography>
-                        <Box>
-                            <PlaceIcon />
-                            <Typography display="inline">Address</Typography>
-                            {/* Address */}
-                            <a style={{ textDecorationColor: '#f45255', color: 'black'}} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><Typography>{this.props.oneEvent.address}</Typography>
-                                <Typography>{this.props.oneEvent.city && this.props.oneEvent.city + ', '} {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography></a>
-                        </Box>
+            <Box className={classes.box_grey} my={2}>
+                <Box className={classes.margin}>
+                    <Grid container justify="space-evenly">
+                        <Grid item md={4}>
+                            {/* Venue Name */}
+                            <Box mb={3}>
+                                <Typography variant="h5"><a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a></Typography>
+                            </Box>
+                            <a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a>
+                            {/* Capacity Need to fix spacing */}
+                            {/* venue_capacity */}
+                            <Typography>Capacity: {this.props.oneEvent.venue_capacity}</Typography>
+                            <Box>
+                                <PlaceIcon />
+                                <Typography display="inline">Address</Typography>
+                                {/* Address */}
+                                <a style={{ textDecorationColor: '#f45255', color: 'black'}} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><Typography>{this.props.oneEvent.address}</Typography>
+                                    <Typography>{this.props.oneEvent.city && this.props.oneEvent.city + ', '} {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography></a>
+                            </Box>
+                        </Grid>
+                        <Grid item md={4}>
+                            <Box p={2} my={2} className={classes.eventTextBoxes}>
+                                {/* venue_notes */}
+                                <Typography>
+                                    {this.props.oneEvent.venue_notes}
+                                </Typography>
+                            </Box>
+                        </Grid>
                     </Grid>
-                    <Grid item md={4}>
-                        <Box p={2} my={2} className={classes.eventTextBoxes}>
-                            {/* venue_notes */}
-                            <Typography>
-                                {this.props.oneEvent.venue_notes}
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+                </Box>    
             </Box>
         )//end return
     };//end render
