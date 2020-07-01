@@ -15,6 +15,8 @@ import DemoView from './DemoView';
 import SponsorshipView from './SponsorshipView';
 import Venue from './Venue';
 import Header_Event from '../Header/Header_Event';
+// HashLink
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Event extends Component {
 
@@ -32,12 +34,18 @@ class Event extends Component {
                 <Box>
                     {/* Header */}
                     <Header_Event history={this.props.history} match={this.props.match} />
-                    
-                    
+
+
                     <Box m={2}>
                         <Button onClick={() => this.props.history.push(`/results`)} variant="outlined" className={classes.btn_search}>Back to Results</Button>
                     </Box>
-                    
+
+                    <Grid container justify="center" spacing={1}>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#demo"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Demographics</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#sponsorship"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Sponsorships</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#venue"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Venue</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#details"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>More Details</Button></Link></Grid>
+                    </Grid>
                 </Box>
 
                 <Grid container justify="center">
@@ -82,35 +90,40 @@ class Event extends Component {
                             <PersonIcon />
                             <Typography display="inline">Contact Info</Typography>
                             {/* contact_name & contact_title */}
-                            <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
+                            <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', ' + this.props.oneEvent.contact_title}</Typography>
                             {/* contact_email*/}
-                            <Typography><a href={ 'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
+                            <Typography><a href={'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
                             {/* contact_phone*/}
                             <Typography>{this.props.oneEvent.contact_phone}</Typography>
                         </Box>
                     </Grid>
                 </Grid>
+
+                <div id="demo" />
                 <DemoView />
+                <div id="sponsorship" />
                 <SponsorshipView />
+                <div id="venue" />
                 <Venue />
-                {this.props.oneEvent.event_notes && 
-                <Box>
-                <Grid container justify="center">
-                    <Grid item md={10}>
-                        <h2>Additional Details</h2>
-                    </Grid>
-                </Grid>
-                <Grid container justify="center">
-                    <Grid item md={8}>
-                        <Box className="DemoBackground" p={2}>
-                            <Typography>
-                                {this.props.oneEvent.event_notes}
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
-                </Box>
-                    }
+                <div id="details" />
+                {this.props.oneEvent.event_notes &&
+                    <Box>
+                        <Grid container justify="center">
+                            <Grid item md={10}>
+                                <h2>Additional Details</h2>
+                            </Grid>
+                        </Grid>
+                        <Grid container justify="center">
+                            <Grid item md={8}>
+                                <Box className="DemoBackground" p={2}>
+                                    <Typography>
+                                        {this.props.oneEvent.event_notes}
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                }
             </Box>
         )//end return
     };//end render
