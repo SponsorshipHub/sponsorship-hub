@@ -363,7 +363,7 @@ VALUES
     (5, 3, 20),
     (6, 1, 40),
     (6, 2, 45),
-    (6, 3, 25),
+    (6, 3, 15),
     (7, 1, 49),
     (7, 2, 49),
     (7, 3, 2);
@@ -694,3 +694,28 @@ FROM "event"
 WHERE event_name
 ILIKE '%Minnesota%'
 ORDER BY "start_date" DESC;
+
+SELECT event.id, event_name, start_date, end_date, city, state, event_image_url
+FROM "event"
+    FULL JOIN venues ON venues.id=event.venue_id
+    FULL JOIN sponsorships ON event.id=sponsorships.event_id
+    FULL JOIN junction_event_income ON "event".id = junction_event_income.event_id
+    FULL JOIN junction_event_type ON junction_event_type.event_id = event.id
+    FULL JOIN event_type ON junction_event_type.type_id = event_type.id
+WHERE state
+ILIKE '%%'
+    AND
+(start_date BETWEEN '2021-01-01' AND '2021-12-31'
+    OR '2021-01-01' BETWEEN start_date AND end_date)
+    AND estimated_attendance >= 0
+    AND estimated_attendance <= 2147483647
+    AND
+(sponsor_price >= 0 OR sponsor_price ISNULL)
+    AND
+(sponsor_price <= 2147483647 OR sponsor_price ISNULL)
+    AND income_range_id >= 5
+    GROUP BY "event".id, venues.city, venues.state, event_type.type
+    HAVING SUM
+(percentage) >= 20
+    ORDER BY start_date DESC
+    ;
