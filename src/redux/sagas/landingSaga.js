@@ -49,7 +49,7 @@ function* getResults(action){
     // console.log('-------------> in getResults saga', action.payload);
     try{
         //send GET request for /results and send to our reducer
-        const response = yield axios.get(`/results`, {params: {
+        const response = yield axios.get(`/results/landing`, {params: {
             state, startD, endD
         }});
         yield put({

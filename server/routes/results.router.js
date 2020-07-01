@@ -23,11 +23,11 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });// end default get ROUTER
 
 //GET router for search results
-router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('in /results GET', req.query.state, 'start:', req.query.start, 'end:', req.query.end);
+router.get('/landing', rejectUnauthenticated, (req, res) => {
+    console.log('in /results/landing GET', req.query.state, 'start:', req.query.start, 'end:', req.query.end);
     let state = req.query.state;
-    let start = req.query.start;
-    let end = req.query.end;
+    let start = req.query.startD;
+    let end = req.query.endD;
     // if statements with multiple pool queries for search
 
     /// --- LANDING PAGE

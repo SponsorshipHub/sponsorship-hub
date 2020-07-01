@@ -77,7 +77,7 @@ class LandingPage extends Component {
     };//end componentDidMount
 
     handleSearch = () => {
-        console.log('search on Landing Page has been clicked');
+        console.log('search on Landing Page has been clicked', this.state);
         //IF STATEMENT SO THAT THEY DO BOTH START AND END DATE IF SELECTED
         if (this.state.startDate !== null && this.state.endDate === null) {
             Swal.fire({
