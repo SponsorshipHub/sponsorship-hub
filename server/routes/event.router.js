@@ -129,4 +129,15 @@ WHERE id = $19;`
     })
 });
 
+router.delete('/delete/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+    let id = req.params.id;
+    let query = `DELETE FROM event WHERE id=$1;`
+    pool.query(query, [id]).then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    })
+});
+
 module.exports = router;
