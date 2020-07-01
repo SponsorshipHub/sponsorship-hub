@@ -118,6 +118,17 @@ const styles = {
             color: '#F45255',
         }
     },
+    btn_table_of_contents: {
+        // width: '200px',
+        color: 'black',
+        borderRadius: '0px',
+        letterSpacing: '1px',
+        fontWeight: '500',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255',
+        }
+    },
 
 
     /* SECTION */
@@ -203,6 +214,10 @@ const styles = {
     sponsorBorder: {
         borderBottom: "1px solid black",
         margin: "100px" 
+    },
+    tableOfContents: {
+        textDecoration: 'none',
+
     },
     coral: {
         color: '#F45255' // Karl coral
