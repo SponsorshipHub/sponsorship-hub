@@ -59,16 +59,7 @@ CREATE TABLE "venues"
     "venue_capacity" integer
 );
 
---CREATE TABLE "junction_event_venue"
---(
---    "id" serial PRIMARY KEY NOT NULL,
---    "venues_id" integer NOT NULL,
---    "event_id" integer NOT NULL,
---    FOREIGN KEY ("venues_id") REFERENCES venues ("id"),
---    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
---);
-
--- "event" TYPES --
+-- EVENT TYPES --
 CREATE TABLE "event_type"
 (
     "id" serial PRIMARY KEY NOT NULL,
@@ -80,8 +71,8 @@ CREATE TABLE "junction_event_type"
     "id" serial PRIMARY KEY NOT NULL,
     "type_id" integer NOT NULL,
     "event_id" integer NOT NULL,
-    FOREIGN KEY ("type_id") REFERENCES event_type ("id"),
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
+    FOREIGN KEY ("type_id") REFERENCES event_type ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE
 );
 
 INSERT INTO event_type
@@ -111,8 +102,8 @@ CREATE TABLE "junction_event_age"
     "event_id" int NOT NULL,
     "age_range_id" int NOT NULL,
     "percentage" int NOT NULL DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("age_range_id") REFERENCES age_range ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("age_range_id") REFERENCES age_range ("id") ON DELETE CASCADE
 );
 
 INSERT INTO age_range
@@ -139,8 +130,8 @@ CREATE TABLE "junction_event_income"
     "event_id" int NOT NULL,
     "income_range_id" int NOT NULL,
     "percentage" int NOT NULL DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("income_range_id") REFERENCES income_range ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("income_range_id") REFERENCES income_range ("id") ON DELETE CASCADE
 );
 
 INSERT INTO income_range
@@ -167,8 +158,8 @@ CREATE TABLE "junction_event_residency"
     "event_id" int NOT NULL,
     "residency_id" int NOT NULL,
     "percentage" int DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("residency_id") REFERENCES residency ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("residency_id") REFERENCES residency ("id") ON DELETE CASCADE
 );
 
 INSERT INTO "residency"
@@ -189,8 +180,8 @@ CREATE TABLE "junction_event_gender"
     "event_id" int NOT NULL,
     "gender_id" int NOT NULL,
     "percentage" int DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("gender_id") REFERENCES gender ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("gender_id") REFERENCES gender ("id") ON DELETE CASCADE
 );
 
 INSERT INTO "gender"
@@ -209,7 +200,7 @@ CREATE TABLE "sponsorships"
     "sponsor_image_url" varchar(2000) ,
     "sponsor_description" varchar(2000) ,
     "event_id" int NOT NULL,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE
 );
 
 ------------------------------
