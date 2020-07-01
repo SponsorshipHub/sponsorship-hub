@@ -26,7 +26,16 @@ class Header extends Component {
         const { classes } = this.props;
         return (
             <Box className={classes.shadow}>
-                <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(./images/header_darker.jpg)` }}>
+
+                {/* MAIN HEADER OPTIONS */}
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(./images/header_darker.jpg)` }}> */}
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/C6ni9uAva5I/download?force=true&w=1920)` }}> */}
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/m1WZS5ye404/download?force=true&w=1920)` }}> */}
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/Fh-Q-xfdh_o/download?force=true&w=1920)` }}> */}
+                <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/JNuKyKXLh8U/download?force=true&w=1920)` }}>
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/aaP_NB04HRA/download?force=true&w=1920)` }}> */}
+                {/* <Box className={classes.header} maxHeight="300px" style={{ backgroundImage: `url(https://unsplash.com/photos/a3aiDGQwxm8/download?force=true&w=1920)` }}> */}
+
                     <Box
                         display="flex"
                         flexDirection="row"
@@ -67,7 +76,7 @@ class Header extends Component {
                         justifyContent="center"
                         className={classes.header_button_left_search}>
                         <TextField
-                            onKeyDown={(e) => {if (e.key === "Enter") {this.submitSearch()}}}
+                            onKeyDown={(e) => { if (e.key === "Enter") { this.submitSearch() } }}
                             onChange={(event) => this.searchChange(event, 'search')}
                             value={this.state.search} margin="dense"
                             color="secondary" placeholder="Search Events"
