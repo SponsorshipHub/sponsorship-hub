@@ -15,6 +15,8 @@ import DemoView from './DemoView';
 import SponsorshipView from './SponsorshipView';
 import Venue from './Venue';
 import Header_Event from '../Header/Header_Event';
+// HashLink
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Event extends Component {
 
@@ -28,17 +30,24 @@ class Event extends Component {
         const { classes } = this.props;
         document.title = `Sponsorship Hub - ${this.props.oneEvent.event_name}`; // Sets browser's title
         return (
-            <Box>
+            <Box> {/* full page*/}
                 <Box>
                     {/* Header */}
                     <Header_Event history={this.props.history} match={this.props.match} />
-                    
-                    
+
+
                     <Box m={2}>
                         <Button onClick={() => this.props.history.push(`/results`)} variant="outlined" className={classes.btn_search}>Back to Results</Button>
                     </Box>
-                    
+
+                    <Grid container justify="center" spacing={1}>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#demo"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Demographics</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#sponsorship"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Sponsorships</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#venue"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Venue</Button></Link></Grid>
+                        <Grid item xs={6} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#details"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>More Details</Button></Link></Grid>
+                    </Grid>
                 </Box>
+
                 <Box className={classes.margin}>
                     <Grid container justify="center" >
                         <Grid item md={10}>
@@ -90,11 +99,16 @@ class Event extends Component {
                             </Box>
                         </Grid>
                     </Grid>
-                </Box>
+                </Box> {/* Margin end */}
+
                 {/* DEMO */}
+                <div id="demo" />
                 <DemoView />
+                <div id="sponsorship" />
                 <SponsorshipView />
+                <div id="venue" />
                 <Venue />
+                <div id="details" />
                 {this.props.oneEvent.event_notes && 
                 <Box>
                 <Grid container justify="center">

@@ -6,6 +6,18 @@ import axios from 'axios';
 function* postEventSaga() {
     yield takeLatest('POST_EVENT', postEvent);
     yield takeLatest('POST_EVENT2', postEvent2);
+    yield takeLatest('DELETE_EVENT', deleteEvent);
+}
+
+function* deleteEvent(action) {
+    try {
+        let event_id = action.payload;
+        yield axios.delete(`/event/delete/${event_id}`, action.payload);
+        yield action.history.push(`/home`) // Pushes history using YIELD!
+    }
+    catch (error) {
+        
+    }
 }
 
 function* postEvent(action) {

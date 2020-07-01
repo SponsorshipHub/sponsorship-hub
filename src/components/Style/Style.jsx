@@ -10,10 +10,10 @@ const styles = {
         },
     },
     header_text: {
-        fontSize: '45px',
-        textShadow: '0px 1px 5px black',
+        fontSize: '65px',
+        textShadow: '2px 2px 5px black',
         position: 'absolute',
-        top: '125px',
+        top: '110px',
     },
     header_text_event: {
         fontSize: '45px',
@@ -118,6 +118,26 @@ const styles = {
             color: '#F45255',
         }
     },
+    btn_table_of_contents: {
+        // width: '200px',
+        color: 'black',
+        borderRadius: '0px',
+        letterSpacing: '1px',
+        fontWeight: '500',
+        transition: 'all 0.2s', // Optional Hover Effect
+        '&:hover': {
+            color: '#F45255',
+        }
+    },
+    btn_delete: {
+        background: 'linear-gradient(200deg, #959595, #909090)', // Extremely subtle gradient
+        color: 'white', // Button's text color
+        fontWeight: '900', // Font's boldness from 100-900
+        transition: 'all 0.3s', // Optional Hover Effect
+        '&:hover': {
+            background: 'linear-gradient(200deg, #898989, #838383)', // Extremely subtle gradient
+        }
+    },
 
 
     /* SECTION */
@@ -146,6 +166,7 @@ const styles = {
         background: '#EAECED', // Color that Karl submitted *GREY*
         margin: '0px'
     },
+
     margin: {
         margin: '20px' // Adds a small margin to the page
     },
@@ -202,7 +223,13 @@ const styles = {
     },
     sponsorBorder: {
         borderBottom: "1px solid black",
-        margin: "100px" 
+        margin: "10px" 
+    },
+    tableOfContents: {
+        textDecoration: 'none',
+    },
+    formMargin: {
+        margin: '3px' // Adds a small margin between form fields
     },
     coral: {
         color: '#F45255' // Karl coral
@@ -211,4 +238,5 @@ const styles = {
         textDecorationLine: 'underline'
     }
 }
+
 export default styles;
