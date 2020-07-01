@@ -8,7 +8,7 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import Header from '../Header/Header';
 
 
