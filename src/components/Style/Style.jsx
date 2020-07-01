@@ -127,7 +127,8 @@ const styles = {
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
             color: '#F45255',
-        },
+        }
+    },
     btn_delete: {
         background: 'linear-gradient(200deg, #959595, #909090)', // Extremely subtle gradient
         color: 'white', // Button's text color
@@ -233,4 +234,5 @@ const styles = {
         color: '#F45255' // Karl coral
     },
 }
+
 export default styles;
