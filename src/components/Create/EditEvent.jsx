@@ -16,7 +16,7 @@ import '../Style/Swal.scss';
 
 const moment = require('moment');
 
-class CreateEvent extends Component {
+class EditEvent extends Component {
     state = {
         newVenue: false,
         venue_id: '',
@@ -97,51 +97,162 @@ class CreateEvent extends Component {
     }
 
     nextClick = () => {
-        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
-        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
-        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
-        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
-
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        if (this.state.event_name === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an event name'
+            }); return
+        }
+        else if (this.state.start_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter a start date'
+            }); return
+        }
+        else if (this.state.end_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an end date'
+            }); return
+        }
+        else if (this.state.venue_id === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please choose a venue'
+            }); return;
+        }
+        else if (this.state.estimated_attendance === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter estimated attendance'
+            }); return;
+        }
+        if (this.state.venue_capacity === '') { this.setState({ venue_capacity: null }) }
+        if (this.state.event_type === '') { this.setState({ event_type: null }) }
+        if (this.state.year_established === '') { this.setState({ year_established: null }) }
         Swal.fire({
-            title: `${this.props.oneEvent.event_name}`,
+            title: `${this.state.event_name}`,
             text: `Accept all changes and continue?`,
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
-            confirmButtonText: 'Confirm'
+            confirmButtonText: 'Confirm',
+            reverseButtons: true,
         }).then(result => {
             if (result.value) {
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
                 this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
+                Toast.fire({
+                    icon: 'success',
+                    title: `Your changes were saved`
+                });
             }
         })
     }
 
     nextClick2 = () => {
-        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
-        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
-        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
-        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        if (this.state.event_name === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an event name'
+            }); return }
+        else if (this.state.start_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter a start date'
+            }); return }
+        else if (this.state.end_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an end date'
+            }); return }
+        else if (this.state.venue_id === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please choose a venue'
+            }); return; }
+        else if (this.state.estimated_attendance === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter estimated attendance'
+            }); return; }
         if (this.state.venue_capacity === '') { this.setState({ venue_capacity: null }) }
         if (this.state.event_type === '') { this.setState({ event_type: null }) }
         if (this.state.year_established === '') { this.setState({ year_established: null }) }
-        // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
-
         Swal.fire({
+            input: 'textarea',
+            inputPlaceholder: `Input New Event Name Here`,
+            inputAttributes: {
+                'aria-label': 'New Event Name'
+            },
             title: `${this.props.oneEvent.event_name}`,
-            text: `Copy this event as a new event?`,
-            icon: 'question',
+            text: `This will save your edits as a new event`,
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
             confirmButtonText: 'Confirm',
-            cancelButtonText: 'Make More Changes'
+            cancelButtonText: 'Cancel',
+            reverseButtons: true,
         }).then(result => {
             if (result.value) {
-                this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
+                this.setState({ event_name: result.value })
+                this.props.dispatch({ type: 'POST_EVENT2', payload: this.state, history: this.props.history })
+                let timerInterval
+                Swal.fire({
+                    title: `Creating New Event`,
+                    html: `Bringing you to ${this.state.event_name}`,
+                    icon: 'success',
+                    timer: 2500,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                                if (b) {
+                                    b.textContent = Swal.getTimerLeft()
+                                }
+                            }
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {}
+                })
+            }
+            else if (!result.value) { 
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Event was not created'
+                })
             }
         })
     }
@@ -521,8 +632,8 @@ class CreateEvent extends Component {
                 </Box>
 
                 <Grid justify="center" spacing={2} container>
-                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick2}>Duplicate Event</Button></Grid>
-                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Next</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick2}>Create as New Event</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Update Current Event</Button></Grid>
                     
                 </Grid>
 
@@ -532,7 +643,7 @@ class CreateEvent extends Component {
 };//end class
 
 // PropTypes allows us to import style.jsx for use
-CreateEvent.propTypes = { classes: PropTypes.object.isRequired };
+EditEvent.propTypes = { classes: PropTypes.object.isRequired };
 
 // Destructures reduxState to pull venues only.
 const putStateOnProps = reduxState => ({
@@ -542,4 +653,4 @@ const putStateOnProps = reduxState => ({
     types: reduxState.eventType
 });
 
-export default connect(putStateOnProps)(withStyles(styles)(CreateEvent));
+export default connect(putStateOnProps)(withStyles(styles)(EditEvent));
