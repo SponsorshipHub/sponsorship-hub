@@ -10,10 +10,10 @@ const styles = {
         },
     },
     header_text: {
-        fontSize: '45px',
-        textShadow: '0px 1px 5px black',
+        fontSize: '65px',
+        textShadow: '2px 2px 5px black',
         position: 'absolute',
-        top: '125px',
+        top: '110px',
     },
     header_text_event: {
         fontSize: '45px',
@@ -116,6 +116,15 @@ const styles = {
         transition: 'all 0.2s', // Optional Hover Effect
         '&:hover': {
             color: '#F45255',
+        }
+    },
+    btn_delete: {
+        background: 'linear-gradient(200deg, #959595, #909090)', // Extremely subtle gradient
+        color: 'white', // Button's text color
+        fontWeight: '900', // Font's boldness from 100-900
+        transition: 'all 0.3s', // Optional Hover Effect
+        '&:hover': {
+            background: 'linear-gradient(200deg, #898989, #838383)', // Extremely subtle gradient
         }
     },
 

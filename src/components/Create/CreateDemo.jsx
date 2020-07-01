@@ -9,6 +9,7 @@ import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Swal from 'sweetalert2/src/sweetalert2.js';
+import '../Style/Swal.scss';
 import Header from '../Header/Header';
 
 

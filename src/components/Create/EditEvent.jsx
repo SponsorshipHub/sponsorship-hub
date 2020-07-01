@@ -60,6 +60,17 @@ class EditEvent extends Component {
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id }); /* Gets one event */
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
         this.setState({ 
             newVenue: false,
             venue_id: this.props.oneEvent.venue_id,
@@ -96,7 +107,7 @@ class EditEvent extends Component {
         console.log(this.state)
     }
 
-    nextClick = () => {
+    updateClick = () => {
         const Toast = Swal.mixin({
             toast: true,
             position: 'bottom',
@@ -162,7 +173,7 @@ class EditEvent extends Component {
         })
     }
 
-    nextClick2 = () => {
+    createClick = () => {
         const Toast = Swal.mixin({
             toast: true,
             position: 'bottom',
@@ -252,6 +263,105 @@ class EditEvent extends Component {
                 Toast.fire({
                     icon: 'error',
                     title: 'Event was not created'
+                })
+            }
+        })
+    }
+
+    deleteClick = () => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        if (this.state.event_name === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an event name'
+            }); return
+        }
+        else if (this.state.start_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter a start date'
+            }); return
+        }
+        else if (this.state.end_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an end date'
+            }); return
+        }
+        else if (this.state.venue_id === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please choose a venue'
+            }); return;
+        }
+        else if (this.state.estimated_attendance === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter estimated attendance'
+            }); return;
+        }
+        if (this.state.venue_capacity === '') { this.setState({ venue_capacity: null }) }
+        if (this.state.event_type === '') { this.setState({ event_type: null }) }
+        if (this.state.year_established === '') { this.setState({ year_established: null }) }
+        Swal.fire({
+            input: 'textarea',
+            inputPlaceholder: `Type "DELETE" Here and press Confirm`,
+            inputAttributes: {
+                'aria-label': 'New Event Name'
+            },
+            title: `${this.props.oneEvent.event_name}`,
+            text: `This will delete this event permanently!`,
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonColor: '#296EC8',
+            cancelButtonColor: '#F45255',
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
+            reverseButtons: true,
+        }).then(result => {
+            if (result.value === 'DELETE') {
+                this.props.dispatch({ type: 'DELETE_EVENT', payload: this.props.match.params.id, history: this.props.history })
+                let timerInterval
+                Swal.fire({
+                    title: `Event Deleted`,
+                    html: `Event has been successfully deleted.`,
+                    icon: 'success',
+                    timer: 2500,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            const content = Swal.getContent()
+                            if (content) {
+                                const b = content.querySelector('b')
+                                if (b) {
+                                    b.textContent = Swal.getTimerLeft()
+                                }
+                            }
+                        }, 100)
+                    },
+                    onClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) { }
+                })
+            }
+            else if (result.value !== 'DELETE') {
+                Toast.fire({
+                    icon: 'info',
+                    title: 'Event was not deleted'
                 })
             }
         })
@@ -632,8 +742,9 @@ class EditEvent extends Component {
                 </Box>
 
                 <Grid justify="center" spacing={2} container>
-                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick2}>Create as New Event</Button></Grid>
-                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.nextClick}>Update Current Event</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.createClick}>Create as New Event</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_delete} onClick={this.deleteClick}>Delete This Event</Button></Grid>
+                    <Grid item xs={12} md={2}><Button fullWidth variant="outlined" className={classes.btn_def} onClick={this.updateClick}>Update This Event</Button></Grid>
                     
                 </Grid>
 
