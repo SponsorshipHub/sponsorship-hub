@@ -145,11 +145,11 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
         maxSponsorshipPrice = `AND sponsor_price <= $8`;
     }
     if(req.query.income != ''){
-        income = req.query.income;
+        income = Number(req.query.income);
     }
 
     let results = [`%${state}%`, start, end, `%${type}%`, minAttend, maxAttend, minSponsor, maxSponsor, income];
-    // console.log(`RESULTS:`, results);
+    console.log(`RESULTS:`, results);
     
 
     let queryString = `
@@ -173,7 +173,7 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     ORDER BY start_date DESC
     ;`
 
-    // console.log(`QUERY:`, queryString);
+    console.log(`QUERY:`, queryString);
     
     pool.query(queryString, results).then((result) => {
         // console.log('HELLOOOOO', result.rows)
