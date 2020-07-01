@@ -34,39 +34,42 @@ class SponsorshipView extends Component {
         const { classes } = this.props;
         return (
             <Box my={2}>
-                <Divider className="venue" />
-                <Grid container justify="space-evenly">
-                    <Grid item md={10}>
-                        <h2>Sponsorship</h2>
+                <Box className={classes.margin}>
+                    <Grid container justify="space-evenly">
+                        <Grid item md={10}>
+                            <Box mb={3}>
+                                <Typography variant="h4">Sponsorship</Typography>
+                            </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid container justify="space-evenly">
-                    <Grid item md={8}>
-                        <Paper>
-                            <TableContainer>
-                                <Table>
-                                    <TableHead className="DemoBackground">
-                                        <TableRow>
-                                            <TableCell>Sponsor Image</TableCell>
-                                            <TableCell>Sponsorship Opportunity</TableCell>
-                                            <TableCell>Price</TableCell>
-                                            <TableCell>Details</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-
-                                        {/* Will be populated my with map*/}
-                                        {this.state.sponsorship.map((item, index) =>
-                                            <TableRow key={index}>
-                                                <SponsorshipPackage item={item} />
+                    <Grid container justify="space-evenly">
+                        <Grid item md={8}>
+                            <Paper>
+                                <TableContainer>
+                                    <Table>
+                                        <TableHead className="DemoBackground">
+                                            <TableRow>
+                                                <TableCell>Sponsor Image</TableCell>
+                                                <TableCell>Sponsorship Opportunity</TableCell>
+                                                <TableCell>Price</TableCell>
+                                                <TableCell>Details</TableCell>
                                             </TableRow>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </Paper>
+                                        </TableHead>
+                                        <TableBody>
+
+                                            {/* Will be populated my with map*/}
+                                            {this.state.sponsorship.map((item, index) =>
+                                                <TableRow key={index}>
+                                                    <SponsorshipPackage item={item} />
+                                                </TableRow>
+                                            )}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Box>
             </Box>
         )//end return
     };//end render

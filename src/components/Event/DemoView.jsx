@@ -45,26 +45,26 @@ class DemoView extends Component {
         const { classes } = this.props;
 
         return (
-            <Box className='DemoBackground' my={2}>
-                <Box>
+            <Box className={classes.box_grey} my={2}>
+                <Box className={classes.margin}>
                     <Grid container justify="space-evenly">
                         <Grid item md={10}>
-                            <h2>Attendee Demographics</h2>
-
+                            <Box textAlign="flex-start" mb={3}>
+                                <Typography variant="h4">Attendee Demographics</Typography>
+                            </Box>
                         </Grid>
                     </Grid>
                     <Grid container justify="center">
                         <Grid item md={10}>
-                            <Grid container> 
+                            <Grid container justify="space-around"> 
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- AGE ------------------- */}
-                                    <h4>Age Ranges</h4>
-                                    <PieChart width={460} height={310}>
+                                    <Typography variant="h6">Age Ranges</Typography>
+                                    <PieChart width={365} height={310}>
                                         <Pie data={this.state.age}
-                                            cx={220}
+                                            cx={180}
                                             cy={150}
                                             labelLine={false}
-                                            
                                             label={({
                                                 cx,
                                                 cy,
@@ -113,10 +113,10 @@ class DemoView extends Component {
                                 
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- INCOME ------------------- */}
-                                    <h4>Household Income</h4>
-                                    <PieChart width={560} height={310}>
+                                    <Typography variant="h6">Household Income</Typography>
+                                    <PieChart width={455} height={310}>
                                         <Pie data={this.state.income}
-                                            cx={235}
+                                            cx={220}
                                             cy={150}
                                             labelLine={false}
                                             outerRadius={100}
@@ -169,10 +169,10 @@ class DemoView extends Component {
                                 </Grid>
                                 <Grid item md={6} sm={8} xs={8}>
                     {/* ----------------- GENDER ------------------- */}
-                                    <h4>Gender</h4>
-                                    <PieChart width={460} height={350}>
+                                    <Typography variant="h6">Gender</Typography>
+                                    <PieChart width={360} height={350}>
                                         <Pie data={this.state.gender}
-                                            cx={240}
+                                            cx={170}
                                             cy={130}
                                             labelLine={false}
                                             label={({
@@ -216,10 +216,10 @@ class DemoView extends Component {
                                 </Grid>
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- RESIDENCY ------------------- */}
-                                    <h4>Attendees Location</h4>
-                                    <PieChart width={520} height={350}>
+                                    <Typography variant="h6">Attendees Location</Typography>
+                                    <PieChart width={390} height={350}>
                                         <Pie data={this.state.residency}
-                                            cx={250}
+                                            cx={200}
                                             cy={120}
                                             labelLine={false}
                                             label={({
