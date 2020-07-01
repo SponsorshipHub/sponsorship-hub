@@ -5,7 +5,7 @@ import Header from '../../Header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../../Style/Swal.scss';
 
 class RegisterPage extends Component {

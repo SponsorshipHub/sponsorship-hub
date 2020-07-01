@@ -5,6 +5,7 @@ function* adminSaga(){
     yield takeLatest('FETCH_USER_LIST', fetchUserList);
     yield takeLatest('CHANGE_ACCESS_LEVEL', changeAccessLevel);
     yield takeLatest('FETCH_APPROVAL', fetchApproval);
+    yield takeLatest('DELETE_USER', deleteUser);
 }
 
 // Used for getting a count of who needs approval
@@ -31,11 +32,22 @@ function* fetchUserList(action){
 
 function* changeAccessLevel(action){
     try{
-       yield axios.put('/admin/access-level', action.payload);
+        yield axios.put('/admin/access-level', action.payload);
         yield put({type: 'FETCH_APPROVAL'})
     }catch(err){
         console.log(`ERROR in ChangeAccessLevel:`, err);
         
+    }
+}
+
+function* deleteUser(action) {
+    try {
+        console.log('Action Payload in deleteUser is:', action.payload)
+        yield axios.delete(`/admin/delete/${action.payload}`);
+        yield put({ type: 'FETCH_USER_LIST' })
+    } catch (err) {
+        console.log(`ERROR in ChangeAccessLevel:`, err);
+
     }
 }
 
