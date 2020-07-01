@@ -101,11 +101,11 @@ class SponsorItem extends Component {
                 </Grid>
                 <Grid item md={9} xs={7}></Grid>
             </Grid>
+           
 
         if (this.state.editMode) {
             viewOrEdit =
-                <Box borderBottom={1}>
-                    <Grid container item spacing={3}>
+                <Grid container item spacing={3} className={classes.box_grey}>
                         {/* input fields go here */}
 
                         <Grid justify="center" container item md={12}>
@@ -134,7 +134,7 @@ class SponsorItem extends Component {
                         </Grid>
                         <Grid item md={9} xs={9}></Grid>
                     </Grid>
-                </Box>
+            
         }
 
 

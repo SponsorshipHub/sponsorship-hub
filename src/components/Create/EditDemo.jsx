@@ -96,13 +96,14 @@ class EditDemo extends Component {
             <Box className={classes.margin}>
                 {/* Header */}
                 <Header history={this.props.history} />
-
-                <Typography align="center" variant="h2">Enter Demographics</Typography>
+                <Grid container justify="center" className={classes.margin}>
+                <Typography variant="h4" >Enter Demographics for {this.props.oneEvent.event_name}</Typography>
+                </Grid>
                 {/* Begin Gender Demographic Inputs */}
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography align="center" variant="h3">Gender</Typography>
+                            <Typography variant="h5">Gender</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
@@ -125,7 +126,7 @@ class EditDemo extends Component {
                 <Box>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography align="center" variant="h3">Household Income</Typography>
+                            <Typography variant="h5">Household Income</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
@@ -161,7 +162,7 @@ class EditDemo extends Component {
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography align="center" variant="h3">Age Range</Typography>
+                            <Typography variant="h5">Age Range</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
@@ -197,7 +198,7 @@ class EditDemo extends Component {
                 <Box>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={12} className={classes.formMargin}>
-                            <Typography align="center" variant="h3">Residency</Typography>
+                            <Typography variant="h5">Residency</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid tem md={1} sm={1} xs={0} className={classes.formMargin}></Grid>
