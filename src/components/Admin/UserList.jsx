@@ -27,13 +27,13 @@ class UserList extends Component {
         let level;
         let levelNumber = event.target.value;
         if(levelNumber === 0){
-            level = 'unapproved'
+            level = 'Unapproved'
         }else if(levelNumber === 1){
-            level = 'brand';
+            level = 'Brand';
         }else if(levelNumber === 2){
-            level = 'researcher';
+            level = 'Researcher';
         }else if(levelNumber === 3){
-            level = 'admin';
+            level = 'Admin';
         }
 
         let payload = {
