@@ -146,10 +146,7 @@ const styles = {
         background: '#EAECED', // Color that Karl submitted *GREY*
         margin: '0px'
     },
-    box_white: {
-        background: 'ffffff',
-        margin: '0px'
-    },
+
     margin: {
         margin: '20px' // Adds a small margin to the page
     },
