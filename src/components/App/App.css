@@ -68,10 +68,6 @@ input {
     cursor: pointer;
 }
 
-.DemoBackground{
-    background: #d8d8d8; 
-}
-
 #search::placeholder {
         color: #ffffff;
         opacity: 0.5;

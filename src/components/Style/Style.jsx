@@ -195,7 +195,7 @@ const styles = {
     eventTextBoxes:{
         minHeight: '100px',
         borderRadius: '.8em',
-        backgroundColor: '#eaeced', // Karl grey
+        backgroundColor: '#d8d8d8', // darker than Karl's grey
     },
     shadow: {
         boxShadow: '0px 0px 8px black'
@@ -207,5 +207,8 @@ const styles = {
     coral: {
         color: '#F45255' // Karl coral
     },
+    underLined:{
+        textDecorationLine: 'underline'
+    }
 }
 export default styles;

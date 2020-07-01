@@ -39,57 +39,59 @@ class Event extends Component {
                     </Box>
                     
                 </Box>
-
-                <Grid container justify="center">
-                    <Grid item md={10}>
-                        <h3>Event Overview</h3>
+                <Box className={classes.margin}>
+                    <Grid container justify="center" >
+                        <Grid item md={10}>
+                            <Typography variant="h6">Event Overview</Typography>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <Grid container justify="space-evenly">
-                    <Grid item md={4} sm={10}>
-                        <Grid container>
-                            <Grid item md={12} sm={12} xs={12}>
-                                <Box className={classes.eventTextBoxes} p={2}>
-                                    {/* event_description */}
-                                    <Typography>
-                                        {this.props.oneEvent.event_description}
-                                    </Typography>
-                                </Box>
-                            </Grid>
-                            <Grid container justify='space-evenly'>
-                                <Grid item md={6} sm={12} mt={2}>
-                                    <Typography>Type: {this.props.oneEvent.type}</Typography>
-                                </Grid>
-                                <Grid item md={6} sm={12}>
-                                    <Box textAlign="center" mt={1}>
-                                        <CalendarTodayIcon mr={2} />
-                                        {/* year_established */}
-                                        <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
+                    <Grid container justify="space-evenly">
+                        <Grid item md={4} sm={10}>
+                            <Grid container>
+                                <Grid item md={12} sm={12} xs={12}>
+                                    <Box className={classes.eventTextBoxes} p={2}>
+                                        {/* event_description */}
+                                        <Typography>
+                                            {this.props.oneEvent.event_description}
+                                        </Typography>
                                     </Box>
+                                </Grid>
+                                <Grid container justify='space-evenly'>
+                                    <Grid item md={6} sm={12} mt={2}>
+                                        <Typography>Type: {this.props.oneEvent.type}</Typography>
+                                    </Grid>
+                                    <Grid item md={6} sm={12}>
+                                        <Box textAlign="center" mt={1}>
+                                            <CalendarTodayIcon mr={2} />
+                                            {/* year_established */}
+                                            <Typography display="inline">Established in {this.props.oneEvent.year_established}</Typography>
+                                        </Box>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
+                        <Grid item md={4} sm={10}>
+                            {/* Sponsorship link - Conditionally Rendered */}
+                            {this.props.oneEvent.event_sponsorship_kit ? <a href={this.props.oneEvent.event_sponsorship_kit} target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a> : <Button fullWidth variant="outlined" disabled>Sponsorship Kit Not Available</Button>}
+                            {/* estimated_attendance */}
+                            <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
+                            <OpenInNewIcon />
+                            {/* event_website */}
+                            <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website ? this.props.oneEvent.event_website : 'No Website Provided'}</a> </Typography>
+                            <Box>
+                                <PersonIcon />
+                                <Typography display="inline">Contact Info</Typography>
+                                {/* contact_name & contact_title */}
+                                <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
+                                {/* contact_email*/}
+                                <Typography><a href={ 'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
+                                {/* contact_phone*/}
+                                <Typography>{this.props.oneEvent.contact_phone}</Typography>
+                            </Box>
+                        </Grid>
                     </Grid>
-                    <Grid item md={4} sm={10}>
-                        {/* Sponsorship link - Conditionally Rendered */}
-                        {this.props.oneEvent.event_sponsorship_kit ? <a href={this.props.oneEvent.event_sponsorship_kit} target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a> : <Button fullWidth variant="outlined" disabled>Sponsorship Kit Not Available</Button>}
-                        {/* estimated_attendance */}
-                        <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
-                        <OpenInNewIcon />
-                        {/* event_website */}
-                        <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website ? this.props.oneEvent.event_website : 'No Website Provided'}</a> </Typography>
-                        <Box>
-                            <PersonIcon />
-                            <Typography display="inline">Contact Info</Typography>
-                            {/* contact_name & contact_title */}
-                            <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
-                            {/* contact_email*/}
-                            <Typography><a href={ 'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
-                            {/* contact_phone*/}
-                            <Typography>{this.props.oneEvent.contact_phone}</Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+                </Box>
+                {/* DEMO */}
                 <DemoView />
                 <SponsorshipView />
                 <Venue />
@@ -97,20 +99,25 @@ class Event extends Component {
                 <Box>
                 <Grid container justify="center">
                     <Grid item md={10}>
-                        <h2>Additional Details</h2>
+                        <Box textAlign="flex-start" mb={3}>
+                            <Typography variant="h4">Additional Details</Typography>
+                        </Box>
                     </Grid>
                 </Grid>
                 <Grid container justify="center">
                     <Grid item md={8}>
-                        <Box className="DemoBackground" p={2}>
-                            <Typography>
-                                {this.props.oneEvent.event_notes}
-                            </Typography>
+                        <Box className={classes.box_grey} p={2}>
+                            <Box className={classes.margin}>
+                                <Typography>
+                                    {this.props.oneEvent.event_notes}
+                                </Typography>
+                            </Box>
                         </Box>
                     </Grid>
                 </Grid>
                 </Box>
                     }
+                
             </Box>
         )//end return
     };//end render
