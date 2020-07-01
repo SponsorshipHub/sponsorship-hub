@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Divider } from '@material-ui/core';
+import { Grid, Typography, TextField, Paper, Box, Button, Divider } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -81,6 +81,7 @@ class SponsorItem extends Component {
 
         let viewOrEdit =
             <Grid justify="center" container item md={12}>
+                <Paper elevation={2}>
                 <Grid item md={2} sm={2} xs={12}>{this.props.sponsorItem.sponsor_image_url ?
                     <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
                     <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>}
@@ -100,6 +101,7 @@ class SponsorItem extends Component {
                     <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
                 </Grid>
                 <Grid item md={9} xs={7}></Grid>
+                </Paper>
             </Grid>
            
 

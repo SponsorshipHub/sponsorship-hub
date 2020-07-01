@@ -14,6 +14,7 @@ import Header from '../Header/Header';
 
 class CreateDemo extends Component {
 
+    //state is used to initially populate the demographic fields and to store values for the PUT routes.
     state = {
         event_id: this.props.match.params.id,
         //the id needs to come over from the origin page to identify the event
@@ -43,14 +44,12 @@ class CreateDemo extends Component {
         window.scrollTo(0, 0);
     };//end componentDidMount
 
+    //this uses params navigate back to event specific sponsor page
     backClick = () => {
         this.props.history.push(`/create-sponsor/${this.props.match.params.id}`)
     }
 
-    forwardClick = () => {
-        this.props.history.push('/home')
-    }
-
+    //this handler changes the value of th state corresponding to any field that is being changed
     handleChange = (event, property) => {
         this.setState({
             ...this.state,
@@ -58,6 +57,7 @@ class CreateDemo extends Component {
         });
     }
 
+    //The submit checks to make sure entries are 0 or 100 and then sends a put request, upon completion the put request moves the user to the event page where they can see their updated entries
     handleSubmit = () => {
             let genderTotal = this.state.female + this.state.male + this.state.other;
             let incomeTotal = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
@@ -88,6 +88,7 @@ class CreateDemo extends Component {
         let incomePercent = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
         let agePercent = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
         let residentPercent = this.state.in_state + this.state.out_of_state;
+
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -219,6 +220,7 @@ class CreateDemo extends Component {
                     </Grid>
                 </Box>
                 {/* End Residency Inputs*/}
+                {/* Buttons to navigate backward or to finish event creation */}
                 <Box mx={10} className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item md={3} sm={4} xs={4} className={classes.formMargin}>
