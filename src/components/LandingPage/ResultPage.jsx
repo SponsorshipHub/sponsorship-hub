@@ -115,14 +115,19 @@ class ResultPage extends Component {
     //handleFilter will filter the adv search
     handleFilter = () => {
         console.log('clicked on filter for advanced search');
-        if (this.state.type === 'Select All'){
+        if (this.state.type === 'Select All') {
             this.setState({
                 type: ''
             });
         };
-        if (this.state.income === 'All Income'){
+        if (this.state.income === 'All Income') {
             this.setState({
                 income: ''
+            })
+        }
+        if(this.state.state === 'All States') {
+            this.setState({
+                state: null
             })
         }
         console.log(this.state);
@@ -140,14 +145,78 @@ class ResultPage extends Component {
                 <Box className={classes.search_section}>
                     {/* section that holds search events */}
                     <Grid container justify="center">
-                    <Grid item xs={12} md={10}><Typography className={classes.title} variant="h4">Advanced Search</Typography></Grid>
+                        <Grid item xs={12} md={10}><Typography className={classes.title} variant="h4">Advanced Search</Typography></Grid>
                     </Grid>
 
                     {/* state and month selector options */}
                     <Grid container justify="center" spacing={2}>
+
+                        {/* select state drop down */}
                         <Grid item xs={12} md={4}>
-                            <TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" />
-                            </Grid>
+                            <InputLabel>State</InputLabel>
+                            <FormControl fullWidth={true}>
+                                <Select
+                                    open={this.state.state_open}
+                                    onClose={this.stateClose}
+                                    onOpen={this.stateOpen}
+                                    defaultValue="All States"
+                                    onChange={(event) => this.handleState(event)}>
+                                    <MenuItem value="All States">All States</MenuItem>
+                                    <MenuItem value='Alabama'>Alabama</MenuItem>
+                                    <MenuItem value='Alaska'>Alaska</MenuItem>
+                                    <MenuItem value='Arizona'>Arizona</MenuItem>
+                                    <MenuItem value='Arkansas'>Arkansas</MenuItem>
+                                    <MenuItem value='California'>California</MenuItem>
+                                    <MenuItem value='Colorado'>Colorado</MenuItem>
+                                    <MenuItem value='Connecticut'>Connecticut</MenuItem>
+                                    <MenuItem value='Delaware'>Delaware</MenuItem>
+                                    <MenuItem value='Florida'>Florida</MenuItem>
+                                    <MenuItem value='Georgia'>Georgia</MenuItem>
+                                    <MenuItem value='Hawaii'>Hawaii</MenuItem>
+                                    <MenuItem value='Idaho'>Idaho</MenuItem>
+                                    <MenuItem value='Illinois'>Illinois</MenuItem>
+                                    <MenuItem value='Indiana'>Indiana</MenuItem>
+                                    <MenuItem value='Iowa'>Iowa</MenuItem>
+                                    <MenuItem value='Kansas'>Kansas</MenuItem>
+                                    <MenuItem value='Kentucky'>Kentucky</MenuItem>
+                                    <MenuItem value='Louisiana'>Louisiana</MenuItem>
+                                    <MenuItem value='Maine'>Maine</MenuItem>
+                                    <MenuItem value='Maryland'>Maryland</MenuItem>
+                                    <MenuItem value='Massachusetts'>Massachusetts</MenuItem>
+                                    <MenuItem value='Michigan'>Michigan</MenuItem>
+                                    <MenuItem value='Minnesota'>Minnesota</MenuItem>
+                                    <MenuItem value='Mississippi'>Mississippi</MenuItem>
+                                    <MenuItem value='Missouri'>Missouri</MenuItem>
+                                    <MenuItem value='Montana'>Montana</MenuItem>
+                                    <MenuItem value='Nebraska'>Nebraska</MenuItem>
+                                    <MenuItem value='Nevada'>Nevada</MenuItem>
+                                    <MenuItem value='New Hampshire'>New Hampshire</MenuItem>
+                                    <MenuItem value='New Jersey'>New Jersey</MenuItem>
+                                    <MenuItem value='New Mexico'>New Mexico</MenuItem>
+                                    <MenuItem value='New York'>New York</MenuItem>
+                                    <MenuItem value='North Carolina'>North Carolina</MenuItem>
+                                    <MenuItem value='North Dakota'>North Dakota</MenuItem>
+                                    <MenuItem value='Ohio'> Ohio </MenuItem>
+                                    <MenuItem value='Oklahoma'> Oklahoma </MenuItem>
+                                    <MenuItem value='Oregon'> Oregon </MenuItem>
+                                    <MenuItem value='Pennsylvania'> Pennsylvania </MenuItem>
+                                    <MenuItem value='Rhode Island'> Rhode Island </MenuItem>
+                                    <MenuItem value='South Carolina'> South Carolina </MenuItem>
+                                    <MenuItem value='South Dakota'> South Dakota </MenuItem>
+                                    <MenuItem value='Tennessee'> Tennessee </MenuItem>
+                                    <MenuItem value='Texas'> Texas </MenuItem>
+                                    <MenuItem value='Utah'> Utah </MenuItem>
+                                    <MenuItem value='Vermont'> Vermont </MenuItem>
+                                    <MenuItem value='Virginia'> Virginia </MenuItem>
+                                    <MenuItem value='Washington'> Washington </MenuItem>
+                                    <MenuItem value='West Virginia'> West Virginia </MenuItem>
+                                    <MenuItem value='Wisconsin'> Wisconsin </MenuItem>
+                                    <MenuItem value='Wyoming'> Wyoming </MenuItem>
+                                </Select>
+                            </FormControl>
+                            {/* <TextField onChange={(event) => this.handleState(event)} defaultValue={this.props.match.params.state} fullWidth={true} label="State" /> */}
+                        </Grid>
+
                         {/* month selector with date text fields */}
                         <Grid item xs={12} md={2}>
                             <InputLabel>Start Date</InputLabel>
@@ -176,10 +245,10 @@ class ResultPage extends Component {
                         </Grid> {/* END TYPE SELECTOR */}
                         {/* begin ATTENDANCE selector */}
                         <Grid item xs={12} md={2} className={classes.advSearch}>
-                            <TextField onChange={(event) => this.handleMinAttend(event)} label="Min Attendees" />
+                            <TextField onChange={(event) => this.handleMinAttend(event)} type="number" label="Min Attendees" />
                         </Grid>
                         <Grid item xs={12} md={2} className={classes.advSearch}>
-                            <TextField onChange={(event) => this.handleMaxAttend(event)} label="Max Attendees" />
+                            <TextField onChange={(event) => this.handleMaxAttend(event)} type="number" label="Max Attendees" />
                         </Grid>
                         {/* END ATTENDANCE SELECTOR */}
                     </Grid>
@@ -188,10 +257,10 @@ class ResultPage extends Component {
                     <Grid container justify="center" spacing={2}>
                         {/* begin SPONSORSHIP PRICE selector */}
                         <Grid item xs={12} md={2}>
-                            <TextField onChange={(event) => this.handleMinSponsorPrice(event)} fullWidth={true} label="Min Sponsorship Price" />
+                            <TextField onChange={(event) => this.handleMinSponsorPrice(event)} type="number" fullWidth={true} label="Min Sponsorship Price" />
                         </Grid>
                         <Grid item xs={12} md={2}>
-                            <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} fullWidth={true} label="Max Sponsorship Price" />
+                            <TextField onChange={(event) => this.handleMaxSponsorPrice(event)} type="number" fullWidth={true} label="Max Sponsorship Price" />
                         </Grid>
                         {/* END SPONSORSHIP PRICE SELECTOR */}
                         <Grid item xs={12} md={4}>
@@ -222,7 +291,7 @@ class ResultPage extends Component {
                     <Grid container justify="center">
                         <Grid item xs={12} md={10}><Typography className={classes.title} variant="h4">Events</Typography></Grid>
                     </Grid>
-                    
+
                     {/* BEGIN GRID */}
                     <Grid container justify="center" spacing={2}>
                         {this.props.results.map(events =>
@@ -230,8 +299,8 @@ class ResultPage extends Component {
                                 <Card variant="outlined" className={classes.card} onClick={(event) => this.handleEvent(events)}>
                                     <CardContent>
                                         <CardActionArea>
-                                        <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
-                                        <Typography variant="h6" style={{paddingTop: '12px'}}>{events.event_name}</Typography>
+                                            <CardMedia className={classes.landMedia} component="img" image={events.event_image_url} title={events.event_name} />
+                                            <Typography variant="h6" style={{ paddingTop: '12px' }}>{events.event_name}</Typography>
                                         </CardActionArea>
                                     </CardContent>
                                 </Card>
