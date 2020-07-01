@@ -95,8 +95,11 @@ class CreateDemo extends Component {
             <Box>
                 {/* Header */}
                 <Header history={this.props.history} />
-                <Grid container justify="center" className={classes.margin}>
-                <Typography variant="h4">Enter Demographics</Typography>
+                <Grid container>
+                    <Grid md={1}></Grid>
+                    <Grid item md={9} className={classes.margin}>
+                        <Typography variant="h4">Enter Demographics</Typography>
+                    </Grid>
                 </Grid>
                 {/* Begin Gender Demographic Inputs */}
                 <Box className={classes.box_grey}>

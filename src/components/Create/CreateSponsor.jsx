@@ -76,7 +76,12 @@ class CreateSponsor extends Component {
                 <Header history={this.props.history} />
                 
                 {/* Breadcrumbs go up here */}
-                <Typography align="center" variant="h2">Create Sponsorship Package</Typography>
+                <Grid container>
+                    <Grid md={2}></Grid>
+                <Grid item md={9}className={classes.margin}>
+                    <Typography variant="h4">Enter Sponsorship Packages</Typography>
+                </Grid>
+                </Grid>
                 <Box mx={10}>
                     {/* input fields */}
                     <Grid justify="center" container className={classes.formMargin}>
@@ -98,7 +103,12 @@ class CreateSponsor extends Component {
                     </Grid>
                 </Box>
                 <Box>
-                    <Typography align="center" variant="h2">Current Packages</Typography>
+                    <Grid container>
+                        <Grid md={2}></Grid>
+                        <Grid item md={9} className={classes.margin}>
+                            <Typography variant="h4">Current Packages</Typography>
+                        </Grid>
+                    </Grid>
 {/* existing sponsorships display here */}
                     <Grid container >
                         {
