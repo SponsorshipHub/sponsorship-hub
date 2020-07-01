@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Header from '../Header/Header';
 // Sweetalert 2
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 
 class CreateEvent extends Component {
@@ -23,7 +23,7 @@ class CreateEvent extends Component {
         year_established: null,
         start_date: '',
         end_date: '',
-        event_image_url: 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
+        event_image_url: 'https://unsplash.com/photos/ZhQCZjr9fHo/download?force=true&w=1920',
         event_website: null,
         event_status: 'false',
         event_type: '',
@@ -68,27 +68,68 @@ class CreateEvent extends Component {
     }
 
     nextClick = () => {
-        if (this.state.event_name === '') { alert('Please enter an Event Name'); return }
-        else if (this.state.start_date === '') { alert('Please enter a Start Date'); return }
-        else if (this.state.end_date === '') { alert('Please enter an End Date'); return }
-        else if (this.state.venue_id === '') { alert('Please choose a Venue'); return; }
-        else if (this.state.estimated_attendance === '') { alert('Please enter Estimated Attendance'); return; }
-        if (this.state.venue_capacity === '') {this.setState ({venue_capacity: null})}
-        if (this.state.event_type === '') {this.setState ({event_type: null})}
-        if (this.state.year_established === '') {this.setState ({year_established: null})}
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            onOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        if (this.state.event_name === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an event name'
+            }); return
+        }
+        else if (this.state.estimated_attendance === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter estimated attendance'
+            }); return;
+        }
+        else if (this.state.start_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter a start date'
+            }); return
+        }
+        else if (this.state.end_date === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please enter an end date'
+            }); return
+        }
+        else if (this.state.venue_id === '') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please choose a venue'
+            }); return;
+        }
+        if (this.state.venue_capacity === '') { this.setState({ venue_capacity: null }) }
+        if (this.state.event_type === '') { this.setState({ event_type: null }) }
+        if (this.state.year_established === '') { this.setState({ year_established: null }) }
             // DISPATCH AND SETS REDUCER CURRENT_EVENT to NEW ID
 
         Swal.fire({
             title: `${this.state.event_name}`,
             text: `Create this new event?`,
-            icon: 'question',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
-            confirmButtonText: 'Confirm',
-            cancelButtonText: 'Make More Changes'
+            confirmButtonText: 'CONFIRM',
+            cancelButtonText: 'CANCEL',
+            reverseButtons: true,
         }).then(result => {
             if (result.value) {
+                Toast.fire({
+                    icon: 'success',
+                    title: `Event Created`
+                })
                 this.props.dispatch({ type: 'POST_EVENT', payload: this.state, history: this.props.history })
             }
         })

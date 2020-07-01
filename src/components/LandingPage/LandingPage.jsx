@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import Header from '../Header/Header';
 // Sweetalert 2
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 import '../Style/Swal.scss';
 //carousel set up
 import Carousel from 'react-multi-carousel';

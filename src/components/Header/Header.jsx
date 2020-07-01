@@ -79,7 +79,7 @@ class Header extends Component {
                                         <SearchIcon className={classes.notification} />
                                     </InputAdornment>
                                 ),
-                                classes: { notchedOutline: classes.searchOutline, class: "search" },
+                                classes: { notchedOutline: classes.searchOutline },
                             }}></TextField>
                     </Box>
                 </Box>
