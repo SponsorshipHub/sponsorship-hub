@@ -115,38 +115,40 @@ class SponsorItem extends Component {
 
                         <Grid justify="center" container item md={11}>
                             {/* image */}
-                            <Grid item md={1} className={classes.formMargin}>{this.props.sponsorItem.sponsor_image_url ?
+                            <Grid item md={2} sm={11} xs={11} className={classes.formMargin}>{this.props.sponsorItem.sponsor_image_url ?
                                 <img className={classes.sponsorshipIcon} src={this.props.sponsorItem.sponsor_image_url}></img> :
                                 <img className={classes.sponsorshipIcon} src="./images/sponsor_icon.png"></img>
                             }
                             </Grid>
                             {/* input fields */}
-                            <Grid container item md={9}>
+                            <Grid container item md={9} sm={10}>
                                 <Grid container item md={11}>
-                                    <Grid item md={5} xs={9} className={classes.formMargin}>
+                                    <Grid item md={5} sm={5} xs={9} className={classes.formMargin}>
                                         <TextField fullWidth label="Package Name" defaultValue={this.props.sponsorItem.sponsor_name} placeholder="Package Name" onChange={(event) => this.handleChange(event, 'sponsor_name')}></TextField>
                                     </Grid>
-                                    <Grid item md={5} xs={9} className={classes.formMargin}>
+                                    <Grid item md={5} sm={5} xs={9} className={classes.formMargin}>
                                         <TextField fullWidth label="Package Price" type="number" defaultValue={this.props.sponsorItem.sponsor_price} placeholder="$" onChange={(event) => this.handleChange(event, 'sponsor_price')}></TextField>
                                     </Grid>
 
                                 </Grid>
-                                <Grid container item md={11}>
-                                    <Grid item md={10} xs={9} className={classes.formMargin}>
+                            <Grid container item md={11} sm={11} xs={11}>
+
+                                    <Grid item md={10} sm={9} xs={9} className={classes.formMargin}>
                                         <TextField fullWidth label="Image URL" defaultValue={this.props.sponsorItem.sponsor_image_url} placeholder="http://" onChange={(event) => this.handleChange(event, 'sponsor_image_url')}></TextField>
                                     </Grid>
+                                <Grid md={1} sm={1} xs={0}></Grid>
                                 </Grid>
-                            </Grid>
-                            <Grid container item md={11}>
-                                <Grid md={1}></Grid>
-                                <Grid item md={9} xs={9} className={classes.formMargin}>
+                            
+                            <Grid container item md={11} sm={11} xs={11}>
+                                <Grid item md={10} sm={9} xs={11} className={classes.formMargin}>
                                     <TextField fullWidth multiline variant="outlined" label="Package Description" defaultValue={this.props.sponsorItem.sponsor_description} placeholder="Package Description" onChange={(event) => this.handleChange(event, 'sponsor_description')}></TextField>
                                 </Grid>
                             </Grid>
 
-                            <Grid item md={1} sm={9} xs={9}>
-                                <Button fullWidth className={classes.btn_def} onClick={this.handleSubmitClick}>Submit</Button>
+                            <Grid item md={1} sm={1} xs={9}>
+                                <Button fullWidth className={classes.btn_def} onClick={this.handleSubmitClick}>Save</Button>
                             </Grid>
+                        </Grid>
 
                         </Grid>
                         <Grid item md={9} xs={9}></Grid>
