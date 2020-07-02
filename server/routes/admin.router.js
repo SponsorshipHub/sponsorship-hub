@@ -15,7 +15,7 @@ router.get('/users', rejectUnauthenticated, rejectLevel2, (req, res) => {
     FROM "user"
     ORDER BY access_level, name;`
 
-    console.log(`IN ADMIN!`);
+    // console.log(`IN ADMIN!`);
     
     pool.query(query).then(results => {
         console.log(results.rows);

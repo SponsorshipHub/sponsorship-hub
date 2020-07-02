@@ -49,9 +49,9 @@ router.post('/register', (req, res, next) => {
       res.sendStatus(201);
 
       //send grid mail
-      console.log('starting to send email!');
+      // console.log('starting to send email!');
       sgMail.send(msg).then((result) => {
-        console.log('Success sending the email to Karl Nauman:', result);
+        // console.log('Success sending the email to Karl Nauman:', result);
       }).catch((error) => {
         console.log('Error sending the email:', error);
       });

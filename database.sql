@@ -1,4 +1,4 @@
--- Last Updated Jul 2, 2020
+-- Last Updated Jul 2, 2020 3:12 AM
 
 -- Added: Grillfest, SEMA, Burning Man
 -- Updated User List
@@ -62,16 +62,7 @@ CREATE TABLE "venues"
     "venue_capacity" integer
 );
 
---CREATE TABLE "junction_event_venue"
---(
---    "id" serial PRIMARY KEY NOT NULL,
---    "venues_id" integer NOT NULL,
---    "event_id" integer NOT NULL,
---    FOREIGN KEY ("venues_id") REFERENCES venues ("id"),
---    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
---);
-
--- "event" TYPES --
+-- EVENT TYPES --
 CREATE TABLE "event_type"
 (
     "id" serial PRIMARY KEY NOT NULL,
@@ -83,8 +74,8 @@ CREATE TABLE "junction_event_type"
     "id" serial PRIMARY KEY NOT NULL,
     "type_id" integer NOT NULL,
     "event_id" integer NOT NULL,
-    FOREIGN KEY ("type_id") REFERENCES event_type ("id"),
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
+    FOREIGN KEY ("type_id") REFERENCES event_type ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE
 );
 
 INSERT INTO event_type
@@ -114,8 +105,8 @@ CREATE TABLE "junction_event_age"
     "event_id" int NOT NULL,
     "age_range_id" int NOT NULL,
     "percentage" int NOT NULL DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("age_range_id") REFERENCES age_range ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("age_range_id") REFERENCES age_range ("id") ON DELETE CASCADE
 );
 
 INSERT INTO age_range
@@ -142,8 +133,8 @@ CREATE TABLE "junction_event_income"
     "event_id" int NOT NULL,
     "income_range_id" int NOT NULL,
     "percentage" int NOT NULL DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("income_range_id") REFERENCES income_range ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("income_range_id") REFERENCES income_range ("id") ON DELETE CASCADE
 );
 
 INSERT INTO income_range
@@ -170,8 +161,8 @@ CREATE TABLE "junction_event_residency"
     "event_id" int NOT NULL,
     "residency_id" int NOT NULL,
     "percentage" int DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("residency_id") REFERENCES residency ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("residency_id") REFERENCES residency ("id") ON DELETE CASCADE
 );
 
 INSERT INTO "residency"
@@ -192,8 +183,8 @@ CREATE TABLE "junction_event_gender"
     "event_id" int NOT NULL,
     "gender_id" int NOT NULL,
     "percentage" int DEFAULT 0,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id"),
-    FOREIGN KEY ("gender_id") REFERENCES gender ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE,
+    FOREIGN KEY ("gender_id") REFERENCES gender ("id") ON DELETE CASCADE
 );
 
 INSERT INTO "gender"
@@ -212,7 +203,7 @@ CREATE TABLE "sponsorships"
     "sponsor_image_url" varchar(2000) DEFAULT './images/sponsor_icon.png',
     "sponsor_description" varchar(2000) ,
     "event_id" int NOT NULL,
-    FOREIGN KEY ("event_id") REFERENCES "event" ("id")
+    FOREIGN KEY ("event_id") REFERENCES "event" ("id") ON DELETE CASCADE
 );
 
 ------------------------------
@@ -234,18 +225,18 @@ VALUES
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id)
 VALUES
-    ('Second Sky Festival 2020', '2003', '2020-07-22 13:00:09.250411+00', '2020-08-02 20:30:09.250411+00', 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', 'https://secretskyfest.com/', FALSE, '12000', 'Second Sky Festival is annual', 'John Doe', '"event" Specialist', 'info.secondskyfest@goldenvoice.com', '855-838-3892', 'secondskyfest', 'secondskyfest', 'secondskyfest', 'Miscellaneous Notes!', 1);
+    ('Second Sky Festival 2020', '2003', '2020-07-22 13:00:09.250411+00', '2020-08-02 20:30:09.250411+00', 'https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80', 'https://secretskyfest.com/', false, '12000', 'Second Sky Festival is annual', 'John Doe', '"event" Specialist', 'info.secondskyfest@goldenvoice.com', '855-838-3892', 'secondskyfest', 'secondskyfest', 'secondskyfest', 'Miscellaneous Notes!', 1);
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', TRUE, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
+    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', false, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
 
 INSERT INTO "event"
     -- Testing Null Data --
     (event_name, year_established, start_date, end_date, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('Spring Jam 2021', '1999', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', 'https://springjam.umn.edu/', true, '15000', 'Spring Jam is a one day music festival that brings the University of Minnesota and greater Twin-Cities communities together with live music, carnival rides, food, games and more!', 'Katie Alvino', 'Marketing Director', 'umn-sua-sponsor@umn.edu', 'umnSUA', 'umnsua', 'umnsua', 'EVENT INFO - Spring Jam brings University of Minnesota students together for a festival experience. Complete with free carnival rides, live music, and food, Spring Jam is the perfect welcome party for warm weather!
+    ('Spring Jam 2021', '1999', '2021-02-25 17:00:00.250411+00', '2021-03-01 23:00:00.250411+00', 'https://springjam.umn.edu/', false, '15000', 'Spring Jam is a one day music festival that brings the University of Minnesota and greater Twin-Cities communities together with live music, carnival rides, food, games and more!', 'Katie Alvino', 'Marketing Director', 'umn-sua-sponsor@umn.edu', 'umnSUA', 'umnsua', 'umnsua', 'EVENT INFO - Spring Jam brings University of Minnesota students together for a festival experience. Complete with free carnival rides, live music, and food, Spring Jam is the perfect welcome party for warm weather!
 
 WHAT’S IN IT FOR YOU?
 The University of Minnesota’s Spring Jam experience offers companies an exclusive opportunity to connect with the University population at one of the largest social events on campus!
@@ -262,22 +253,22 @@ Over 198,000 Spring Jam webpage views annually.
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id)
 VALUES
-    ('Coachella Music Festival 2021', '2011', '2021-04-09 13:00:09.250411+00', '2021-04-18 20:30:09.250411+00', 'https://images.unsplash.com/photo-1505224628533-c4fc42c389e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1192&q=80', 'https://www.coachella.com/', FALSE, '99000', 'Like a barometer always reading a temperature of awesome, the traditional kickoff to the summer festival season is dominated by Coachella. The glitz and glamour of Los Angeles migrates east to the Indio desert for back to back weekends of the biggest names in music. What started as a small electronic festival in the desert has transformed into a cultural touchstone for the festival season.', 'Billy Blaze', 'Event Coordinator', 'sponsorship@coachella.com', '1-855-771-3667', 'coachella', 'coachella', 'coachella', 'Coachella was cancelled in October 2020 and pushed to April 2021.', 4);
+    ('Coachella Music Festival 2021', '2011', '2021-04-09 13:00:09.250411+00', '2021-04-18 20:30:09.250411+00', 'https://images.unsplash.com/photo-1505224628533-c4fc42c389e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1192&q=80', 'https://www.coachella.com/', false, '99000', 'Like a barometer always reading a temperature of awesome, the traditional kickoff to the summer festival season is dominated by Coachella. The glitz and glamour of Los Angeles migrates east to the Indio desert for back to back weekends of the biggest names in music. What started as a small electronic festival in the desert has transformed into a cultural touchstone for the festival season.', 'Billy Blaze', 'Event Coordinator', 'sponsorship@coachella.com', '1-855-771-3667', 'coachella', 'coachella', 'coachella', 'Coachella was cancelled in October 2020 and pushed to April 2021.', 4);
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id)
 VALUES
-    ('Minnesota Craft Beer Festival', '2020', '2020-09-19 13:00:09.250411+00', '2020-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', TRUE, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
+    ('Minnesota Craft Beer Festival', '2020', '2020-09-19 13:00:09.250411+00', '2020-09-19 17:00:09.250411+00', 'https://images.unsplash.com/photo-1554127959-b04104f23bab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80', 'https://www.minnesotacraftbeerfestival.com/', false, '1000', 'Limited-release beers, world-class breweries, unlimited pours, and live music in Minneapolis-St. Paul on September 19, 2020.', 'Julia S', 'Coordinator', 'steverogers@gmail.com', '612-305-7162', 'craftbeerandbrewing', 'craftbeerbrew', 'NA', 'Event has been pushed from April 25, 2020 to September 19, 2020', 5);
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('Boca Fest', '1986', '2021-01-09 10:00:09.250411+00', '2021-01-10 17:00:09.250411+00', 'https://unsplash.com/photos/5MTf9XyVVgM/download?force=true&w=1920', 'https://http://www.artfestival.com/festivals/annual-boca-fest/artist/', TRUE, '1000', 'Boca Fest will be located in the lot at the intersection of St. Andrews Boulevard and Glades Road at The Town Center Mall. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.', 'Howard Alan', 'Event Planner', 'info@artfestival.com', '561-746-6615', 'HowardAlanEvents', 'artfestivals', 'artfestivals', 'Howard Alan Events is excited to announce that Boca Fest will now take place at The Town Center Mall at Boca Raton. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. The show will be located in the parking lot of The Terrace, a recent expansion near Bloomingdale''s, Pinon Grill, and The Gap. The Town Center is located right off I-95 and Glades Road.  The show offers a convenient location with over 150 national artists and plenty of parking, including valet! This outdoor gallery style juried event will present a variety of handmade art and unique gift items, as well as functional pieces. The eclectic displays, appealing to all tastes and budgets, will offer a wide array of artistic mediums including paintings, sculptures, photography, ceramics, glass, wood, handmade jewelry, and mixed media.', 6, 'https://www.zapplication.org/event-info.php?ID=8564');
+    ('Boca Fest', '1986', '2021-01-09 10:00:09.250411+00', '2021-01-10 17:00:09.250411+00', 'https://unsplash.com/photos/5MTf9XyVVgM/download?force=true&w=1920', 'https://http://www.artfestival.com/festivals/annual-boca-fest/artist/', false, '1000', 'Boca Fest will be located in the lot at the intersection of St. Andrews Boulevard and Glades Road at The Town Center Mall. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. It features a mix of upscale and elite specialty shops, fine dining and plenty of parking.', 'Howard Alan', 'Event Planner', 'info@artfestival.com', '561-746-6615', 'HowardAlanEvents', 'artfestivals', 'artfestivals', 'Howard Alan Events is excited to announce that Boca Fest will now take place at The Town Center Mall at Boca Raton. The Town Center is one of South Florida''s top luxury shopping destinations and one of Boca''s main attractions. The show will be located in the parking lot of The Terrace, a recent expansion near Bloomingdale''s, Pinon Grill, and The Gap. The Town Center is located right off I-95 and Glades Road.  The show offers a convenient location with over 150 national artists and plenty of parking, including valet! This outdoor gallery style juried event will present a variety of handmade art and unique gift items, as well as functional pieces. The eclectic displays, appealing to all tastes and budgets, will offer a wide array of artistic mediums including paintings, sculptures, photography, ceramics, glass, wood, handmade jewelry, and mixed media.', 6, 'https://www.zapplication.org/event-info.php?ID=8564');
 
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('San Diego Comic Con 2021', '2013', '2021-07-22 10:00:09.250411+00', '2021-07-25 17:00:09.250411+00', 'https://unsplash.com/photos/SLrcEdEpbSA/download?force=true&w=1920', 'https://www.comic-con.org/cci', TRUE, '1000', 'The SAN DIEGO COMIC CONVENTION (Comic-Con International) is a California Nonprofit Public Benefit Corporation organized for charitable purposes and dedicated to creating the general public’s awareness of and appreciation for comics and related popular art forms, including participation in and support of public presentations, conventions, exhibits, museums and other public outreach activities which celebrate the historic and ongoing contribution of comics to art and culture.', 'John Howlett Jr.', 'Event Planner', 'info@comiccon.com', '561-746-3615', 'comiccon', 'comic_con', 'comic_con', 'From the beginning, the founders of the show set out to include not only the comic books they loved, but also other aspects of the popular arts that they enjoyed and felt deserved wider recognition, including films and science fiction/fantasy literature. After one more name change (San Diego’s West Coast Comic Convention, in 1972), the show officially became the San Diego Comic-Con (SDCC) in 1973 with the fourth annual event. In 1995, the non-profit event changed its name to Comic-Con International: San Diego (CCI).  The show''s main home in the 1970s was the fondly remembered El Cortez Hotel in downtown San Diego. In 1979, Comic-Con moved to the Convention and Performing Arts Center (CPAC), and stayed there until 1991, when the new San Diego Convention Center opened. Comic-Con has been at home in that facility for over two decades.  With attendance topping 130,000 in recent years—in a convention center facility that has maxed out in space—the event has grown to include satellite locations, including local hotels and outdoor parks. Programming events, games, anime, the Comic-Con International Independent Film Festival, and the Eisner Awards all take place outside of the Convention Center, creating a campus-type feel for the convention in downtown San Diego.  Over the years, Comic-Con has become the focal point for the world of comics conventions. The event continues to offer the complete convention experience: a giant Exhibit Hall (topping over 460,000 square feet in its current incarnation); a massive programming schedule (close to 700 separate events in 2014), featuring comics and all aspects of the popular arts, including hands-on workshops and educational and academic programming such as the Comics Arts Conference; anime and film screenings (including a separate film festival); games; the Will Eisner Comic Industry Awards, the “Oscars” of the comics industry; a Masquerade costume competition with prizes and trophies; an Autograph Area; an Art Show; and Portfolio Reviews, bringing together aspiring artists with major companies.  Comic-Con has presented literally thousands of special guests at its conventions over the years, bringing comics creators, science fiction and fantasy authors, film and television directors, producers, and writers, and creators from all aspects of the popular arts together with their fans for a fun and often times candid discussion of various art forms. The event has seen an amazing array of comics and book publishers in its Exhibit Hall over the years. Over it’s four-and-a-half decade-plus history, Comic-Con International has continually presented comic books and comic art to a growing audience. That love of the comics medium continues to be its guiding factor as the event moves toward its second half-century as the premier comic book and popular arts style convention in the world.', 7, 'https://www.comic-con.org/sites/default/files/forms/cci2020_exhapp_v2_1.pdf');
+    ('San Diego Comic Con 2021', '2013', '2021-07-22 10:00:09.250411+00', '2021-07-25 17:00:09.250411+00', 'https://unsplash.com/photos/SLrcEdEpbSA/download?force=true&w=1920', 'https://www.comic-con.org/cci', false, '1000', 'The SAN DIEGO COMIC CONVENTION (Comic-Con International) is a California Nonprofit Public Benefit Corporation organized for charitable purposes and dedicated to creating the general public’s awareness of and appreciation for comics and related popular art forms, including participation in and support of public presentations, conventions, exhibits, museums and other public outreach activities which celebrate the historic and ongoing contribution of comics to art and culture.', 'John Howlett Jr.', 'Event Planner', 'info@comiccon.com', '561-746-3615', 'comiccon', 'comic_con', 'comic_con', 'From the beginning, the founders of the show set out to include not only the comic books they loved, but also other aspects of the popular arts that they enjoyed and felt deserved wider recognition, including films and science fiction/fantasy literature. After one more name change (San Diego’s West Coast Comic Convention, in 1972), the show officially became the San Diego Comic-Con (SDCC) in 1973 with the fourth annual event. In 1995, the non-profit event changed its name to Comic-Con International: San Diego (CCI).  The show''s main home in the 1970s was the fondly remembered El Cortez Hotel in downtown San Diego. In 1979, Comic-Con moved to the Convention and Performing Arts Center (CPAC), and stayed there until 1991, when the new San Diego Convention Center opened. Comic-Con has been at home in that facility for over two decades.  With attendance topping 130,000 in recent years—in a convention center facility that has maxed out in space—the event has grown to include satellite locations, including local hotels and outdoor parks. Programming events, games, anime, the Comic-Con International Independent Film Festival, and the Eisner Awards all take place outside of the Convention Center, creating a campus-type feel for the convention in downtown San Diego.  Over the years, Comic-Con has become the focal point for the world of comics conventions. The event continues to offer the complete convention experience: a giant Exhibit Hall (topping over 460,000 square feet in its current incarnation); a massive programming schedule (close to 700 separate events in 2014), featuring comics and all aspects of the popular arts, including hands-on workshops and educational and academic programming such as the Comics Arts Conference; anime and film screenings (including a separate film festival); games; the Will Eisner Comic Industry Awards, the “Oscars” of the comics industry; a Masquerade costume competition with prizes and trophies; an Autograph Area; an Art Show; and Portfolio Reviews, bringing together aspiring artists with major companies.  Comic-Con has presented literally thousands of special guests at its conventions over the years, bringing comics creators, science fiction and fantasy authors, film and television directors, producers, and writers, and creators from all aspects of the popular arts together with their fans for a fun and often times candid discussion of various art forms. The event has seen an amazing array of comics and book publishers in its Exhibit Hall over the years. Over it’s four-and-a-half decade-plus history, Comic-Con International has continually presented comic books and comic art to a growing audience. That love of the comics medium continues to be its guiding factor as the event moves toward its second half-century as the premier comic book and popular arts style convention in the world.', 7, 'https://www.comic-con.org/sites/default/files/forms/cci2020_exhapp_v2_1.pdf');
 
 
 -- VENUES --
