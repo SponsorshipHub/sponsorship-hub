@@ -71,7 +71,7 @@ class CreateSponsor extends Component {
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
-            <Box className={classes.margin}>
+            <Box>
                 {/* Header */}
                 <Header history={this.props.history} />
                 
