@@ -72,21 +72,16 @@ class EditDemo extends Component {
                 icon: 'error',
                 title: 'Cannot Submit Incomplete Data',
                 text: 'All categories must total 100% or 0% to be submitted',
-                footer: '<a href>Exit without submitting any demographic data</a>',
                 timer: 5000
             });
 
         }
     }
 
-    // these clickhandlers are to fill the page for the demonstration of the event.
-    // these aren't necessary for the deployed app
-    // formFiller populates all fields entering some with errors.
+    // this clickhandler fills out the page for the demonstration of the event.
+    // It's not necessary for the deployed app
     formFiller = () => {
         this.setState({
-            female: 48,
-            male: 55,
-            other: 9,
             Income0_24999: 5,
             Income25000_49999: 10,
             Income50000_74999: 20,
@@ -97,20 +92,12 @@ class EditDemo extends Component {
             Age0_17: 0,
             Age18_24: 28,
             Age25_34: 39,
-            Age35_44: 36,
+            Age35_44: 26,
             Age45_54: 6,
             Age55_64: 1,
             Age65: 0,
             in_state: 65,
             out_of_state: 35,
-        })
-    }
-
-    formFixer = () => {
-        this.setState({
-            male: 45,
-            other: 7,
-            Age35_44: 26,
         })
     }
 
@@ -124,7 +111,7 @@ class EditDemo extends Component {
         const { classes } = this.props;
         return (
 
-            <Box className={classes.margin}>
+            <Box>
                 {/* Header */}
                 <Header history={this.props.history} />
                 <Grid container>
@@ -137,7 +124,7 @@ class EditDemo extends Component {
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography variant="h5" onClick={this.formFiller}>Gender</Typography>
+                            <Typography variant="h5">Gender</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
@@ -160,7 +147,7 @@ class EditDemo extends Component {
                 <Box>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography variant="h5">Household Income</Typography>
+                            <Typography variant="h5" onClick={this.formFiller}>Household Income</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
@@ -196,7 +183,7 @@ class EditDemo extends Component {
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography variant="h5" onClick={this.formFixer}>Age Range</Typography>
+                            <Typography variant="h5">Age Range</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
