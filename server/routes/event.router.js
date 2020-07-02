@@ -75,6 +75,20 @@ router.post('/create/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
     })
 });
 
+router.post('/type/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+    const event_id = req.params.id;
+    const query = `INSERT INTO "junction_event_type" (event_id, type_id)
+    VALUES ($1, $2);`
+    pool.query(query, [event_id, req.body.event_type]
+    ).then(result => {
+        console.log('New Event ID is:', result.rows[0])
+        res.sendStatus(201);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    })
+});
+
 // UPDATE ROUTE for ONE EVENT
 router.put('/update/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
     const r = req.body;
