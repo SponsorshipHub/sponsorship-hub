@@ -23,17 +23,18 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });// end default get ROUTER
 
 //GET router for search results
-router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('in /results GET', req.query.state, 'start:', req.query.start, 'end:', req.query.end);
+router.get('/landing', rejectUnauthenticated, (req, res) => {
     let state = req.query.state;
-    let start = req.query.start;
-    let end = req.query.end;
+    let start = req.query.startDate;
+    let end = req.query.endDate;
+    
+    console.log('in /results/landing GET', req.query.state, 'start:', start, 'end:', end);
     // if statements with multiple pool queries for search
 
     /// --- LANDING PAGE
     /// if NONE of the inputs are filled bring most recent events
     if (state === '' && start === 'null' && end === 'null') {
-        console.log('none of the inputs have been fille for RESULTS');
+        console.log('No inputs have been filled.');
         let queryString = `
             SELECT * FROM "event"
             ORDER BY "start_date" DESC;
@@ -47,7 +48,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
     // if all inputs are filled search
     else if (state !== '' && start !== 'null' && end !== 'null') {
-        console.log('all inputs have been filled for RESULTS');
+        console.log('All inputs have been filled.');
         let queryString = `
         SELECT * FROM "event"
         JOIN venues ON venues.id = event.venue_id
@@ -65,7 +66,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
     /// if state is filled and start and end is not
     else if (state !== '' && start === 'null' && end === 'null') {
-        console.log('state has been defined but not start and end for RESULTS');
+        console.log('State has been filled, but not start and end date.');
         let queryString = `
             SELECT * FROM "event"
             JOIN venues ON venues.id = event.venue_id
@@ -81,7 +82,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     }
     /// if state is empty but start date and end date is filled
     else if (state === '' && start !== 'null' && end !== 'null') {
-        console.log('state has not been defined but start and end has for RESULTS');
+        console.log('State input has not been filled, but start and end date have been.');
         let queryString = `
             SELECT * FROM "event"
             WHERE start_date BETWEEN $1 AND $2
@@ -99,7 +100,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // : state /: start /: end /: type /: minAttend /: maxAttend /: minSponsor /: maxSponsor
 // GET router for ADVANCED SEARCH FILTER
-router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
+router.get('/filter', rejectUnauthenticated, rejectLevel0, (req, res) => {
     console.log('TEST MEEEEEE', req.query)
 
     let state = '';
@@ -167,13 +168,19 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     AND estimated_attendance <= $6
     ${minSponsorshipPrice}
     ${maxSponsorshipPrice}
-    AND income_range_id >= $9
+    AND "event".id IN 
+	(SELECT "event".id
+    FROM junction_event_income
+    FULL JOIN "event" ON "event".id = junction_event_income.event_id
+    WHERE income_range_id >=$9
+    GROUP BY junction_event_income.event_id, "event".id
+    HAVING SUM(percentage) >= 20)
     GROUP BY "event".id, venues.city, venues.state, event_type.type
     HAVING SUM(percentage) >= 20
     ORDER BY start_date DESC
     ;`
 
-    console.log(`QUERY:`, queryString);
+    // console.log(`QUERY:`, queryString);
     
     pool.query(queryString, results).then((result) => {
         // console.log('HELLOOOOO', result.rows)
