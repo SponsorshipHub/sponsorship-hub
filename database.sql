@@ -1,3 +1,5 @@
+-- Updated Jul 2, 2020
+
 -- Database Name: sponsorship_hub
 
 ------------------------------
@@ -218,11 +220,12 @@ CREATE TABLE "sponsorships"
 INSERT INTO "user"
     (name, title, company, password, username, phone, access_level)
 VALUES
-    ('Heather Braid', 'FizzBuzz Rep', 'Fizzbuzz', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '612-500-5030', 0),
-    ('Alan Hemsworth', 'Owner', 'Henderson Business Solutions', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-505-5050', 1),
-    ('Tan Nugent', 'Expert Researcher', 'Research Co.', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-500-5001', 2),
-    ('Shaokee Moolah', 'Coding Engineer', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
-    ('Karl N.', 'Founder', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sponsorshiphub@gmail.com', '612-100-1000', 3);
+    ('Kina Grannis', 'Event Tracker', 'Pepsi', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 0),
+    ('Heather Baird', 'FizzBuzz Rep', 'Fizzbuzz', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 1),
+    ('Alan Henderson', 'Senior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-269-2385', 2),
+    ('Tan Nguyen', 'Expert Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-501-3800', 2),
+    ('Shaokee Moua', 'Coding Engineer', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
+    ('Karl Nauman', 'Founder', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sponsorshiphub@gmail.com', '612-100-1000', 3);
 
 -- EVENT --
 INSERT INTO "event"
@@ -571,126 +574,4 @@ VALUES
     (8, 4, 20),
     (8, 5, 15),
     (8, 6, 5),
-    (8, 7, 5);
-
--- EVENT --
-
-INSERT INTO venues
-    (name, address, city, state, zipcode, venue_notes, venue_capacity)
-VALUES
-    ('Las Vegas Convention Center', '3150 Paradise Road', 'Las Vegas', 'Nevada', '89109', 'The Las Vegas Convention Center is a government building in Winchester, Nevada. It is owned and operated by the Las Vegas Convention and Visitors Authority. Being one of the largest convention centers in the world with 1,940,631 sq ft of exhibit space, it hosts shows with an estimated 200,000 participants.', '200000');-- Create Event --
-INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
-VALUES
-    ('SEMA Show', '1963', '2021-11-02 09:00:09.250411+00', '2021-11-05 06:00:09.250411+00', 'https://images.unsplash.com/photo-1584909899743-7edd5ad87afc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1789&q=80', 'https://www.semashow.com/', False, '600000', 'The SEMA Show is the premier automotive specialty products trade event in the world segmented into 12 sections with over 2,400 exhibitors and a New Product Showcase featuring nearly 3,000 newly introduced parts, tools and components. The SEMA Show draws the industrys brightest minds, hottest products and over 70,000 domestic and international buyers to one place, the Las Vegas Convention Center. In addition, the SEMA Show provides attendees with educational seminars, product demonstrations, special events, networking opportunities and more.', 'Brendan Gillespie', 'New Business Sales', 'brendang@sema.org', '909-978-6661', 'semashow', 'SEMASHOW', 'semashow', 'The SEMA Show offers an attendee experience like no other trade show on the planet. Its the best place to see the newest automotive performance products, discover the latest product and vehicle trends, and develop essential skills by attending any of the free education sessions – all of which are led by top industry professionals.', '9', 'https://www.semashow.com/sites/default/files/pdfs/advertising-sponsorships.pdf');
--- USE VENUE ID FROM ABOVE INSERT-- Event Type --
-INSERT INTO "junction_event_type"
-    (event_id, type_id)
-VALUES
-    (9, 2);
-
--- Sponsors --
-INSERT INTO "sponsorships"
-    (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
-VALUES
-    ('Aisle Sign Logo', '950', 'https://www.tpgliveevents.com/wp-content/uploads/2016/10/booth-signage.jpg', 'Placement of your company logo on both sides of the selected aisle sign(s). Specific aisles may be requested.', 9)
-;-- DEMO AGE JUNCTION --
-INSERT INTO "junction_event_age"
-    (event_id, age_range_id, percentage)
-VALUES
-    (9, 1, 10),
-    (9, 2, 15),
-    (9, 3, 20),
-    (9, 4, 15),
-    (9, 5, 20),
-    (9, 6, 15),
-    (9, 7, 5);
--- Replace first number with event id, third number with %-- DEMO INCOME JUNCTION --
-INSERT INTO "junction_event_income"
-    (event_id, income_range_id, percentage)
-VALUES
-    (9, 1, 5),
-    (9, 2, 15),
-    (9, 3, 25),
-    (9, 4, 20),
-    (9, 5, 20),
-    (9, 6, 10),
-    (9, 7, 10);
--- Replace first number with event id, third number with %-- DEMO GENDER JUNCTION --
-INSERT INTO "junction_event_gender"
-    (event_id, gender_id, percentage)
-VALUES
-    (9, 1, 60),
-    (9, 2, 35),
-    (9, 3, 5);
--- Replace first number with event id, third number with %-- DEMO RESIDENCY JUNCTION --
-INSERT INTO "junction_event_residency"
-    (event_id, residency_id, percentage)
-VALUES
-    (9, 1, 20),
-    (9, 2, 80);
--- Replace first number with event id, third number with %
-
-
-
--- Create Venue --
-INSERT INTO venues
-    (name, address, city, state, zipcode, venue_notes, venue_capacity)
-VALUES
-    ('The Playa', '40°45’13.83″N, 119°16’37.20″W', 'Black Rock City', 'Nevada', '89412', 'The Black Rock Desert is a semi-arid region (in the Great Basin shrub steppe eco-region), of lava beds and playa, or alkali flats, situated in the Black Rock Desert–High Rock Canyon Emigrant Trails National Conservation Area, a silt playa 100 miles (160 km) north of Reno, Nevada that encompasses more than 300,000 acres (120,000 ha) of land and contains more than 120 miles (200 km) of historic trails. It is in the northern Nevada section of the Great Basin with a lakebed that is a dry remnant of Pleistocene Lake Lahontan.', '78820');
--- Create Event --
-INSERT INTO "event"
-    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
-VALUES
-    ('Burning Man 2021', '1998', '2020-08-30', '2020-09-07', 'https://unsplash.com/photos/3GPU7euU9gA/download?force=true&w=1920', 'https://burningman.org/', false, '80000', 'Burning Man Project’s mission is to produce the annual event known as Burning Man and to guide, nurture and protect the more permanent community created by its culture. Our intention is to generate society that connects each individual to his or her creative powers, to participation in community, to the larger realm of civic life, and to the even greater world of nature that exists beyond society.
-
-We believe that the experience of Burning Man can produce positive spiritual change in the world. To this end, it is equally important that we communicate with one another, with the citizens of Black Rock City and with the community of Burning Man wherever it may arise. Burning Man is radically inclusive, and its meaning is potentially accessible to anyone. - WE WILL ALWAYS BURN THE MAN.', 'John Smith', 'Sponsorship Coordinator', '911@burningman.org', '703-1247', 'burningman', 'burningman', 'burningman', 'Event Sponsorship Information pending.', null, '10');
--- USE VENUE ID FROM ABOVE INSERT
--- Event Type --
-INSERT INTO "junction_event_type"
-    (event_id, type_id)
-VALUES
-    ('10', '5');
--- Sponsors --
-INSERT INTO "sponsorships"
-    (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
-VALUES
-    ('Large Booth', '2800', null, 'This booth is 10x10, limit 2 per Brand.', '10');
--- DEMO AGE JUNCTION --
-INSERT INTO "junction_event_age"
-    (event_id, age_range_id, percentage)
-VALUES
-    (10, 1, 30),
-    (10, 2, 25),
-    (10, 3, 25),
-    (10, 4, 10),
-    (10, 5, 5),
-    (10, 6, 4),
-    (10, 7, 1);
--- Replace first number with event id, third number with %
--- DEMO INCOME JUNCTION --
-INSERT INTO "junction_event_income"
-    (event_id, income_range_id, percentage)
-VALUES
-    (10, 1, 35),
-    (10, 2, 25),
-    (10, 3, 20),
-    (10, 4, 11),
-    (10, 5, 5),
-    (10, 6, 4),
-    (10, 7, 0);
--- Replace first number with event id, third number with %
--- DEMO GENDER JUNCTION --
-INSERT INTO "junction_event_gender"
-    (event_id, gender_id, percentage)
-VALUES
-    (10, 1, 48),
-    (10, 2, 48),
-    (10, 3, 4);
--- Replace first number with event id, third number with %
--- DEMO RESIDENCY JUNCTION --
-INSERT INTO "junction_event_residency"
-    (event_id, residency_id, percentage)
-VALUES
-    (10, 1, 25),
-    (10, 2, 75); -- Replace first number with event id, third number with %
+    (8, 7, 5); 
