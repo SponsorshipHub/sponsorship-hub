@@ -100,7 +100,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
 
 // : state /: start /: end /: type /: minAttend /: maxAttend /: minSponsor /: maxSponsor
 // GET router for ADVANCED SEARCH FILTER
-router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
+router.get('/filter', rejectUnauthenticated, rejectLevel0, (req, res) => {
     console.log('TEST MEEEEEE', req.query)
 
     let state = '';
@@ -168,13 +168,19 @@ router.get('/filter', rejectUnauthenticated, rejectLevel1, (req, res) => {
     AND estimated_attendance <= $6
     ${minSponsorshipPrice}
     ${maxSponsorshipPrice}
-    AND income_range_id >= $9
+    AND "event".id IN 
+	(SELECT "event".id
+    FROM junction_event_income
+    FULL JOIN "event" ON "event".id = junction_event_income.event_id
+    WHERE income_range_id >=$9
+    GROUP BY junction_event_income.event_id, "event".id
+    HAVING SUM(percentage) >= 20)
     GROUP BY "event".id, venues.city, venues.state, event_type.type
     HAVING SUM(percentage) >= 20
     ORDER BY start_date DESC
     ;`
 
-    console.log(`QUERY:`, queryString);
+    // console.log(`QUERY:`, queryString);
     
     pool.query(queryString, results).then((result) => {
         // console.log('HELLOOOOO', result.rows)
