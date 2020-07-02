@@ -37,7 +37,7 @@ class Venue extends Component {
                         <Grid item md={4}>
                             <Box p={2} my={2} className={classes.eventTextBoxes}>
                                 {/* venue_notes */}
-                                <Typography>
+                                <Typography className={classes.whiteSpace}>
                                     {this.props.oneEvent.venue_notes}
                                 </Typography>
                             </Box>
