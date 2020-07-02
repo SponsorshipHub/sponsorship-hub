@@ -32,12 +32,11 @@ class EditSponsor extends Component {
     }
 
     forwardClick = () => {
-        //this conditional sends to either CreateDemo or EditDemo depending on 
-        if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`) {
+        // if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`) {
             this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
-        } else {
-            this.props.history.push(`/create-demo/${this.props.match.params.id}`)
-        }
+        // } else {
+        //     this.props.history.push(`/create-demo/${this.props.match.params.id}`)
+        // }
     }
 
     handleChange = (event, property) => {
@@ -65,7 +64,6 @@ class EditSponsor extends Component {
 
         console.log(this.state);
     }
-
 
     render() {
         // allows us to connect this.props to styles 
