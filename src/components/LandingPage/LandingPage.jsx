@@ -112,7 +112,7 @@ class LandingPage extends Component {
 
     //handles state input change
     handleState = (event) => {
-        console.log('setting input for state', event.target.value);
+        console.log('setting input for state', this.state.state);
         this.setState({ state: event.target.value });
     };//end handle state
 

@@ -24,16 +24,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 //GET router for search results
 router.get('/landing', rejectUnauthenticated, (req, res) => {
-    console.log('in /results/landing GET', req.query.state, 'start:', req.query.start, 'end:', req.query.end);
     let state = req.query.state;
-    let start = req.query.startD;
-    let end = req.query.endD;
+    let start = req.query.startDate;
+    let end = req.query.endDate;
+    
+    console.log('in /results/landing GET', req.query.state, 'start:', start, 'end:', end);
     // if statements with multiple pool queries for search
 
     /// --- LANDING PAGE
     /// if NONE of the inputs are filled bring most recent events
     if (state === '' && start === 'null' && end === 'null') {
-        console.log('none of the inputs have been fille for RESULTS');
+        console.log('No inputs have been filled.');
         let queryString = `
             SELECT * FROM "event"
             ORDER BY "start_date" DESC;
@@ -47,7 +48,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
     }
     // if all inputs are filled search
     else if (state !== '' && start !== 'null' && end !== 'null') {
-        console.log('all inputs have been filled for RESULTS');
+        console.log('All inputs have been filled.');
         let queryString = `
         SELECT * FROM "event"
         JOIN venues ON venues.id = event.venue_id
@@ -65,7 +66,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
     }
     /// if state is filled and start and end is not
     else if (state !== '' && start === 'null' && end === 'null') {
-        console.log('state has been defined but not start and end for RESULTS');
+        console.log('State has been filled, but not start and end date.');
         let queryString = `
             SELECT * FROM "event"
             JOIN venues ON venues.id = event.venue_id
@@ -81,7 +82,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
     }
     /// if state is empty but start date and end date is filled
     else if (state === '' && start !== 'null' && end !== 'null') {
-        console.log('state has not been defined but start and end has for RESULTS');
+        console.log('State input has not been filled, but start and end date have been.');
         let queryString = `
             SELECT * FROM "event"
             WHERE start_date BETWEEN $1 AND $2
