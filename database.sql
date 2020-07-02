@@ -1,6 +1,6 @@
--- Last Updated Jul 2, 2020 3:12 AM
+-- Last Updated Jul 2, 2020 8:57 AM
 
--- Added: Grillfest, SEMA, Burning Man
+-- Added: Grillfest, SEMA, Burning Man, Hopkins Raspberry Festival
 -- Updated User List
 
 -- Database Name: sponsorship_hub
@@ -690,4 +690,70 @@ INSERT INTO "junction_event_residency"
     (event_id, residency_id, percentage)
 VALUES
     (10, 1, 25),
-    (10, 2, 75); -- Replace first number with event id, third number with %
+    (10, 2, 75);
+-- Replace first number with event id, third number with %
+
+-- Create Venue --
+INSERT INTO venues
+    (name, address, city, state, zipcode, venue_notes, venue_capacity)
+VALUES
+    ('Hopkins Main street', '1609 Mainstreet', 'Hopkins', 'Minnesota', '55343', 'Downtown Hopkins', '100000');
+-- Create Event --
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_instagram, event_notes, event_sponsorship_kit, venue_id)
+VALUES
+    ('The Hopkins Raspberry Festival', '1934', '07/16/2021', '07/18/2021', 'https://bloximages.chicago2.vip.townnews.com/hometownsource.com/content/tncms/assets/v3/editorial/7/22/722ff858-ad51-11e9-ade0-57152c4d4892/5d3711ad207e8.image.jpg?resize=1200%2C806', 'http://www.raspberrycapital.com/', FALSE, '100000', 'For 85 years, The Raspberry Festival has been a cornerstone of Hopkins. We believe festivals connect communities and make them stronger – which the Hopkins Raspberry Festival has done for decades. Now more than ever, that mission is of utmost importance.
+For the multitude of reasons we are all aware of, we cannot hold a typical festival this year. Our team is committed to holding a new kind of Hopkins Raspberry Festival this July that will be almost entirely virtual. Our team has worked hard to be creative, and quickly conceive new events that fulfills our mission during these circumstances.
+Through that work, we immediately agreed that we could not in good conscience approach businesses to help fund the festival, when we know all too well the pressures they are experiencing. Nor should we ask for city staff resources while they face their own pressures. Thus, our events will be few, new, improvised, imperfect and orchestrated on a shoestring budget.', 'Lou Jean Gleason', 'Executive Director', 'executivedirector@raspberrycapital.com', '952-931-0878', 'RaspberryFestival', 'hopkinsraspberryfestival', 'The Hopkins Raspberry Association volunteers and Raspberry Royal Family dedicate their time and resources to continue the Hopkins Raspberry Festival tradition as conceived and cared for by our predecessors. The festival continues to bring residents and visitors from surrounding communities and from around the state of Minnesota to Hopkins to help boost the local economy and celebrate this tradition in the Hopkins. In particular:
+Serve as a centerpiece of a vibrant Downtown Hopkins
+Cultivate community pride & spirit
+Improve quality of life, makes Hopkins more attractive to businesses, and create a positive community image
+Orchestrate events to bring attention and visitors to Hopkins
+The Hopkins Raspberry Festival is made possible by our volunteer''s dedication, local businesses donating their time, services and financial contributions and all those that continue to return to enjoy the events each year. To all of you, thank you!
+Hopkins Raspberry Festival Royal Family
+Each year people who work or live in Hopkins have the opportunity to participate in the festival and can choose to run as Raspberry Festival Royalty. This tradition began at the first Raspberry Festival with the crowning of a Raspberry Queen and her court, who were all daughters of a raspberry farmers. We now have a nine member Royal Family that includes three young women, ages 17-25, four children, ages 6-9, and two seniors who are over age 55. The Royal Family serves for an entire year traveling to other city''s celebrations representing the community of Hopkins and act as ambassadors encouraging them to visit Hopkins.', 'http://www.raspberrycapital.com/sponsors/', 9);
+-- USE VENUE ID FROM ABOVE INSERT
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (11, 10);
+
+-- DEMO AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (11, 1, 25),
+    (11, 2, 5),
+    (11, 3, 25),
+    (11, 4, 10),
+    (11, 5, 10),
+    (11, 6, 10),
+    (11, 7, 15);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (11, 1, 10),
+    (11, 2, 35),
+    (11, 3, 40),
+    (11, 4, 10),
+    (11, 5, 3),
+    (11, 6, 1),
+    (11, 7, 1);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (11, 1, 45),
+    (11, 2, 45),
+    (11, 3, 10);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (11, 1, 80),
+    (11, 2, 20); -- Replace first number with event id, third number with %
