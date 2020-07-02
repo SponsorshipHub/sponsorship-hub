@@ -49,7 +49,7 @@ class DemoView extends Component {
                 <Box className={classes.margin}>
                     <Grid container justify="space-evenly">
                         <Grid item md={10}>
-                            <Box textAlign="flex-start" mb={3}>
+                            <Box textAlign="flex-start" my={3}>
                                 <Typography variant="h4">Attendee Demographics</Typography>
                             </Box>
                         </Grid>
@@ -217,9 +217,9 @@ class DemoView extends Component {
                                 <Grid item md={6} sm={8} xs={8}>
                    {/* ----------------- RESIDENCY ------------------- */}
                                     <Typography variant="h6">Attendees Location</Typography>
-                                    <PieChart width={390} height={350}>
+                                    <PieChart width={450} height={350}>
                                         <Pie data={this.state.residency}
-                                            cx={200}
+                                            cx={220}
                                             cy={120}
                                             labelLine={false}
                                             label={({

@@ -23,11 +23,10 @@ class Venue extends Component {
                             <Box mb={3}>
                                 <Typography variant="h5"><a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a></Typography>
                             </Box>
-                            <a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a>
                             {/* Capacity Need to fix spacing */}
                             {/* venue_capacity */}
                             <Typography>Capacity: {this.props.oneEvent.venue_capacity}</Typography>
-                            <Box>
+                            <Box mb={2}>
                                 <PlaceIcon />
                                 <Typography display="inline">Address</Typography>
                                 {/* Address */}
