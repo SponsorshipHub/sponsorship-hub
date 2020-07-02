@@ -60,7 +60,7 @@ class Event extends Component {
                                 <Grid item md={12} sm={12} xs={12}>
                                     <Box className={classes.eventTextBoxes} p={2}>
                                         {/* event_description */}
-                                        <Typography>
+                                        <Typography className={classes.whiteSpace}>
                                             {this.props.oneEvent.event_description}
                                         </Typography>
                                     </Box>
@@ -124,7 +124,7 @@ class Event extends Component {
                     <Grid item md={8}>
                         <Box className={classes.box_grey} p={2}>
                             <Box className={classes.margin}>
-                                <Typography>
+                                <Typography className={classes.whiteSpace}>
                                     {this.props.oneEvent.event_notes}
                                 </Typography>
                             </Box>

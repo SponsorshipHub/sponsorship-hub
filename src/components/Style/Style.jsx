@@ -236,6 +236,9 @@ const styles = {
     },
     underLined:{
         textDecorationLine: 'underline'
+    },
+    whiteSpace:{
+        whiteSpace: 'pre-wrap'
     }
 }
 
