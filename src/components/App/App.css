@@ -1,7 +1,18 @@
+/* Font: Source Sans Pro  */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-color: rgba(245, 245, 245, 0.539);
+    /* overflow: auto; */
+    /* height: 100%; */
 }
+/* 
+html {
+    overflow: hidden;
+    height: 100%;
+} */
 
 .alert {
     background-color: #ff4545;
@@ -14,7 +25,16 @@ form {
     height: 250px;
     margin: 20px auto;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 10px;
+}
+
+.form {
+    background-color: #dbd5d5;
+    width: 30%;
+    height: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
 }
 
 input {
@@ -23,9 +43,9 @@ input {
 }
 
 .log-in, .log-out, .register {
-  background-color: #00acb0;
+  background-color: #ff4545;
   border-radius: 4px;
-  color: #f8f8f8;
+  color: black;
   min-height: 50px;
   min-width: 100px;
   outline:0;
@@ -33,7 +53,7 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color: #f03d3d;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -46,4 +66,14 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
+}
+
+#search::placeholder {
+        color: #ffffff;
+        opacity: 0.5;
+}
+
+#search {
+        color: #ffffff;
+        opacity: 1;
 }
