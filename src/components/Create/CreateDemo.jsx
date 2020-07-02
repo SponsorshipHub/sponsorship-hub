@@ -40,6 +40,7 @@ class CreateDemo extends Component {
         out_of_state: 0,
     }
 
+
     componentDidMount(){
         // console.log('CREATE DEMO MOUNTED');
         window.scrollTo(0, 0);
@@ -57,7 +58,7 @@ class CreateDemo extends Component {
             [property]: Number(event.target.value),
         });
     }
-
+   
     //The submit checks to make sure entries are 0 or 100 and then sends a put request, upon completion the put request moves the user to the event page where they can see their updated entries
     handleSubmit = () => {
             let genderTotal = this.state.female + this.state.male + this.state.other;

@@ -38,17 +38,13 @@ class EditDemo extends Component {
         out_of_state: this.props.oneEvent.residency[1].residency_percentage,
     }
 
-    componentDidMount(){
+    componentDidMount() {
         //scroll to top of page on load
         window.scrollTo(0, 0);
     };//end componentDidMount
 
     backClick = () => {
         this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
-    }
-
-    forwardClick = () => {
-        this.props.history.push('/home')
     }
 
     handleChange = (event, property) => {
@@ -67,7 +63,8 @@ class EditDemo extends Component {
             (incomeTotal === 100 || incomeTotal === 0) &&
             (ageTotal === 100 || ageTotal === 0) &&
             (residentTotal === 100 || residentTotal === 0)
-        ){  console.log("ALL 100");
+        ) {
+            console.log("ALL 100");
             this.props.dispatch({ type: 'UPDATE_DEMO', payload: this.state, history: this.props.history })
         } else {
             console.log('not ALL 100');
@@ -82,6 +79,40 @@ class EditDemo extends Component {
         }
     }
 
+    // these clickhandlers are to fill the page for the demonstration of the event.
+    // these aren't necessary for the deployed app
+    // formFiller populates all fields entering some with errors.
+    formFiller = () => {
+        this.setState({
+            female: 48,
+            male: 55,
+            other: 9,
+            Income0_24999: 5,
+            Income25000_49999: 10,
+            Income50000_74999: 20,
+            Income75000_99999: 30,
+            Income100000_149999: 20,
+            Income150000_199999: 10,
+            Income200000: 5,
+            Age0_17: 0,
+            Age18_24: 28,
+            Age25_34: 39,
+            Age35_44: 36,
+            Age45_54: 6,
+            Age55_64: 1,
+            Age65: 0,
+            in_state: 65,
+            out_of_state: 35,
+        })
+    }
+
+    formFixer = () => {
+        this.setState({
+            male: 45,
+            other: 7,
+            Age35_44: 26,
+        })
+    }
 
     render() {
         let genderPercent = this.state.female + this.state.male + this.state.other;
@@ -106,17 +137,17 @@ class EditDemo extends Component {
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography variant="h5">Gender</Typography>
+                            <Typography variant="h5" onClick={this.formFiller}>Gender</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="Female %" type="number" placeholder="%" defaultValue={this.state.female} onChange={(event) => this.handleChange(event, 'female')}></TextField>
+                                <TextField label="Female %" type="number" placeholder="%" value={this.state.female} onChange={(event) => this.handleChange(event, 'female')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="Male %" type="number" placeholder="%" defaultValue={this.state.male} onChange={(event) => this.handleChange(event, 'male')}></TextField>
+                                <TextField label="Male %" type="number" placeholder="%" value={this.state.male} onChange={(event) => this.handleChange(event, 'male')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="Other %" type="number" placeholder="%" defaultValue={this.state.other} onChange={(event) => this.handleChange(event, 'other')}></TextField>
+                                <TextField label="Other %" type="number" placeholder="%" value={this.state.other} onChange={(event) => this.handleChange(event, 'other')}></TextField>
                             </Grid>
                             <Grid item md={2} sm={5} xs={11} className={classes.formMargin}>
                                 <Typography className={genderPercent === 100 ? classes.goodPercent : classes.badPercent}>Total: {genderPercent}%</Typography>
@@ -133,25 +164,25 @@ class EditDemo extends Component {
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="Less than $25,000" type="number" placeholder="%" defaultValue={this.state.Income0_24999} onChange={(event) => this.handleChange(event, 'Income0_24999')}></TextField>
+                                <TextField label="Less than $25,000" type="number" placeholder="%" value={this.state.Income0_24999} onChange={(event) => this.handleChange(event, 'Income0_24999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$25,000-49,000" type="number" placeholder="%" defaultValue={this.state.Income25000_49999} onChange={(event) => this.handleChange(event, 'Income25000_49999')}></TextField>
+                                <TextField label="$25,000-49,000" type="number" placeholder="%" value={this.state.Income25000_49999} onChange={(event) => this.handleChange(event, 'Income25000_49999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$50,000-75,999" type="number" placeholder="%" defaultValue={this.state.Income50000_74999} onChange={(event) => this.handleChange(event, 'Income50000_74999')}></TextField>
+                                <TextField label="$50,000-75,999" type="number" placeholder="%" value={this.state.Income50000_74999} onChange={(event) => this.handleChange(event, 'Income50000_74999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$76,000-99,999" type="number" placeholder="%" defaultValue={this.state.Income75000_99999} onChange={(event) => this.handleChange(event, 'Income75000_99999')}></TextField>
+                                <TextField label="$76,000-99,999" type="number" placeholder="%" value={this.state.Income75000_99999} onChange={(event) => this.handleChange(event, 'Income75000_99999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$100,000-149,999" type="number" placeholder="%" defaultValue={this.state.Income100000_149999} onChange={(event) => this.handleChange(event, 'Income100000_149999')}></TextField>
+                                <TextField label="$100,000-149,999" type="number" placeholder="%" value={this.state.Income100000_149999} onChange={(event) => this.handleChange(event, 'Income100000_149999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$150,000-200,000" type="number" placeholder="%" defaultValue={this.state.Income150000_199999} onChange={(event) => this.handleChange(event, 'Income150000_199999')}></TextField>
+                                <TextField label="$150,000-200,000" type="number" placeholder="%" value={this.state.Income150000_199999} onChange={(event) => this.handleChange(event, 'Income150000_199999')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="$200,001 or Greater" type="number" placeholder="%" defaultValue={this.state.Income200000} onChange={(event) => this.handleChange(event, 'Income200000')}></TextField>
+                                <TextField label="$200,001 or Greater" type="number" placeholder="%" value={this.state.Income200000} onChange={(event) => this.handleChange(event, 'Income200000')}></TextField>
                             </Grid>
                             <Grid md={6} sm={0} xs={0}></Grid>
                             <Grid item md={2} sm={5} xs={11} className={classes.formMargin}>
@@ -165,29 +196,29 @@ class EditDemo extends Component {
                 <Box className={classes.box_grey}>
                     <Grid container justify="center" className={classes.margin}>
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
-                            <Typography variant="h5">Age Range</Typography>
+                            <Typography variant="h5" onClick={this.formFixer}>Age Range</Typography>
                         </Grid>
                         <Grid align="center" item container md={8}>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="17 and Under" type="number" placeholder="%" defaultValue={this.state.Age0_17} onChange={(event) => this.handleChange(event, 'Age0_17')}></TextField>
+                                <TextField label="17 and Under" type="number" placeholder="%" value={this.state.Age0_17} onChange={(event) => this.handleChange(event, 'Age0_17')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="18-24" type="number" placeholder="%" defaultValue={this.state.Age18_24} onChange={(event) => this.handleChange(event, 'Age18_24')}></TextField>
+                                <TextField label="18-24" type="number" placeholder="%" value={this.state.Age18_24} onChange={(event) => this.handleChange(event, 'Age18_24')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="25-34" type="number" placeholder="%" defaultValue={this.state.Age25_34} onChange={(event) => this.handleChange(event, 'Age25_34')}></TextField>
+                                <TextField label="25-34" type="number" placeholder="%" value={this.state.Age25_34} onChange={(event) => this.handleChange(event, 'Age25_34')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="35-44" type="number" placeholder="%" defaultValue={this.state.Age35_44} onChange={(event) => this.handleChange(event, 'Age35_44')}></TextField>
+                                <TextField label="35-44" type="number" placeholder="%" value={this.state.Age35_44} onChange={(event) => this.handleChange(event, 'Age35_44')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="45-54" type="number" placeholder="%" defaultValue={this.state.Age45_54} onChange={(event) => this.handleChange(event, 'Age45_54')}></TextField>
+                                <TextField label="45-54" type="number" placeholder="%" value={this.state.Age45_54} onChange={(event) => this.handleChange(event, 'Age45_54')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="55-64" type="number" placeholder="%" defaultValue={this.state.Age55_64} onChange={(event) => this.handleChange(event, 'Age55_64')}></TextField>
+                                <TextField label="55-64" type="number" placeholder="%" value={this.state.Age55_64} onChange={(event) => this.handleChange(event, 'Age55_64')}></TextField>
                             </Grid>
                             <Grid item md={3} sm={5} xs={11} className={classes.formMargin}>
-                                <TextField label="65 or Greater" type="number" placeholder="%" defaultValue={this.state.Age65} onChange={(event) => this.handleChange(event, 'Age65')}></TextField>
+                                <TextField label="65 or Greater" type="number" placeholder="%" value={this.state.Age65} onChange={(event) => this.handleChange(event, 'Age65')}></TextField>
                             </Grid>
                             <Grid md={6} sm={0} xs={0}></Grid>
                             <Grid item md={2} sm={5} xs={11} className={classes.formMargin}>
@@ -206,11 +237,11 @@ class EditDemo extends Component {
                         <Grid align="center" item container md={8}>
                             <Grid tem md={1} sm={1} xs={0} className={classes.formMargin}></Grid>
                             <Grid item md={3} sm={3} xs={11} className={classes.formMargin}>
-                                <TextField label="Resident" type="number" placeholder="%" defaultValue={this.state.in_state} onChange={(event) => this.handleChange(event, 'in_state')}></TextField>
+                                <TextField label="Resident" type="number" placeholder="%" value={this.state.in_state} onChange={(event) => this.handleChange(event, 'in_state')}></TextField>
                             </Grid>
                             <Grid tem md={1} sm={0} xs={0} className={classes.formMargin}></Grid>
                             <Grid item md={3} sm={3} xs={11} className={classes.formMargin}>
-                                <TextField label="Non-Resident" type="number" placeholder="%" defaultValue={this.state.out_of_state} onChange={(event) => this.handleChange(event, 'out_of_state')}></TextField>
+                                <TextField label="Non-Resident" type="number" placeholder="%" value={this.state.out_of_state} onChange={(event) => this.handleChange(event, 'out_of_state')}></TextField>
                             </Grid>
                             <Grid item md={0} sm={0} xs={8} className={classes.formMargin}></Grid>
                             <Grid item md={3} sm={2} xs={11} className={classes.formMargin}>
