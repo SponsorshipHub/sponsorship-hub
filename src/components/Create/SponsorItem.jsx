@@ -50,7 +50,9 @@ class SponsorItem extends Component {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            cancelButtonText: 'CANCEL',
+            confirmButtonText: 'DELETE',
+            reverseButtons: true,
         }).then((result) => {
             if (result.value) {
                 this.props.dispatch({ type: "DELETE_SPONSOR", payload: this.props.sponsorItem });
