@@ -1,10 +1,4 @@
--- Last Updated Jul 3, 2020 10:52 AM
-
--- Added: Two new brand users.  
--- Updated State Fair Sponsorship.
--- Added State Fair 2020 for Alan to DELETE.
-
--- Last Updated Jul 3, 2020 10:52 AM
+-- Last Updated Jul 3, 2020 12:20 PM
 
 -- Added: Two new brand users.  
 -- Updated State Fair Sponsorship.
