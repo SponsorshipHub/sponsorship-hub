@@ -163,6 +163,7 @@ class EditEvent extends Component {
             reverseButtons: true,
         }).then(result => {
             if (result.value) {
+                // dispatch for updating event
                 this.props.dispatch({ type: 'UPDATE_EVENT', payload: this.state, history: this.props.history })
                 this.props.history.push(`/sponsor/edit/${this.props.match.params.id}`)
                 Toast.fire({
@@ -231,6 +232,7 @@ class EditEvent extends Component {
         }).then(result => {
             if (result.value) {
                 this.setState({ event_name: result.value })
+                // dispatch for making duplicate event
                 this.props.dispatch({ type: 'POST_EVENT2', payload: this.state, history: this.props.history })
                 let timerInterval
                 Swal.fire({
@@ -402,7 +404,7 @@ class EditEvent extends Component {
         })
     }
     venueSelector = (event) => {
-        console.log('You have set the event type to:', event.target.value);
+        console.log('You have set the venue to:', event.target.value);
         if (event.target.value == 0) {
             this.setState({
                 newVenue: true,
@@ -505,7 +507,8 @@ class EditEvent extends Component {
                                     open={this.state.event_open}
                                     onClose={this.eventClose}
                                     onOpen={this.eventOpen}
-                                    value={this.state.event_id}
+                                    // value={this.state.event_id}
+                                    defaultValue={this.props.oneEvent.type_id}
                                     onChange={(event) => this.eventSelector(event)}>
                                     {this.props.types.map(types =>
                                         <MenuItem key={types.id} value={types.id}>{types.type}</MenuItem>
@@ -557,8 +560,9 @@ class EditEvent extends Component {
                                             open={this.state.state_open}
                                             onClose={this.stateClose}
                                             onOpen={this.stateOpen}
-                                            value={this.state.venue_state}
+                                            defaultValue='state'
                                             onChange={(event) => this.stateSelector(event)}>
+                                            <MenuItem value='state'>Select a Sate</MenuItem>
                                             <MenuItem value='Alabama'>Alabama</MenuItem>
                                             <MenuItem value='Alaska'>Alaska</MenuItem>
                                             <MenuItem value='Arizona'>Arizona</MenuItem>
