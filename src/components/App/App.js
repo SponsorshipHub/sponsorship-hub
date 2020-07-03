@@ -14,6 +14,7 @@ import EditDemo from '../Create/EditDemo';
 import EditEvent from '../Create/EditEvent';
 import EditSponsor from '../Create/EditSponsor';
 import Event from '../Event/Event';
+import ErrorPage from '../Error/Error';
 //style for app
 import './App.css';
 import { MuiThemeProvider } from '@material-ui/core/';
@@ -63,6 +64,7 @@ class App extends Component {
             <ProtectedRoute exact path="/event/edit/:id" component={EditEvent} />
             <ProtectedRoute path="/create-event" component={CreateEvent} />
             <ProtectedRoute exact path="/admin" component={Admin} />
+            <Route exact path="/error" component={ErrorPage} />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             

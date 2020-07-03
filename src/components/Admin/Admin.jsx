@@ -23,6 +23,7 @@ class Admin extends Component {
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_USER_LIST'});
         document.title = `Sponsorship Hub - Admin`; // Sets browser's title
+        if (this.props.user.access_level !== 3) { this.props.history.push(`/error`) }
     }
     
     componentDidUpdate(prevProps){
@@ -125,7 +126,8 @@ class Admin extends Component {
 Admin.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    userList: reduxState.admin
+    userList: reduxState.admin,
+    user: reduxState.user
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(Admin));
