@@ -1,4 +1,4 @@
--- Last Updated Jul 3, 2020 10:52 AM
+-- Last Updated Jul 3, 2020 12:20 PM
 
 -- Added: Two new brand users.  
 -- Updated State Fair Sponsorship.
@@ -217,7 +217,7 @@ INSERT INTO "user"
 VALUES
     ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 2),
     ('Heather Baird', 'Event Rep.', 'FizzBuzz Soda', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 0),
-    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'd_smath@tesla.com', '763-201-1530', 1),
+    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'j_smiff@tesla.com', '763-201-1530', 1),
     ('Deb Hannah', 'Advertising', 'L''Oreal Cosmetics', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'deb.hannah@loreal.com', '763-400-3230', 1),
     ('Alan Henderson', 'Senior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-269-2385', 2),
     ('Tan Nguyen', 'Expert Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-501-3800', 2),
