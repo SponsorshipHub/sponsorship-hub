@@ -1,7 +1,8 @@
--- Last Updated Jul 2, 2020 8:57 AM
+-- Last Updated Jul 3, 2020 10:52 AM
 
--- Added: Grillfest, SEMA, Burning Man, Hopkins Raspberry Festival
--- Updated User List
+-- Added: Two new brand users.  
+-- Updated State Fair Sponsorship.
+-- Added State Fair 2020 for Alan to DELETE.
 
 -- Database Name: sponsorship_hub
 
@@ -214,8 +215,10 @@ CREATE TABLE "sponsorships"
 INSERT INTO "user"
     (name, title, company, password, username, phone, access_level)
 VALUES
-    ('Kina Grannis', 'Event Tracker', 'Pepsi', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 0),
-    ('Heather Baird', 'FizzBuzz Rep', 'Fizzbuzz', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 1),
+    ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 2),
+    ('Heather Baird', 'Event Rep.', 'FizzBuzz Soda', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 0),
+    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'd_smath@tesla.com', '763-201-1530', 1),
+    ('Deb Hannah', 'Advertising', 'L''Oreal Cosmetics', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'deb.hannah@loreal.com', '763-400-3230', 1),
     ('Alan Henderson', 'Senior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-269-2385', 2),
     ('Tan Nguyen', 'Expert Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-501-3800', 2),
     ('Shaokee Moua', 'Coding Engineer', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
@@ -230,7 +233,21 @@ VALUES
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
 VALUES
-    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', false, '200000', 'The Great Minnesota Get-Together', 'Jimmy Johnson', 'Event Coordinator', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Miscellaneous Notes!', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
+    ('Minnesota State Fair 2021', '1859', '2021-08-26 13:00:09.250411+00', '2021-09-06 20:30:09.250411+00', 'https://images.unsplash.com/photo-1568264523979-383b59b330c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80', 'https://www.mnstatefair.org/', false, '200000', 'Today, often referred to as the “Great Minnesota Get-Together,” the annual Minnesota State Fair is one of the most popular tourist destinations in the region. The fair attracts more than 2 million guests annually.
+
+This end-of-summer tradition is held the 12 days leading up to and through Labor Day. The 2020 Minnesota State Fair, scheduled for Aug. 27-Sept. 7, has been canceled. Learn more. The 2021 Minnesota State Fair runs Aug. 26-Labor Day, Sept. 6.
+
+The fair employs nearly 90 year-round full-time staff members. During the summer, about 450 seasonal staff are added. More than 2,300 people are hired as fair-time staff members.
+
+Located mid-way between Minneapolis and St. Paul, the 322-acre Minnesota State Fairgrounds is renowned for its beautiful gardens and architecture reflecting the art deco and Works Progress Administration eras.
+
+Hundreds of events are held on the fairgrounds throughout the year during the non-fair time, including horse and livestock competitions, merchandise sales, expositions, car shows and more.', 'Melissa Varriano', 'Sponsorship Supervisor', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Nestled between the Twin Cities of Minneapolis and St. Paul, the Minnesota State Fair provides guaranteed visibility and maximum guest exposure. The Minnesota State Fair has the largest daily attendance of any fair or festival in the nation, giving you the opportunity to reach the maximum number of people in the minimum amount of time. Your company will benefit from public awareness of your product or service, sampling, couponing and retail sales activities.
+
+The Minnesota State Fair is the ideal platform to reach more than two million potential customers in only 12 days (an average of more than 177,000 per day in 2019). Affectionately known as the Great Minnesota Get-Together, the fair’s ever-growing and loyal fan base is what makes this exhibition the “must-stop” destination for sponsors and mobile marketing units promoting across the country. Surveys reveal that a whopping 85% of guests visit the fair every year and an additional 12% visit every other year or every five years. The 2021 fair will run Thursday, Aug. 26 through Monday, Labor Day, Sept. 6.
+
+This annual high-profile 12-day fair with a 150+-year history, features more than 900 entertainment performances on free stages plus a Grandstand stage presenting internationally known artists. Shop more than 1,200 exhibit booths, including 300 food vendors and dozens of sponsors and touring promotional exhibits. Visitors enjoy spectacular educational experiences at the award-winning Eco Experience, History & Heritage Center, Pet Pavilions, CHS Miracle of Birth Center and many other exhibits.
+
+We invite you to join our many successful sponsors.  Sponsorship Application: https://assets.mnstatefair.org/pdf/20-sponsorship-application.pdf', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
 
 INSERT INTO "event"
     -- Testing Null Data --
@@ -314,8 +331,10 @@ VALUES
     ('Small Booth', '1000', 'https://images.unsplash.com/photo-1563208085-648526fc0a70?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'A small booth, 6 by 6 feet', 1),
     ('Medium Booth', '1500', 'https://images.unsplash.com/photo-1553858117-30fb2c04eaad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80', 'A medium booth, 10 by 10 feet', 1),
     ('Large Booth', '2000', 'https://images.unsplash.com/photo-1581420515590-cee76de451b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80', 'A large booth, 16 by 16 feet', 1),
-    ('Small Billboard', '1500', 'https://images.unsplash.com/photo-1559227582-558eeaccd1fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'A small billboard, 6 by 12 feet', 2),
-    ('Large Billboard', '2500', 'https://images.unsplash.com/photo-1561898329-9ad7d76fbb2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'A large billboard, 20hx40w feet', 2),
+    ('Billboard (Small)', '15000', 'https://images.unsplash.com/photo-1559227582-558eeaccd1fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'Rent a small billboard near the Grandstand for the duration of the fair. The size of the billboard is 18 by 12 feet. Limit 4. More information can be found at: https://www.mnstatefair.com/sponsorship/sm_bb', 2),
+    ('Billboard (Large)', '17000', 'https://images.unsplash.com/photo-1561898329-9ad7d76fbb2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'Rent a large billboard near the Grandstand for the duration of the fair.  The size of the billboard is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 2),
+    ('Booth (Small)', '22000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-117.png&r=0&g=0&b=0', 'Rent a small booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 2),
+    ('Booth (Large)', '25000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-116.png&r=0&g=0&b=0', 'Rent a large booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 2),
     ('Small Booth', '1000', 'https://images.unsplash.com/photo-1573376670774-4427757f7963?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80', 'A small booth, 6 by 6 feet', 3),
     ('Medium Booth', '1500', 'https://images.unsplash.com/photo-1553858117-30fb2c04eaad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80', 'A medium booth, 10 by 10 feet', 3),
     ('Large Booth', '2000', 'https://images.unsplash.com/photo-1581420515590-cee76de451b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=933&q=80', 'A large booth, 16 by 16 feet', 3),
@@ -702,7 +721,7 @@ VALUES
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_instagram, event_notes, event_sponsorship_kit, venue_id)
 VALUES
-    ('The Hopkins Raspberry Festival', '1934', '07/16/2021', '07/18/2021', 'https://bloximages.chicago2.vip.townnews.com/hometownsource.com/content/tncms/assets/v3/editorial/7/22/722ff858-ad51-11e9-ade0-57152c4d4892/5d3711ad207e8.image.jpg?resize=1200%2C806', 'http://www.raspberrycapital.com/', FALSE, '100000', 'For 85 years, The Raspberry Festival has been a cornerstone of Hopkins. We believe festivals connect communities and make them stronger – which the Hopkins Raspberry Festival has done for decades. Now more than ever, that mission is of utmost importance.
+    ('The Hopkins Raspberry Festival', '1934', '07/16/2021', '07/18/2021', 'https://bloximages.chicago2.vip.townnews.com/hometownsource.com/content/tncms/assets/v3/editorial/7/22/722ff858-ad51-11e9-ade0-57152c4d4892/5d3711ad207e8.image.jpg?resize=1200%2C806', 'http://www.raspberrycapital.com/', FALSE, '50000', 'For 85 years, The Raspberry Festival has been a cornerstone of Hopkins. We believe festivals connect communities and make them stronger – which the Hopkins Raspberry Festival has done for decades. Now more than ever, that mission is of utmost importance.
 For the multitude of reasons we are all aware of, we cannot hold a typical festival this year. Our team is committed to holding a new kind of Hopkins Raspberry Festival this July that will be almost entirely virtual. Our team has worked hard to be creative, and quickly conceive new events that fulfills our mission during these circumstances.
 Through that work, we immediately agreed that we could not in good conscience approach businesses to help fund the festival, when we know all too well the pressures they are experiencing. Nor should we ask for city staff resources while they face their own pressures. Thus, our events will be few, new, improvised, imperfect and orchestrated on a shoestring budget.', 'Lou Jean Gleason', 'Executive Director', 'executivedirector@raspberrycapital.com', '952-931-0878', 'RaspberryFestival', 'hopkinsraspberryfestival', 'The Hopkins Raspberry Association volunteers and Raspberry Royal Family dedicate their time and resources to continue the Hopkins Raspberry Festival tradition as conceived and cared for by our predecessors. The festival continues to bring residents and visitors from surrounding communities and from around the state of Minnesota to Hopkins to help boost the local economy and celebrate this tradition in the Hopkins. In particular:
 Serve as a centerpiece of a vibrant Downtown Hopkins
@@ -711,7 +730,7 @@ Improve quality of life, makes Hopkins more attractive to businesses, and create
 Orchestrate events to bring attention and visitors to Hopkins
 The Hopkins Raspberry Festival is made possible by our volunteer''s dedication, local businesses donating their time, services and financial contributions and all those that continue to return to enjoy the events each year. To all of you, thank you!
 Hopkins Raspberry Festival Royal Family
-Each year people who work or live in Hopkins have the opportunity to participate in the festival and can choose to run as Raspberry Festival Royalty. This tradition began at the first Raspberry Festival with the crowning of a Raspberry Queen and her court, who were all daughters of a raspberry farmers. We now have a nine member Royal Family that includes three young women, ages 17-25, four children, ages 6-9, and two seniors who are over age 55. The Royal Family serves for an entire year traveling to other city''s celebrations representing the community of Hopkins and act as ambassadors encouraging them to visit Hopkins.', 'http://www.raspberrycapital.com/sponsors/', 9);
+Each year people who work or live in Hopkins have the opportunity to participate in the festival and can choose to run as Raspberry Festival Royalty. This tradition began at the first Raspberry Festival with the crowning of a Raspberry Queen and her court, who were all daughters of a raspberry farmers. We now have a nine member Royal Family that includes three young women, ages 17-25, four children, ages 6-9, and two seniors who are over age 55. The Royal Family serves for an entire year traveling to other city''s celebrations representing the community of Hopkins and act as ambassadors encouraging them to visit Hopkins.', 'http://www.raspberrycapital.com/sponsors/', 11);
 -- USE VENUE ID FROM ABOVE INSERT
 -- Event Type --
 INSERT INTO "junction_event_type"
@@ -756,4 +775,81 @@ INSERT INTO "junction_event_residency"
     (event_id, residency_id, percentage)
 VALUES
     (11, 1, 80),
-    (11, 2, 20); -- Replace first number with event id, third number with %
+    (11, 2, 20);
+-- Replace first number with event id, third number with %
+
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, venue_id, event_sponsorship_kit)
+VALUES
+    ('Minnesota State Fair 2020', '1859', '2020-08-27 13:00:09.250411+00', '2020-09-07 20:30:09.250411+00', 'https://www.cuningham.com/wp-content/uploads/2016/04/state-fair-lulu-blue-barn-06.jpg', 'https://www.mnstatefair.org/', false, '170000', 'Today, often referred to as the “Great Minnesota Get-Together,” the annual Minnesota State Fair is one of the most popular tourist destinations in the region. The fair attracts more than 2 million guests annually.
+
+This end-of-summer tradition is held the 12 days leading up to and through Labor Day.
+
+The fair employs nearly 90 year-round full-time staff members. During the summer, about 450 seasonal staff are added. More than 2,300 people are hired as fair-time staff members.
+
+Located mid-way between Minneapolis and St. Paul, the 322-acre Minnesota State Fairgrounds is renowned for its beautiful gardens and architecture reflecting the art deco and Works Progress Administration eras.
+
+Hundreds of events are held on the fairgrounds throughout the year during the non-fair time, including horse and livestock competitions, merchandise sales, expositions, car shows and more.', 'Melissa Varriano', 'Sponsorship Supervisor', 'fairinfo@mnstatefair.org', '651-288-4306', 'minnesotastatefair', 'mnstatefair', 'mnstatefair', 'Nestled between the Twin Cities of Minneapolis and St. Paul, the Minnesota State Fair provides guaranteed visibility and maximum guest exposure. The Minnesota State Fair has the largest daily attendance of any fair or festival in the nation, giving you the opportunity to reach the maximum number of people in the minimum amount of time. Your company will benefit from public awareness of your product or service, sampling, couponing and retail sales activities.
+
+The Minnesota State Fair is the ideal platform to reach more than two million potential customers in only 12 days (an average of more than 177,000 per day in 2019). Affectionately known as the Great Minnesota Get-Together, the fair’s ever-growing and loyal fan base is what makes this exhibition the “must-stop” destination for sponsors and mobile marketing units promoting across the country. Surveys reveal that a whopping 85% of guests visit the fair every year and an additional 12% visit every other year or every five years. The 2021 fair will run Thursday, Aug. 26 through Monday, Labor Day, Sept. 6.
+
+This annual high-profile 12-day fair with a 150+-year history, features more than 900 entertainment performances on free stages plus a Grandstand stage presenting internationally known artists. Shop more than 1,200 exhibit booths, including 300 food vendors and dozens of sponsors and touring promotional exhibits. Visitors enjoy spectacular educational experiences at the award-winning Eco Experience, History & Heritage Center, Pet Pavilions, CHS Miracle of Birth Center and many other exhibits.
+
+We invite you to join our many successful sponsors.  Sponsorship Application: https://assets.mnstatefair.org/pdf/20-sponsorship-application.pdf', 2, 'https://assets.mnstatefair.org/pdf/19-map-color.pdf');
+
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (12, 10);
+
+-- DEMO AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (12, 1, 25),
+    (12, 2, 5),
+    (12, 3, 25),
+    (12, 4, 10),
+    (12, 5, 10),
+    (12, 6, 10),
+    (12, 7, 15);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (12, 1, 10),
+    (12, 2, 35),
+    (12, 3, 40),
+    (12, 4, 10),
+    (12, 5, 3),
+    (12, 6, 1),
+    (12, 7, 1);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (12, 1, 45),
+    (12, 2, 45),
+    (12, 3, 10);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (12, 1, 80),
+    (12, 2, 20);
+-- Replace first number with event id, third number with %
+
+INSERT INTO "sponsorships"
+    (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
+VALUES
+    ('Billboard (Small)', '15000', 'https://images.unsplash.com/photo-1559227582-558eeaccd1fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'Rent a small billboard near the Grandstand for the duration of the fair. The size of the billboard is 18 by 12 feet. Limit 4. More information can be found at: https://www.mnstatefair.com/sponsorship/sm_bb', 12),
+    ('Billboard (Large)', '17000', 'https://images.unsplash.com/photo-1561898329-9ad7d76fbb2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'Rent a large billboard near the Grandstand for the duration of the fair.  The size of the billboard is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12),
+    ('Booth (Small)', '22000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-117.png&r=0&g=0&b=0', 'Rent a small booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12),
+    ('Booth (Large)', '25000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-116.png&r=0&g=0&b=0', 'Rent a large booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12);
+
+SELECT *
+FROM event;

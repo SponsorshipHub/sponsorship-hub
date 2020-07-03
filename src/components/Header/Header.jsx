@@ -83,6 +83,7 @@ class Header extends Component {
                             type="search" variant="outlined" size="small"
                             id="search" className={classes.searchTextField}
                             InputProps={{
+                                autoComplete: 'off',
                                 startAdornment: (
                                     <InputAdornment className={classes.search} position="start">
                                         <SearchIcon className={classes.notification} />

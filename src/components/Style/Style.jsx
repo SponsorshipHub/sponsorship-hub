@@ -239,6 +239,12 @@ const styles = {
     },
     whiteSpace:{
         whiteSpace: 'pre-wrap'
+    },
+    coralOnHover:{
+        color: 'black',
+        '&:hover': {
+            color: "#F45255",
+        },
     }
 }
 

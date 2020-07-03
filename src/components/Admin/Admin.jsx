@@ -23,6 +23,7 @@ class Admin extends Component {
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_USER_LIST'});
         document.title = `Sponsorship Hub - Admin`; // Sets browser's title
+        if (this.props.user.access_level !== 3) { this.props.history.push(`/error`) }
     }
     
     componentDidUpdate(prevProps){
@@ -74,9 +75,7 @@ class Admin extends Component {
         })
     }
 
-    render() {
-        // console.log(`||||||||||`, this.props.userList);
-        
+    render() {        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -110,7 +109,7 @@ class Admin extends Component {
                                     <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
-                                    <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon/></TableCell>
+                                    <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon className={classes.coralOnHover}/></TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
@@ -127,7 +126,8 @@ class Admin extends Component {
 Admin.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    userList: reduxState.admin
+    userList: reduxState.admin,
+    user: reduxState.user
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(Admin));
