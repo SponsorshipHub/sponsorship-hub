@@ -90,57 +90,76 @@ router.post('/type/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
 });
 
 // UPDATE ROUTE for ONE EVENT
-router.put('/update/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
+router.put('/update/:id', rejectUnauthenticated, rejectLevel1, async (req, res) => {
     const r = req.body;
     const venue_id = req.params.id;
-    console.log('REQ BODY FOR UPDATE IS:', r)
-    const query = `UPDATE "event"
-SET 
-event_name = $1,
-year_established = $2,
-start_date = $3,
-end_date = $4,
-event_image_url = $5,
-event_website = $6,
-event_status = $7,
-estimated_attendance = $8,
-event_notes = $9,
-contact_name = $10,
-contact_title = $11,
-contact_email = $12,
-contact_phone = $13,
-event_facebook = $14,
-event_twitter = $15,
-event_instagram = $16,
-event_description = $17,
-venue_id = $18
-WHERE id = $19;`
-    pool.query(query, [
-        r.event_name, 
-        r.year_established, 
-        r.start_date, 
-        r.end_date, 
-        r.event_image_url, 
-        r.event_website, 
-        r.event_status, 
-        r.estimated_attendance, 
-        r.event_notes, 
-        r.contact_name, 
-        r.contact_title, 
-        r.contact_email, 
-        r.contact_phone, 
-        r.event_facebook, 
-        r.event_twitter, 
-        r.event_instagram, 
-        r.event_description, 
-        venue_id, 
-        r.event_id
-    ]).then(result => {
+    // console.log('REQ BODY FOR UPDATE IS:', r)
+    const update = await pool.connect();
+    try{
+        await update.query('BEGIN');
+        // Updating the Event
+        const query = `UPDATE "event"
+        SET 
+        event_name = $1,
+        year_established = $2,
+        start_date = $3,
+        end_date = $4,
+        event_image_url = $5,
+        event_website = $6,
+        event_status = $7,
+        estimated_attendance = $8,
+        event_notes = $9,
+        contact_name = $10,
+        contact_title = $11,
+        contact_email = $12,
+        contact_phone = $13,
+        event_facebook = $14,
+        event_twitter = $15,
+        event_instagram = $16,
+        event_description = $17,
+        venue_id = $18
+        WHERE id = $19;`
+
+        let eventValues = [
+            r.event_name,
+            r.year_established,
+            r.start_date,
+            r.end_date,
+            r.event_image_url,
+            r.event_website,
+            r.event_status,
+            r.estimated_attendance,
+            r.event_notes,
+            r.contact_name,
+            r.contact_title,
+            r.contact_email,
+            r.contact_phone,
+            r.event_facebook,
+            r.event_twitter,
+            r.event_instagram,
+            r.event_description,
+            venue_id,
+            r.event_id
+        ];
+
+        await update.query(query, eventValues);
+
+        // Updating the Event Type
+        let typeQuery = `
+        UPDATE junction_event_type
+        SET type_id = $1
+        WHERE event_id = $2;`;
+
+        await update.query(typeQuery, [r.event_type, r.event_id]);
+        await update.query('COMMIT');
         res.sendStatus(200);
-    }).catch(err => {
-        console.log(err);
-        res.sendStatus(500);
-    })
+    }catch(err){
+        console.log(`ROLLBACK`, err);
+        await update.query('ROLLBACK');
+        throw err;
+    }finally{
+        update.release();
+    }
 });
 
 router.delete('/delete/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
