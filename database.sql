@@ -1,6 +1,8 @@
 -- Last Updated Jul 3, 2020 10:52 AM
 
--- Added: Two new brand users.  Updated State Fair Sponsorship.
+-- Added: Two new brand users.  
+-- Updated State Fair Sponsorship.
+-- Added State Fair 2020 for Alan to DELETE.
 
 -- Database Name: sponsorship_hub
 
