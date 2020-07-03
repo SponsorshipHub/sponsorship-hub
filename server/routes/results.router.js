@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('in /results GET default');
     let queryString = `
         SELECT * FROM "event"
-        ORDER BY "start_date" DESC;
+        ORDER BY event.id DESC;
     `;
     pool.query(queryString).then((result) => {
         res.send(result.rows);
@@ -37,7 +37,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
         console.log('No inputs have been filled.');
         let queryString = `
             SELECT * FROM "event"
-            ORDER BY "start_date" DESC;
+            ORDER BY event.id DESC;
             `;
         pool.query(queryString).then((result) => {
             res.send(result.rows);
