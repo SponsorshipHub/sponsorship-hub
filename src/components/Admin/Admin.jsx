@@ -74,9 +74,7 @@ class Admin extends Component {
         })
     }
 
-    render() {
-        // console.log(`||||||||||`, this.props.userList);
-        
+    render() {        
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -110,7 +108,7 @@ class Admin extends Component {
                                     <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
-                                    <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon/></TableCell>
+                                    <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon className={classes.coralOnHover}/></TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
