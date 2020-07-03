@@ -291,8 +291,10 @@ class CreateEvent extends Component {
                                     open={this.state.venue_open}
                                     onClose={this.venueClose}
                                     onOpen={this.venueOpen}
-                                    value={this.state.venue_id}
+                                    // value={this.state.venue_id}
+                                    defaultValue="venue"
                                     onChange={(event) => this.venueSelector(event)}>
+                                    <MenuItem value='venue'>Select a Venue</MenuItem>
                                         {this.props.venues.map(venue =>
                                             <MenuItem key={venue.id} value={venue.id}>{venue.name}</MenuItem>
                                         )}
@@ -307,8 +309,10 @@ class CreateEvent extends Component {
                                     open={this.state.event_open}
                                     onClose={this.eventClose}
                                     onOpen={this.eventOpen}
-                                    value={this.state.event_type}
+                                    // value={this.state.event_type}
+                                    defaultValue="type"
                                     onChange={(event) => this.eventSelector(event)}>
+                                    <MenuItem value='type'>Select an Event Type</MenuItem>
                                     <MenuItem value='1'>Art Festival</MenuItem>
                                     <MenuItem value={2}>Auto Show</MenuItem>
                                     <MenuItem value={3}>Beer Festival</MenuItem>
@@ -366,8 +370,10 @@ class CreateEvent extends Component {
                                         open={this.state.state_open}
                                         onClose={this.stateClose}
                                         onOpen={this.stateOpen}
-                                        value={this.state.venue_state}
+                                        // value={this.state.venue_state}
+                                        defaultValue="state"
                                         onChange={(event) => this.stateSelector(event)}>
+                                        <MenuItem value='state'>Select a State</MenuItem>
                                         <MenuItem value='Alabama'>Alabama</MenuItem>
                                         <MenuItem value='Alaska'>Alaska</MenuItem>
                                         <MenuItem value='Arizona'>Arizona</MenuItem>
