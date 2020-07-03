@@ -37,8 +37,11 @@ router.post('/register', (req, res, next) => {
     from: 'lamportkn@gmail.com',
     cc: 'lamportkn@gmail.com', // 2nd email recipient
     // bcc: 'lamportkn@gmail.com', // 3rd email recipient
-    subject: 'Sponsorship Hub Membership Approval',
-    text: `Hello ${name}, please wait for your approval. Our admin at Sponsorship Hub will get back to you as soon as possible. Thank You.`,
+    subject: `Sponsorship Hub Membership Approval - ${name}`,
+    text: `${name} has requested approval on Sponsorship Hub pending admin approval. 
+    
+    Sponsorship Hub
+    612-301-3010`,
     //if you want bold
     // html: `<strong>Hello ${name}, please wait for your approval. Our admin at Sponsorship Hub will get back to you as soon as possible.Thank You.</strong>`
   }
