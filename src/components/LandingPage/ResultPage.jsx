@@ -30,6 +30,7 @@ class ResultPage extends Component {
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
         window.scrollTo(0, 0);
+        if (this.props.user.access_level === 0) { this.props.history.push(`/error`) }
     };//end componentDidMount
 
     handleOpen = () => {
@@ -321,6 +322,7 @@ ResultPage.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
     results: reduxState.results,
-    types: reduxState.eventType
+    types: reduxState.eventType,
+    user: reduxState.user
 });
 export default connect(putStateOnProps)(withStyles(styles)(ResultPage));

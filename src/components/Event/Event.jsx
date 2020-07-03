@@ -23,6 +23,7 @@ class Event extends Component {
     componentDidMount() {
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id })
         window.scrollTo(0, 0);
+        if (this.props.user.access_level===0) {this.props.history.push(`/error`)}
     }
 
     render() {
