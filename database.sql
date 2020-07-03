@@ -1,9 +1,6 @@
--- Last Updated Jul 3, 2020 3:45 PM
+-- Last Updated Jul 3, 2020 4:30 PM
 
--- Added: Two new brand users.
--- Added Sturgis 2020 and Sundance 2021
--- Updated State Fair Sponsorship.
--- Added State Fair 2020 for Alan to DELETE.
+-- Added Monster Bash 2021, Sturgis 2020 and Sundance 2021
 
 -- Database Name: sponsorship_hub
 
@@ -997,6 +994,58 @@ INSERT INTO "junction_event_residency"
 VALUES
     (14, 1, 50),
     (14, 2, 50);
+-- Replace first number with event id, third number with %
+
+-- Create Event --
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_notes, venue_id)
+VALUES
+    ('Monster Bash 2021', '1994', '07/16/2021', '07/18/2021', 'https://unsplash.com/photos/-qSVn7qAmQU/download?force=true&w=1920', 'https://www.monsterbashnews.com/bash-June.html', FALSE, '4000', 'Not just any convention.  The Monster Bash Movie Convention is even more. It''s a state of mind. A place, like Skull Island, where our imaginations were ignited and still burn behind our everyday jobs and life. The Bash is Forrest Ackerman''s classic monster magazine, the local TV Horror Host, the Aurora monster models, the monster toys of all shapes and plastics.... It''s a place when Halloween was eagerly awaited. It''s the horror and science fiction paperback collections, and most of all it is...the movies.', 'Michael Myers', 'Event Coordinator', 'grindhouse@monsterbash.com', '952-981-0878', 'MonsterBashCon', 'Notes to come for Monster Bash 2021.', 11);
+-- USE VENUE ID FROM ABOVE INSERT
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (15, 6);
+
+-- DEMO AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (15, 1, 25),
+    (15, 2, 5),
+    (15, 3, 25),
+    (15, 4, 10),
+    (15, 5, 10),
+    (15, 6, 10),
+    (15, 7, 15);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (15, 1, 10),
+    (15, 2, 35),
+    (15, 3, 40),
+    (15, 4, 10),
+    (15, 5, 3),
+    (15, 6, 1),
+    (15, 7, 1);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (15, 1, 45),
+    (15, 2, 45),
+    (15, 3, 10);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (15, 1, 80),
+    (15, 2, 20);
 -- Replace first number with event id, third number with %
 
 SELECT *
