@@ -1,8 +1,6 @@
--- Last Updated Jul 3, 2020 10:52 AM
+-- Last Updated Jul 3, 2020 4:30 PM
 
--- Added: Two new brand users.  
--- Updated State Fair Sponsorship.
--- Added State Fair 2020 for Alan to DELETE.
+-- Added Monster Bash 2021, Sturgis 2020 and Sundance 2021
 
 -- Database Name: sponsorship_hub
 
@@ -217,7 +215,7 @@ INSERT INTO "user"
 VALUES
     ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 2),
     ('Heather Baird', 'Event Rep.', 'FizzBuzz Soda', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 0),
-    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'd_smath@tesla.com', '763-201-1530', 1),
+    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'j_smiff@tesla.com', '763-201-1530', 1),
     ('Deb Hannah', 'Advertising', 'L''Oreal Cosmetics', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'deb.hannah@loreal.com', '763-400-3230', 1),
     ('Alan Henderson', 'Senior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-269-2385', 2),
     ('Tan Nguyen', 'Expert Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-501-3800', 2),
@@ -850,6 +848,205 @@ VALUES
     ('Billboard (Large)', '17000', 'https://images.unsplash.com/photo-1561898329-9ad7d76fbb2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80', 'Rent a large billboard near the Grandstand for the duration of the fair.  The size of the billboard is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12),
     ('Booth (Small)', '22000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-117.png&r=0&g=0&b=0', 'Rent a small booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12),
     ('Booth (Large)', '25000', 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-weather-116.png&r=0&g=0&b=0', 'Rent a large booth near the Bazaar for the duration of the fair.  The size of the booth is 24 by 18 feet.  Limit 2.  More information can be found at: https://www.mnstatefair.org/get-involved/sponsorship/', 12);
+
+-- SINGLE EVENT CREATION, DO ONE INSERT AT A TIME -- STURGIS
+-- Create Venue --
+INSERT INTO venues
+    (name, address, city, state, zipcode, venue_notes, venue_capacity)
+VALUES
+    ('Sturgis SD', '1040 Harley-Davidson Way', 'Sturgis', 'SD', '57785', 'The City of Sturgis', '800000');
+-- Create Event --
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, event_sponsorship_kit, venue_id)
+VALUES
+    ('Sturgis, 2020', '1936', '2020-08-07 13:00:09.250411+00', '2020-08-16 13:00:09.250411+00', 'https://www.sturgismotorcyclerally.com/uploads/sturgis-2019-18_li162.jpg', 'https://www.sturgismotorcyclerally.com/', FALSE, '500000', 'The Sturgis Motorcycle Rally is an American motorcycle rally held annually in Sturgis, South Dakota, for ten days usually starting the first Friday in August. In 2015 the city of Sturgis officially expanded the dates to have the rally start on the Friday before the first full week of August and end on the second Sunday. In 2016, Sturgis City Council passed a resolution to begin the Rally on the first Friday in August every year. It was begun in 1938 by a group of Indian Motorcycle riders and was originally held for stunts and races. Attendance has historically been around 500,000 people, reaching a high of over 700,000 in 2015. The event generates around $800 million in revenue.', 'ContactName', 'Title', 'assistant@sturgisareachamber.com', '605-347-2556', 'sturgisrally', 'SturgisRally', 'Instagram', 'Event_Notes', 'https://mcusercontent.com/80907b7c5508415e69820b98e/files/9488aba8-9a8f-413d-970e-f925a7cbde9a/Website_Printable_Sponsorship_Kit.pdf', '12');
+-- USE VENUE ID FROM ABOVE INSERT
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (13, 8);
+-- Sponsors --
+INSERT INTO "sponsorships"
+    (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
+VALUES
+    ('Platinum', '750', './images/sponsor_icon.png', 'Business Listed on social media event page. Logo in event program or on official event map. Sponsor shout-out in official Chamber social media pages. Shout-out during 2-3 minute speaking opportunity on stage (if applicable).', 13);
+-- DEMO AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (13, 1, 0),
+    (13, 2, 25),
+    (13, 3, 25),
+    (13, 4, 10),
+    (13, 5, 20),
+    (13, 6, 15),
+    (13, 7, 5);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (13, 1, 10),
+    (13, 2, 15),
+    (13, 3, 15),
+    (13, 4, 20),
+    (13, 5, 20),
+    (13, 6, 15),
+    (13, 7, 5);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (13, 1, 40),
+    (13, 2, 40),
+    (13, 3, 20);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (13, 1, 5),
+    (13, 2, 95);
+-- Replace first number with event id, third number with %
+
+--Sundance   
+-- SINGLE EVENT CREATION, DO ONE INSERT AT A TIME --
+-- Create Venue --
+INSERT INTO venues
+    (name, address, city, state, zipcode, venue_notes, venue_capacity)
+VALUES
+    ('Sundance (various locations)', '', 'Park City', 'UT', '84604', 'Sundance is centered in Park City and has events Salt Lake City, Ogden City, and at Redfords Sundance Village.  The Sundance Film Festival is open to the public, with tickets going on sale in advance; locals can even buy their tickets two days ahead of the rest of the world.', '120000');
+-- Create Event --
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, event_sponsorship_kit, venue_id)
+VALUES
+    ('Sundance Film Festival, 2021', '1978', '2021-01-21 13:00:09.250411+00', '2021-01-31 13:00:09.250411+00', 'https://www.sundance.org/comfy/cms/files/files/000/008/822/web_optimized/2015_Screening_InFootballWeTrust_AzikiweAboagye-1088x408.jpg', 'https://www.sundance.org/festivals/sundance-film-festival/about', False, '120000', 'Every winter in Utah, the Sundance Film Festival becomes the ultimate gathering of original storytellers and audiences seeking new voices and fresh perspectives. Our annual program includes dramatic and documentary features and short films; series and episodic content; and New Frontier, showcasing emerging media in the form of multimedia installations, performances, and films. We also host daily filmmaker conversations, panel discussions, and live music events. Since 1985, hundreds of films that have launched at the Festival have gained critical recognition and acclaim, reaching new audiences worldwide. The 2021 Sundance Film Festival will take place from January 21 to 31, 2021. Submissions for the 2021 Sundance Film Festival will open on May 1, 2020.', 'Tabitha Jackson', 'Festival Director', 'corporategiving@sundance.org', '(310) 492-2265', 'sundance', 'sundancefest', 'sundancefestival', 'popcorn not provided', 'SponsorKit_URL', 13);
+-- USE VENUE ID FROM ABOVE INSERT
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (14, 6);
+-- Sponsors --
+INSERT INTO "sponsorships"
+    (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id)
+VALUES
+    ('Audience engagement', '500', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'Audience Engagement
+Each year, storytellers present their new work to an audience of 120,000+ people at the Sundance Film Festival. In addition, Sundance Institute presents public programs in communities across the U.S. and 11 international locations. Through these programs, Sundance Institute reaches and engages thousands of additional consumers annually and reaches millions more through press, web, and social platforms. Current partnership opportunities include custom packages for the following programs:
+Sundance Film Festival (Park City, Utah) – January
+Sundance London – May
+Sundance Film Festival - Hong Kong Selects – September
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14),
+    ('Artist and Alumni Support', '1000', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'Since 1981, Sundance Institute has supported a vibrant community of more than 7,500 storytellers from around the world. In the most recent fiscal year, the Institute supported 790 artists, including 48% women and hailing from 58 countries. Each year the Institute provides artists with programs enabling them to hone their craft and grants totaling over $3M to support their work through development, production, and distribution. Through named fellowships and awards, partners align with the next generation of artists who are breaking new ground, pushing creative boundaries, and igniting new ideas.
+Sundance Co//ab extends the Sundance experience into the digital world, offering a safe space to learn, share and connect, reaching a new generation of global storytellers. Sundance Co//ab offers the opportunity to:
+Learn: From our custom-created and curated content video library, featuring Sundance Advisors, live, online learning courses and master classes, self-paced learning pathways and curated resources
+Share: Work in Progress; Giving and receiving feedback from the community and Sundance Advisors, take part in our monthly challenges and ask questions of our Sundance Advisors
+Connect: Access free online events, join in online discussions, and access opportunities
+Alumni of the Institute''s programs range from Paul Thomas Anderson (Hard Eight, Boogie Nights, There Will Be Blood) and Nicole Holofcener (Lovely and Amazing, Enough Said), to Cary Fukunaga (True Detective, Sin Nombre), Lynne Shelton (Laggies, Humpday), Ryan Coogler (Fruitvale Station), and many more notable artists.
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14),
+    ('Original Content', '1500', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'Sundance Institute produces content that reaches a cumulative 6MM+ people annually. Ranging from interviews with emerging and established artists to series that highlight the craft of film and theatre making, we offer many opportunities to connect brands with the creativity and innovation that the Institute supports and celebrates.
+The Institute also invites a small number of supporters access to customized content developed by artists within our community.
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14),
+    ('Client and Employee Hospitality', '2000', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'Corporate Hospitality Packages provide priority access for large groups attending the Sundance Film Festival and other events throughout the year. Bespoke packages can include tickets to film festival screenings, private screenings with filmmaker participation, or other custom options.
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14),
+    ('Technology and Innovation', '2500', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'Sundance Institute has a rich history of collaboration with technology companies that provide the resources and tools that are essential to artists and their creative processes.
+Brands active within the technology space also have the opportunity to align with New Frontier, a program supporting artists working at the intersection of art, film and technology. The New Frontier initiative includes an exhibition at the Sundance Film Festival, Labs and an Artist-in-Residence program that places artists within organizations to work directly with today''s leading technologists.
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14),
+    ('Special Events', '3000', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT02lRMIxA9v0r2fY98qmhvxcSSs7JniicjZg&usqp=CAU', 'The Institute''s community of artists, audiences, and partners comes together for a variety of special events held throughout the year. Gatherings for alumni take place in concert with cultural events across the country, each edition of the Sundance Film Festival kicks off with the An Artist at the Table Opening Event, and the annual Summer Benefit honors singular contributions to and achievements in storytelling. At the 2019 Benefit event, the Institute presented the LA Premiere of The Farewell and honored filmmaker Lulu Wang with the Sundance Institute Vanguard Award.
+To receive a custom proposal, please contact corporategiving@sundance.org.', 14);
+-- DEM AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (14, 1, 0),
+    (14, 2, 25),
+    (14, 3, 25),
+    (14, 4, 10),
+    (14, 5, 20),
+    (14, 6, 15),
+    (14, 7, 5);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (14, 1, 10),
+    (14, 2, 15),
+    (14, 3, 15),
+    (14, 4, 20),
+    (14, 5, 20),
+    (14, 6, 15),
+    (14, 7, 5);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (14, 1, 40),
+    (14, 2, 40),
+    (14, 3, 20);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (14, 1, 50),
+    (14, 2, 50);
+-- Replace first number with event id, third number with %
+
+-- Create Event --
+INSERT INTO "event"
+    (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_notes, venue_id)
+VALUES
+    ('Monster Bash 2021', '1994', '07/16/2021', '07/18/2021', 'https://unsplash.com/photos/-qSVn7qAmQU/download?force=true&w=1920', 'https://www.monsterbashnews.com/bash-June.html', FALSE, '4000', 'Not just any convention.  The Monster Bash Movie Convention is even more. It''s a state of mind. A place, like Skull Island, where our imaginations were ignited and still burn behind our everyday jobs and life. The Bash is Forrest Ackerman''s classic monster magazine, the local TV Horror Host, the Aurora monster models, the monster toys of all shapes and plastics.... It''s a place when Halloween was eagerly awaited. It''s the horror and science fiction paperback collections, and most of all it is...the movies.', 'Michael Myers', 'Event Coordinator', 'grindhouse@monsterbash.com', '952-981-0878', 'MonsterBashCon', 'Notes to come for Monster Bash 2021.', 11);
+-- USE VENUE ID FROM ABOVE INSERT
+-- Event Type --
+INSERT INTO "junction_event_type"
+    (event_id, type_id)
+VALUES
+    (15, 6);
+
+-- DEMO AGE JUNCTION --
+INSERT INTO "junction_event_age"
+    (event_id, age_range_id, percentage)
+VALUES
+    (15, 1, 25),
+    (15, 2, 5),
+    (15, 3, 25),
+    (15, 4, 10),
+    (15, 5, 10),
+    (15, 6, 10),
+    (15, 7, 15);
+-- Replace first number with event id, third number with %
+-- DEMO INCOME JUNCTION --
+INSERT INTO "junction_event_income"
+    (event_id, income_range_id, percentage)
+VALUES
+    (15, 1, 10),
+    (15, 2, 35),
+    (15, 3, 40),
+    (15, 4, 10),
+    (15, 5, 3),
+    (15, 6, 1),
+    (15, 7, 1);
+-- Replace first number with event id, third number with %
+-- DEMO GENDER JUNCTION --
+INSERT INTO "junction_event_gender"
+    (event_id, gender_id, percentage)
+VALUES
+    (15, 1, 45),
+    (15, 2, 45),
+    (15, 3, 10);
+-- Replace first number with event id, third number with %
+-- DEMO RESIDENCY JUNCTION --
+INSERT INTO "junction_event_residency"
+    (event_id, residency_id, percentage)
+VALUES
+    (15, 1, 80),
+    (15, 2, 20);
+-- Replace first number with event id, third number with %
 
 SELECT *
 FROM event;
