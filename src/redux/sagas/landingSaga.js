@@ -109,7 +109,7 @@ function* getSearch(action) {
     } catch (err) {
         console.log('Error in defaultResults saga:', err)
     }
-};//end getDefaultResults
+};//end getSearch
 
 
 // this function gets our event types so we can map through our event type selectors

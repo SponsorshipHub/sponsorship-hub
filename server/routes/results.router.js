@@ -101,7 +101,7 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
 // : state /: start /: end /: type /: minAttend /: maxAttend /: minSponsor /: maxSponsor
 // GET router for ADVANCED SEARCH FILTER
 router.get('/filter', rejectUnauthenticated, rejectLevel0, (req, res) => {
-    console.log('TEST MEEEEEE', req.query)
+    // console.log('TEST MEEEEEE', req.query)
 
     let state = '';
     let start = '1753-01-01';
