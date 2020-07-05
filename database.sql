@@ -1,6 +1,9 @@
--- Last Updated Jul 3, 2020 4:30 PM
+-- Last Updated Jul 3, 2020 3:45 PM
 
--- Added Monster Bash 2021, Sturgis 2020 and Sundance 2021
+-- Added: Two new brand users.
+-- Added Sturgis 2020 and Sundance 2021
+-- Updated State Fair Sponsorship.
+-- Added State Fair 2020 for Alan to DELETE.
 
 -- Database Name: sponsorship_hub
 
@@ -213,7 +216,7 @@ CREATE TABLE "sponsorships"
 INSERT INTO "user"
     (name, title, company, password, username, phone, access_level)
 VALUES
-    ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@pepsi.com', '952-210-1430', 2),
+    ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@sshub.com', '952-210-1430', 2),
     ('Heather Baird', 'Event Rep.', 'FizzBuzz Soda', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 0),
     ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'j_smiff@tesla.com', '763-201-1530', 1),
     ('Deb Hannah', 'Advertising', 'L''Oreal Cosmetics', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'deb.hannah@loreal.com', '763-400-3230', 1),
@@ -917,7 +920,7 @@ VALUES
 INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity)
 VALUES
-    ('Sundance (various locations)', '', 'Park City', 'UT', '84604', 'Sundance is centered in Park City and has events Salt Lake City, Ogden City, and at Redfords Sundance Village.  The Sundance Film Festival is open to the public, with tickets going on sale in advance; locals can even buy their tickets two days ahead of the rest of the world.', '120000');
+    ('Sundance Resort', '1 Sundance Drive', 'Park City', 'UT', '84604', 'Sundance is centered in Park City and has events Salt Lake City, Ogden City, and at Redfords Sundance Village.  The Sundance Film Festival is open to the public, with tickets going on sale in advance; locals can even buy their tickets two days ahead of the rest of the world.', '120000');
 -- Create Event --
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, event_sponsorship_kit, venue_id)
