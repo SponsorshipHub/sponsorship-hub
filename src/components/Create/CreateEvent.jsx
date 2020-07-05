@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
-import { Divider, FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
+import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -52,9 +52,9 @@ class CreateEvent extends Component {
 
     secretButton = () => {
         this.setState({
-            event_name: 'Minnesota Renaissance Festival',
+            event_name: 'Minnesota Renaissance Festival 2020',
             start_date: '2020-08-22',
-            end_date: '2021-10-04',
+            end_date: '2020-10-04',
             event_type: '5',
             estimated_attendance: '175000',
         })
@@ -103,7 +103,6 @@ Free Parking!`,
 
     componentDidMount = () => {
         document.title = "Sponsorship Hub - Create Event"; // Sets browser's title
-        // console.log('componentDidMount: FETCH_VENUES');
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });// get our event types
         window.scrollTo(0, 0);
@@ -164,7 +163,7 @@ Free Parking!`,
         Swal.fire({
             title: `${this.state.event_name}`,
             text: `Create this new event?`,
-            icon: 'warning',
+            // icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',

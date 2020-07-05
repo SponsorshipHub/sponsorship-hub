@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     // console.log('in /landing GET');
     let queryString = `
         SELECT * FROM "event"
-        ORDER BY "start_date" 
+        ORDER BY event.id 
         DESC LIMIT 6;
         ;`
     pool.query(queryString).then((result) => {
