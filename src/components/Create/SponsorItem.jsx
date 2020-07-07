@@ -100,8 +100,8 @@ class SponsorItem extends Component {
                         <Grid item md={8} xs={7} className={classes.formMargin}><Typography>{this.props.sponsorItem.sponsor_description}</Typography></Grid>
                     </Grid>
                     <Grid item md={2} xs={7}>
-                        <EditIcon onClick={this.handleEditClick}></EditIcon>
-                        <DeleteIcon onClick={this.handleDelete}></DeleteIcon>
+                        <EditIcon className={classes.coralOnHover} onClick={this.handleEditClick}></EditIcon>
+                        <DeleteIcon className={classes.coralOnHover} onClick={this.handleDelete}></DeleteIcon>
                     </Grid>
                     <Grid item md={9} xs={7}></Grid>
                 </Grid>
