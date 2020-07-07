@@ -155,7 +155,7 @@ class EditEvent extends Component {
         Swal.fire({
             title: `${this.state.event_name}`,
             text: `Accept all changes and continue?`,
-            icon: 'question',
+            // icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#296EC8',
             cancelButtonColor: '#F45255',
