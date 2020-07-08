@@ -14,7 +14,6 @@ function* landingSaga() {
 // generator functions
 // this function controls the GET for the landing page featured events
 function* getLanding() {
-    // console.log('---------------> in fetchLanding saga');
     try {
         //send GET request for /landing and send to our reducer
         const response = yield axios.get(`/landing`);
@@ -29,7 +28,6 @@ function* getLanding() {
 
 //this function gets the default results for the page
 function* getDefaultResults() {
-    // console.log('--------> in getDefaultResults saga');
     try {
         const response = yield axios.get('/results');
         yield put({
@@ -51,7 +49,6 @@ function* getResults(action) {
         startDate = 'null';
         endDate = 'null';
     }
-    // console.log('-------------> in getResults saga', action.payload);
     try {
         //send GET request for /results and send to our reducer
         const response = yield axios.get(`/results/landing`, {
@@ -79,9 +76,8 @@ function* getAdvResults(action) {
     let minSponsorPrice = action.payload.minSponsorPrice;
     let maxSponsorPrice = action.payload.maxSponsorPrice;
     let income = action.payload.income;
-    console.log('----------> in getAdvResults', action.payload);
+
     try {
-        // const response = yield axios.get(`/results/${state}/${startD}/${endD}/${type}/${minAttend}/${maxAttend}/${minSponsorPrice}/${maxSponsorPrice}`);
         const response = yield axios.get(`/results/filter`, {
             params: {
                 state, startD, endD, type, minAttend, maxAttend, minSponsorPrice, maxSponsorPrice, income

@@ -41,7 +41,7 @@ router.post('/register', (req, res, next) => {
     text: `${name} has requested approval on Sponsorship Hub pending admin approval. 
     
     Sponsorship Hub
-    612-301-3010`,
+    612-100-1000`,
     //if you want bold
     // html: `<strong>Hello ${name}, please wait for your approval. Our admin at Sponsorship Hub will get back to you as soon as possible.Thank You.</strong>`
   }

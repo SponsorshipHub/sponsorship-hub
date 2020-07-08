@@ -98,7 +98,6 @@ router.get('/landing', rejectUnauthenticated, (req, res) => {
     }
 });//end get Router for results landing page
 
-// : state /: start /: end /: type /: minAttend /: maxAttend /: minSponsor /: maxSponsor
 // GET router for ADVANCED SEARCH FILTER
 router.get('/filter', rejectUnauthenticated, rejectLevel0, (req, res) => {
     // console.log('TEST MEEEEEE', req.query)

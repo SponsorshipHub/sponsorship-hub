@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
@@ -11,9 +10,7 @@ import styles from '../Style/Style';
 import Swal from 'sweetalert2/src/sweetalert2.js';
 import Header from '../Header/Header';
 
-
 class EditDemo extends Component {
-
     state = {
         event_id: this.props.match.params.id,
         //the id comes from the origin page to identify the event
@@ -260,8 +257,7 @@ class EditDemo extends Component {
 EditDemo.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
-    oneEvent: state.oneEvent,
-
+    oneEvent: state.oneEvent
 });
 
 // const putStateOnProps = reduxState => ({reduxState});

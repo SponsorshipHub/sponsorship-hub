@@ -18,7 +18,7 @@ Here are some screenshots of Sponsorship Hub
 
 **Advanced Search**
 
-![Advanced Search](./public/images/AdvSearch.png)
+![Advanced Search](./public/images/AdvancedSearch.png)
 
 **Event Page View**
 
@@ -28,15 +28,19 @@ Here are some screenshots of Sponsorship Hub
 
 ![Create Event](./public/images/CreateEvent.png)
 
-**Edit Page**
+**Admin User List**
 
-![Edit Page](./public/images/EditPage.png)
+![Admin User List](./public/images/userlist.png)
 
 ## Prerequisites
 
 Software required to install this application are as listed:
 
 * [Node.js](https://nodejs.org/en/)
+
+* [PostgreSQL](https://www.postgresql.org/)
+
+* [Nodemon](https://nodemon.io/)
 
 ## Installation
 

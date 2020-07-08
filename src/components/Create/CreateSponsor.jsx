@@ -144,8 +144,7 @@ class CreateSponsor extends Component {
 CreateSponsor.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
-    sponsors: state.sponsors,
-
+    sponsors: state.sponsors
 });
 
 // const putStateOnProps = reduxState => ({reduxState});
