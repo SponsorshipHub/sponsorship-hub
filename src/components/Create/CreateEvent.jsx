@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
-import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Paper, Typography, Input, Box, Button } from '@material-ui/core';
+import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Box, Button } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -87,6 +87,12 @@ class CreateEvent extends Component {
             Toast.fire({
                 icon: 'error',
                 title: 'Please enter estimated attendance'
+            }); return;
+        }
+        else if (this.state.event_type === '' || this.state.event_type === 'type') {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please choose an event type'
             }); return;
         }
         else if (this.state.start_date === '') {
@@ -276,15 +282,15 @@ class CreateEvent extends Component {
                                     onChange={(event) => this.eventSelector(event)}>
                                     <MenuItem value='type'>Select an Event Type</MenuItem>
                                     <MenuItem value='1'>Art Festival</MenuItem>
-                                    <MenuItem value={2}>Auto Show</MenuItem>
-                                    <MenuItem value={3}>Beer Festival</MenuItem>
-                                    <MenuItem value={4}>City Show</MenuItem>
+                                    <MenuItem value='2'>Auto Show</MenuItem>
+                                    <MenuItem value='3'>Beer Festival</MenuItem>
+                                    <MenuItem value='4'>City Show</MenuItem>
                                     <MenuItem value='5'>Cultural Festival</MenuItem>
-                                    <MenuItem value={6}>Film Show</MenuItem>
-                                    <MenuItem value={7}>Food & Wine Festival</MenuItem>
-                                    <MenuItem value={8}>Motorcycle Rally</MenuItem>
-                                    <MenuItem value={9}>Music Festival</MenuItem>
-                                    <MenuItem value={10}>Street Market Festival</MenuItem>
+                                    <MenuItem value='6'>Film Show</MenuItem>
+                                    <MenuItem value='7'>Food & Wine Festival</MenuItem>
+                                    <MenuItem value='8'>Motorcycle Rally</MenuItem>
+                                    <MenuItem value='9'>Music Festival</MenuItem>
+                                    <MenuItem value='10'>Street Market Festival</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid>

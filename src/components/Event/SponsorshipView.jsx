@@ -4,7 +4,7 @@ import SponsorshipPackage from './SponsorshipPackage';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper, Modal, Dialog, DialogTitle, DialogContent, Divider, DialogContentText } from '@material-ui/core';
+import { Grid, Typography, Box, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper} from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
