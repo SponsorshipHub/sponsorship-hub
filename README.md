@@ -6,7 +6,7 @@ Duration: 2 week sprint
 
 Sponsorship Hub is an web application that stores data from events such as festivals and gives brands interested in sponsoring those events the ability to search for the perfect fit using filters. Users may also create and edit events as desired which specific access that can be granted from the Admin. Sponsorship Hub stores collected data to reduce repetitive work for the researchers and connects brands with events quicker and easier.
 
-To see the fully functional site, please visit: [WEBSITEURL](WEBSITEURL)
+To see the fully functional site, please visit: [http://sponsorshiphub.herokuapp.com/#/home](http://sponsorshiphub.herokuapp.com/#/home)
 
 ## Screen Shots of Sponsorship Hub
 
@@ -92,3 +92,20 @@ To use this application feel free to use the following steps
 * Recharts
 
 * Passport
+
+
+## Acknowledgment
+
+Thanks to our instructors at Prime Digital Academy who helped equipped our group with the necessary skills and technologies to complete this application. Huge thanks to our client Karl Nauman for helping us bringing his vision of Sponsorship Hub to reality!
+
+## Support
+
+Original developers:
+
+Heather Baird | hrbaird10@gmail.com
+
+Tan Nguyen | tannguyen1024@gmail.com
+
+Alan Henderson | mr.alan.henderson@gmail.com
+
+Shaokee Moua | m.shaokee@gmail.com
