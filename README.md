@@ -98,9 +98,9 @@ To use this application feel free to use the following steps
 
 Thanks to our instructors at Prime Digital Academy who helped equipped our group with the necessary skills and technologies to complete this application. Huge thanks to our client Karl Nauman for helping us bringing his vision of Sponsorship Hub to reality!
 
-## Support
+## Developers
 
-Original developers:
+If you have any suggestions or issues, please email our team. Here are a list of the original developers as well as their contact email.
 
 Heather Baird | hrbaird10@gmail.com
 
