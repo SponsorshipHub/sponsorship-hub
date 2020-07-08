@@ -70,5 +70,4 @@ class SponsorshipPackage extends Component {
 // PropTypes allows us to import style.jsx for use
 SponsorshipPackage.propTypes = { classes: PropTypes.object.isRequired };
 
-// const putStateOnProps = reduxState => ({reduxState});
 export default connect()(withStyles(styles)(SponsorshipPackage));

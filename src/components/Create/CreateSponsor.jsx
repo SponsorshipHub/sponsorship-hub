@@ -16,7 +16,7 @@ class CreateSponsor extends Component {
         event_id: this.props.match.params.id,
         sponsor_name: "",
         sponsor_price: "",
-        sponsor_image_url: "./images/sponsor_icon.png",
+        sponsor_image_url: "./images/sponsor_icon.png", // This is the default image if no image is entered for a sponsorship opportunity.
         sponsor_description: "",
 
     }

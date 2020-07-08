@@ -16,26 +16,20 @@ function* deleteEvent(action) {
         yield action.history.push(`/home`) // Pushes history using YIELD!
     }
     catch (error) {
-        
     }
 }
 
 function* postEvent(action) {
     try {
-        // console.log('postEventSaga.js', action.payload)
         // Create Venue First
         let venue_id = action.payload.venue_id;
-        // console.log('Venue has ID of:', venue_id)
             if (venue_id === 0) { 
-                // console.log('Creating new venue...')
                 const responseVenue = yield axios.post(`/venue/create`, action.payload)
                 venue_id = responseVenue.data.id;
-                // console.log('New venue has ID of:', venue_id)
                 }
         // Create Event Next using venue id as :id
         const responseEvent = yield axios.post(`/event/create/${venue_id}`, action.payload)
         let event_id = responseEvent.data.id;
-        console.log('event_id:' );
         let idToSend = {event_id: event_id};
         yield put({ type: 'ADD_DEMO', payload: idToSend});
         yield axios.post(`/event/type/${event_id}`, action.payload);
@@ -47,20 +41,16 @@ function* postEvent(action) {
 
 function* postEvent2(action) {
     try {
-        // console.log('postEventSaga.js', action.payload)
         // Create Venue First
         let venue_id = action.payload.venue_id;
         // console.log('Venue has ID of:', venue_id)
         if (venue_id === 0) {
-            // console.log('Creating new venue...')
             const responseVenue = yield axios.post(`/venue/create`, action.payload)
             venue_id = responseVenue.data.id;
-            // console.log('New venue has ID of:', venue_id)
         }
         // Create Event Next using venue id as :id
         const responseEvent = yield axios.post(`/event/create/${venue_id}`, action.payload)
         let event_id = responseEvent.data.id;
-        console.log('event_id:');
         let idToSend = { event_id: event_id }
         yield put({ type: 'ADD_DEMO', payload: idToSend })
         yield put({ type: 'FETCH_ONE_EVENT', payload: idToSend })

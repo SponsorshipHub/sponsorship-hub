@@ -277,9 +277,8 @@ class LandingPage extends Component {
 LandingPage.propTypes = { classes: PropTypes.object.isRequired };
 
 const putStateOnProps = reduxState => ({
-    reduxState,
     landing: reduxState.landing,
-    user: reduxState.user,
+    user: reduxState.user
 });
 
 export default connect(putStateOnProps)(withStyles(styles)(LandingPage));

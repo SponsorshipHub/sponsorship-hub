@@ -42,7 +42,6 @@ function* changeAccessLevel(action){
 
 function* deleteUser(action) {
     try {
-        console.log('Action Payload in deleteUser is:', action.payload)
         yield axios.delete(`/admin/delete/${action.payload}`);
         yield put({ type: 'FETCH_USER_LIST' })
     } catch (err) {
