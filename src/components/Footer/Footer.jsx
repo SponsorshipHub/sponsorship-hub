@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import { InputAdornment, TextField, Box, Button, Typography } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Box, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import FacebookIcon from '@material-ui/icons/Facebook';
