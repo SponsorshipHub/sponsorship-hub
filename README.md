@@ -14,19 +14,19 @@ Here are some screenshots of Sponsorship Hub
 
 **Landing Page**
 
-![Landing Page](./public/images/LandingPage.png)
+![Landing Page](./public/images/landingPage.png)
 
 **Advanced Search**
 
-![Advanced Search](./public/images/advancedSearch.png)
+![Advanced Search](./public/images/AdvancedSearch.png)
 
 **Event Page View**
 
-![Event Page](./public/images/EventView.png)
+![Event Page](./public/images/eventView.png)
 
 **Create Event**
 
-![Create Event](./public/images/createEvent.png)
+![Create Event](./public/images/CreateEvent.png)
 
 **Admin User List**
 
