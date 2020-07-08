@@ -1,9 +1,6 @@
--- Last Updated Jul 3, 2020 3:45 PM
+-- Last Updated Jul 8, 2020 9:41 AM
 
--- Added: Two new brand users.
--- Added Sturgis 2020 and Sundance 2021
--- Updated State Fair Sponsorship.
--- Added State Fair 2020 for Alan to DELETE.
+-- Update: Sundance Festival Picture
 
 -- Database Name: sponsorship_hub
 
@@ -298,7 +295,7 @@ VALUES
 INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity)
 VALUES
-    ('Minnesota State Fairgrounds', '1265 Snelling Ave N', 'St. Paul', 'Minnesota', '55108', 'The location of the Great Minnesota Get-Together.', '100000');
+    ('Minnesota State Fairgrounds', '1265 Snelling Ave N', 'St. Paul', 'Minnesota', '55108', 'The location of the Great Minnesota Get-Together.  Shuttles are provided during the State Fair.  During the offseason, the Grandstand is used for many events.', '100000');
 
 INSERT INTO venues
     (name, address, city, state, zipcode, venue_notes, venue_capacity)
@@ -925,7 +922,7 @@ VALUES
 INSERT INTO "event"
     (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_description, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_notes, event_sponsorship_kit, venue_id)
 VALUES
-    ('Sundance Film Festival, 2021', '1978', '2021-01-21 13:00:09.250411+00', '2021-01-31 13:00:09.250411+00', 'https://www.sundance.org/comfy/cms/files/files/000/008/822/web_optimized/2015_Screening_InFootballWeTrust_AzikiweAboagye-1088x408.jpg', 'https://www.sundance.org/festivals/sundance-film-festival/about', False, '120000', 'Every winter in Utah, the Sundance Film Festival becomes the ultimate gathering of original storytellers and audiences seeking new voices and fresh perspectives. Our annual program includes dramatic and documentary features and short films; series and episodic content; and New Frontier, showcasing emerging media in the form of multimedia installations, performances, and films. We also host daily filmmaker conversations, panel discussions, and live music events. Since 1985, hundreds of films that have launched at the Festival have gained critical recognition and acclaim, reaching new audiences worldwide. The 2021 Sundance Film Festival will take place from January 21 to 31, 2021. Submissions for the 2021 Sundance Film Festival will open on May 1, 2020.', 'Tabitha Jackson', 'Festival Director', 'corporategiving@sundance.org', '(310) 492-2265', 'sundance', 'sundancefest', 'sundancefestival', 'popcorn not provided', 'SponsorKit_URL', 13);
+    ('Sundance Film Festival, 2021', '1978', '2021-01-21 13:00:09.250411+00', '2021-01-31 13:00:09.250411+00', 'https://unsplash.com/photos/2uwFEAGUm6E/download?force=true&w=1920', 'https://www.sundance.org/festivals/sundance-film-festival/about', False, '120000', 'Every winter in Utah, the Sundance Film Festival becomes the ultimate gathering of original storytellers and audiences seeking new voices and fresh perspectives. Our annual program includes dramatic and documentary features and short films; series and episodic content; and New Frontier, showcasing emerging media in the form of multimedia installations, performances, and films. We also host daily filmmaker conversations, panel discussions, and live music events. Since 1985, hundreds of films that have launched at the Festival have gained critical recognition and acclaim, reaching new audiences worldwide. The 2021 Sundance Film Festival will take place from January 21 to 31, 2021. Submissions for the 2021 Sundance Film Festival will open on May 1, 2020.', 'Tabitha Jackson', 'Festival Director', 'corporategiving@sundance.org', '(310) 492-2265', 'sundance', 'sundancefest', 'sundancefestival', 'popcorn not provided', 'SponsorKit_URL', 13);
 -- USE VENUE ID FROM ABOVE INSERT
 -- Event Type --
 INSERT INTO "junction_event_type"
