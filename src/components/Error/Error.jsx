@@ -30,5 +30,4 @@ class Error extends Component {
 // PropTypes allows us to import style.jsx for use
 Error.propTypes = {classes: PropTypes.object.isRequired};
 
-// const putStateOnProps = reduxState => ({reduxState});
 export default connect()(withStyles(styles)(Error));

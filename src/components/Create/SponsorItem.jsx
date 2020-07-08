@@ -11,14 +11,12 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Swal from 'sweetalert2/src/sweetalert2.js';
 
-
 class SponsorItem extends Component {
     state = {
         editMode: false,
 
     }
     componentDidMount() {
-        console.log('in SponsorItem', this.props.sponsorItem);
         this.setState({
             id: this.props.sponsorItem.id,
             sponsor_image_url: this.props.sponsorItem.sponsor_image_url,
@@ -37,8 +35,6 @@ class SponsorItem extends Component {
             ...this.state,
             [property]: event.target.value
         })
-        console.log(this.state);
-
     }
 
     handleDelete = () => {
@@ -59,7 +55,6 @@ class SponsorItem extends Component {
 
             }
         })
-
     }
 
     handleEditClick = () => {
@@ -159,12 +154,10 @@ class SponsorItem extends Component {
                 </Grid>
         }
 
-
         return (
             <>
                 {viewOrEdit}
             </>
-
         )//end return
     };//end render
 };//end class
@@ -173,8 +166,7 @@ class SponsorItem extends Component {
 SponsorItem.propTypes = { classes: PropTypes.object.isRequired };
 
 const mapStateToProps = state => ({
-    sponsors: state.sponsors,
-
+    sponsors: state.sponsors
 });
 
 // const putStateOnProps = reduxState => ({reduxState});

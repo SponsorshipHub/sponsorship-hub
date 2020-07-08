@@ -18,7 +18,6 @@ class Header_Event extends Component {
         let start_date = moment(this.props.oneEvent.start_date).format(`MMM Do`);
         let end_date = moment(this.props.oneEvent.end_date).format(`MMM Do, YYYY`);
         const page = window.location.href.split('/')[4];
-        console.log('Currentlying viewing page:', page)
         const { classes } = this.props;
         return (
             <div>

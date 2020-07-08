@@ -25,7 +25,7 @@ class EditEvent extends Component {
         start_date: '',
         end_date: '',
         event_image_url: null,
-        event_website: 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920',
+        event_website: 'https://unsplash.com/photos/icyZmdkCGZ0/download?force=true&w=1920', // This is the default image if no image is entered.
         event_status: false,
         event_type: '',
         estimated_attendance: '',

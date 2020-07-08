@@ -28,9 +28,6 @@ class SponsorshipView extends Component {
 
     render() {
         // allows us to connect this.props to styles 
-        console.log(`Sponsorship: `, this.state.openModal);
-        console.log('BREAKING POINT', this.props);
-
         const { classes } = this.props;
         return (
             <Box my={2}>
