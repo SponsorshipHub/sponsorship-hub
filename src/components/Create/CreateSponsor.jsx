@@ -18,7 +18,6 @@ class CreateSponsor extends Component {
         sponsor_price: "",
         sponsor_image_url: "./images/sponsor_icon.png", // This is the default image if no image is entered for a sponsorship opportunity.
         sponsor_description: "",
-
     }
 
     componentDidMount() {
@@ -32,7 +31,6 @@ class CreateSponsor extends Component {
 
     forwardClick = () => {
         this.props.history.push(`/create-demo/${this.props.match.params.id}`)
-
     }
 
     handleChange = (event, property) => {
@@ -57,10 +55,7 @@ class CreateSponsor extends Component {
             sponsor_image_url: "./images/sponsor_icon.png",
             sponsor_description: ""
         });
-        
-        console.log(this.state);
     }
-   
 
     render() {
         // allows us to connect this.props to styles 
@@ -141,5 +136,4 @@ const mapStateToProps = state => ({
     sponsors: state.sponsors
 });
 
-// const putStateOnProps = reduxState => ({reduxState});
 export default connect(mapStateToProps)(withStyles(styles)(CreateSponsor));

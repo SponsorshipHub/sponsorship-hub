@@ -69,7 +69,6 @@ class EditDemo extends Component {
                 text: 'All categories must total 100% or 0% to be submitted',
                 timer: 5000
             });
-
         }
     }
 
@@ -78,7 +77,6 @@ class EditDemo extends Component {
         let incomePercent = this.state.Income0_24999 + this.state.Income25000_49999 + this.state.Income50000_74999 + this.state.Income75000_99999 + this.state.Income100000_149999 + this.state.Income150000_199999 + this.state.Income200000;
         let agePercent = this.state.Age0_17 + this.state.Age18_24 + this.state.Age25_34 + this.state.Age35_44 + this.state.Age45_54 + this.state.Age55_64 + this.state.Age65;
         let residentPercent = this.state.in_state + this.state.out_of_state;
-
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         return (
@@ -235,5 +233,4 @@ const mapStateToProps = state => ({
     oneEvent: state.oneEvent
 });
 
-// const putStateOnProps = reduxState => ({reduxState});
 export default connect(mapStateToProps)(withStyles(styles)(EditDemo));
