@@ -32,11 +32,7 @@ class EditSponsor extends Component {
     }
 
     forwardClick = () => {
-        // if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`) {
             this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
-        // } else {
-        //     this.props.history.push(`/create-demo/${this.props.match.params.id}`)
-        // }
     }
 
     handleChange = (event, property) => {
