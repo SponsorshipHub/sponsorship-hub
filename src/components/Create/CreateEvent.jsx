@@ -50,61 +50,6 @@ class CreateEvent extends Component {
         venue_capacity: '',
     }
 
-    secretButton = () => {
-        this.setState({
-            event_name: 'Minnesota Renaissance Festival 2020',
-            start_date: '2020-08-22',
-            end_date: '2020-10-04',
-            event_type: '5',
-            estimated_attendance: '175000',
-        })
-    }
-
-    secretButton2 = () => {
-        this.setState({
-            venue_name: 'Minnesota Renaissance Festival Site',
-            venue_address: '12364 Chestnut Blvd',
-            venue_city: 'Shakopee',
-            venue_state: 'Minnesota',
-            venue_zipcode: '55379',
-            venue_notes: 'Shuttles are available from Mystic Lake Casino',
-            venue_capacity: '5000',
-        })
-    }
-
-    secretButton4 = () => {
-        this.setState({event_website: 'http://www.renaissancefest.com/',
-            event_image_url: 'https://images.squarespace-cdn.com/content/v1/54f21167e4b0970ed16ba4db/1511371208390-BMG2PUX7CT4UYY3U959N/ke17ZwdGBToddI8pDm48kNf-hQM-R23EvYgHX6HpkLgUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dvUozzWcWlu4f97JOBKhePkpXmFXSLPYzDF8_qoPPgnebSexTd1-frD7527z4SM9QQ/CRF2014_0115.jpg',
-            event_status: 'false',
-            year_established: '1989',
-            event_description: 'King Henry and his royal court invite one and all to his 16th Century European village featuring 16 stages of exciting entertainment. Over 250 artisans fill the Festival marketplace to display and sell their handcrafted wares for a truly unique shopping experience. Patrons can interact with hundreds of memorable characters roaming the village streets as well as view live armored jousting throughout the day. Come celebrate our 50th season by visiting the Festival grounds in Shakopee, MN. Huzzah!'})
-    }
-
-    secretButton3 = () => {
-        this.setState({
-            contact_name: 'William Wallace',
-            contact_title: 'Event Coordinator',
-            contact_email: 'marketing@renaissancefest.com',
-            contact_phone: '612-388-1253',
-        })
-    }
-
-    secretButton5 = () => {
-        this.setState({
-            event_notes:
-                `The Minnesota Renaissance Festival is celebrating its 50th Season!
-Come and be a part of this long - standing tradition by visiting the festival grounds in Shakopee, MN. 
-
-Open Weekends(Saturday and Sunday) August 22 – October 4, 2020
-Plus Labor Day, September 7 & Festival Friday, October 2 9am to 7pm • Rain or Shine • 952.445.7361
-Free Parking!`,
-            event_facebook: 'minnesotarenaissancefestival',
-            event_instagram: 'mnrenaissance',
-            event_twitter: 'mnrenaissance',
-            event_sponsorship_kit: 'http://www.renaissancefest.com/get-involved/sponsorship/'
-        })
-    }
-
     cancelSelect = (event) => {
         this.setState({ event_status: event.target.value });
     };
@@ -118,7 +63,6 @@ Free Parking!`,
 
     handleChange = (event, property) => {
         this.setState({ ...this.state, [property]: event.target.value })
-        // console.log(this.state)
     }
 
     nextClick = () => {
@@ -266,7 +210,7 @@ Free Parking!`,
 
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
-                        <Grid item xs={12} md={4}><h1 onClick={this.secretButton}>Create Event</h1></Grid>
+                        <Grid item xs={12} md={4}><h1>Create Event</h1></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
 
@@ -354,7 +298,7 @@ Free Parking!`,
                     <Box className={classes.box_grey}>
                         <Box className={classes.margin}>
                             <Grid justify="center" container>
-                            <Grid item xs={12} md={4}><h2><span onClick={this.secretButton2}>New</span> <span onClick={this.secretButton4}>Venue</span></h2></Grid>
+                            <Grid item xs={12} md={4}><h2>New Venue</h2></Grid>
                                 <Grid item xs={12} md={4}></Grid>
                             </Grid>
 
@@ -511,7 +455,7 @@ Free Parking!`,
                 <Box className={classes.box_grey}><Box className={classes.margin}>
 
                     <Grid justify="center" container>
-                        <Grid item xs={12} md={4}><h2 onClick={this.secretButton3}>Event Contact Information</h2></Grid>
+                        <Grid item xs={12} md={4}><h2>Event Contact Information</h2></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
 
@@ -539,7 +483,7 @@ Free Parking!`,
                 {/* SECTION - SOCIAL TAGS */}
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
-                        <Grid item xs={12} md={4}><h2 onClick={this.secretButton5}>Social Tags</h2></Grid>
+                        <Grid item xs={12} md={4}><h2>Social Tags</h2></Grid>
                         <Grid item xs={12} md={4}></Grid>
                     </Grid>
                     <Grid justify="center" container spacing={2}>

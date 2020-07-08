@@ -1,6 +1,6 @@
--- Last Updated Jul 8, 2020 9:41 AM
+-- Last Updated Jul 8, 2020 10:48 AM
 
--- Update: Sundance Festival Picture
+-- Update: Sundance Festival Picture, Removed Mock Users
 
 -- Database Name: sponsorship_hub
 
@@ -213,14 +213,7 @@ CREATE TABLE "sponsorships"
 INSERT INTO "user"
     (name, title, company, password, username, phone, access_level)
 VALUES
-    ('Kina Grannis', 'Junior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'kgrannis@sshub.com', '952-210-1430', 2),
-    ('Heather Baird', 'Event Rep.', 'FizzBuzz Soda', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'fizzbuzz@gmail.com', '763-400-3230', 0),
-    ('Jane Smiff', 'Marketing', 'Tesla', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'j_smiff@tesla.com', '763-201-1530', 1),
-    ('Deb Hannah', 'Advertising', 'L''Oreal Cosmetics', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'deb.hannah@loreal.com', '763-400-3230', 1),
-    ('Alan Henderson', 'Senior Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'grillydough@gmail.com', '612-269-2385', 2),
-    ('Tan Nguyen', 'Expert Researcher', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '612-501-3800', 2),
-    ('Shaokee Moua', 'Coding Engineer', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sshub@gmail.com', '612-505-5003', 3),
-    ('Karl Nauman', 'Founder', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'sponsorshiphub@gmail.com', '612-100-1000', 3);
+    ('Karl Nauman', 'Founder', 'Sponsorship Hub', '$2a$10$3UXnDy01r8nA8H.Z9EN0IOoMCSYAdWdzGeol9yXLCLZC910lEua5C', 'lamportkn@gmail.com', '651-271-6542', 3);
 
 -- EVENT --
 INSERT INTO "event"
