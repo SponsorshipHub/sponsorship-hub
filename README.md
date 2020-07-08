@@ -18,7 +18,7 @@ Here are some screenshots of Sponsorship Hub
 
 **Advanced Search**
 
-![Advanced Search](./public/images/AdvSearch.png)
+![Advanced Search](./public/images/advancedSearch.png)
 
 **Event Page View**
 
@@ -26,11 +26,11 @@ Here are some screenshots of Sponsorship Hub
 
 **Create Event**
 
-![Create Event](./public/images/CreateEvent.png)
+![Create Event](./public/images/createEvent.png)
 
-**Edit Page**
+**Admin User List**
 
-![Edit Page](./public/images/EditPage.png)
+![Admin User List](./public/images/userlist.png)
 
 ## Prerequisites
 
