@@ -28,16 +28,11 @@ class CreateSponsor extends Component {
 
     backClick = () => {
         this.props.history.push(`/event/edit/${this.props.match.params.id}`)
-        // this should be disabled or a sweet alert explaining that they should complete all steps of event creation to prevent errors.
     }
 
     forwardClick = () => {
-        //this conditional sends to either CreateDemo or EditDemo depending on 
-        // if (this.props.history.location.pathname === `/sponsor/edit/${this.props.match.params.id}`){
-        //     this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
-        // } else {
         this.props.history.push(`/create-demo/${this.props.match.params.id}`)
-        // }
+
     }
 
     handleChange = (event, property) => {
@@ -75,7 +70,6 @@ class CreateSponsor extends Component {
                 {/* Header */}
                 <Header history={this.props.history} />
                 
-                {/* Breadcrumbs go up here */}
                 <Grid container>
                     <Grid md={2}></Grid>
                 <Grid item md={9}className={classes.margin}>
@@ -109,7 +103,7 @@ class CreateSponsor extends Component {
                             <Typography variant="h4">Current Packages</Typography>
                         </Grid>
                     </Grid>
-{/* existing sponsorships display here */}
+                {/* existing sponsorships display here */}
                     <Grid container >
                         {
                             this.props.sponsors.map(sponsorItem =>
@@ -121,7 +115,7 @@ class CreateSponsor extends Component {
                     <Box mx={10} className={classes.margin}>
                         <Grid justify="center" container>
                             <Grid item md={3} sm={4} xs={4} className={classes.formMargin}>
-                                {/* I need to get rid of this button in create mode or it will switch the user to edit mode */}
+                                {/* the back button switches the user to Edit mode */}
                                 <Button fullWidth className={classes.btn_def} variant="outlined" onClick={this.backClick}>Back</Button>
                             </Grid>
                             <Grid item md={3} sm={2} xs={2} className={classes.formMargin}></Grid>
