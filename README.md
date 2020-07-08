@@ -14,7 +14,7 @@ Here are some screenshots of Sponsorship Hub
 
 **Landing Page**
 
-![Landing Page](./public/images/landingPage.png)
+![Landing Page](./public/images/LandingPage.png)
 
 **Advanced Search**
 
@@ -22,7 +22,7 @@ Here are some screenshots of Sponsorship Hub
 
 **Event Page View**
 
-![Event Page](./public/images/eventView.png)
+![Event Page](./public/images/EventView.png)
 
 **Create Event**
 
