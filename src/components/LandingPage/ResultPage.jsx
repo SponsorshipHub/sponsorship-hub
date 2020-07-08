@@ -26,7 +26,6 @@ class ResultPage extends Component {
     componentDidMount() {
         let defaultState = ''
         document.title = "Sponsorship Hub - Results"; // Sets browser's title
-        // console.log('ResultPage has been MOUNTED');
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
         window.scrollTo(0, 0);
@@ -51,58 +50,49 @@ class ResultPage extends Component {
 
     // handleEvent allows the user to go to the page of the event on click
     handleEvent = (events) => {
-        console.log('take me to the event', events);
         this.props.history.push(`/event/${events.id}`)
     };//end handleEvent
 
     //handleState allows the user to type in a state search
     handleState = (event) => {
-        console.log('changing State in advanced search:', event.target.value);
         //change value of state in our states
         this.setState({ state: event.target.value })
     };//end handleState
 
     //handleStartD allows user to type select start date
     handleStartD = (event) => {
-        console.log('selected START date:', event.target.value);
         // change the data of startD
         this.setState({ startD: event.target.value });
     };//end handleStartD
 
     //handleEndD allows user to type select end date
     handleEndD = (event) => {
-        console.log('selected END date:', event.target.value);
         // change the data of endD
         this.setState({ endD: event.target.value });
     };//end handleStartD
 
     //handleType allows user to select type value which is a number
     handleType = (event) => {
-        console.log('changing the event type:', event.target.value);
         this.setState({ type: event.target.value })
     };//end handleType
 
     //handleMinAttend allows user to select minimum amount of attendees
     handleMinAttend = (event) => {
-        console.log('changing minimum attendee:', event.target.value);
         this.setState({ minAttend: event.target.value });
     };//end handleMinAttend
 
     //handleMaxAttend allows user to select maximum amount of attendees
     handleMaxAttend = (event) => {
-        console.log('changing maximum attendee:', event.target.value);
         this.setState({ maxAttend: event.target.value });
     };//end handleMaxAttend
 
     //handleMinSponsorPrice allows user to select minimum sponsorship price
     handleMinSponsorPrice = (event) => {
-        console.log('changing minimum sponsorship price:', event.target.value);
         this.setState({ minSponsorPrice: event.target.value });
     };//end handleMinSponsorPrice
 
     //handleMinSponsorPrice allows user to select maximum sponsorship price
     handleMaxSponsorPrice = (event) => {
-        console.log('changing maximum sponsorship price:', event.target.value);
         this.setState({ maxSponsorPrice: event.target.value });
     };//end handleMaxSponsorPrice
 
@@ -115,7 +105,6 @@ class ResultPage extends Component {
 
     //handleFilter will filter the adv search
     handleFilter = () => {
-        console.log('clicked on filter for advanced search');
         if (this.state.type === 'Select All') {
             this.setState({
                 type: ''
@@ -131,7 +120,6 @@ class ResultPage extends Component {
                 state: null
             })
         }
-        console.log(this.state);
         this.props.dispatch({ type: 'FETCH_ADV_RESULTS', payload: this.state });
     };//end handleFilter
 

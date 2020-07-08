@@ -68,7 +68,6 @@ class LandingPage extends Component {
 
     componentDidMount() {
         document.title = "Sponsorship Hub"; // Sets browser's title
-        // console.log('Landing Page has been MOUNTED');
         // on landing page load, get our data for the featured events
         this.props.dispatch({ type: 'FETCH_LANDING' });
         // default our results so when we click back from a featured events results page shows data
@@ -77,7 +76,6 @@ class LandingPage extends Component {
     };//end componentDidMount
 
     handleSearch = () => {
-        console.log('search on Landing Page has been clicked', this.state);
         //IF STATEMENT SO THAT THEY DO BOTH START AND END DATE IF SELECTED
         if (this.state.startDate !== null && this.state.endDate === null) {
             Swal.fire({
@@ -112,25 +110,21 @@ class LandingPage extends Component {
 
     //handles state input change
     handleState = (event) => {
-        console.log('setting input for state', this.state.state);
         this.setState({ state: event.target.value });
     };//end handle state
 
     //handle start and end date selectors
     handleStart = (event) => {
-        console.log('selected START date:', event.target.value);
         // change the data of startDate
         this.setState({ startDate: event.target.value });
     };//end handleStart
     handleEnd = (event) => {
-        console.log('selected END date:', event.target.value);
         // change the data of endDate
         this.setState({ endDate: event.target.value });
     };//end handleEnd
 
     // handleEvent allows the user to go to the page of the event on click
     handleEvent = (events) => {
-        console.log('take me to the event', events);
         this.props.history.push(`/event/${events.id}`)
     };//end handleEvent   
     // SELECTOR EVENT TYPE START
