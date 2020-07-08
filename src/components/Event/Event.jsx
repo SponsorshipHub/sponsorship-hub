@@ -40,7 +40,7 @@ class Event extends Component {
                     <Box m={2}>
                         <Button onClick={() => this.props.history.push(`/results`)} variant="outlined" className={classes.btn_search}>Back to Results</Button>
                     </Box>
-
+                    {/* BreadCrumb */}
                     <Grid container justify="center" spacing={1}>
                         <Grid item xs={5} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#demo"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Demographics</Button></Link></Grid>
                         <Grid item xs={5} md={2}><Link className={classes.tableOfContents} to={"/event/" + this.props.match.params.id + "#sponsorship"}><Button fullWidth variant="contained" className={classes.btn_table_of_contents}>Sponsorships</Button></Link></Grid>
@@ -69,6 +69,7 @@ class Event extends Component {
                                 <Grid container justify='space-evenly'>
                                     <Grid item md={6} sm={12} mt={2}>
                                         <Box mt={2}>
+                                            {/* Event Type */}
                                             <Typography>Type: {this.props.oneEvent.type}</Typography>
                                         </Box>
                                     </Grid>
