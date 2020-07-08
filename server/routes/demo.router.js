@@ -13,7 +13,6 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
 //gender
 //post route
 router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in gender demo POST req.body:', req.body.event_id);
     const queryText = `INSERT INTO junction_event_gender 
     (event_id, gender_id, percentage) 
     VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0);`;
@@ -29,7 +28,6 @@ router.post('/gender', rejectUnauthenticated, rejectLevel1, (req, res) => {
 //income
 //post route
 router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in income demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_income
     (event_id, income_range_id, percentage)
     VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0), ($1, 4, 0), ($1, 5, 0), ($1, 6, 0), ($1, 7, 0);`;
@@ -45,7 +43,6 @@ router.post('/income', rejectUnauthenticated, rejectLevel1, (req, res) => {
 //age
 //post route
 router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in age demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_age
     (event_id, age_range_id, percentage)
      VALUES ($1, 1, 0), ($1, 2, 0), ($1, 3, 0), ($1, 4, 0), ($1, 5, 0), ($1, 6, 0), ($1, 7, 0);`;
@@ -61,7 +58,6 @@ router.post('/age', rejectUnauthenticated, rejectLevel1, (req, res) => {
 //residency
 //post route
 router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in resident demo POST req.body:', req.body);
     const queryText = `INSERT INTO junction_event_residency 
     (event_id, residency_id, percentage) 
     VALUES ($1, 1, 0), ($1, 2, 0);`;
@@ -80,7 +76,6 @@ router.post('/resident', rejectUnauthenticated, rejectLevel1, (req, res) => {
 // gender PUT
 router.put(`/edit`, rejectUnauthenticated, rejectLevel1, async (req, res) => {
 let demo = req.body;
-console.log('in demo.router gender PUT, req.body:', demo);
 const sendDemo = await pool.connect();
 try{
     await sendDemo.query('BEGIN');

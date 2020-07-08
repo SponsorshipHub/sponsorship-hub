@@ -10,7 +10,6 @@ function* sponsorSaga() {
 
 //THE DELETE ROUTE
 function* deleteSponsor(action){
-    console.log("in deleteSponsor", action.payload);
     try{
         yield axios.delete(`/sponsor/${action.payload.id}`);
         yield put ({ type: 'FETCH_SPONSORS', payload: action.payload.event_id});
@@ -20,7 +19,6 @@ function* deleteSponsor(action){
 }
 //THE PUT ROUTE
 function* editSponsor(action){
-    console.log('in editSponsor', action.payload );
     try{
         yield axios.put(`/sponsor/edit`, action.payload);
    yield put ({type: 'FETCH_SPONSORS', payload: action.payload.event_id});
@@ -33,7 +31,6 @@ function* editSponsor(action){
 }
 //The GET ROUTE
 function* fetchSponsor(action) {
-    console.log('in fetch sponsors', action.payload);
     try{
         const response = yield axios.get(`/sponsor/${action.payload}`);
         yield put({type: 'SET_SPONSORS', payload: response.data});
@@ -46,7 +43,6 @@ function* fetchSponsor(action) {
 
 // the POST ROUTE
 function* sendSponsor(action){
-    console.log('in sendSponsor', action.payload);
     try{
         yield axios.post('/sponsor', action.payload);
         yield put ({ type: 'FETCH_SPONSORS', payload: action.payload.event_id});

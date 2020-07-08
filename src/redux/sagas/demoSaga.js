@@ -7,7 +7,6 @@ function* demoSaga(){
 }
 //The Demographic PUT CALLS
 function* editDemo(action) {
-    console.log('in editDemo', action.payload);
     try{
         yield axios.put(`/demo/edit`, action.payload);
         yield action.history.push(`/event/${action.payload.event_id}`)
@@ -18,7 +17,6 @@ function* editDemo(action) {
 
 //The Demographic POST
 function* sendDemo(action){
-    console.log('in sendDemo', action.payload );
     try{
         yield axios.post(`/demo/gender`, action.payload);
         yield axios.post(`/demo/income`, action.payload);
