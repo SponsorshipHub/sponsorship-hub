@@ -140,7 +140,7 @@ const styles = {
     },
 
 
-    /* SECTION */
+    /* MISC STYLES */
     title: {
         paddingBottom: '35px'
     },

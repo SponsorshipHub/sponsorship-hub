@@ -1,110 +1,111 @@
 # Sponsorship Hub
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+## Description
+
+Duration: 2 week sprint
+
+Sponsorship Hub is an web application that stores data from events such as festivals and gives brands interested in sponsoring those events the ability to search for the perfect fit using filters. Users may also create and edit events as desired which specific access that can be granted from the Admin. Sponsorship Hub stores collected data to reduce repetitive work for the researchers and connects brands with events quicker and easier.
+
+To see the fully functional site, please visit: [http://sponsorshiphub.herokuapp.com/#/home](http://sponsorshiphub.herokuapp.com/#/home)
+
+## Screen Shots of Sponsorship Hub
+
+Here are some screen shots of Sponsorship Hub
+
+**Landing Page**
+
+![Landing Page](./public/images/LandingPage.png)
+
+**Advanced Search**
+
+![Advanced Search](./public/images/AdvSearch.png)
+
+**Event Page View**
+
+![Event Page](./public/images/EventView.png)
+
+**Create Event**
+
+![Create Event](./public/images/CreateEvent.png)
+
+**Edit Page**
+
+![Edit Page](./public/images/EditPage.png)
 
 ## Prerequisites
 
-Before you get started, make sure you have the following software installed on your computer:
+Software required to install this application are as listed:
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+* [Node.js](https://nodejs.org/en/)
 
-## Create database and table
+## Installation
 
-Create a new database called `prime_app` and create a `user` table:
+1.) Create a database named ```sponsorship_hub``` and run the queries from our [database.sql](https://github.com/SponsorshipHub/sponsorship-hub/blob/master/database.sql)
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+2.) The queries inside of [database.sql](https://github.com/SponsorshipHub/sponsorship-hub/blob/master/database.sql) file are set to create the necessary tables to populate the needed data for this application to run correctly. This project is built on ```[Postgres](https://www.postgresql.org/)```, so you will need to make sure to have that installed. We recommend using ```[Postico](https://eggerapps.at/postico/)``` to run those queries as they were originally created there.
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+3.) Open your source code editor and run ```npm install```
 
-## Development Setup Instructions
+3.) Create a .env file and set up SERVER_SESSION_SECRET=```superDuperSecretKey``` where ```superDuperSecretKey``` is your generated password. You can randomly generate a password here at [password generator](https://passwordsgenerator.net/).  If you don't do this step, create a secret with less than eight characters, you will get a warning. The secret value can be any random string of characters.
 
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    SERVER_SESSION_SECRET=gHjYrHdrCXku3Jte
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run server`
-* Run `npm run client`
-* Navigate to `localhost:3000`
+5.) To allow emails to be generated for the new user and the admin upon user registration, you will have to set up a API key for [Sendgrid](https://sendgrid.com/). Please set up an account with [Sendgrid](https://sendgrid.com/) and follow these [instructions](https://sendgrid.com/docs/ui/account-and-settings/api-keys/). Once you have created your API KEY, inside the .env file set up ```SENDGRID_API_KEY=yourSendgridApiKey```.
 
-## Debugging
+4.) Run ```npm run server``` in your terminal
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+5.) Run ```npm run client``` in your terminal which will open up a new browser tap to view the application
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+## Usage
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+To use this application feel free to use the following steps
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+1.) Click ```LOGIN/REGISTER``` at the top right of the page to create an account. Upon account creation, the admin must approve the new user from the Admin User List page for access rights as ```Brand``` to search events or ```Researcher``` to create, edit, and duplicate events.
+
+2.) With ```Brand``` access level, you can search events with from the landing page with the state, start and end date inputs then clicking ```Search```. You may then search with more advanced filters on the Results View page then clicking ```Filter```.
+
+3.) With ```Researcher``` access level, you can create events with the ```Create Event``` at the bottom right of the Header. Here you can fill the form to create the event, then add sponsorship packages and demographics.
+
+4.) As a ```Researcher``` one can also ```Edit``` events by clicking on events and clicking ```Edit Event``` at the bottom right of the header of an event page, then fill the form as needed. If you would like to ```delete``` or ```duplicate``` an event, at the bottom of the edit page.
+
+5.) With ```Admin``` access level, you have the abilities of the ```Brand``` and ```Researcher```. You will also have an ```Admin``` button at the top right of the header. When clicked, you can grant access levels for your users and delete users.
 
 
-## Testing Routes with Postman
+## Built with
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum. 
+* Node.js
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+* Express.js
 
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-    1. `POST /api/user/register` registers a new user, see body to change username/password
-    2. `POST /api/user/login` will login a user, see body to change username/password
-    3. `GET /api/user` will get user information, by default it's not very much
+* React.js
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
+* Redux.js
+
+* Redux-Saga
+
+* Axios
+
+* Moment.js
+
+* Sweetalert2
+
+* Material-UI
+
+* Recharts
+
+* Passport
 
 
-## Production Build
+## Acknowledgment
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+Thanks to our instructors at Prime Digital Academy who helped equipped our group with the necessary skills and technologies to complete this application. Huge thanks to our client Karl Nauman for helping us bringing his vision of Sponsorship Hub to reality!
 
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
+## Support
 
-## Lay of the Land
+Original developers:
 
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
+Heather Baird | hrbaird10@gmail.com
 
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
+Tan Nguyen | tannguyen1024@gmail.com
 
-* src/components
-  * App/App
-  * Footer/Footer
-  * Nav/Nav
-  * AboutPage/AboutPage
-  * InfoPage/InfoPage
-  * UserPage/UserPage
-  * LoginPage/LoginPage
-  * RegisterPage/RegisterPage
-  * LogOutButton/LogOutButton
-  * ProtectedRoute/ProtectedRoute
+Alan Henderson | mr.alan.henderson@gmail.com
 
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+Shaokee Moua | m.shaokee@gmail.com
