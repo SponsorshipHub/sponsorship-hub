@@ -8,7 +8,6 @@ const { rejectLevel2 } = require('../modules/auth_lvl_2'); // Rejects level 2 an
 
 // GET route, gathers all sponsorships associated with event
 router.get('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in sponsor GET req.params.id:', req.params.id);
     const queryText = `SELECT * FROM sponsorships WHERE event_id = $1 ORDER BY sponsor_price;`;
     pool.query(queryText, [req.params.id])
     .then(results => res.send(results.rows))
@@ -22,7 +21,6 @@ router.get('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
 
 // POST route for newly created sponsorship
 router.post('/', rejectUnauthenticated, rejectLevel1, (req, res) => {
-console.log('in sponsor POST req.body:', req.body);
 const queryText = `INSERT INTO sponsorships 
 (sponsor_name, sponsor_price, sponsor_image_url, sponsor_description, event_id ) 
 VALUES ($1, $2, $3, $4, $5);`;
@@ -38,7 +36,6 @@ VALUES ($1, $2, $3, $4, $5);`;
 
 // DELETE ROUTE remove a sponsorship from event
 router.delete('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in sponsor.router DELETE, req.params:', req.params);
     const queryText = `DELETE FROM sponsorships WHERE id=$1;`;
     pool.query(queryText, [req.params.id])
     .then((result) => {
@@ -52,7 +49,6 @@ router.delete('/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
 
 //PUT ROUTE used to create a new sponsorship
 router.put(`/edit`, rejectUnauthenticated, rejectLevel1, (req, res) => {
-    console.log('in sponsor.router EDIT, req.body:', req.body);
     const queryText = `UPDATE sponsorships 
     SET sponsor_name = $1, sponsor_price = $2, sponsor_image_url = $3, sponsor_description = $4
     WHERE id = $5;`;
