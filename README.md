@@ -38,6 +38,10 @@ Software required to install this application are as listed:
 
 * [Node.js](https://nodejs.org/en/)
 
+* [PostgreSQL](https://www.postgresql.org/)
+
+* [Nodemon](https://nodemon.io/)
+
 ## Installation
 
 1.) Create a database named ```sponsorship_hub``` and run the queries from our [database.sql](https://github.com/SponsorshipHub/sponsorship-hub/blob/master/database.sql)

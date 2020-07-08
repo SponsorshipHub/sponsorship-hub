@@ -203,9 +203,6 @@ class CreateEvent extends Component {
     }  // SELECTOR EVENT TYPE END
 
     render() {
-        // window.onbeforeunload = function () {
-        //     return "Data will be lost if you leave the page, are you sure?";
-        // };
         // allows us to connect this.props to styles 
         const { classes } = this.props;
         let cancelValue = String(this.state.event_status);

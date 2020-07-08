@@ -33,7 +33,6 @@ class EditSponsor extends Component {
 
     forwardClick = () => {
             this.props.history.push(`/demo/edit/${this.props.match.params.id}`)
-
     }
 
     handleChange = (event, property) => {

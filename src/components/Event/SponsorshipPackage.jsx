@@ -20,7 +20,6 @@ class SponsorshipPackage extends Component {
     };//end componentDidMount
 
     handleOpen = (id, classes) => {
-        // console.log('HERE IS OUR SPONSOR:', this.props.oneEvent.sponsorship[this.state.sponsorshipId]);
         this.setState({
             sponsorshipId: id
         })
