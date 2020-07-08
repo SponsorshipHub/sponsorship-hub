@@ -18,7 +18,7 @@ class Error extends Component {
             <h1>You are not authorized to view this page.</h1>
             <h3>Please wait for Sponsorship Hub to approve you.</h3>
             <Paper style={{width: 300, padding: 15}}><Typography variant="h6">Contact Us</Typography>
-                <br />Email: <a href={`mailto:karl.nauman@gmail.com`} target="_blank"><Typography style={{ color: 'black', fontWeight: '600' }} color="secondary">sshub@gmail.com</Typography></a>
+                    <br />Email: <a href={`mailto:lamportkn@gmail.com`} target="_blank"><Typography style={{ color: 'black', fontWeight: '600' }} color="secondary">lamportkn@gmail.com</Typography></a>
                 <br />Phone: <a href={`tel:612-100-1000`} target="_blank"><Typography style={{ color: 'black', fontWeight: '600' }} color="secondary">612-100-1000</Typography></a>
                     </Paper>
                     <Link to="/home"><p>Return to Home Page</p></Link></center>
