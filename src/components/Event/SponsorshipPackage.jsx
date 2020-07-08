@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, DialogTitle, Dialog, Paper, DialogContent, DialogContentText, InputAdornment } from '@material-ui/core';
+import { Typography, Button, TableCell, DialogTitle, Dialog, DialogContent } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
