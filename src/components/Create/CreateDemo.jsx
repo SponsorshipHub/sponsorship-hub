@@ -164,7 +164,7 @@ class CreateDemo extends Component {
                 </Box>
                 {/* End Household Income Inputs*/}
                 {/* Begin Age Inputs */}
-                <Box className={classes.box_grey} className={classes.margin}>
+                <Box className={classes.box_grey}>
                     <Grid container justify="center" >
                         <Grid item md={9} sm={5} xs={11} className={classes.formMargin}>
                             <Typography variant="h5">Age Range</Typography>

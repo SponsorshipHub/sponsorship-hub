@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, TableRow, TableCell, Select, MenuItem } from '@material-ui/core';
+import { TableCell, Select, MenuItem } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -76,8 +76,6 @@ class UserList extends Component {
     }
 
     render() {
-        // allows us to connect this.props to styles 
-        const { classes } = this.props;
         return (
                 <TableCell>
                     <Select

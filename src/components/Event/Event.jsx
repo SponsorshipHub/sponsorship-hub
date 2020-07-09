@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Typography, TextField, Box, Button } from '@material-ui/core';
+import { Grid, Typography, Box, Button } from '@material-ui/core';
 // MATERIAL ICONS
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
@@ -14,7 +14,7 @@ import styles from '../Style/Style';
 import DemoView from './DemoView';
 import SponsorshipView from './SponsorshipView';
 import Venue from './Venue';
-import Header_Event from '../Header/Header_Event';
+import HeaderEvent from '../Header/Header_Event';
 // HashLink
 import { HashLink as Link } from 'react-router-hash-link';
 
@@ -34,7 +34,7 @@ class Event extends Component {
             <Box> {/* full page*/}
                 <Box>
                     {/* Header */}
-                    <Header_Event history={this.props.history} match={this.props.match} />
+                    <HeaderEvent history={this.props.history} match={this.props.match} />
 
 
                     <Box m={2}>
@@ -85,19 +85,19 @@ class Event extends Component {
                         </Grid>
                         <Grid item md={4} sm={10}>
                             {/* Sponsorship link - Conditionally Rendered */}
-                            {this.props.oneEvent.event_sponsorship_kit ? <a href={this.props.oneEvent.event_sponsorship_kit} target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a> : <Button fullWidth variant="outlined" disabled>Sponsorship Kit Not Available</Button>}
+                            {this.props.oneEvent.event_sponsorship_kit ? <a href={this.props.oneEvent.event_sponsorship_kit} rel="noopener noreferrer" target='_blank'><Button fullWidth variant="outlined">View Sponsorship Kit</Button></a> : <Button fullWidth variant="outlined" disabled>Sponsorship Kit Not Available</Button>}
                             {/* estimated_attendance */}
                             <Typography>Estimated Attendance: {this.props.oneEvent.estimated_attendance}</Typography>
                             <OpenInNewIcon />
                             {/* event_website */}
-                            <Typography display="inline"><a href={this.props.oneEvent.event_website} target="_blank">{this.props.oneEvent.event_website ? this.props.oneEvent.event_website : 'No Website Provided'}</a> </Typography>
+                            <Typography display="inline"><a href={this.props.oneEvent.event_website} rel="noopener noreferrer" target="_blank">{this.props.oneEvent.event_website ? this.props.oneEvent.event_website : 'No Website Provided'}</a> </Typography>
                             <Box>
                                 <PersonIcon />
                                 <Typography display="inline">Contact Info</Typography>
                                 {/* contact_name & contact_title */}
                                 <Typography>{this.props.oneEvent.contact_name}{this.props.oneEvent.contact_title && ', '+this.props.oneEvent.contact_title}</Typography>
                                 {/* contact_email*/}
-                                <Typography><a href={ 'mailto:' + this.props.oneEvent.contact_email} target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
+                                <Typography><a href={'mailto:' + this.props.oneEvent.contact_email} rel="noopener noreferrer" target="_blank">{this.props.oneEvent.contact_email}</a></Typography>
                                 {/* contact_phone*/}
                                 <Typography>{this.props.oneEvent.contact_phone}</Typography>
                             </Box>

@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Paper } from '@material-ui/core';
+import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';

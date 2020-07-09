@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header_Event from '../Header/Header_Event'
+import HeaderEvent from '../Header/Header_Event'
 // Material UI Imports
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, InputAdornment, Radio, TextField, InputLabel, Select, MenuItem, Grid, Box, Button } from '@material-ui/core';
@@ -60,17 +60,6 @@ class EditEvent extends Component {
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });
         this.props.dispatch({ type: "FETCH_ONE_EVENT", payload: this.props.match.params.id }); /* Gets one event */
         this.props.dispatch({ type: 'FETCH_VENUES' }); /* Gets all the venues */
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'bottom',
-            showConfirmButton: false,
-            timer: 2500,
-            timerProgressBar: true,
-            onOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
         this.setState({ 
             newVenue: false,
             venue_id: this.props.oneEvent.venue_id,
@@ -442,7 +431,7 @@ class EditEvent extends Component {
         let end_date = moment(this.state.end_date).format(`YYYY-MM-DD`);
         return (
             <>
-                <Header_Event history={this.props.history} match={this.props.match}/>
+                <HeaderEvent history={this.props.history} match={this.props.match}/>
                 <Box className={classes.margin}>
                     <Grid justify="center" container>
                         <Grid item xs={12} md={4}><h1>Editing {this.props.oneEvent.event_name}</h1></Grid>

@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { TextField, Box, Button } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import '../Structure/Nav/Nav.css';
+
 const moment = require('moment');
 class Header_Event extends Component {
     componentDidMount() {
@@ -64,9 +66,9 @@ class Header_Event extends Component {
                             justifyContent="center"
                             className={classes.header_button_left}>
                             <Link to={`/details/${this.props.cardId}`} />
-                            {this.props.oneEvent.event_facebook && <a href={`https://www.facebook.com/${this.props.oneEvent.event_facebook}`} target="_blank"><FacebookIcon color="secondary" className={classes.header_social} /></a>}
-                            {this.props.oneEvent.event_instagram && <a href={`https://www.instagram.com/${this.props.oneEvent.event_instagram}`} target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>}
-                            {this.props.oneEvent.event_twitter && <a href={`https://www.twitter.com/${this.props.oneEvent.event_twitter}`} target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>}
+                            {this.props.oneEvent.event_facebook && <a href={`https://www.facebook.com/${this.props.oneEvent.event_facebook}`} rel="noopener noreferrer" target="_blank"><FacebookIcon color="secondary" className={classes.header_social} /></a>}
+                            {this.props.oneEvent.event_instagram && <a href={`https://www.instagram.com/${this.props.oneEvent.event_instagram}`} rel="noopener noreferrer" target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>}
+                            {this.props.oneEvent.event_twitter && <a href={`https://www.twitter.com/${this.props.oneEvent.event_twitter}`} rel="noopener noreferrer" target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ marginLeft: '5px' }} /></a>}
                         </Box>
                     </Box>
                 </Box>

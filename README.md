@@ -2,6 +2,7 @@
 
 ## Description
 
+Last Updated: July 9th, 2020
 Duration: 2 Week Sprint
 
 Sponsorship Hub is a web application that stores data from events such as festivals and gives brands interested in sponsoring those events the ability to search for the perfect fit using filters. Users may also create and edit events as desired with specific access that can be granted from the Admin. Sponsorship Hub stores collected data to reduce repetitive work for the researchers and connects brands with events quicker and easier.
@@ -12,23 +13,23 @@ To see the fully functional site, please visit: [http://sponsorshiphub.herokuapp
 
 Here are some screenshots of Sponsorship Hub
 
-**Landing Page**
+## **Landing Page**
 
 ![Landing Page](./public/images/LandingPage.png)
 
-**Advanced Search**
+## **Advanced Search**
 
 ![Advanced Search](./public/images/AdvancedSearch.png)
 
-**Event Page View**
+## **Event Page View**
 
 ![Event Page](./public/images/EventView.png)
 
-**Create Event**
+## **Create Event**
 
 ![Create Event](./public/images/CreateEvent.png)
 
-**Admin User List**
+## **Admin User List**
 
 ![Admin User List](./public/images/userlist.png)
 

@@ -24,7 +24,6 @@ class ResultPage extends Component {
     };//end state
 
     componentDidMount() {
-        let defaultState = ''
         document.title = "Sponsorship Hub - Results"; // Sets browser's title
         // get our event types
         this.props.dispatch({ type: 'FETCH_EVENT_TYPES' });

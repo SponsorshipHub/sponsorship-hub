@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import styles from '../../Style/Style';
@@ -35,7 +35,6 @@ class LoginPage extends Component {
   }
 
   render() {
-    const { classes } = this.props;
     return (
       <div>
         <Header />

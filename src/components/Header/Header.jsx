@@ -7,6 +7,8 @@ import { InputAdornment, TextField, Box, Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
+import '../Structure/Nav/Nav.css';
+
 class Header extends Component {
     state = { search: '' }
     componentDidMount() {

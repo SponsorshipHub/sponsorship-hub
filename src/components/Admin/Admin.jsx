@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button, Table, TableContainer, TableHead, TableRow, TableCell, Paper, TableBody, Select, MenuItem } from '@material-ui/core';
+import { Grid, Typography, Box, Table, TableContainer, TableHead, TableRow, TableCell, Paper, TableBody } from '@material-ui/core';
 // PropTypes allows us to import style.jsx for use
 import PropTypes from 'prop-types';
 import styles from '../Style/Style';
@@ -106,7 +106,7 @@ class Admin extends Component {
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.title}</TableCell>
                                     <TableCell>{user.company}</TableCell>
-                                    <TableCell><a href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
+                                    <TableCell><a rel="noopener noreferrer" href={'mailto:' + user.username} target="_blank" style={{ color: '#000000', textDecoration: 'None'}}>{user.username}</a></TableCell>
                                     <TableCell>{user.phone}</TableCell>
                                     <UserList user={user}/>
                                     <TableCell onClick={(event)=>this.handleDelete(event, user)} hover={{color: 'red'}}><DeleteIcon className={classes.coralOnHover}/></TableCell>

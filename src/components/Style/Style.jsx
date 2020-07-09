@@ -44,7 +44,6 @@ const styles = {
         marginBottom: '5px',
         backgroundSize: 'cover',
         height: '300px',
-        backgroundPosition: 'center',
         // backgroundAttachment: 'fixed', Scroll effect
     },
 
@@ -73,7 +72,6 @@ const styles = {
         marginTop: '20px',
         backgroundSize: 'cover',
         height: '150px',
-        backgroundPosition: 'center',
         backgroundColor: '#505050',
     },
 

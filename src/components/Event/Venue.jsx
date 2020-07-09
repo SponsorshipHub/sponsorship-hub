@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 //MATERIAL UI
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Typography, TextField, Box, Button } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 // MATERIAL ICONS
 import PlaceIcon from '@material-ui/icons/Place';
 // PropTypes allows us to import style.jsx for use
@@ -21,7 +21,7 @@ class Venue extends Component {
                         <Grid item md={4}>
                             {/* Venue Name */}
                             <Box mb={3}>
-                                <Typography variant="h5"><a style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a></Typography>
+                                <Typography variant="h5"><a rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'black' }} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><h2>{this.props.oneEvent.name}</h2></a></Typography>
                             </Box>
                             {/* Capacity Need to fix spacing */}
                             {/* venue_capacity */}
@@ -30,7 +30,7 @@ class Venue extends Component {
                                 <PlaceIcon />
                                 <Typography display="inline">Address</Typography>
                                 {/* Address */}
-                                <a style={{ textDecorationColor: '#f45255', color: 'black'}} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><Typography>{this.props.oneEvent.address}</Typography>
+                                <a rel="noopener noreferrer" style={{ textDecorationColor: '#f45255', color: 'black'}} href={`http://maps.google.com/?q=${this.props.oneEvent.address} ${this.props.oneEvent.city} ${this.props.oneEvent.state}`} target="_blank"><Typography>{this.props.oneEvent.address}</Typography>
                                     <Typography>{this.props.oneEvent.city && this.props.oneEvent.city + ', '} {this.props.oneEvent.state} {this.props.oneEvent.zipcode}</Typography></a>
                             </Box>
                         </Grid>
