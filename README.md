@@ -13,7 +13,7 @@ To see the fully functional site, please visit: [http://sponsorshiphub.herokuapp
 
 Here are some screenshots of Sponsorship Hub
 
-## **Landing Page**
+### **Landing Page**
 This is the first page a user will see after logging in.  
 It allows users to do a simple search and see featured events.
 ![Landing Page](./public/images/LandingPage.png)
