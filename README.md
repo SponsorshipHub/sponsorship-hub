@@ -3,6 +3,7 @@
 ## Description
 
 Last Updated: July 9th, 2020
+
 Duration: 2 Week Sprint
 
 Sponsorship Hub is a web application that stores data from events such as festivals and gives brands interested in sponsoring those events the ability to search for the perfect fit using filters. Users may also create and edit events as desired with specific access that can be granted from the Admin. Sponsorship Hub stores collected data to reduce repetitive work for the researchers and connects brands with events quicker and easier.
