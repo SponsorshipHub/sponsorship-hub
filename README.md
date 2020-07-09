@@ -20,18 +20,22 @@ It allows users to do a simple search and see featured events.
 ![Landing Page](./public/images/LandingPage.png)
 
 ## **Advanced Search**
+Allows users to perform customized search of all events.
 
 ![Advanced Search](./public/images/AdvancedSearch.png)
 
 ## **Event Page View**
+Displays all relevant information on the event.
 
 ![Event Page](./public/images/EventView.png)
 
 ## **Create Event**
+Allows users with correct authorization to create a brand new event.
 
 ![Create Event](./public/images/CreateEvent.png)
 
 ## **Admin User List**
+Allows users with admin level access to change access levels and remove users.
 
 ![Admin User List](./public/images/userlist.png)
 
