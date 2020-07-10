@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import styles from '../Style/Style';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import TwitterIcon from '@material-ui/icons/Twitter';
+// import TwitterIcon from '@material-ui/icons/Twitter';
+// If a Twitter icon is needed, uncomment above.
 import EmailIcon from '@material-ui/icons/Email';
 
 class Footer extends Component {
