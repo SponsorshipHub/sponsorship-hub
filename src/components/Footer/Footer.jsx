@@ -35,9 +35,9 @@ class Footer extends Component {
                             
                         <Box fontWeight={800} textAlign="center" style={{ margin: '10px', position: 'relative', float: 'right' }}>
                             <Typography style={{fontWeight: '600'}} color="primary">Connect With Us</Typography>
-                            <a href={`https://www.facebook.com/`} rel="noopener noreferrer" target="_blank"><FacebookIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
+                            <a href={`https://www.facebook.com/sponsorshiphub`} rel="noopener noreferrer" target="_blank"><FacebookIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                             <a href={`https://www.instagram.com/`} rel="noopener noreferrer" target="_blank"><InstagramIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
-                            <a href={`https://www.twitter.com/`} rel="noopener noreferrer" target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
+                            {/* <a href={`https://www.twitter.com/`} rel="noopener noreferrer" target="_blank"><TwitterIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a> */}
                             <a href={`mailto:lamportkn@gmail.com`} rel="noopener noreferrer" target="_blank"><EmailIcon color="secondary" className={classes.header_social} style={{ margin: '4px' }} /></a>
                             <a href={`tel:612-100-1000`} rel="noopener noreferrer" target="_blank" style={{ textDecoration: 'none', }}><Typography style={{ color: 'white', fontWeight: '600' }} color="secondary">612-100-1000</Typography></a>
                         </Box>
