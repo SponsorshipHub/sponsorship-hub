@@ -584,7 +584,7 @@ class EditEvent extends Component {
                                             <MenuItem value='North Carolina'>North Carolina</MenuItem>
                                             <MenuItem value='North Dakota'>North Dakota</MenuItem>
                                             <MenuItem value='Ohio'> Ohio </MenuItem>
-                                            <MenuItem value='Oklohoma'> Oklohoma </MenuItem>
+                                            <MenuItem value='Oklahoma'> Oklahoma </MenuItem>
                                             <MenuItem value='Oregon'> Oregon </MenuItem>
                                             <MenuItem value='Pennsylvania'> Pennsylvania </MenuItem>
                                             <MenuItem value='Rhode Island'> Rhode Island </MenuItem>
