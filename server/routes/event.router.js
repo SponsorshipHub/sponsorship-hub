@@ -62,10 +62,10 @@ router.post('/create/:id', rejectUnauthenticated, rejectLevel1, (req, res) => {
     // console.log('Received from client, req.body:', req.body, 'req.params.id:',req.params.id)
     const venue_id = req.params.id;
     const r = req.body;
-    const query = `INSERT INTO "event" (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, venue_id)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18) RETURNING id`
+    const query = `INSERT INTO "event" (event_name, year_established, start_date, end_date, event_image_url, event_website, event_status, estimated_attendance, event_notes, contact_name, contact_title, contact_email, contact_phone, event_facebook, event_twitter, event_instagram, event_description, event_sponsorship_kit, venue_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19) RETURNING id`
     pool.query(query, [
-        r.event_name, r.year_established, r.start_date, r.end_date, r.event_image_url, r.event_website, r.event_status, r.estimated_attendance, r.event_notes, r.contact_name, r.contact_title, r.contact_email, r.contact_phone, r.event_facebook, r.event_twitter, r.event_instagram, r.event_description, venue_id
+        r.event_name, r.year_established, r.start_date, r.end_date, r.event_image_url, r.event_website, r.event_status, r.estimated_attendance, r.event_notes, r.contact_name, r.contact_title, r.contact_email, r.contact_phone, r.event_facebook, r.event_twitter, r.event_instagram, r.event_description, r.event_sponsorship_kit, venue_id
     ]).then(result => {
         console.log('New Event ID is:',result.rows[0])
         res.send(result.rows[0]);
@@ -117,8 +117,9 @@ router.put('/update/:id', rejectUnauthenticated, rejectLevel1, async (req, res) 
         event_twitter = $15,
         event_instagram = $16,
         event_description = $17,
-        venue_id = $18
-        WHERE id = $19;`
+        event_sponsorship_kit = $18,
+        venue_id = $19
+        WHERE id = $20;`
 
         let eventValues = [
             r.event_name,
@@ -138,6 +139,7 @@ router.put('/update/:id', rejectUnauthenticated, rejectLevel1, async (req, res) 
             r.event_twitter,
             r.event_instagram,
             r.event_description,
+            r.event_sponsorship_kit,
             venue_id,
             r.event_id
         ];
